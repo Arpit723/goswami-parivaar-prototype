@@ -1,0 +1,97 @@
+/* ============================================================
+   Goswami Parivaar — Admin Panel shared styles
+   Desktop-first (1440), React app patterns.
+   Used with design-tokens.css + styles.css (doc chrome).
+   ============================================================ */
+
+.admin-frame {
+  width: 1440px; height: 900px; flex: none;
+  background: var(--bg); color: var(--text);
+  border: 10px solid #17120E; border-radius: 20px;
+  overflow: hidden; display: flex;
+  box-shadow: 0 24px 48px rgba(59, 46, 37, .22);
+  font-size: 14px;
+}
+
+/* Sidebar */
+.aside { width: 232px; flex: none; background: #241A12; color: #E9DCCB; display: flex; flex-direction: column; }
+.aside .brand { display: flex; align-items: center; gap: 10px; padding: 18px 18px 14px; }
+.aside .brand .logo-mark { width: 36px; height: 36px; border-radius: 11px; font-size: 13px; }
+.aside .brand b { font-size: 14px; color: #fff; line-height: 1.2; display: block; }
+.aside .brand span { font-size: 10.5px; color: #B39C82; letter-spacing: .06em; text-transform: uppercase; font-weight: 700; }
+.anav { flex: 1; padding: 8px 10px; display: flex; flex-direction: column; gap: 2px; overflow: hidden; }
+.anav .anh { font-size: 10px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #8A7663; padding: 12px 10px 5px; }
+.anav a { display: flex; align-items: center; gap: 10px; padding: 9px 10px; border-radius: 9px; color: #C9B8A3; text-decoration: none; font-size: 13px; font-weight: 600; }
+.anav a .ic { width: 17px; height: 17px; }
+.anav a.active { background: rgba(232,130,63,.16); color: #F2B27E; }
+.anav a .count { margin-left: auto; background: #C2571B; color: #fff; font-size: 10.5px; font-weight: 800; border-radius: 99px; padding: 1px 7px; }
+.aside .afoot { padding: 14px; border-top: 1px solid #3A2E23; display: flex; align-items: center; gap: 10px; font-size: 12px; color: #C9B8A3; }
+
+/* Main column */
+.amain { flex: 1; display: flex; flex-direction: column; min-width: 0; background: var(--bg); }
+.abar { height: 58px; flex: none; display: flex; align-items: center; gap: 14px; padding: 0 22px; background: var(--surface); border-bottom: 1px solid var(--border); }
+.abar .search { flex: 1; max-width: 420px; height: 38px; border-radius: 10px; border: 1.5px solid var(--border-strong); background: var(--bg); display: flex; align-items: center; gap: 9px; padding: 0 13px; color: var(--text-3); font-size: 13px; }
+.abar .who { margin-left: auto; display: flex; align-items: center; gap: 11px; }
+.abar .who .av { width: 34px; height: 34px; border-radius: 99px; background: var(--primary-tint); color: var(--primary-hover); font-weight: 800; font-size: 12px; display: flex; align-items: center; justify-content: center; }
+.abody { flex: 1; overflow-y: auto; padding: 22px 24px 30px; scrollbar-width: none; }
+.abody::-webkit-scrollbar { display: none; }
+.abody h1 { font-size: 19px; margin-bottom: 4px; }
+.abody .sub { font-size: 13px; color: var(--text-2); margin-bottom: 18px; }
+
+/* KPI cards */
+.kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 18px; }
+.kpi { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 14px 16px; box-shadow: var(--shadow-1); }
+.kpi .k { font-size: 11.5px; font-weight: 700; color: var(--text-2); text-transform: uppercase; letter-spacing: .05em; }
+.kpi .v { font-size: 26px; font-weight: 800; margin-top: 5px; font-variant-numeric: tabular-nums; }
+.kpi .d { font-size: 12px; margin-top: 4px; color: var(--text-2); }
+.kpi.warn .v { color: var(--warning); } .kpi.err .v { color: var(--error); } .kpi.ok .v { color: var(--verified); }
+
+/* Tables */
+.table-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; box-shadow: var(--shadow-1); }
+table.atab { width: 100%; border-collapse: collapse; font-size: 13px; }
+.atab th { text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--text-3); font-weight: 800; padding: 11px 14px; background: var(--surface-2); border-bottom: 1px solid var(--border); white-space: nowrap; }
+.atab td { padding: 12px 14px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+.atab tr:last-child td { border-bottom: none; }
+.atab tr.hl td { background: var(--primary-tint); }
+.atab .mono { font-variant-numeric: tabular-nums; }
+.atab .actions { display: flex; gap: 8px; }
+
+/* Small controls */
+.abtn { height: 34px; padding: 0 13px; border-radius: 8px; border: 1px solid var(--border-strong); background: var(--surface); color: var(--text); font: inherit; font-size: 12.5px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 7px; white-space: nowrap; }
+.abtn.primary { background: var(--primary); border-color: var(--primary); color: #fff; }
+.abtn.ok { background: var(--verified-bg); border-color: transparent; color: var(--verified); }
+.abtn.danger { background: var(--error-bg); border-color: transparent; color: var(--error); }
+.abtn.ghost { border-color: transparent; background: transparent; color: var(--text-2); }
+.acheck { width: 16px; height: 16px; border: 1.5px solid var(--border-strong); border-radius: 4px; background: var(--surface); display: inline-block; vertical-align: middle; }
+.acheck.on { background: var(--primary); border-color: var(--primary); position: relative; }
+.acheck.on::after { content: ""; position: absolute; left: 4.5px; top: 1.5px; width: 4px; height: 8px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(40deg); }
+.filterbar { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
+.filterbar .fselect { height: 34px; border-radius: 8px; border: 1.5px solid var(--border-strong); background: var(--surface); color: var(--text-2); font: inherit; font-size: 12.5px; font-weight: 600; padding: 0 11px; display: inline-flex; align-items: center; gap: 7px; }
+
+/* Detail split (verification case) */
+.split { display: grid; grid-template-columns: 1.6fr 1fr; gap: 16px; align-items: start; }
+.panel { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 18px; box-shadow: var(--shadow-1); }
+.panel h3 { font-size: 14px; margin-bottom: 12px; }
+.idcard { background: var(--surface-2); border: 1px dashed var(--border-strong); border-radius: 12px; padding: 14px; text-align: center; }
+.idcard img, .idcard .placeholder-img { width: 100%; height: 150px; border-radius: 9px; background: linear-gradient(135deg, #D9CBB8, #C4B39C); display: flex; align-items: center; justify-content: center; color: #6B5A48; font-size: 12px; font-weight: 700; margin-bottom: 9px; }
+.timeline { display: flex; flex-direction: column; gap: 0; }
+.tstep { display: flex; gap: 12px; }
+.tstep .rail { display: flex; flex-direction: column; align-items: center; }
+.tstep .dot { width: 10px; height: 10px; border-radius: 99px; background: var(--border-strong); flex: none; margin-top: 4px; }
+.tstep.done .dot { background: var(--verified); }
+.tstep.now .dot { background: var(--primary); box-shadow: 0 0 0 3px var(--primary-tint); }
+.tstep .line { width: 2px; flex: 1; min-height: 18px; background: var(--border); }
+.tstep .tt { font-size: 13px; padding-bottom: 12px; }
+.tstep .tt b { display: block; }
+.tstep .tt span { font-size: 11.5px; color: var(--text-3); }
+
+/* SLA chip */
+.sla { font-size: 11px; font-weight: 800; border-radius: 99px; padding: 2px 9px; font-variant-numeric: tabular-nums; }
+.sla.ok { background: var(--verified-bg); color: var(--verified); }
+.sla.warn { background: var(--warning-bg); color: var(--warning); }
+.sla.err { background: var(--error-bg); color: var(--error); }
+
+/* Login frame variant */
+.login-frame { width: 1440px; height: 900px; flex: none; border: 10px solid #17120E; border-radius: 20px; overflow: hidden; display: flex; box-shadow: 0 24px 48px rgba(59,46,37,.22); background: #241A12; }
+.login-left { flex: 1.2; display: flex; flex-direction: column; justify-content: center; padding: 0 90px; color: #E9DCCB; background: radial-gradient(900px 600px at 20% 20%, rgba(194,87,27,.35), transparent 60%), #241A12; }
+.login-right { width: 480px; background: var(--surface); display: flex; flex-direction: column; justify-content: center; padding: 0 54px; }

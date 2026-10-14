@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AD-009 · Audit Log — Goswami Parivaar UI</title>
+<link rel="stylesheet" href="design-tokens.css">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<div class="doc">
+  <div class="doc-header">
+    <div class="kicker">Phase 5 · Admin Panel (React · desktop)</div>
+    <h1>AD-009 · Audit Log Viewer</h1>
+    <div class="fr-chips"><span>FR-ADM-08</span><span>SRS 7.8 (3-year retention)</span></div>
+  </div>
+
+  <details class="annot" open>
+    <summary>AD-009 · Audit log (append-only, immutable)</summary>
+    <table>
+      <tr><th>Role / entry</th><td>Super Admin · sidebar → Audit log</td></tr>
+      <tr><th>Primary action</th><td>Filter by actor / action / target / date · open event detail (safe before/after)</td></tr>
+      <tr><th>Rules</th><td>Every admin action recorded (who, what, when, request id). No one — including Super Admin — can edit or delete entries. Retained 3 years. Sensitive values (IDs, OTPs) never logged.</td></tr>
+    </table>
+  </details>
+
+  <div class="row">
+    <div class="frame-block">
+      <div class="frame-label">Default</div>
+      <div class="admin-frame">
+        <aside class="aside">
+          <div class="brand"><div class="logo-mark">GP</div><div><b>Parivaar Admin</b><span>Super Admin</span></div></div>
+          <nav class="anav">
+            <div class="anh">Work</div>
+            <a><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Dashboard</a>
+            <a><svg class="ic" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Users</a>
+            <a href="ad-003-verification.html"><svg class="ic" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><polyline points="9 12 11 14 15 10"/></svg>Verification</a>
+            <a href="ad-004-approvals.html"><svg class="ic" viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Approvals</a>
+            <a><svg class="ic" viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1Z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>Reports</a>
+            <div class="anh">Manage</div>
+            <a><svg class="ic" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>Cities &amp; categories</a>
+            <a><svg class="ic" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Sub Admins</a>
+            <a><svg class="ic" viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Broadcasts</a>
+            <div class="anh">Trust</div>
+            <a class="active"><svg class="ic" viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Audit log</a>
+          </nav>
+          <div class="afoot"><span class="av" style="width:30px;height:30px;border-radius:99px;background:rgba(232,130,63,.2);color:#F2B27E;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;">AP</span><div><b style="color:#E9DCCB;font-size:12.5px;">Arpit Parekh</b><br>Super Admin</div></div>
+        </aside>
+        <div class="amain">
+          <div class="abar">
+            <div class="search"><svg class="ic sm" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Search actor, action, request id…</div>
+            <div class="who"><span class="pill neutral">14 Oct 2026</span><span class="av">AP</span></div>
+          </div>
+          <div class="abody">
+            <div class="filterbar">
+              <span class="fselect" style="background:var(--primary);color:#fff;border-color:var(--primary);">Today</span>
+              <span class="fselect">Actor: All</span>
+              <span class="fselect">Action: All</span>
+              <span class="fselect">Module: All</span>
+              <button class="abtn" style="margin-left:auto;">Export CSV</button>
+            </div>
+
+            <div class="table-wrap">
+              <table class="atab">
+                <tr><th>Time</th><th>Actor</th><th>Action</th><th>Target</th><th>Request ID</th><th></th></tr>
+                <tr class="hl"><td class="mono">14:22</td><td><b>Hetal Shah</b> <span class="subtle" style="font-size:11px;">Sub Admin</span></td><td><span class="sla err">user.suspended</span></td><td>Manish Trivedi · U-2291</td><td class="mono" style="font-size:11px;">req_8f3a…c21</td><td><button class="abtn ghost">Detail</button></td></tr>
+                <tr><td class="mono">14:18</td><td><b>Hetal Shah</b></td><td><span class="sla warn">message.rejected</span></td><td>Ritesh → Priya · M-552</td><td class="mono" style="font-size:11px;">req_8f3a…9d4</td><td><button class="abtn ghost">Detail</button></td></tr>
+                <tr><td class="mono">14:05</td><td><b>Hetal Shah</b></td><td><span class="sla ok">message.approved</span></td><td>Kunal → Nidhi · M-551</td><td class="mono" style="font-size:11px;">req_8f39…77b</td><td><button class="abtn ghost">Detail</button></td></tr>
+                <tr><td class="mono">13:51</td><td><b>Arpit Parekh</b> <span class="subtle" style="font-size:11px;">Super Admin</span></td><td><span class="sla ok">listing.approved</span></td><td>Brass Diya Set · P-104</td><td class="mono" style="font-size:11px;">req_8f37…0e2</td><td><button class="abtn ghost">Detail</button></td></tr>
+                <tr><td class="mono">13:44</td><td><b>Jignesh Patel</b></td><td><span class="sla ok">event.approved</span></td><td>Tech Careers Q&amp;A · E-1041</td><td class="mono" style="font-size:11px;">req_8f36…5aa</td><td><button class="abtn ghost">Detail</button></td></tr>
+                <tr><td class="mono">12:58</td><td><b>Hetal Shah</b></td><td><span class="sla ok">user.approved</span></td><td>Kunal Goswami · U-2308</td><td class="mono" style="font-size:11px;">req_8f31…b19</td><td><button class="abtn ghost">Detail</button></td></tr>
+                <tr><td class="mono">12:31</td><td><b>Arpit Parekh</b></td><td><span class="sla warn">broadcast.sent</span></td><td>Milan Samaroh · 1,284 recipients</td><td class="mono" style="font-size:11px;">req_8f2e…f03</td><td><button class="abtn ghost">Detail</button></td></tr>
+                <tr><td class="mono">11:47</td><td><b>Bhavna Mehta</b></td><td><span class="sla ok">selfie.approved</span></td><td>Nidhi Goswami matrimony · MP-77</td><td class="mono" style="font-size:11px;">req_8f2b…41c</td><td><button class="abtn ghost">Detail</button></td></tr>
+              </table>
+            </div>
+
+            <div class="panel" style="margin-top:16px;">
+              <h3>Event detail · user.suspended</h3>
+              <div class="split" style="grid-template-columns:1fr 1fr;">
+                <div>
+                  <div class="kv" style="font-size:12.5px;"><span class="k">Actor</span><span class="v">Hetal Shah (Sub Admin)</span></div>
+                  <div class="kv" style="font-size:12.5px;"><span class="k">Time</span><span class="v mono">14 Oct 2026 · 14:22:07 IST</span></div>
+                  <div class="kv" style="font-size:12.5px;"><span class="k">Target</span><span class="v">U-2291 · Manish Trivedi</span></div>
+                  <div class="kv" style="font-size:12.5px;"><span class="k">Request</span><span class="v mono" style="font-size:11px;">req_8f3ac21… · IP 103.24.••</span></div>
+                  <div class="kv" style="font-size:12.5px;"><span class="k">Reports resolved</span><span class="v">R-312, R-315</span></div>
+                </div>
+                <div>
+                  <div class="overline" style="margin-bottom:8px;">Before → After (safe diff)</div>
+                  <div class="card flat mono" style="font-size:12px;line-height:20px;">
+                    <span style="color:var(--text-2);">status:</span> <span style="color:var(--verified);">active</span> → <span style="color:var(--error);">suspended</span><br>
+                    <span style="color:var(--text-2);">matrimony:</span> visible → hidden<br>
+                    <span style="color:var(--text-2);">reason:</span> "WhatsApp numbers after rejections"
+                  </div>
+                  <div class="banner info" style="margin-top:10px;font-size:12px;">
+                    <svg class="ic sm" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><polyline points="9 12 11 14 15 10"/></svg>
+                    <div>Immutable entry — cannot be edited or deleted by any role. Retained 3 years.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-footer">Goswami Parivaar · MVP UI design · Phase 5 · Design complete — Phases 1–5: 58 screens total</div>
+</div>
+<script src="proto.js"></script>
+</body>
+</html>

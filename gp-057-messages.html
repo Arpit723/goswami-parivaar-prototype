@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GP-057 · Moderated Messages — Goswami Parivaar UI</title>
+<link rel="stylesheet" href="design-tokens.css">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .msg { border-radius:16px; padding:12px 14px; font-size:14px; line-height:21px; max-width:82%; }
+  .msg.me { background:var(--matrimony-bg); color:var(--text); border-bottom-right-radius:5px; margin-left:auto; }
+  .msg.them { background:var(--surface); border:1px solid var(--border); border-bottom-left-radius:5px; }
+  .msg .mstate { display:flex; align-items:center; gap:5px; font-size:10.5px; font-weight:700; color:var(--text-3); margin-top:6px; }
+  .composer { flex:none; background:var(--surface); border-top:1px solid var(--border); padding:12px 16px 18px; }
+</style>
+</head>
+<body>
+<div class="doc">
+  <div class="doc-header">
+    <div class="kicker">Phase 4 · Matrimony</div>
+    <h1>GP-057 · Moderated Messages (after mutual interest)</h1>
+    <div class="fr-chips"><span>FR-MAT-09</span><span>FR-ADM-11 (review)</span><span>FR-INB-01 (delivery)</span></div>
+  </div>
+
+  <details class="annot" open>
+    <summary>GP-057 · Messages — every message is held and admin-approved before delivery — 3 frames</summary>
+    <table>
+      <tr><th>Role / entry</th><td>Member · mutual-interest card → Message</td></tr>
+      <tr><th>Primary action</th><td>Compose (≤500 chars) → held as PENDING → admin approves/rejects with reason → delivered to the other side's Inbox</td></tr>
+      <tr><th>Rules</th><td>Phone numbers, emails and links are auto-rejected until contact sharing is approved (FR-MAT-09). No live chat — this is a message board with review states. Rejections show the reason; sender can edit &amp; resend.</td></tr>
+      <tr><th>Key states</th><td>Conversation (shown) · compose with auto-flag warning (variant) · rejected message (variant)</td></tr>
+    </table>
+  </details>
+
+  <div class="row">
+    <div class="frame-block">
+      <div class="frame-label">Conversation <small>· review states visible</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content" style="display:flex;flex-direction:column;padding-bottom:0;">
+          <div class="appbar">
+            <a class="iconbtn"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <span class="avatar" style="width:36px;height:36px;font-size:12.5px;background:var(--matrimony-bg);color:var(--matrimony);">PG</span>
+            <div class="title" style="font-size:16px;">Priya Goswami</div>
+            <a class="iconbtn"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg></a>
+          </div>
+
+          <div class="banner info" style="margin:10px 16px 4px;">
+            <svg class="ic sm" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><polyline points="9 12 11 14 15 10"/></svg>
+            <div>Every message is reviewed by an admin before it reaches Priya — usually within 24 h.</div>
+          </div>
+
+          <div style="flex:1;padding:14px 16px;display:flex;flex-direction:column;gap:10px;overflow:hidden;">
+            <div class="msg them">
+              Namaste Ritesh ji, thank you for your interest. Your trekking photos are lovely — which trails have you done in Gujarat?
+              <div class="mstate">Approved by admin ✓ · delivered 11 Oct</div>
+            </div>
+            <div class="msg me">
+              Namaste! Pavagadh, Girnar and Zanzari waterfall recently. Do you also enjoy treks, or is Garba more your pace? 😊
+              <div class="mstate">Approved by admin ✓ · delivered 12 Oct</div>
+            </div>
+            <div class="msg them">
+              Garba definitely! Our whole family plays every Navratri. If our parents should talk, my father is free this weekend.
+              <div class="mstate">Approved by admin ✓ · delivered 13 Oct</div>
+            </div>
+            <div class="msg me" style="border:1.5px dashed var(--border-strong);background:var(--surface);">
+              That sounds good — my father can call yours on Sunday. His number is 98••• ••210.
+              <div class="mstate" style="color:var(--warning);">
+                <svg class="ic xs" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Pending admin review · sent 3 min ago
+              </div>
+            </div>
+          </div>
+
+          <div class="composer">
+            <div class="field">
+              <textarea style="min-height:52px;" placeholder="Write to Priya… (admin-reviewed)">Shall we plan a family call this weekend?</textarea>
+            </div>
+            <div class="spread" style="margin-top:8px;">
+              <span class="subtle" style="font-size:11px;">38 / 500 characters · no phone, email or links yet</span>
+              <button class="btn btn-primary btn-sm" style="background:var(--matrimony);">Send for approval</button>
+            </div>
+          </div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+
+    <div class="frame-block">
+      <div class="frame-label">Variant <small>· auto-flag blocked</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content" style="display:flex;flex-direction:column;">
+          <div class="appbar">
+            <a class="iconbtn"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <div class="title" style="font-size:16px;">Priya Goswami</div>
+          </div>
+          <div style="flex:1;padding:14px 16px;display:flex;flex-direction:column;gap:12px;justify-content:flex-end;">
+            <div class="banner err">
+              <svg class="ic sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <div><b>Contact details can't be sent yet.</b>A phone number was detected in your message. Numbers, emails and links are allowed only after contact sharing is approved for both sides.</div>
+            </div>
+            <div class="card" style="border:1.5px solid var(--error);">
+              <div style="font-size:13px;line-height:20px;">…my father can call yours on Sunday. His number is <span style="background:rgba(192,57,43,.18);padding:1px 4px;border-radius:4px;">98254 44210</span>.</div>
+              <div style="display:flex;gap:10px;margin-top:12px;">
+                <button class="btn btn-outline btn-sm" style="flex:1;">Remove &amp; send</button>
+                <button class="btn btn-text btn-sm" style="color:var(--text-2);">Request contact sharing</button>
+              </div>
+            </div>
+          </div>
+          <div class="composer">
+            <div class="field">
+              <textarea style="min-height:52px;border-color:var(--error);">…his number is 98254 44210.</textarea>
+            </div>
+            <div class="spread" style="margin-top:8px;">
+              <span class="subtle" style="font-size:11px;color:var(--error);font-weight:600;">⚠ Contains phone number</span>
+              <button class="btn btn-primary btn-sm disabled" style="background:var(--matrimony);">Send for approval</button>
+            </div>
+          </div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+
+    <div class="frame-block">
+      <div class="frame-label">Variant <small>· rejected with reason</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content" style="display:flex;flex-direction:column;">
+          <div class="appbar">
+            <a class="iconbtn"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <div class="title" style="font-size:16px;">Priya Goswami</div>
+          </div>
+          <div style="flex:1;padding:14px 16px;display:flex;flex-direction:column;gap:12px;justify-content:center;">
+            <div class="card" style="border-left:4px solid var(--error);opacity:.85;">
+              <div style="font-size:13.5px;line-height:20px;">"Send me your photos on WhatsApp, my number is…"</div>
+              <div class="mstate" style="display:flex;align-items:center;gap:5px;font-size:10.5px;font-weight:700;color:var(--error);margin-top:8px;">
+                <svg class="ic xs" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                Not delivered · rejected by admin 14 Oct
+              </div>
+            </div>
+            <div class="banner err">
+              <svg class="ic sm" viewBox="0 0 24 24"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              <div><b>Reason from admin:</b>"Contains contact details before contact sharing was approved. Please remove the number and resend."</div>
+            </div>
+            <div style="display:flex;gap:10px;">
+              <button class="btn btn-outline" style="flex:1;">Edit &amp; resend</button>
+              <button class="btn btn-text" style="color:var(--text-2);">Discard</button>
+            </div>
+          </div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-footer">Goswami Parivaar · MVP UI design · Phase 4 · Delivered messages also appear in the recipient's Inbox (GP-011 pattern)</div>
+</div>
+<script src="proto.js"></script>
+</body>
+</html>

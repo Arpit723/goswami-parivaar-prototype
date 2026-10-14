@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AD-002 · Admin Dashboard — Goswami Parivaar UI</title>
+<link rel="stylesheet" href="design-tokens.css">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<div class="doc">
+  <div class="doc-header">
+    <div class="kicker">Phase 5 · Admin Panel (React · desktop)</div>
+    <h1>AD-002 · Dashboard</h1>
+    <div class="fr-chips"><span>FR-ADM-01</span></div>
+  </div>
+
+  <details class="annot" open>
+    <summary>AD-002 · Dashboard (Super Admin view; Sub Admin sees only assigned cities)</summary>
+    <table>
+      <tr><th>Role / entry</th><td>Admin · after 2FA</td></tr>
+      <tr><th>Primary action</th><td>Jump into pending verification / approval queues · watch reports and SLA</td></tr>
+      <tr><th>Content</th><td>Pending verifications · approval queues (jobs, listings, events, matrimony photos, contact share, messages) · active users by city · open reports</td></tr>
+      <tr><th>Next screens</th><td>AD-003 Verification · AD-004 Approvals · AD-008 Users</td></tr>
+    </table>
+  </details>
+
+  <div class="row">
+    <div class="frame-block">
+      <div class="frame-label">Default <small>· Super Admin</small></div>
+      <div class="admin-frame">
+        <aside class="aside">
+          <div class="brand"><div class="logo-mark">GP</div><div><b>Parivaar Admin</b><span>Super Admin</span></div></div>
+          <nav class="anav">
+            <div class="anh">Work</div>
+            <a class="active"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Dashboard</a>
+            <a><svg class="ic" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Users</a>
+            <a href="ad-003-verification.html"><svg class="ic" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><polyline points="9 12 11 14 15 10"/></svg>Verification<span class="count">14</span></a>
+            <a href="ad-004-approvals.html"><svg class="ic" viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Approvals<span class="count">27</span></a>
+            <a><svg class="ic" viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1Z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>Reports<span class="count">3</span></a>
+            <div class="anh">Manage</div>
+            <a><svg class="ic" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>Cities &amp; categories</a>
+            <a><svg class="ic" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Sub Admins</a>
+            <a><svg class="ic" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>Broadcasts</a>
+            <div class="anh">Trust</div>
+            <a><svg class="ic" viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Audit log</a>
+          </nav>
+          <div class="afoot"><span class="av" style="width:30px;height:30px;border-radius:99px;background:rgba(232,130,63,.2);color:#F2B27E;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;">AP</span><div><b style="color:#E9DCCB;font-size:12.5px;">Arpit Parekh</b><br>Super Admin</div></div>
+        </aside>
+        <div class="amain">
+          <div class="abar">
+            <div class="search"><svg class="ic sm" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Search users, jobs, listings…</div>
+            <div class="who">
+              <span class="pill neutral">All cities</span>
+              <span class="av">AP</span>
+            </div>
+          </div>
+          <div class="abody">
+            <h1>Good afternoon, Arpit</h1>
+            <div class="sub">Wednesday, 14 October · 41 items need attention today</div>
+
+            <div class="kpis">
+              <div class="kpi warn"><div class="k">Pending verifications</div><div class="v">14</div><div class="d">3 over 24h SLA</div></div>
+              <div class="kpi err"><div class="k">Matrimony messages</div><div class="v">9</div><div class="d">oldest waiting 11h</div></div>
+              <div class="kpi"><div class="k">Listing &amp; event approvals</div><div class="v">11</div><div class="d">6 products · 3 jobs · 2 events</div></div>
+              <div class="kpi"><div class="k">Open reports</div><div class="v">3</div><div class="d">1 marked urgent</div></div>
+            </div>
+
+            <div class="table-wrap">
+              <table class="atab">
+                <tr><th>Queue</th><th>Pending</th><th>SLA status</th><th>Oldest item</th><th></th></tr>
+                <tr class="hl"><td><b>Member verification</b></td><td class="mono">14</td><td><span class="sla err">3 over 24h</span></td><td class="mono">Kunal Goswami · 26h</td><td><a class="abtn primary" href="ad-003-verification.html">Review</a></td></tr>
+                <tr><td><b>Matrimony messages</b></td><td class="mono">9</td><td><span class="sla warn">2 near SLA</span></td><td class="mono">11h ago</td><td><a class="abtn primary" href="ad-004-approvals.html">Review</a></td></tr>
+                <tr><td><b>Marketplace listings</b></td><td class="mono">6</td><td><span class="sla ok">on track</span></td><td class="mono">4h ago</td><td><a class="abtn" href="ad-004-approvals.html">Review</a></td></tr>
+                <tr><td><b>Job posts</b></td><td class="mono">3</td><td><span class="sla ok">on track</span></td><td class="mono">6h ago</td><td><a class="abtn" href="ad-004-approvals.html">Review</a></td></tr>
+                <tr><td><b>Events</b></td><td class="mono">2</td><td><span class="sla ok">on track</span></td><td class="mono">2h ago</td><td><a class="abtn" href="ad-004-approvals.html">Review</a></td></tr>
+                <tr><td><b>Matrimony photos / contact share</b></td><td class="mono">5</td><td><span class="sla ok">on track</span></td><td class="mono">3h ago</td><td><a class="abtn" href="ad-004-approvals.html">Review</a></td></tr>
+              </table>
+            </div>
+
+            <div class="kpis" style="grid-template-columns:repeat(3,1fr);margin-top:16px;">
+              <div class="kpi ok"><div class="k">Active members · Ahmedabad</div><div class="v">1,284</div><div class="d">+37 this week</div></div>
+              <div class="kpi ok"><div class="k">Active members · Gandhinagar</div><div class="v">612</div><div class="d">+11 this week</div></div>
+              <div class="kpi"><div class="k">Approvals today</div><div class="v">63</div><div class="d">avg review time 4m</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-footer">Goswami Parivaar · MVP UI design · Phase 5 · Sub Admin view: same layout, city filter locked to assigned cities, Users/Sub Admins hidden</div>
+</div>
+<script src="proto.js"></script>
+</body>
+</html>

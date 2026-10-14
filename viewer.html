@@ -15,38 +15,27 @@
     color: #F3EAE0;
     display: flex; flex-direction: column; overflow: hidden;
   }
-
-  .topbar {
-    height: 54px; flex: none; display: flex; align-items: center; gap: 12px;
-    padding: 0 18px; background: rgba(28, 21, 16, .92); border-bottom: 1px solid #3A2E23; z-index: 10;
-  }
+  .topbar { height: 54px; flex: none; display: flex; align-items: center; gap: 12px; padding: 0 18px; background: rgba(28, 21, 16, .92); border-bottom: 1px solid #3A2E23; z-index: 10; }
   .topbar .logo { width: 32px; height: 32px; border-radius: 9px; background: linear-gradient(150deg, #D96C26, #A8430F); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 11px; color: #fff; }
   .topbar .t { font-size: 14px; font-weight: 700; }
   .cur { margin-left: auto; display: flex; align-items: center; gap: 10px; min-width: 0; }
   .cur .cid { font-size: 11px; font-weight: 800; letter-spacing: .06em; color: #E8823F; background: rgba(232,130,63,.12); border: 1px solid rgba(232,130,63,.35); padding: 4px 10px; border-radius: 999px; white-space: nowrap; }
   .cur .cname { font-size: 13px; color: #C4B2A0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .cur .pos { font-size: 12px; color: #8A7663; font-variant-numeric: tabular-nums; white-space: nowrap; }
-  .pbtn {
-    height: 36px; padding: 0 14px; border-radius: 9px; border: 1px solid #4A3A2B; background: #2A211A; color: #F3EAE0;
-    font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 7px;
-    text-decoration: none; white-space: nowrap;
-  }
+  .pbtn { height: 36px; padding: 0 14px; border-radius: 9px; border: 1px solid #4A3A2B; background: #2A211A; color: #F3EAE0; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 7px; text-decoration: none; white-space: nowrap; }
   .pbtn:hover { background: #352A20; }
   .pbtn.nav { min-width: 40px; justify-content: center; font-size: 16px; }
   .pbtn.primary { background: #C2571B; border-color: #C2571B; color: #fff; }
   .pbtn.primary:hover { background: #A84813; }
   .pbtn[disabled] { opacity: .35; cursor: default; }
-  @media (max-width: 760px) { .cur .cname, .topbar .t, .links .pbtn:not(.primary) { display: none; } }
+  @media (max-width: 860px) { .cur .cname, .topbar .t, .links .pbtn:not(.primary) { display: none; } }
 
   .stage { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 0; padding: 16px 16px 10px; }
   .fitwrap { position: relative; }
-  .phone {
-    width: 406px; height: 860px; background: #FAF6EF; border-radius: 44px; border: 8px solid #0E0A07;
-    box-shadow: 0 30px 70px rgba(0,0,0,.5), inset 0 0 0 2px #3A2E23; overflow: hidden;
-    transform-origin: top center;
-  }
+  .phone { width: 406px; height: 860px; background: #FAF6EF; border-radius: 44px; border: 8px solid #0E0A07; box-shadow: 0 30px 70px rgba(0,0,0,.5), inset 0 0 0 2px #3A2E23; overflow: hidden; transform-origin: top center; }
   .phone iframe { width: 390px; height: 844px; border: 0; display: block; background: #FAF6EF; }
-
+  .phone.desktop { width: 1452px; height: 912px; border-radius: 14px; border: 6px solid #0E0A07; }
+  .phone.desktop iframe { width: 1440px; height: 900px; }
   .hint { flex: none; padding: 10px 0 14px; font-size: 12px; color: #A5947F; display: flex; align-items: center; gap: 10px; justify-content: center; }
   .hint kbd { background: #2A211A; border: 1px solid #4A3A2B; border-radius: 5px; padding: 1px 7px; font-family: inherit; font-size: 11px; color: #C4B2A0; }
 </style>
@@ -59,7 +48,7 @@
   <div class="cur">
     <span class="cid" id="cur-id">GP-001</span>
     <span class="cname" id="cur-name">Splash</span>
-    <span class="pos" id="cur-pos">1 / 32</span>
+    <span class="pos" id="cur-pos">1 / 65</span>
   </div>
   <button class="pbtn nav" id="btn-prev" title="Previous screen (←)">‹</button>
   <button class="pbtn nav" id="btn-next" title="Next screen (→)">›</button>
@@ -81,6 +70,7 @@
 (function () {
   "use strict";
 
+  var D = 1; // wide/desktop frame flag
   var SCREENS = [
     ["gp-001-splash.html", "GP-001", "Splash"],
     ["gp-002-onboarding.html", "GP-002", "Onboarding (3 slides)"],
@@ -112,8 +102,34 @@
     ["gp-032-create-event.html", "GP-032", "Create event"],
     ["gp-033-my-registrations.html", "GP-033", "My registrations"],
     ["gp-034-attendees.html", "GP-034", "Attendees + CSV"],
-    ["placeholder-marketplace.html", "GP-040", "Marketplace (Phase 3)"],
-    ["placeholder-matrimony.html", "GP-053", "Matrimony (Phase 4)"]
+    ["gp-040-marketplace-browse.html", "GP-040", "Marketplace browse"],
+    ["gp-041-product-detail.html", "GP-041", "Product detail"],
+    ["gp-042-add-product.html", "GP-042", "Add product"],
+    ["gp-043-my-shop.html", "GP-043", "My shop"],
+    ["gp-044-seller-enquiries.html", "GP-044", "Seller enquiries"],
+    ["gp-045-enquiry-detail.html", "GP-045", "Enquiry detail"],
+    ["gp-046-buyer-enquiry.html", "GP-046", "Buyer enquiry (no payments)"],
+    ["gp-050-matrimony-intro.html", "GP-050", "Matrimony intro & consent"],
+    ["gp-051-matrimony-profile-setup.html", "GP-051", "Matrimony profile setup"],
+    ["gp-052-selfie-capture.html", "GP-052", "Live selfie capture"],
+    ["gp-053-matrimony-browse.html", "GP-053", "Matrimony browse"],
+    ["gp-054-matrimony-profile-detail.html", "GP-054", "Matrimony profile detail"],
+    ["gp-055-interests.html", "GP-055", "Interests"],
+    ["gp-056-contact-sharing.html", "GP-056", "Contact sharing"],
+    ["gp-057-messages.html", "GP-057", "Moderated messages"],
+    ["gp-058-visibility.html", "GP-058", "Visibility settings"],
+    ["gp-059-block-report.html", "GP-059", "Block & report"],
+    ["gp-060-family-managed.html", "GP-060", "Family-managed profile"],
+    ["gp-061-call.html", "GP-061", "Call screen"],
+    ["ad-001-login.html", "AD-001", "Admin login + 2FA", D],
+    ["ad-002-dashboard.html", "AD-002", "Admin dashboard", D],
+    ["ad-003-verification.html", "AD-003", "Verification queue", D],
+    ["ad-004-approvals.html", "AD-004", "Approval queues", D],
+    ["ad-005-cities.html", "AD-005", "Cities & categories", D],
+    ["ad-006-subadmins.html", "AD-006", "Sub Admins", D],
+    ["ad-007-broadcast.html", "AD-007", "Broadcast composer", D],
+    ["ad-008-users.html", "AD-008", "User management", D],
+    ["ad-009-audit.html", "AD-009", "Audit log", D]
   ];
 
   var frame = document.getElementById("frame");
@@ -122,13 +138,15 @@
   var curPos = document.getElementById("cur-pos");
   var btnPrev = document.getElementById("btn-prev");
   var btnNext = document.getElementById("btn-next");
+  var phone = document.getElementById("phone");
+  var fitwrap = document.getElementById("fitwrap");
   var idx = 0;
 
   function indexOfFile(f) {
     for (var i = 0; i < SCREENS.length; i++) if (SCREENS[i][0] === f) return i;
     return -1;
   }
-  function show(i, replaceHash) {
+  function show(i) {
     idx = Math.max(0, Math.min(SCREENS.length - 1, i));
     var s = SCREENS[idx];
     frame.src = s[0] + "#clean";
@@ -137,10 +155,10 @@
     curPos.textContent = (idx + 1) + " / " + SCREENS.length;
     btnPrev.disabled = idx === 0;
     btnNext.disabled = idx === SCREENS.length - 1;
-    if (replaceHash !== false) {
-      try { history.replaceState(null, "", "#" + s[0]); } catch (e) {}
-      document.title = s[1] + " · " + s[2] + " — Goswami Parivaar";
-    }
+    phone.classList.toggle("desktop", !!s[3]);
+    try { history.replaceState(null, "", "#" + s[0]); } catch (e) {}
+    document.title = s[1] + " · " + s[2] + " — Goswami Parivaar";
+    fit();
   }
 
   btnPrev.addEventListener("click", function () { show(idx - 1); });
@@ -150,7 +168,6 @@
     if (e.key === "ArrowRight") { show(idx + 1); }
   });
 
-  // Track in-screen hotspot navigation (proto.js announces every screen load)
   window.addEventListener("message", function (e) {
     if (e.data && e.data.type === "gp-proto") {
       var i = indexOfFile(e.data.file);
@@ -158,25 +175,20 @@
     }
   });
 
-  // Deep link: viewer.html#<screen-file>
-  var initial = decodeURIComponent(location.hash.slice(1));
-  var startIdx = indexOfFile(initial);
-  show(startIdx >= 0 ? startIdx : 0, false);
-
-  // Scale the phone to fit the viewport
-  var phone = document.getElementById("phone");
-  var fitwrap = document.getElementById("fitwrap");
   function fit() {
     var stage = document.querySelector(".stage");
-    var availH = stage.clientHeight - 10;
-    var availW = stage.clientWidth - 8;
-    var s = Math.min(availH / 860, availW / 406, 1);
+    var wide = phone.classList.contains("desktop");
+    var w = wide ? 1452 : 406, h = wide ? 912 : 860;
+    var s = Math.min((stage.clientHeight - 10) / h, (stage.clientWidth - 8) / w, 1);
     phone.style.transform = "scale(" + s + ")";
-    fitwrap.style.height = (860 * s) + "px";
-    fitwrap.style.width = (406 * s) + "px";
+    fitwrap.style.height = (h * s) + "px";
+    fitwrap.style.width = (w * s) + "px";
   }
+
+  var initial = decodeURIComponent(location.hash.slice(1));
+  var startIdx = indexOfFile(initial);
+  show(startIdx >= 0 ? startIdx : 0);
   window.addEventListener("resize", fit);
-  fit();
 })();
 </script>
 </body>

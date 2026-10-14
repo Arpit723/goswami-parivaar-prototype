@@ -13,11 +13,7 @@
     background-size: 20px 20px;
     color: #3B2E25;
   }
-
-  .topbar {
-    position: sticky; top: 0; z-index: 20; background: rgba(244,238,227,.96); backdrop-filter: blur(6px);
-    border-bottom: 1px solid #E0D6C6; padding: 14px 26px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
-  }
+  .topbar { position: sticky; top: 0; z-index: 20; background: rgba(244,238,227,.96); backdrop-filter: blur(6px); border-bottom: 1px solid #E0D6C6; padding: 14px 26px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
   .topbar .logo { width: 36px; height: 36px; border-radius: 11px; background: linear-gradient(150deg,#D96C26,#A8430F); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:12.5px; }
   .topbar h1 { font-size: 17px; }
   .topbar .sub { font-size: 12px; color: #7A6A5C; margin-top: 2px; }
@@ -28,43 +24,35 @@
   .lg .l-tab { stroke: #34618E; }
   .lg .l-back { stroke: #A5947F; stroke-dasharray: 4 3; }
   .topbtns { display: flex; gap: 10px; }
-  .topbtns a {
-    font-size: 13px; font-weight: 700; text-decoration: none; border-radius: 9px; padding: 9px 15px;
-    border: 1px solid #D6C8B4; color: #3B2E25; background: #fff;
-  }
+  .topbtns a { font-size: 13px; font-weight: 700; text-decoration: none; border-radius: 9px; padding: 9px 15px; border: 1px solid #D6C8B4; color: #3B2E25; background: #fff; }
   .topbtns a.primary { background: #C2571B; border-color: #C2571B; color: #fff; }
 
-  .canvas { position: relative; padding: 30px 26px 70px; max-width: 1500px; margin: 0 auto; }
+  .canvas { position: relative; padding: 30px 26px 70px; max-width: 1560px; margin: 0 auto; }
   #wires { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 5; overflow: visible; }
-  #wires path { fill: none; stroke-width: 1.7; opacity: .85; transition: opacity .15s; }
+  #wires path { fill: none; stroke-width: 1.7; opacity: .8; transition: opacity .15s; }
   #wires path.k-tap { stroke: #C2571B; }
   #wires path.k-tab { stroke: #34618E; stroke-width: 1.4; }
   #wires path.k-back { stroke: #A5947F; stroke-dasharray: 5 4; }
-  #wires.focus-on path { opacity: .06; }
+  #wires.focus-on path { opacity: .05; }
   #wires.focus-on path.on { opacity: 1; stroke-width: 2.4; }
 
   .group { position: relative; z-index: 10; background: rgba(255,255,255,.66); border: 1px solid #E8DFD2; border-radius: 18px; padding: 16px 18px 20px; margin-bottom: 30px; }
   .group > h2 { font-size: 14px; display: flex; align-items: baseline; gap: 10px; margin-bottom: 4px; }
   .group > h2 .cnt { font-size: 11px; color: #A5947F; font-weight: 600; }
   .group > p { font-size: 12px; color: #7A6A5C; margin-bottom: 14px; }
-  .nodes { display: flex; flex-wrap: wrap; gap: 26px 24px; }
+  .nodes { display: flex; flex-wrap: wrap; gap: 26px 24px; align-items: flex-start; }
 
   .node { width: 122px; cursor: pointer; position: relative; }
-  .node .mini {
-    width: 122px; height: 264px; border: 3px solid #17120E; border-radius: 17px; overflow: hidden;
-    background: #FAF6EF; position: relative; box-shadow: 0 6px 16px rgba(59,46,37,.14);
-    transition: transform .12s, box-shadow .12s;
-  }
+  .node .mini { width: 122px; height: 264px; border: 3px solid #17120E; border-radius: 17px; overflow: hidden; background: #FAF6EF; position: relative; box-shadow: 0 6px 16px rgba(59,46,37,.14); transition: transform .12s, box-shadow .12s; }
   .node:hover .mini { transform: translateY(-3px); box-shadow: 0 12px 24px rgba(59,46,37,.22); }
   .node .mini iframe { width: 390px; height: 844px; transform: scale(0.313); transform-origin: 0 0; border: 0; pointer-events: none; }
-  .node.next .mini { opacity: .6; }
+  .node.wide { width: 208px; }
+  .node.wide .mini { width: 208px; height: 134px; border-radius: 10px; }
+  .node.wide .mini iframe { width: 1440px; height: 900px; transform: scale(0.1444); }
   .nlabel { margin-top: 8px; line-height: 1.35; }
   .nlabel b { display: block; font-size: 11px; color: #C2571B; letter-spacing: .03em; }
   .nlabel span { font-size: 11.5px; color: #5B4C3E; }
-  .node .open {
-    position: absolute; top: 6px; right: 6px; z-index: 3; width: 26px; height: 26px; border-radius: 8px;
-    background: rgba(23,18,14,.75); color: #fff; font-size: 13px; display: none; align-items: center; justify-content: center; text-decoration: none;
-  }
+  .node .open { position: absolute; top: 6px; right: 6px; z-index: 3; width: 26px; height: 26px; border-radius: 8px; background: rgba(23,18,14,.75); color: #fff; font-size: 12px; display: none; align-items: center; justify-content: center; text-decoration: none; }
   .node:hover .open { display: flex; }
   .hint { text-align: center; font-size: 12.5px; color: #7A6A5C; padding: 6px 0 0; }
 </style>
@@ -95,7 +83,7 @@
     </marker>
   </defs></svg>
   <div id="groups"></div>
-  <div class="hint">Hover a screen to highlight its connections · click a screen for the full-screen viewer (only app UI, tap-through + ‹ › buttons) · <b>▶</b> opens the interactive prototype</div>
+  <div class="hint">Hover a screen to highlight its connections · click a screen for the full-screen viewer · <b>▶</b> opens the interactive prototype</div>
 </div>
 
 <script>
@@ -141,9 +129,39 @@
       ["gp-033-my-registrations.html", "GP-033", "My registrations"],
       ["gp-034-attendees.html", "GP-034", "Attendees + CSV"]
     ]],
-    ["Coming next", "Placeholder previews", [
-      ["placeholder-marketplace.html", "GP-040", "Marketplace · Phase 3"],
-      ["placeholder-matrimony.html", "GP-053", "Matrimony · Phase 4"]
+    ["Marketplace module", "Listings + enquiry — no payments (FR-COM)", [
+      ["gp-040-marketplace-browse.html", "GP-040", "Marketplace browse"],
+      ["gp-041-product-detail.html", "GP-041", "Product detail"],
+      ["gp-042-add-product.html", "GP-042", "Add product"],
+      ["gp-043-my-shop.html", "GP-043", "My shop"],
+      ["gp-044-seller-enquiries.html", "GP-044", "Seller enquiries"],
+      ["gp-045-enquiry-detail.html", "GP-045", "Enquiry detail"],
+      ["gp-046-buyer-enquiry.html", "GP-046", "Buyer enquiry"]
+    ]],
+    ["Matrimony & calls", "Safety-first matching (FR-MAT · FR-CALL)", [
+      ["gp-050-matrimony-intro.html", "GP-050", "Intro & consent"],
+      ["gp-051-matrimony-profile-setup.html", "GP-051", "Profile setup"],
+      ["gp-052-selfie-capture.html", "GP-052", "Live selfie"],
+      ["gp-053-matrimony-browse.html", "GP-053", "Browse + filters"],
+      ["gp-054-matrimony-profile-detail.html", "GP-054", "Profile detail"],
+      ["gp-055-interests.html", "GP-055", "Interests"],
+      ["gp-056-contact-sharing.html", "GP-056", "Contact sharing"],
+      ["gp-057-messages.html", "GP-057", "Moderated messages"],
+      ["gp-058-visibility.html", "GP-058", "Visibility"],
+      ["gp-059-block-report.html", "GP-059", "Block & report"],
+      ["gp-060-family-managed.html", "GP-060", "Family-managed"],
+      ["gp-061-call.html", "GP-061", "Call screen"]
+    ]],
+    ["Admin panel (React · desktop)", "Verification · approvals · moderation · audit", [
+      ["ad-001-login.html", "AD-001", "Login + 2FA"],
+      ["ad-002-dashboard.html", "AD-002", "Dashboard"],
+      ["ad-003-verification.html", "AD-003", "Verification queue"],
+      ["ad-004-approvals.html", "AD-004", "Approval queues"],
+      ["ad-005-cities.html", "AD-005", "Cities & categories"],
+      ["ad-006-subadmins.html", "AD-006", "Sub Admins"],
+      ["ad-007-broadcast.html", "AD-007", "Broadcast composer"],
+      ["ad-008-users.html", "AD-008", "User management"],
+      ["ad-009-audit.html", "AD-009", "Audit log"]
     ], true]
   ];
 
@@ -168,9 +186,9 @@
     ["gp-009-home.html","gp-014-settings.html","tap","Settings tab"],
     ["gp-009-home.html","gp-020-jobs-browse.html","tap","Jobs tile"],
     ["gp-009-home.html","gp-030-events-browse.html","tap","Events tile / See all"],
+    ["gp-009-home.html","gp-040-marketplace-browse.html","tap","Marketplace tile"],
+    ["gp-009-home.html","gp-053-matrimony-browse.html","tap","Matrimony tile"],
     ["gp-009-home.html","gp-031-event-detail.html","tap","Register"],
-    ["gp-009-home.html","placeholder-marketplace.html","tap","Marketplace tile"],
-    ["gp-009-home.html","placeholder-matrimony.html","tap","Matrimony tile"],
     ["gp-010-inbox.html","gp-011-inbox-detail.html","tap","message"],
     ["gp-011-inbox-detail.html","gp-010-inbox.html","back","back"],
     ["gp-011-inbox-detail.html","gp-031-event-detail.html","tap","Register"],
@@ -178,6 +196,8 @@
     ["gp-012-profile.html","gp-013-edit-profile.html","tap","Edit"],
     ["gp-012-profile.html","gp-023-my-jobs.html","tap","quick link"],
     ["gp-012-profile.html","gp-033-my-registrations.html","tap","quick link"],
+    ["gp-012-profile.html","gp-043-my-shop.html","tap","quick link"],
+    ["gp-012-profile.html","gp-054-matrimony-profile-detail.html","tap","quick link"],
     ["gp-013-edit-profile.html","gp-012-profile.html","back","Save"],
     ["gp-014-settings.html","gp-013-edit-profile.html","tap","Edit profile"],
     ["gp-014-settings.html","gp-015-blocked-users.html","tap","Blocked users"],
@@ -215,17 +235,62 @@
     ["gp-033-my-registrations.html","gp-031-event-detail.html","tap","event"],
     ["gp-033-my-registrations.html","gp-034-attendees.html","tap","Attendees"],
     ["gp-033-my-registrations.html","gp-030-events-browse.html","tab","Upcoming tab"],
-    ["gp-034-attendees.html","gp-033-my-registrations.html","back","back"]
+    ["gp-034-attendees.html","gp-033-my-registrations.html","back","back"],
+    ["gp-040-marketplace-browse.html","gp-041-product-detail.html","tap","product card"],
+    ["gp-040-marketplace-browse.html","gp-042-add-product.html","tab","Add Product tab"],
+    ["gp-040-marketplace-browse.html","gp-043-my-shop.html","tab","My Shop tab"],
+    ["gp-040-marketplace-browse.html","gp-044-seller-enquiries.html","tab","Enquiries tab"],
+    ["gp-040-marketplace-browse.html","gp-009-home.html","back","back to Home"],
+    ["gp-041-product-detail.html","gp-046-buyer-enquiry.html","tap","Enquire"],
+    ["gp-041-product-detail.html","gp-040-marketplace-browse.html","back","back"],
+    ["gp-042-add-product.html","gp-043-my-shop.html","tap","Submit listing"],
+    ["gp-042-add-product.html","gp-040-marketplace-browse.html","back","back"],
+    ["gp-043-my-shop.html","gp-042-add-product.html","tab","+ Add"],
+    ["gp-043-my-shop.html","gp-044-seller-enquiries.html","tab","Enquiries tab"],
+    ["gp-044-seller-enquiries.html","gp-045-enquiry-detail.html","tap","enquiry"],
+    ["gp-044-seller-enquiries.html","gp-043-my-shop.html","back","back"],
+    ["gp-045-enquiry-detail.html","gp-044-seller-enquiries.html","back","back"],
+    ["gp-046-buyer-enquiry.html","gp-010-inbox.html","tap","Send → replies in Inbox"],
+    ["gp-046-buyer-enquiry.html","gp-041-product-detail.html","back","back"],
+    ["gp-046-buyer-enquiry.html","gp-040-marketplace-browse.html","tap","Back to marketplace"],
+    ["gp-050-matrimony-intro.html","gp-051-matrimony-profile-setup.html","tap","Begin profile"],
+    ["gp-050-matrimony-intro.html","gp-060-family-managed.html","tap","managed profile"],
+    ["gp-050-matrimony-intro.html","gp-009-home.html","tap","Not now"],
+    ["gp-051-matrimony-profile-setup.html","gp-052-selfie-capture.html","tap","Continue → selfie"],
+    ["gp-051-matrimony-profile-setup.html","gp-050-matrimony-intro.html","back","back"],
+    ["gp-052-selfie-capture.html","gp-053-matrimony-browse.html","tap","after admin approval"],
+    ["gp-052-selfie-capture.html","gp-051-matrimony-profile-setup.html","back","back"],
+    ["gp-053-matrimony-browse.html","gp-054-matrimony-profile-detail.html","tap","profile card"],
+    ["gp-053-matrimony-browse.html","gp-055-interests.html","tab","Interests tab"],
+    ["gp-053-matrimony-browse.html","gp-058-visibility.html","tab","My Profile tab"],
+    ["gp-053-matrimony-browse.html","gp-009-home.html","back","back to Home"],
+    ["gp-054-matrimony-profile-detail.html","gp-055-interests.html","tap","Mark Interested"],
+    ["gp-054-matrimony-profile-detail.html","gp-059-block-report.html","tap","Block / Report"],
+    ["gp-054-matrimony-profile-detail.html","gp-053-matrimony-browse.html","back","back"],
+    ["gp-055-interests.html","gp-057-messages.html","tap","Message"],
+    ["gp-055-interests.html","gp-061-call.html","tap","Call"],
+    ["gp-055-interests.html","gp-056-contact-sharing.html","tap","Share contact"],
+    ["gp-055-interests.html","gp-053-matrimony-browse.html","back","back"],
+    ["gp-056-contact-sharing.html","gp-055-interests.html","back","Done"],
+    ["gp-057-messages.html","gp-055-interests.html","back","back"],
+    ["gp-058-visibility.html","gp-053-matrimony-browse.html","back","back"],
+    ["gp-059-block-report.html","gp-015-blocked-users.html","tap","Block confirmed"],
+    ["gp-059-block-report.html","gp-054-matrimony-profile-detail.html","back","back"],
+    ["gp-060-family-managed.html","gp-051-matrimony-profile-setup.html","tap","Continue draft"],
+    ["gp-060-family-managed.html","gp-050-matrimony-intro.html","back","back"],
+    ["gp-061-call.html","gp-055-interests.html","back","end call"],
+    ["ad-001-login.html","ad-002-dashboard.html","tap","Open console"]
   ];
 
   // Build the DOM
   var groupsEl = document.getElementById("groups");
   SCREENS.forEach(function (g) {
     var sec = document.createElement("section");
-    sec.className = "group" + (g[3] ? " next" : "");
+    sec.className = "group";
     var h = "<h2>" + g[0] + " <span class='cnt'>" + g[2].length + " screens</span></h2><p>" + g[1] + "</p><div class='nodes'>";
     g[2].forEach(function (s) {
-      h += "<div class='node" + (g[3] ? " next" : "") + "' id='n-" + s[0] + "' data-file='" + s[0] + "'>" +
+      var wide = g[3] ? " wide" : "";
+      h += "<div class='node" + wide + "' id='n-" + s[0] + "' data-file='" + s[0] + "'>" +
            "<a class='open' href='prototype.html#" + s[0] + "' target='_blank' title='Open in interactive prototype'>▶</a>" +
            "<div class='mini'><iframe src='" + s[0] + "#clean' loading='lazy' scrolling='no' tabindex='-1' title='" + s[1] + "'></iframe></div>" +
            "<div class='nlabel'><b>" + s[1] + "</b><span>" + s[2] + "</span></div></div>";
@@ -235,7 +300,7 @@
     groupsEl.appendChild(sec);
   });
   document.getElementById("counts").textContent =
-    EDGES.length + " connections · " + SCREENS.reduce(function (n, g) { return n + g[2].length; }, 0) + " screens · Phases 1–2";
+    EDGES.length + " connections · " + SCREENS.reduce(function (n, g) { return n + g[2].length; }, 0) + " screens · Phases 1–5 · design complete";
 
   // Draw connection wires
   var wires = document.getElementById("wires");
@@ -245,12 +310,11 @@
     return { x: r.left - c.left + r.width / 2, y: r.top - c.top + r.height / 2, r: r };
   }
   function anchorPoint(from, to) {
-    // pick source/target anchor sides based on relative position
     var dx = to.x - from.x, dy = to.y - from.y;
     if (Math.abs(dx) > Math.abs(dy) * 1.15) {
       return dx > 0
-        ? { a: { x: from.r.right - from.r.left ? from.x + 55 : from.x, y: from.y }, b: { x: to.x - 55, y: to.y }, ax: 1 }
-        : { a: { x: from.x - 55, y: from.y }, b: { x: to.x + 55, y: to.y }, ax: -1 };
+        ? { a: { x: from.x + 61, y: from.y }, b: { x: to.x - 61, y: to.y }, ax: 1 }
+        : { a: { x: from.x - 61, y: from.y }, b: { x: to.x + 61, y: to.y }, ax: -1 };
     }
     return dy > 0
       ? { a: { x: from.x, y: from.y + 132 }, b: { x: to.x, y: to.y - 145 }, ax: 0 }
@@ -284,14 +348,11 @@
     });
   }
 
-  // Hover focus: highlight only the connected wires
   document.querySelectorAll(".node").forEach(function (n) {
     var f = n.getAttribute("data-file");
     n.addEventListener("mouseenter", function () {
       wires.classList.add("focus-on");
-      wires.querySelectorAll("path.edge").forEach(function (p) {
-        p.classList.remove("on");
-      });
+      wires.querySelectorAll("path.edge").forEach(function (p) { p.classList.remove("on"); });
       EDGES.forEach(function (e, i) {
         if (e[0] === f || e[1] === f) {
           var p = wires.querySelectorAll("path.edge")[i];
@@ -306,7 +367,7 @@
     });
   });
 
-  window.addEventListener("load", function () { setTimeout(draw, 400); });
+  window.addEventListener("load", function () { setTimeout(draw, 500); });
   window.addEventListener("resize", function () { clearTimeout(window.__t); window.__t = setTimeout(draw, 200); });
 })();
 </script>

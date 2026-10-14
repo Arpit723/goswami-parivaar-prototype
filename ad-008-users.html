@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AD-008 · User Management — Goswami Parivaar UI</title>
+<link rel="stylesheet" href="design-tokens.css">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<div class="doc">
+  <div class="doc-header">
+    <div class="kicker">Phase 5 · Admin Panel (React · desktop)</div>
+    <h1>AD-008 · User Management</h1>
+    <div class="fr-chips"><span>FR-ADM-07</span><span>FR-ADM-09</span></div>
+  </div>
+
+  <details class="annot" open>
+    <summary>AD-008 · Users — search, filters, suspend/ban, handle reports</summary>
+    <table>
+      <tr><th>Role / entry</th><td>Admin · sidebar → Users</td></tr>
+      <tr><th>Primary action</th><td>Open user · suspend / ban (reason required) · clear reports · reset sessions</td></tr>
+      <tr><th>Rules</th><td>Suspension blocks login + hides all content; user is notified with the reason and an appeal path. Bans are Super-Admin-only. All actions audited; filters + pagination + bulk actions.</td></tr>
+    </table>
+  </details>
+
+  <div class="row">
+    <div class="frame-block">
+      <div class="frame-label">Default <small>· 1 row selected</small></div>
+      <div class="admin-frame">
+        <aside class="aside">
+          <div class="brand"><div class="logo-mark">GP</div><div><b>Parivaar Admin</b><span>Super Admin</span></div></div>
+          <nav class="anav">
+            <div class="anh">Work</div>
+            <a><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Dashboard</a>
+            <a class="active"><svg class="ic" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Users</a>
+            <a href="ad-003-verification.html"><svg class="ic" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><polyline points="9 12 11 14 15 10"/></svg>Verification</a>
+            <a href="ad-004-approvals.html"><svg class="ic" viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Approvals</a>
+            <a><svg class="ic" viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1Z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>Reports<span class="count">3</span></a>
+            <div class="anh">Manage</div>
+            <a><svg class="ic" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>Cities &amp; categories</a>
+            <a><svg class="ic" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Sub Admins</a>
+            <a><svg class="ic" viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Broadcasts</a>
+            <div class="anh">Trust</div>
+            <a><svg class="ic" viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Audit log</a>
+          </nav>
+          <div class="afoot"><span class="av" style="width:30px;height:30px;border-radius:99px;background:rgba(232,130,63,.2);color:#F2B27E;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;">AP</span><div><b style="color:#E9DCCB;font-size:12.5px;">Arpit Parekh</b><br>Super Admin</div></div>
+        </aside>
+        <div class="amain">
+          <div class="abar">
+            <div class="search"><svg class="ic sm" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Search name, phone, email…</div>
+            <div class="who"><span class="pill neutral">All cities</span><span class="av">AP</span></div>
+          </div>
+          <div class="abody">
+            <div class="filterbar">
+              <span class="fselect" style="background:var(--primary);color:#fff;border-color:var(--primary);">Status: All</span>
+              <span class="fselect">Approved</span>
+              <span class="fselect">Suspended</span>
+              <span class="fselect">Pending</span>
+              <span class="fselect">City: All</span>
+              <span style="margin-left:auto;font-size:12px;color:var(--text-3);">1,896 users · page 1 of 95</span>
+            </div>
+
+            <div class="table-wrap">
+              <table class="atab">
+                <tr><th style="width:34px;"><span class="acheck"></span></th><th>Member</th><th>City</th><th>Member since</th><th>Reports</th><th>Status</th><th>Actions</th></tr>
+                <tr class="hl">
+                  <td><span class="acheck on"></span></td>
+                  <td><b>Manish Trivedi</b><br><span class="subtle" style="font-size:11.5px;">+91 98•••• 10344 · joined Sep 2026</span></td>
+                  <td>Ahmedabad</td><td class="mono">12 Sep 2026</td>
+                  <td><span class="sla err">2 open</span></td>
+                  <td><span class="sla ok">Active</span></td>
+                  <td class="actions"><button class="abtn">View</button><button class="abtn danger">Suspend</button></td>
+                </tr>
+                <tr>
+                  <td><span class="acheck"></span></td>
+                  <td><b>Ritesh Goswami</b><br><span class="subtle" style="font-size:11.5px;">+91 98•••• 42108 · joined Oct 2026</span></td>
+                  <td>Ahmedabad</td><td class="mono">12 Oct 2026</td>
+                  <td>—</td>
+                  <td><span class="sla ok">Active</span></td>
+                  <td class="actions"><button class="abtn">View</button><button class="abtn ghost">History</button></td>
+                </tr>
+                <tr>
+                  <td><span class="acheck"></span></td>
+                  <td><b>Priya Goswami</b><br><span class="subtle" style="font-size:11.5px;">+91 94•••• 30716 · matrimony active</span></td>
+                  <td>Gandhinagar</td><td class="mono">02 Sep 2026</td>
+                  <td>—</td>
+                  <td><span class="sla ok">Active</span></td>
+                  <td class="actions"><button class="abtn">View</button><button class="abtn ghost">History</button></td>
+                </tr>
+                <tr style="opacity:.65;">
+                  <td><span class="acheck"></span></td>
+                  <td><b>Suresh Prajapati</b><br><span class="subtle" style="font-size:11.5px;">+91 96•••• 77081 · banned 28 Sep</span></td>
+                  <td>Ahmedabad</td><td class="mono">15 Aug 2026</td>
+                  <td><span class="sla ok">resolved</span></td>
+                  <td><span class="sla err">Banned</span></td>
+                  <td class="actions"><button class="abtn">View case</button><button class="abtn ghost">Unban</button></td>
+                </tr>
+              </table>
+            </div>
+
+            <div class="panel" style="margin-top:16px;">
+              <h3>Suspend Manish Trivedi?</h3>
+              <div class="kv" style="font-size:12.5px;"><span class="k">Effect</span><span class="v" style="font-size:12px;">Cannot log in · listings, jobs &amp; matrimony profile hidden immediately</span></div>
+              <div class="kv" style="font-size:12.5px;"><span class="k">User sees</span><span class="v" style="font-size:12px;">Reason + how to appeal (Inbox + email)</span></div>
+              <div class="field" style="margin-top:10px;">
+                <label style="font-size:12px;">Reason <small>· mandatory</small></label>
+                <textarea style="min-height:48px;font-size:13px;">Sending WhatsApp numbers in matrimony messages after repeated rejections; reported by 2 members.</textarea>
+              </div>
+              <div style="display:flex;gap:8px;margin-top:12px;align-items:center;">
+                <label class="rowline" style="gap:8px;font-size:12.5px;cursor:pointer;"><span class="acheck on"></span>Resolve the 2 open reports with this action</label>
+                <button class="abtn danger" style="margin-left:auto;">Confirm suspension</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-footer">Goswami Parivaar · MVP UI design · Phase 5 · User detail view: profile, verified docs, activity across modules, moderation history</div>
+</div>
+<script src="proto.js"></script>
+</body>
+</html>

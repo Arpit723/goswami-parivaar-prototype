@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GP-043 · My Shop — Goswami Parivaar UI</title>
+<link rel="stylesheet" href="design-tokens.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="doc">
+  <div class="doc-header">
+    <div class="kicker">Phase 3 · E-Commerce</div>
+    <h1>GP-043 · My Shop — Listings Management</h1>
+    <div class="fr-chips"><span>FR-COM-04</span><span>FR-COM-05</span></div>
+  </div>
+
+  <details class="annot" open>
+    <summary>GP-043 · My shop (seller view)</summary>
+    <table>
+      <tr><th>Role / entry</th><td>Seller · Marketplace → My Shop tab</td></tr>
+      <tr><th>Primary action</th><td>Edit listing · mark sold · delete · open enquiries</td></tr>
+      <tr><th>Rules</th><td>Shows all own listings with their moderation state (pending / live / rejected). Marking sold hides from browse but keeps the record. Deleting a listing never erases past enquiries.</td></tr>
+      <tr><th>Key states</th><td>Live · pending review · sold (all shown)</td></tr>
+    </table>
+  </details>
+
+  <div class="row">
+    <div class="frame-block">
+      <div class="frame-label">Default <small>· 4 listings</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+          <div class="appbar">
+            <a class="iconbtn"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <div class="title">My shop</div>
+            <a class="btn-text" style="font-size:14px;font-weight:700;">+ Add</a>
+          </div>
+          <div class="chiprow" style="padding-bottom:10px;">
+            <span class="chip">Browse</span><span class="chip active">My Shop</span><span class="chip">Add Product</span><span class="chip">Enquiries</span>
+          </div>
+
+          <div style="padding:0 16px 12px;">
+            <div class="card flat" style="display:flex;align-items:center;gap:12px;">
+              <span class="avatar sq" style="background:var(--primary-tint);color:var(--primary-hover);">RH</span>
+              <div style="flex:1;">
+                <div style="font-size:15px;font-weight:700;">RG Handicrafts</div>
+                <div class="subtle" style="font-size:12px;">Bapunagar, Ahmedabad · 4 listings · 12 sales · 4.8 ★</div>
+              </div>
+              <button class="btn btn-outline btn-sm">Edit shop</button>
+            </div>
+          </div>
+
+          <div class="list" style="margin:0 16px 16px;">
+            <div class="li">
+              <span style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#B4622A,#8F3E0D);flex:none;"></span>
+              <div class="lmain">
+                <div class="lt">Brass Diya Set <span class="pill ok">Live</span></div>
+                <div class="ls">₹450 · 3 enquiries · 42 views</div>
+              </div>
+              <a class="iconbtn" style="min-width:40px;min-height:40px;color:var(--text-3);"><svg class="ic sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg></a>
+            </div>
+            <div class="li">
+              <span style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#2E7D46,#1D5C30);flex:none;"></span>
+              <div class="lmain">
+                <div class="lt">Wooden Bead Toran <span class="pill ok">Live</span></div>
+                <div class="ls">₹300 · 1 enquiry · 28 views</div>
+              </div>
+              <a class="iconbtn" style="min-width:40px;min-height:40px;color:var(--text-3);"><svg class="ic sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg></a>
+            </div>
+            <div class="li">
+              <span style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#C4783A,#9A5518);flex:none;opacity:.7;"></span>
+              <div class="lmain">
+                <div class="lt">Copper Pooja Thali <span class="pill warn">In review</span></div>
+                <div class="ls">₹860 · submitted yesterday · admin reviewing</div>
+              </div>
+              <a class="iconbtn" style="min-width:40px;min-height:40px;color:var(--text-3);"><svg class="ic sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg></a>
+            </div>
+            <div class="li" style="opacity:.7;">
+              <span style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#8C3B6E,#5E2450);flex:none;"></span>
+              <div class="lmain">
+                <div class="lt">Embroidered Clutch <span class="pill neutral">Sold</span></div>
+                <div class="ls">Sold 11 Oct for ₹540 · buyer: Meera T.</div>
+              </div>
+              <button class="btn btn-outline btn-sm">Relist</button>
+            </div>
+          </div>
+
+          <div style="padding:0 16px 24px;">
+            <div class="card flat" style="padding:12px 14px;display:flex;gap:10px;align-items:flex-start;">
+              <svg class="ic sm" style="color:var(--text-3);margin-top:2px;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              <span class="subtle" style="font-size:12.5px;line-height:18px;">Listing menu: Edit · Mark sold · Delete. Rejected listings show the admin's reason and a "Fix &amp; resubmit" action.</span>
+            </div>
+          </div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-footer">Goswami Parivaar · MVP UI design · Phase 3</div>
+</div>
+<script src="proto.js"></script>
+</body>
+</html>

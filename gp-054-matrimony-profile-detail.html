@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GP-054 · Matrimony Profile Detail — Goswami Parivaar UI</title>
+<link rel="stylesheet" href="design-tokens.css">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .actionbar { flex:none; background:var(--surface); border-top:1px solid var(--border); box-shadow:var(--shadow-nav); display:flex; gap:12px; padding:12px 16px; }
+  .mphoto { height:260px; background:linear-gradient(135deg,#8C3B6E,#5E2450); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; letter-spacing:.05em; position:relative; }
+</style>
+</head>
+<body>
+<div class="doc">
+  <div class="doc-header">
+    <div class="kicker">Phase 4 · Matrimony</div>
+    <h1>GP-054 · Matrimony Profile Detail</h1>
+    <div class="fr-chips"><span>FR-MAT-04</span><span>FR-MAT-05</span><span>FR-MAT-10</span><span>FR-MAT-13 (managed)</span></div>
+  </div>
+
+  <details class="annot" open>
+    <summary>GP-054 · Profile detail — only approved-visible fields; light + dark + managed variant</summary>
+    <table>
+      <tr><th>Role / entry</th><td>Member · Matrimony browse card</td></tr>
+      <tr><th>Primary action</th><td>Mark Interested (GP-055) · report / block (GP-059)</td></tr>
+      <tr><th>Rules</th><td>Exact DOB, phone, email and address never shown — only age. Photos are admin-verified. Contact details appear nowhere until contact sharing is approved (GP-056). Blocked users see nothing of each other.</td></tr>
+      <tr><th>Key states</th><td>Standard (light) · dark variant · family-managed label variant</td></tr>
+    </table>
+  </details>
+
+  <div class="row">
+    <div class="frame-block">
+      <div class="frame-label">Default <small>· light</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content" style="padding-bottom:8px;">
+          <div class="appbar float" style="position:absolute;z-index:5;">
+            <a class="iconbtn" style="background:var(--surface);box-shadow:var(--shadow-1);"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <div style="flex:1;"></div>
+            <a class="iconbtn" style="background:var(--surface);box-shadow:var(--shadow-1);"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg></a>
+          </div>
+          <div class="mphoto">PRIYA'S VERIFIED PHOTO</div>
+
+          <div style="padding:16px 16px 0;">
+            <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+              <div style="font-size:22px;font-weight:800;">Priya Goswami <span style="font-weight:600;color:var(--text-2);font-size:15px;">25</span></div>
+              <span class="vbadge"><svg class="ic xs" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><polyline points="9 12 11 14 15 10"/></svg>Photo verified</span>
+            </div>
+            <div class="subtle" style="margin-top:5px;font-size:13px;">Gandhinagar · Kashyap gotra · Gujarati · Hindi · English</div>
+          </div>
+
+          <div class="section-h"><h2>Education &amp; career</h2></div>
+          <div style="padding:0 16px;">
+            <div class="card flat">
+              <div class="kv"><span class="k">Education</span><span class="v">M.Sc (Microbiology)</span></div>
+              <div class="kv"><span class="k">Profession</span><span class="v">School teacher (CBSE)</span></div>
+              <div class="kv"><span class="k">Works in</span><span class="v">Gandhinagar</span></div>
+            </div>
+          </div>
+
+          <div class="section-h"><h2>Family</h2></div>
+          <div style="padding:0 16px;">
+            <div class="card flat">
+              <div class="kv"><span class="k">Family</span><span class="v">Nuclear · 1 younger brother</span></div>
+              <div class="kv"><span class="k">Father</span><span class="v">Retired bank manager</span></div>
+            </div>
+          </div>
+
+          <div class="section-h"><h2>About Priya</h2></div>
+          <div style="padding:0 16px;">
+            <div class="card" style="font-size:14px;line-height:22px;">Teaching is my passion and I also run a small home-bakery on weekends. I enjoy Garba, reading Gujarati literature and weekend treks. Looking for a partner who values family time as much as ambition.</div>
+          </div>
+
+          <div style="padding:16px 16px 8px;">
+            <div class="banner info">
+              <svg class="ic sm" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              <div>Contact details are never shown on profiles. After <b>mutual interest</b>, both of you can request contact sharing — with admin approval.</div>
+            </div>
+          </div>
+        </div>
+        <div class="actionbar">
+          <button class="btn btn-plain" style="flex:1;">
+            <svg class="ic sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="4.9" y1="4.9" x2="19.1" y2="19.1"/></svg>Block
+          </button>
+          <button class="btn btn-primary" style="flex:2;background:var(--matrimony);">
+            <svg class="ic sm" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg>
+            Mark Interested
+          </button>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+
+    <div class="frame-block">
+      <div class="frame-label">Dark variant</div>
+      <div class="phone theme-dark">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content" style="padding-bottom:8px;">
+          <div class="appbar float" style="position:absolute;z-index:5;">
+            <a class="iconbtn" style="background:var(--surface);box-shadow:var(--shadow-1);"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
+          </div>
+          <div class="mphoto">PRIYA'S VERIFIED PHOTO</div>
+          <div style="padding:16px 16px 0;">
+            <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+              <div style="font-size:22px;font-weight:800;">Priya Goswami <span style="font-weight:600;color:var(--text-2);font-size:15px;">25</span></div>
+              <span class="vbadge"><svg class="ic xs" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><polyline points="9 12 11 14 15 10"/></svg>Photo verified</span>
+            </div>
+            <div class="subtle" style="margin-top:5px;font-size:13px;">Gandhinagar · Kashyap gotra</div>
+          </div>
+          <div class="section-h"><h2>Education &amp; career</h2></div>
+          <div style="padding:0 16px;">
+            <div class="card flat">
+              <div class="kv"><span class="k">Education</span><span class="v">M.Sc (Microbiology)</span></div>
+              <div class="kv"><span class="k">Profession</span><span class="v">School teacher (CBSE)</span></div>
+            </div>
+          </div>
+          <div class="section-h"><h2>About</h2></div>
+          <div style="padding:0 16px;">
+            <div class="card" style="font-size:14px;line-height:22px;">Teaching is my passion and I also run a small home-bakery on weekends. I enjoy Garba, reading and weekend treks.</div>
+          </div>
+        </div>
+        <div class="actionbar">
+          <button class="btn btn-plain" style="flex:1;">Block</button>
+          <button class="btn btn-primary" style="flex:2;background:var(--matrimony);">Mark Interested</button>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+
+    <div class="frame-block">
+      <div class="frame-label">Variant <small>· family-managed profile</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content" style="padding-bottom:8px;">
+          <div class="appbar float" style="position:absolute;z-index:5;">
+            <a class="iconbtn" style="background:var(--surface);box-shadow:var(--shadow-1);"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
+          </div>
+          <div class="mphoto" style="background:linear-gradient(135deg,#34618E,#22415F);">HEENA'S VERIFIED PHOTO</div>
+
+          <div style="padding:16px 16px 0;">
+            <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+              <div style="font-size:22px;font-weight:800;">Heena Shastri <span style="font-weight:600;color:var(--text-2);font-size:15px;">24</span></div>
+              <span class="vbadge"><svg class="ic xs" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><polyline points="9 12 11 14 15 10"/></svg>Photo verified</span>
+            </div>
+            <div style="margin-top:8px;">
+              <span class="pill mat" style="padding:6px 12px;font-size:11.5px;">
+                <svg class="ic xs" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                Managed by her father (Shri Ramesh Shastri) — admin-verified
+              </span>
+            </div>
+          </div>
+
+          <div class="section-h"><h2>Education &amp; career</h2></div>
+          <div style="padding:0 16px;">
+            <div class="card flat">
+              <div class="kv"><span class="k">Education</span><span class="v">MBA (Finance)</span></div>
+              <div class="kv"><span class="k">Profession</span><span class="v">Bank officer · Ahmedabad</span></div>
+            </div>
+          </div>
+
+          <div style="padding:16px 16px 8px;">
+            <div class="banner info">
+              <svg class="ic sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              <div>Heena's <b>own consent</b> is recorded before any contact sharing — the manager cannot approve it for her (FR-MAT-13).</div>
+            </div>
+          </div>
+        </div>
+        <div class="actionbar">
+          <button class="btn btn-plain" style="flex:1;">Block</button>
+          <button class="btn btn-primary" style="flex:2;background:var(--matrimony);">Mark Interested</button>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-footer">Goswami Parivaar · MVP UI design · Phase 4 · Report option in the ⋮ menu; "Mark Interested" → snackbar "Interest sent — Priya will be notified"</div>
+</div>
+<script src="proto.js"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GP-050 · Matrimony Intro & Consent — Goswami Parivaar UI</title>
+<link rel="stylesheet" href="design-tokens.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="doc">
+  <div class="doc-header">
+    <div class="kicker">Phase 4 · Matrimony</div>
+    <h1>GP-050 · Matrimony — Introduction &amp; Consent</h1>
+    <div class="fr-chips"><span>FR-MAT-01</span><span>FR-MAT-04 (eligibility)</span><span>FR-CITY (city)</span></div>
+  </div>
+
+  <details class="annot" open>
+    <summary>GP-050 · Matrimony entry & consent gate</summary>
+    <table>
+      <tr><th>Role / entry</th><td>Eligible member · Home → Matrimony tile, first open</td></tr>
+      <tr><th>Primary action</th><td>Read safety guidance → agree to terms → begin profile creation (GP-051)</td></tr>
+      <tr><th>Rules</th><td>Minimum age 18 (women) / 21 (men), checked against admin-verified DOB. No entry until consent recorded. Family-managed entry point offered here too (GP-060).</td></tr>
+      <tr><th>Key states</th><td>Eligible (shown) · under-age (blocked card — annotated)</td></tr>
+    </table>
+  </details>
+
+  <div class="row">
+    <div class="frame-block">
+      <div class="frame-label">Default <small>· consent gate</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+          <div class="appbar">
+            <a class="iconbtn"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <div class="title">Matrimony</div>
+          </div>
+
+          <div style="padding:10px 24px 0;text-align:center;">
+            <div class="bigico" style="width:110px;height:110px;background:var(--matrimony-bg);color:var(--matrimony);">
+              <svg class="ic" style="width:48px;height:48px;" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg>
+            </div>
+            <div style="font-size:22px;font-weight:800;margin-top:14px;">Matches within our Parivaar</div>
+            <p class="subtle" style="margin-top:6px;font-size:13.5px;line-height:20px;">Verified profiles only · every photo and message reviewed by admins · you reveal contact details only when you choose to.</p>
+          </div>
+
+          <div style="padding:18px 16px 0;">
+            <div class="card flat">
+              <div class="overline" style="margin-bottom:10px;">How it works</div>
+              <div class="kv"><span class="k">1 · Genuine photos</span><span class="v" style="font-size:12.5px;">Live selfie, admin-verified</span></div>
+              <div class="kv"><span class="k">2 · Show interest</span><span class="v" style="font-size:12.5px;">Both must mark interest</span></div>
+              <div class="kv"><span class="k">3 · Talk safely</span><span class="v" style="font-size:12.5px;">Admin-approved messages &amp; calls</span></div>
+              <div class="kv"><span class="k">4 · Share contact</span><span class="v" style="font-size:12.5px;">Only after mutual approval</span></div>
+            </div>
+          </div>
+
+          <div style="padding:16px 16px 0;">
+            <div class="banner warn">
+              <svg class="ic sm" viewBox="0 0 24 24"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              <div><b>Safety first.</b>Never send money. Minimum age is 21 for men and 18 for women (verified against your date of birth). Misuse → immediate suspension.</div>
+            </div>
+          </div>
+
+          <div style="padding:14px 16px 30px;display:flex;flex-direction:column;gap:12px;">
+            <div class="checkrow">
+              <span class="cbox on"><svg class="ic xs" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <span style="font-size:12.5px;line-height:18px;color:var(--text-2);">I am 21+ (or 18+ for women), single, and I accept the <a style="color:var(--primary);font-weight:600;">matrimony terms</a> and <a style="color:var(--primary);font-weight:600;">privacy rules</a>. Admins may verify my details again at any time.</span>
+            </div>
+            <button class="btn btn-primary btn-block" style="background:var(--matrimony);">Begin — create my profile</button>
+            <a class="btn-text btn-block" style="color:var(--text-2);">Creating for a family member? Start a managed profile</a>
+            <a class="btn-text btn-block" style="color:var(--text-2);">Not now</a>
+          </div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-footer">Goswami Parivaar · MVP UI design · Phase 4 · Under-age state: replace button with locked card "Available at 21 · your verified DOB is checked automatically (FR-MAT-04)"</div>
+</div>
+<script src="proto.js"></script>
+</body>
+</html>

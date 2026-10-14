@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GP-041 · Product Detail — Goswami Parivaar UI</title>
+<link rel="stylesheet" href="design-tokens.css">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .gallery { height: 300px; background: linear-gradient(135deg,#8C3B6E,#5E2450); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 800; letter-spacing: .05em; position: relative; }
+  .gallery .dots { position: absolute; bottom: 14px; display: flex; gap: 6px; }
+  .gallery .dots i { width: 6px; height: 6px; border-radius: 99px; background: rgba(255,255,255,.45); }
+  .gallery .dots i.on { background: #fff; width: 16px; }
+  .gallery .pcount { position: absolute; top: 14px; right: 14px; background: rgba(0,0,0,.35); border-radius: 99px; font-size: 11px; padding: 4px 10px; font-weight: 700; }
+  .actionbar { flex:none; background:var(--surface); border-top:1px solid var(--border); box-shadow:var(--shadow-nav); display:flex; gap:12px; padding:12px 16px; }
+</style>
+</head>
+<body>
+<div class="doc">
+  <div class="doc-header">
+    <div class="kicker">Phase 3 · E-Commerce</div>
+    <h1>GP-041 · Product Detail</h1>
+    <div class="fr-chips"><span>FR-COM-02</span><span>FR-COM-03</span><span>FR-COM-05</span></div>
+  </div>
+
+  <details class="annot" open>
+    <summary>GP-041 · Product detail</summary>
+    <table>
+      <tr><th>Role / entry</th><td>Member · Marketplace card</td></tr>
+      <tr><th>Primary action</th><td>Enquire about this product (GP-046) — the platform has NO checkout/cart/payments</td></tr>
+      <tr><th>Rules</th><td>Up to 6 photos per listing. Seller sees buyer's contact only if the buyer consents (FR-COM-03). "Mark sold" state shown when stock ends. Report listing → admin moderation (FR-COM-05).</td></tr>
+      <tr><th>Key states</th><td>Available (shown) · sold (Enquire replaced by "Sold" banner — annotated)</td></tr>
+    </table>
+  </details>
+
+  <div class="row">
+    <div class="frame-block">
+      <div class="frame-label">Default <small>· available</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content" style="padding-bottom:8px;">
+          <div class="appbar float" style="position:absolute;z-index:5;">
+            <a class="iconbtn" style="background:var(--surface);box-shadow:var(--shadow-1);"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <div style="flex:1;"></div>
+            <a class="iconbtn" style="background:var(--surface);box-shadow:var(--shadow-1);"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg></a>
+          </div>
+          <div class="gallery">
+            PATOLA SILK DUPATTA — MAROON
+            <span class="pcount">1 / 4 photos</span>
+            <span class="dots"><i class="on"></i><i></i><i></i><i></i></span>
+          </div>
+
+          <div style="padding:16px 16px 0;">
+            <div style="font-size:20px;font-weight:800;line-height:26px;">Patola Silk Dupatta — Maroon</div>
+            <div style="display:flex;align-items:baseline;gap:10px;margin-top:8px;">
+              <span style="font-size:24px;font-weight:800;color:var(--primary-hover);">₹1,250</span>
+              <span class="subtle" style="font-size:12.5px;">Clothing · Ahmedabad</span>
+            </div>
+            <div style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap;">
+              <span class="pill ok">In stock</span><span class="pill neutral">Handloom</span><span class="pill neutral">Posted 4d ago</span>
+            </div>
+          </div>
+
+          <div style="padding:16px 16px 0;">
+            <div class="overline" style="margin-bottom:8px;">Description</div>
+            <p style="font-size:14px;line-height:22px;color:var(--text);">Authentic Patola-style silk dupatta in maroon with gold zari border, 2.25 m. Bought for a wedding, used once — like new. Washed and ironed, ready to wear.</p>
+          </div>
+
+          <div class="section-h"><h2>Seller</h2></div>
+          <div style="padding:0 16px;">
+            <div class="card" style="display:flex;align-items:center;gap:12px;">
+              <span class="avatar sq" style="background:var(--matrimony-bg);color:var(--matrimony);">MC</span>
+              <div style="flex:1;">
+                <div style="font-size:14.5px;font-weight:700;">Meera's Collection</div>
+                <div class="subtle" style="font-size:12px;">Maninagar · member since Aug 2026 · 4.8 ★ (12 sales)</div>
+              </div>
+              <span class="vbadge"><svg class="ic xs" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><polyline points="9 12 11 14 15 10"/></svg>Verified</span>
+            </div>
+          </div>
+
+          <div style="padding:16px 16px 20px;">
+            <div class="banner info">
+              <svg class="ic sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              <div><b>No in-app payment.</b>Enquire below — the seller replies through the community Inbox; you two settle directly.</div>
+            </div>
+            <a class="btn-text" style="font-size:13px;color:var(--text-2);display:flex;justify-content:center;margin-top:8px;">Report this listing</a>
+          </div>
+        </div>
+        <div class="actionbar">
+          <button class="btn btn-plain" style="flex:none;width:56px;padding:0;">
+            <svg class="ic sm" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg>
+          </button>
+          <button class="btn btn-primary" style="flex:1;">Enquire about this</button>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-footer">Goswami Parivaar · MVP UI design · Phase 3 · Sold state: gallery greys out, Enquire bar becomes neutral "Sold on 12 Oct · view similar"</div>
+</div>
+<script src="proto.js"></script>
+</body>
+</html>

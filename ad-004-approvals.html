@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AD-004 · Approval Queues — Goswami Parivaar UI</title>
+<link rel="stylesheet" href="design-tokens.css">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<div class="doc">
+  <div class="doc-header">
+    <div class="kicker">Phase 5 · Admin Panel (React · desktop)</div>
+    <h1>AD-004 · Approval Queues (all six types)</h1>
+    <div class="fr-chips"><span>FR-ADM-03</span><span>FR-ADM-09</span><span>FR-ADM-11</span><span>FR-JOB-07</span><span>FR-COM-05</span><span>FR-EVT-06</span><span>FR-MAT-03/07/09</span></div>
+  </div>
+
+  <details class="annot" open>
+    <summary>AD-004 · Six approval queues with one review surface — matrimony message review shown</summary>
+    <table>
+      <tr><th>Role / entry</th><td>Admin/Sub Admin · sidebar → Approvals</td></tr>
+      <tr><th>Queues</th><td>Jobs · Marketplace listings · Events · Matrimony photos · Contact-share requests · Matrimony messages</td></tr>
+      <tr><th>Rules</th><td>Messages: auto-flagged phone numbers / emails / links are highlighted (FR-ADM-11); 24h SLA timer; bulk actions; reject requires a reason that is shown to the sender.</td></tr>
+      <tr><th>Key states</th><td>Message queue (shown) · other queues via the tab row (same table pattern)</td></tr>
+    </table>
+  </details>
+
+  <div class="row">
+    <div class="frame-block">
+      <div class="frame-label">Matrimony message review</div>
+      <div class="admin-frame">
+        <aside class="aside">
+          <div class="brand"><div class="logo-mark">GP</div><div><b>Parivaar Admin</b><span>Super Admin</span></div></div>
+          <nav class="anav">
+            <div class="anh">Work</div>
+            <a><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Dashboard</a>
+            <a><svg class="ic" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Users</a>
+            <a href="ad-003-verification.html"><svg class="ic" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><polyline points="9 12 11 14 15 10"/></svg>Verification<span class="count">14</span></a>
+            <a class="active"><svg class="ic" viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Approvals<span class="count">27</span></a>
+            <a><svg class="ic" viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1Z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>Reports<span class="count">3</span></a>
+            <div class="anh">Manage</div>
+            <a><svg class="ic" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>Cities &amp; categories</a>
+            <a><svg class="ic" viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Broadcasts</a>
+            <div class="anh">Trust</div>
+            <a><svg class="ic" viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Audit log</a>
+          </nav>
+          <div class="afoot"><span class="av" style="width:30px;height:30px;border-radius:99px;background:rgba(232,130,63,.2);color:#F2B27E;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;">AP</span><div><b style="color:#E9DCCB;font-size:12.5px;">Arpit Parekh</b><br>Super Admin</div></div>
+        </aside>
+        <div class="amain">
+          <div class="abar">
+            <div class="search"><svg class="ic sm" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Search sender / content…</div>
+            <div class="who"><span class="pill neutral">All cities</span><span class="av">AP</span></div>
+          </div>
+          <div class="abody">
+            <div class="filterbar">
+              <span class="fselect" style="background:var(--primary);color:#fff;border-color:var(--primary);">Matrimony messages · 9</span>
+              <span class="fselect">Listings · 6</span>
+              <span class="fselect">Jobs · 3</span>
+              <span class="fselect">Events · 2</span>
+              <span class="fselect">Photos · 3</span>
+              <span class="fselect">Contact share · 2</span>
+              <span style="margin-left:auto;display:flex;gap:8px;"><button class="abtn ghost">Select all</button><button class="abtn">Bulk approve (4)</button></span>
+            </div>
+
+            <div class="split">
+              <div class="table-wrap">
+                <table class="atab">
+                  <tr><th>Sender → Recipient</th><th>Message</th><th>Flags</th><th>SLA</th></tr>
+                  <tr class="hl">
+                    <td><b>Ritesh → Priya G.</b><br><span class="subtle" style="font-size:11.5px;">mutual interest ✓ · 3 min ago</span></td>
+                    <td style="max-width:360px;">That sounds good — my father can call yours on Sunday. His number is <span style="background:rgba(192,57,43,.16);border-radius:4px;padding:1px 5px;font-weight:700;">98••• ••210</span>.</td>
+                    <td><span class="sla err">phone detected</span></td>
+                    <td class="mono">23h left</td>
+                  </tr>
+                  <tr>
+                    <td><b>Kunal S. → Nidhi G.</b><br><span class="subtle" style="font-size:11.5px;">mutual interest ✓ · 11h ago</span></td>
+                    <td style="max-width:360px;">Your profile mentions Kutchi embroidery — my mother runs a boutique, would love to connect families.</td>
+                    <td><span class="sla ok">clean</span></td>
+                    <td class="mono">13h left</td>
+                  </tr>
+                  <tr>
+                    <td><b>Deepak → Heena (managed)</b><br><span class="subtle" style="font-size:11.5px;">mutual interest ✓ · 14h ago</span></td>
+                    <td style="max-width:360px;">Let's meet at <span style="background:rgba(154,91,0,.14);border-radius:4px;padding:1px 5px;font-weight:700;">cafe coffee day, SG highway</span> this Sunday evening?</td>
+                    <td><span class="sla warn">review meeting request</span></td>
+                    <td class="mono">10h left</td>
+                  </tr>
+                  <tr>
+                    <td><b>Manish → Priya G.</b><br><span class="subtle" style="font-size:11.5px;">mutual interest ✓ · 1d ago</span></td>
+                    <td style="max-width:360px;">WhatsApp me at <span style="background:rgba(192,57,43,.16);border-radius:4px;padding:1px 5px;font-weight:700;">98••• ••344</span> with your photos</span></td>
+                    <td><span class="sla err">phone + suspicious</span></td>
+                    <td class="mono">overdue 2h</td>
+                  </tr>
+                </table>
+              </div>
+
+              <div class="panel">
+                <h3>Review: Ritesh → Priya</h3>
+                <div class="card flat" style="font-size:13px;line-height:20px;margin-bottom:12px;">That sounds good — my father can call yours on Sunday. His number is <span style="background:rgba(192,130,63,.16);border-radius:4px;padding:1px 5px;font-weight:700;">98••• ••210</span>.</div>
+                <div class="kv" style="font-size:12.5px;"><span class="k">Contact sharing</span><span class="v">Not yet approved</span></div>
+                <div class="kv" style="font-size:12.5px;"><span class="k">History</span><span class="v">3 messages · all approved</span></div>
+                <div class="field" style="margin-top:12px;">
+                  <label style="font-size:12px;">Reject reason <small>· shown to sender</small></label>
+                  <textarea style="min-height:52px;font-size:13px;">Contact details are allowed only after contact sharing is approved. Please remove the number and resend.</textarea>
+                </div>
+                <div style="display:flex;gap:8px;margin-top:12px;">
+                  <button class="abtn danger">Reject with reason</button>
+                  <button class="abtn ok" style="margin-left:auto;">Approve &amp; deliver</button>
+                </div>
+                <div class="banner warn" style="margin-top:12px;font-size:12px;">
+                  <svg class="ic sm" viewBox="0 0 24 24"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                  <div>Approving a phone number before contact-share approval is blocked by policy — the Approve button stays disabled for this item.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-footer">Goswami Parivaar · MVP UI design · Phase 5 · Other queues reuse this table: listings show photos + price; events show banner + Meet URL; photos show selfie vs ID side-by-side; contact-share shows both parties' consent</div>
+</div>
+<script src="proto.js"></script>
+</body>
+</html>

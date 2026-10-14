@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GP-046 · Buyer Enquiry Flow — Goswami Parivaar UI</title>
+<link rel="stylesheet" href="design-tokens.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="doc">
+  <div class="doc-header">
+    <div class="kicker">Phase 3 · E-Commerce</div>
+    <h1>GP-046 · Buyer Enquiry Flow</h1>
+    <div class="fr-chips"><span>FR-COM-03</span><span>FR-COM-06 (no payments)</span></div>
+  </div>
+
+  <details class="annot" open>
+    <summary>GP-046 · Buyer enquiry (2 frames) — the "no payment" pattern</summary>
+    <table>
+      <tr><th>Role / entry</th><td>Buyer · Product detail → Enquire</td></tr>
+      <tr><th>Primary action</th><td>Send message + optional contact consent → seller's Enquiries inbox</td></tr>
+      <tr><th>Rules</th><td>No cart/checkout/payments anywhere (FR-COM-06) — the flow explicitly says buyers and sellers settle directly. Phone shared only via the consent switch. Duplicate enquiry on same listing is merged.</td></tr>
+      <tr><th>Next screens</th><td>GP-010 Inbox (seller reply arrives there)</td></tr>
+    </table>
+  </details>
+
+  <div class="row">
+    <div class="frame-block">
+      <div class="frame-label">Step 1 <small>· compose enquiry</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+          <div class="appbar">
+            <a class="iconbtn"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <div class="title">Enquire</div>
+          </div>
+          <div style="padding:14px 24px 34px;display:flex;flex-direction:column;gap:16px;">
+
+            <div class="card flat">
+              <div class="overline" style="margin-bottom:8px;">Enquiring about</div>
+              <div style="display:flex;align-items:center;gap:12px;">
+                <span style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#B4622A,#8F3E0D);flex:none;"></span>
+                <div><div style="font-size:14px;font-weight:700;">Brass Diya Set (6 pc)</div><div class="subtle" style="font-size:12px;">₹450 · RG Handicrafts</div></div>
+              </div>
+            </div>
+
+            <div class="field">
+              <label>Message to the seller</label>
+              <textarea>Is the smaller diya size also available? Needed before Diwali — I can pick up from Bapunagar.</textarea>
+            </div>
+
+            <div class="card" style="border-left:4px solid var(--warning);">
+              <div class="spread" style="align-items:flex-start;">
+                <div style="flex:1;padding-right:10px;">
+                  <div style="font-size:14px;font-weight:700;">Share my phone number</div>
+                  <div class="subtle" style="font-size:12px;line-height:17px;margin-top:3px;">+91 98•••• 71134 becomes visible to <b>RG Handicrafts</b> for this enquiry. Keep it off and the seller can only reply via your Inbox.</div>
+                </div>
+                <label class="switch"><input type="checkbox" checked><span></span></label>
+              </div>
+            </div>
+
+            <div class="banner info">
+              <svg class="ic sm" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+              <div><b>Goswami Parivaar never handles money.</b>You and the seller settle directly (cash / UPI between you). Report any seller asking for advance payment to admins.</div>
+            </div>
+
+            <button class="btn btn-primary btn-block">Send enquiry</button>
+          </div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+
+    <div class="frame-block">
+      <div class="frame-label">Step 2 <small>· sent confirmation</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content" style="display:flex;flex-direction:column;">
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 28px;gap:16px;text-align:center;">
+            <div class="bigico" style="background:var(--verified-bg);color:var(--verified);width:100px;height:100px;">
+              <svg class="ic" style="width:44px;height:44px;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <div style="font-size:21px;font-weight:800;">Enquiry sent</div>
+              <p class="subtle" style="margin-top:8px;line-height:21px;">RG Handicrafts has been notified. Their reply lands in your Inbox — usually within a day.</p>
+            </div>
+            <div class="card" style="width:100%;text-align:left;">
+              <div class="kv"><span class="k">Phone shared</span><span class="v" style="color:var(--verified);">Yes — for this enquiry</span></div>
+              <div class="kv"><span class="k">Replies arrive in</span><span class="v">Inbox + push</span></div>
+              <div class="kv"><span class="k">Payment</span><span class="v">Directly with seller</span></div>
+            </div>
+            <button class="btn btn-primary btn-block">Back to marketplace</button>
+          </div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-footer">Goswami Parivaar · MVP UI design · Phase 3</div>
+</div>
+<script src="proto.js"></script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GP-053 · Matrimony Browse — Goswami Parivaar UI</title>
+<link rel="stylesheet" href="design-tokens.css">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .mcard { display:flex; gap:12px; align-items:flex-start; }
+  .mava { width:64px; height:64px; border-radius:16px; background:linear-gradient(135deg,#8C3B6E,#5E2450); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; flex:none; position:relative; }
+  .mava .sm { position:absolute; bottom:-5px; right:-5px; width:22px; height:22px; border-radius:99px; background:var(--verified); color:#fff; border:2.5px solid var(--surface); display:flex; align-items:center; justify-content:center; }
+</style>
+</head>
+<body>
+<div class="doc">
+  <div class="doc-header">
+    <div class="kicker">Phase 4 · Matrimony</div>
+    <h1>GP-053 · Matrimony — Browse &amp; Filters</h1>
+    <div class="fr-chips"><span>FR-MAT-04</span><span>FR-MAT-10 (blocked hidden)</span></div>
+  </div>
+
+  <details class="annot" open>
+    <summary>GP-053 · Matrimony browse (module tab 1 of 3: Browse · Interests · My Profile)</summary>
+    <table>
+      <tr><th>Role / entry</th><td>Approved matrimony member · Home → Matrimony tile</td></tr>
+      <tr><th>Primary action</th><td>Open profile (GP-054) · filter by age / city / education / profession</td></tr>
+      <tr><th>Rules</th><td>Results respect saved partner preferences (pre-filled filter pill). Blocked members are invisible both ways. Hidden/paused profiles excluded. Only admin-approved profiles appear. Gender shown per the matching model.</td></tr>
+      <tr><th>Key states</th><td>Loaded · filter sheet · empty ("No matches — widen your age range or cities")</td></tr>
+    </table>
+  </details>
+
+  <div class="row">
+    <div class="frame-block">
+      <div class="frame-label">Default <small>· loaded, preferences applied</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+          <div class="appbar">
+            <a class="iconbtn"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <div class="title">Matrimony</div>
+            <a class="iconbtn"><svg class="ic" viewBox="0 0 24 24"><polygon points="22 3 2 3 10 12.5 10 19 14 21 14 12.5 22 3"/></svg></a>
+          </div>
+          <div class="chiprow" style="padding-bottom:8px;">
+            <span class="chip active">Browse</span><span class="chip">Interests <span class="nbadge" style="position:static;">1</span></span><span class="chip">My Profile</span>
+          </div>
+          <div class="chiprow">
+            <span class="chip active"><svg class="ic xs" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>My preferences</span>
+            <span class="chip">Age 22–28</span><span class="chip">Ahmedabad</span><span class="chip">Graduate+</span>
+          </div>
+          <div class="pad-h subtle" style="font-size:12px;padding-top:2px;">8 matches · photos verified by admin</div>
+
+          <div class="stack gap3" style="padding:10px 16px 24px;">
+            <a class="card mcard">
+              <div class="mava">PG<span class="sm"><svg class="ic xs" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+              <div style="flex:1;min-width:0;">
+                <div class="spread">
+                  <div style="font-size:15.5px;font-weight:800;">Priya Goswami <span style="font-weight:600;color:var(--text-2);font-size:13px;">25</span></div>
+                  <span class="pill mat">New interest</span>
+                </div>
+                <div class="subtle" style="font-size:12.5px;margin-top:3px;">M.Sc (Microbiology) · School teacher · Gandhinagar</div>
+                <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;">
+                  <span class="pill neutral">Kashyap</span><span class="pill neutral">Gujarati · Hindi · English</span>
+                </div>
+              </div>
+            </a>
+            <a class="card mcard">
+              <div class="mava" style="background:linear-gradient(135deg,#B4622A,#8F3E0D);">NG<span class="sm"><svg class="ic xs" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+              <div style="flex:1;min-width:0;">
+                <div class="spread">
+                  <div style="font-size:15.5px;font-weight:800;">Nidhi Goswami <span style="font-weight:600;color:var(--text-2);font-size:13px;">27</span></div>
+                </div>
+                <div class="subtle" style="font-size:12.5px;margin-top:3px;">B.Arch · Architect · Ahmedabad</div>
+                <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;">
+                  <span class="pill neutral">Bharadwaj</span><span class="pill neutral">Joint family</span>
+                </div>
+              </div>
+            </a>
+            <a class="card mcard">
+              <div class="mava" style="background:linear-gradient(135deg,#34618E,#22415F);">HS<span class="sm"><svg class="ic xs" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+              <div style="flex:1;min-width:0;">
+                <div class="spread">
+                  <div style="font-size:15.5px;font-weight:800;">Heena Shastri <span style="font-weight:600;color:var(--text-2);font-size:13px;">24</span></div>
+                  <span class="vbadge" style="padding:2px 8px;">Managed by parent</span>
+                </div>
+                <div class="subtle" style="font-size:12.5px;margin-top:3px;">MBA (Finance) · Bank officer · Ahmedabad</div>
+                <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;">
+                  <span class="pill neutral">Shandilya</span><span class="pill neutral">Nuclear family</span>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+
+    <div class="frame-block">
+      <div class="frame-label">Variant <small>· filter sheet</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content" style="display:flex;flex-direction:column;">
+          <div class="appbar">
+            <a class="iconbtn"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <div class="title">Matrimony</div>
+          </div>
+          <div class="chiprow"><span class="chip active">Browse</span><span class="chip">Interests</span><span class="chip">My Profile</span></div>
+          <div class="scrim">
+            <div class="sheet">
+              <div class="grabber"></div>
+              <h3>Filters</h3>
+              <div class="stack gap3" style="margin-top:14px;">
+                <div>
+                  <div class="overline" style="margin-bottom:8px;">Age range</div>
+                  <div class="seg"><button>18–21</button><button class="active">22–28</button><button>29–35</button></div>
+                </div>
+                <div>
+                  <div class="overline" style="margin-bottom:8px;">City</div>
+                  <div class="seg"><button class="active">Ahmedabad</button><button>Gandhinagar</button><button>Both</button></div>
+                </div>
+                <div>
+                  <div class="overline" style="margin-bottom:8px;">Education</div>
+                  <div style="display:flex;flex-wrap:wrap;gap:8px;">
+                    <span class="chip">Any</span><span class="chip active">Graduate+</span><span class="chip">Post-graduate</span><span class="chip">Professional (CA/Dr/Engg)</span>
+                  </div>
+                </div>
+                <div>
+                  <div class="overline" style="margin-bottom:8px;">Profession</div>
+                  <div style="display:flex;flex-wrap:wrap;gap:8px;">
+                    <span class="chip active">Any</span><span class="chip">Teaching</span><span class="chip">Banking/Finance</span><span class="chip">IT</span><span class="chip">Medical</span>
+                  </div>
+                </div>
+                <div class="checkrow">
+                  <span class="cbox on"><svg class="ic xs" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+                  <span style="font-size:12.5px;color:var(--text-2);">Also apply my saved partner preferences</span>
+                </div>
+              </div>
+              <div style="display:flex;gap:10px;margin-top:20px;">
+                <button class="btn btn-plain" style="flex:1;">Reset</button>
+                <button class="btn btn-primary" style="flex:2;background:var(--matrimony);">Show 8 matches</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-footer">Goswami Parivaar · MVP UI design · Phase 4 · Blocked/hidden profiles never appear here; "My preferences" chip opens the saved preferences editor</div>
+</div>
+<script src="proto.js"></script>
+</body>
+</html>

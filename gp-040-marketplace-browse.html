@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GP-040 · Marketplace Browse — Goswami Parivaar UI</title>
+<link rel="stylesheet" href="design-tokens.css">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .pgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 0 16px; }
+  .pcard { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--shadow-1); }
+  .pcard .pimg { height: 108px; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; font-size: 12px; letter-spacing: .04em; }
+  .pcard .pbody { padding: 10px 12px 12px; }
+  .pcard .pname { font-size: 13.5px; font-weight: 700; line-height: 18px; }
+  .pcard .pprice { font-size: 14px; font-weight: 800; color: var(--primary-hover); margin-top: 3px; }
+  .pcard .pmeta { font-size: 11px; color: var(--text-3); margin-top: 3px; }
+</style>
+</head>
+<body>
+<div class="doc">
+  <div class="doc-header">
+    <div class="kicker">Phase 3 · E-Commerce</div>
+    <h1>GP-040 · Marketplace — Browse</h1>
+    <div class="fr-chips"><span>FR-COM-01</span><span>FR-COM-02</span><span>FR-CITY-02</span></div>
+  </div>
+
+  <details class="annot" open>
+    <summary>GP-040 · Marketplace browse (module tab 1 of 4: Browse · My Shop · Add Product · Enquiries)</summary>
+    <table>
+      <tr><th>Role / entry</th><td>Member · Home → Marketplace tile</td></tr>
+      <tr><th>Primary action</th><td>Open a product (GP-041) · search · filter by category / city / price</td></tr>
+      <tr><th>Rules</th><td>Listings shown are admin-approved. No cart, no payments — buying is by direct enquiry (FR-COM-06). Feeds default to user's city.</td></tr>
+      <tr><th>Key states</th><td>Loaded · dark · loading · empty</td></tr>
+    </table>
+  </details>
+
+  <div class="row">
+    <div class="frame-block">
+      <div class="frame-label">Default <small>· loaded</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+          <div class="appbar">
+            <a class="iconbtn"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <div class="title">Marketplace</div>
+            <span class="citychip"><svg class="ic xs" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>Ahmedabad</span>
+          </div>
+          <div class="chiprow" style="padding-bottom:8px;">
+            <span class="chip active">Browse</span><span class="chip">My Shop</span><span class="chip">Add Product</span><span class="chip">Enquiries</span>
+          </div>
+          <div class="pad-h" style="padding-top:4px;">
+            <div class="field"><div class="input" style="display:flex;align-items:center;gap:10px;color:var(--text-2);"><svg class="ic sm" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Search products…</div></div>
+          </div>
+          <div class="chiprow">
+            <span class="chip active">All</span><span class="chip">Home &amp; Puja</span><span class="chip">Clothing</span><span class="chip">Food &amp; Pickles</span><span class="chip">Jewellery</span><span class="chip">Under ₹500</span>
+          </div>
+
+          <div class="pgrid" style="margin-top:10px;">
+            <a class="pcard">
+              <div class="pimg" style="background:linear-gradient(135deg,#B4622A,#8F3E0D);">BRASS DIYA SET</div>
+              <div class="pbody">
+                <div class="pname">Brass Diya Set (6 pc, handcrafted)</div>
+                <div class="pprice">₹450</div>
+                <div class="pmeta">RG Handicrafts · Bapunagar</div>
+              </div>
+            </a>
+            <a class="pcard">
+              <div class="pimg" style="background:linear-gradient(135deg,#8C3B6E,#5E2450);">PATOLA DUPATTA</div>
+              <div class="pbody">
+                <div class="pname">Patola Silk Dupatta — Maroon</div>
+                <div class="pprice">₹1,250</div>
+                <div class="pmeta">Meera's Collection · Maninagar</div>
+              </div>
+            </a>
+            <a class="pcard">
+              <div class="pimg" style="background:linear-gradient(135deg,#34618E,#22415F);">PICKLE JAR</div>
+              <div class="pbody">
+                <div class="pname">Gujarati Mango Chunda 500g</div>
+                <div class="pprice">₹180</div>
+                <div class="pmeta">Home Kitchen · Chandkheda</div>
+              </div>
+            </a>
+            <a class="pcard">
+              <div class="pimg" style="background:linear-gradient(135deg,#2E7D46,#1D5C30);">TORAN</div>
+              <div class="pbody">
+                <div class="pname">Wooden Bead Toran (Door hang)</div>
+                <div class="pprice">₹300</div>
+                <div class="pmeta">RG Handicrafts · Bapunagar</div>
+              </div>
+            </a>
+            <a class="pcard" style="opacity:.85;">
+              <div class="pimg" style="background:linear-gradient(135deg,#B26A00,#7E4C00);">SILVER TOE RING</div>
+              <div class="pbody">
+                <div class="pname">Silver Toe Ring Pair (92.5)</div>
+                <div class="pprice">₹640</div>
+                <div class="pmeta">Shivam Jewellers · Relief Rd</div>
+              </div>
+            </a>
+            <a class="pcard" style="opacity:.85;">
+              <div class="pimg" style="background:linear-gradient(135deg,#34618E,#22415F);">FARSAN BOX</div>
+              <div class="pbody">
+                <div class="pname">Diwali Farsan Gift Box 1kg</div>
+                <div class="pprice">₹720</div>
+                <div class="pmeta">Goswami Farsan · Ghodasar</div>
+              </div>
+            </a>
+          </div>
+          <div style="text-align:center;padding:16px;font-size:12px;color:var(--text-3);">Showing 6 of 23 listings in Ahmedabad</div>
+          <div style="height:10px;"></div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+
+    <div class="frame-block">
+      <div class="frame-label">Dark variant</div>
+      <div class="phone theme-dark">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+          <div class="appbar">
+            <a class="iconbtn"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <div class="title">Marketplace</div>
+            <span class="citychip"><svg class="ic xs" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>Ahmedabad</span>
+          </div>
+          <div class="chiprow" style="padding-bottom:8px;">
+            <span class="chip active">Browse</span><span class="chip">My Shop</span><span class="chip">Add Product</span><span class="chip">Enquiries</span>
+          </div>
+          <div class="pad-h" style="padding-top:4px;">
+            <div class="field"><div class="input" style="display:flex;align-items:center;gap:10px;color:var(--text-2);"><svg class="ic sm" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Search products…</div></div>
+          </div>
+          <div class="chiprow">
+            <span class="chip active">All</span><span class="chip">Home &amp; Puja</span><span class="chip">Clothing</span><span class="chip">Food &amp; Pickles</span>
+          </div>
+          <div class="pgrid" style="margin-top:10px;">
+            <a class="pcard">
+              <div class="pimg" style="background:linear-gradient(135deg,#B4622A,#8F3E0D);">BRASS DIYA SET</div>
+              <div class="pbody"><div class="pname">Brass Diya Set (6 pc, handcrafted)</div><div class="pprice">₹450</div><div class="pmeta">RG Handicrafts · Bapunagar</div></div>
+            </a>
+            <a class="pcard">
+              <div class="pimg" style="background:linear-gradient(135deg,#8C3B6E,#5E2450);">PATOLA DUPATTA</div>
+              <div class="pbody"><div class="pname">Patola Silk Dupatta — Maroon</div><div class="pprice">₹1,250</div><div class="pmeta">Meera's Collection · Maninagar</div></div>
+            </a>
+            <a class="pcard">
+              <div class="pimg" style="background:linear-gradient(135deg,#34618E,#22415F);">PICKLE JAR</div>
+              <div class="pbody"><div class="pname">Gujarati Mango Chunda 500g</div><div class="pprice">₹180</div><div class="pmeta">Home Kitchen · Chandkheda</div></div>
+            </a>
+            <a class="pcard">
+              <div class="pimg" style="background:linear-gradient(135deg,#2E7D46,#1D5C30);">TORAN</div>
+              <div class="pbody"><div class="pname">Wooden Bead Toran (Door hang)</div><div class="pprice">₹300</div><div class="pmeta">RG Handicrafts · Bapunagar</div></div>
+            </a>
+          </div>
+          <div style="height:14px;"></div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+
+    <div class="frame-block">
+      <div class="frame-label">Variant <small>· loading</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+          <div class="appbar"><div class="title">Marketplace</div></div>
+          <div class="chiprow"><span class="chip active">Browse</span><span class="chip">My Shop</span><span class="chip">Add Product</span><span class="chip">Enquiries</span></div>
+          <div class="pad-h" style="margin-top:4px;"><span class="sk" style="height:48px;display:block;border-radius:12px;"></span></div>
+          <div class="chiprow"><span class="sk" style="width:50px;height:32px;border-radius:99px;"></span><span class="sk" style="width:90px;height:32px;border-radius:99px;"></span><span class="sk" style="width:70px;height:32px;border-radius:99px;"></span></div>
+          <div class="pgrid" style="margin-top:10px;">
+            <div class="pcard"><span class="sk" style="height:108px;display:block;border-radius:0;"></span><div class="pbody" style="display:flex;flex-direction:column;gap:7px;"><span class="sk" style="height:13px;width:90%;"></span><span class="sk" style="height:14px;width:35%;"></span><span class="sk" style="height:10px;width:60%;"></span></div></div>
+            <div class="pcard"><span class="sk" style="height:108px;display:block;border-radius:0;"></span><div class="pbody" style="display:flex;flex-direction:column;gap:7px;"><span class="sk" style="height:13px;width:75%;"></span><span class="sk" style="height:14px;width:40%;"></span><span class="sk" style="height:10px;width:50%;"></span></div></div>
+            <div class="pcard"><span class="sk" style="height:108px;display:block;border-radius:0;"></span><div class="pbody" style="display:flex;flex-direction:column;gap:7px;"><span class="sk" style="height:13px;width:85%;"></span><span class="sk" style="height:14px;width:30%;"></span><span class="sk" style="height:10px;width:55%;"></span></div></div>
+            <div class="pcard"><span class="sk" style="height:108px;display:block;border-radius:0;"></span><div class="pbody" style="display:flex;flex-direction:column;gap:7px;"><span class="sk" style="height:13px;width:65%;"></span><span class="sk" style="height:14px;width:45%;"></span><span class="sk" style="height:10px;width:55%;"></span></div></div>
+          </div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+
+    <div class="frame-block">
+      <div class="frame-label">Variant <small>· empty</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+          <div class="appbar">
+            <a class="iconbtn"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <div class="title">Marketplace</div>
+            <span class="citychip">Ahmedabad</span>
+          </div>
+          <div class="chiprow"><span class="chip active">Browse</span><span class="chip">My Shop</span><span class="chip">Add Product</span><span class="chip">Enquiries</span></div>
+          <div class="chiprow"><span class="chip active">Jewellery</span><span class="chip">Under ₹500</span></div>
+          <div class="empty" style="margin-top:70px;">
+            <div class="eico"><svg class="ic lg" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div>
+            <h3>No listings match</h3>
+            <p>Try another category or clear the price filter — or be the first to list one!</p>
+            <div style="display:flex;gap:10px;margin-top:6px;">
+              <button class="btn btn-plain">Clear filters</button>
+              <button class="btn btn-tonal">List a product</button>
+            </div>
+          </div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-footer">Goswami Parivaar · MVP UI design · Phase 3 · Error state as GP-010 pattern</div>
+</div>
+<script src="proto.js"></script>
+</body>
+</html>
