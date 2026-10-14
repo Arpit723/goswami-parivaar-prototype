@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GP-006 · Registration Step 1 — Goswami Parivaar UI</title>
+<link rel="stylesheet" href="design-tokens.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="doc">
+  <div class="doc-header">
+    <div class="kicker">Phase 1 · Core &amp; Identity</div>
+    <h1>GP-006 · Registration — Step 1: Basic Identity</h1>
+    <div class="fr-chips"><span>FR-REG-01</span><span>FR-REG-02</span><span>FR-REG-03</span><span>FR-CITY-01</span></div>
+  </div>
+
+  <details class="annot" open>
+    <summary>GP-006 · Registration step 1 (basic identity)</summary>
+    <table>
+      <tr><th>Role / entry</th><td>Guest · "Create account" from onboarding/login</td></tr>
+      <tr><th>Primary action</th><td>Verify phone (OTP) and email → Continue to Step 2</td></tr>
+      <tr><th>Fields</th><td>Full name · phone (OTP-verified inline) · email (verified by link/OTP) · profile photo (camera or gallery — live selfie only required in Matrimony) · city from admin-managed list (Ahmedabad / Gandhinagar at launch)</td></tr>
+      <tr><th>Rules</th><td>Duplicate phone/email rejected with clear message (FR-REG-03). Progress auto-saved (FR-REG-05). One account per phone and per email.</td></tr>
+      <tr><th>Next screens</th><td>GP-007 Registration Step 2</td></tr>
+      <tr><th>Key states</th><td>Default (phone verified) · inline OTP sheet (variant)</td></tr>
+    </table>
+  </details>
+
+  <div class="row">
+    <div class="frame-block">
+      <div class="frame-label">Default <small>· phone verified</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+          <div class="appbar">
+            <a class="iconbtn"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <div class="title">Create account</div>
+          </div>
+          <div class="stepper">
+            <div class="sbar"><i style="width:50%;"></i></div>
+            <span class="slabel">Step 1 of 2</span>
+          </div>
+          <div style="padding:20px 24px 32px;display:flex;flex-direction:column;gap:18px;">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+              <div class="avatar lg" style="position:relative;">
+                RG
+                <span style="position:absolute;right:-2px;bottom:-2px;width:32px;height:32px;border-radius:99px;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;border:3px solid var(--bg);"><svg class="ic xs" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></span>
+              </div>
+              <div style="font-size:13px;font-weight:600;color:var(--text-2);">Add profile photo</div>
+            </div>
+
+            <div class="field">
+              <label>Full name</label>
+              <input type="text" value="Ritesh Goswami">
+            </div>
+
+            <div class="field">
+              <label>Phone number <small>· will be verified</small></label>
+              <div class="suffix">
+                <div class="input mono" style="border-color:var(--verified);display:flex;align-items:center;justify-content:space-between;">
+                  <span>+91 98254 42108</span>
+                  <span class="pill ok" style="margin-right:8px;"><svg class="ic xs" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Verified</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="field">
+              <label>Email <small>· verification link sent</small></label>
+              <div class="suffix">
+                <div class="input" style="display:flex;align-items:center;justify-content:space-between;">
+                  <span>ritesh.goswami@gmail.com</span>
+                  <span class="pill warn">Link sent</span>
+                </div>
+              </div>
+              <div class="helper">Tap the link we emailed you. You can continue meanwhile.</div>
+            </div>
+
+            <div class="field">
+              <label>Your city community <small>· admin-managed list</small></label>
+              <div class="seg">
+                <button class="active">Ahmedabad</button>
+                <button>Gandhinagar</button>
+              </div>
+              <div class="helper">More cities will be added by admins over time.</div>
+            </div>
+
+            <div class="checkrow">
+              <span class="cbox on"><svg class="ic xs" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <span style="font-size:12.5px;line-height:18px;color:var(--text-2);">I agree to the <a style="color:var(--primary);font-weight:600;">Terms of Use</a> and <a style="color:var(--primary);font-weight:600;">Privacy Policy</a>, including admin verification of my details.</span>
+            </div>
+
+            <button class="btn btn-primary btn-block">Continue</button>
+            <div style="text-align:center;font-size:11.5px;color:var(--text-3);display:flex;align-items:center;justify-content:center;gap:6px;">
+              <svg class="ic xs" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Draft auto-saved just now
+            </div>
+          </div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+
+    <div class="frame-block">
+      <div class="frame-label">Variant <small>· inline phone OTP sheet</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content" style="filter:brightness(.9);">
+          <div class="appbar">
+            <a class="iconbtn"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <div class="title">Create account</div>
+          </div>
+          <div class="stepper">
+            <div class="sbar"><i style="width:50%;"></i></div>
+            <span class="slabel">Step 1 of 2</span>
+          </div>
+          <div style="padding:20px 24px 32px;display:flex;flex-direction:column;gap:18px;">
+            <div class="field">
+              <label>Full name</label>
+              <input type="text" value="Ritesh Goswami">
+            </div>
+            <div class="field">
+              <label>Phone number</label>
+              <div class="suffix">
+                <div class="input mono">+91 98254 42108</div>
+                <button class="btn-sm btn-primary" style="min-height:var(--touch);">Verify</button>
+              </div>
+            </div>
+            <div class="field">
+              <label>Email</label>
+              <input type="email" placeholder="you@email.com">
+            </div>
+          </div>
+
+          <div class="scrim">
+            <div class="sheet">
+              <div class="grabber"></div>
+              <h3>Verify your phone</h3>
+              <p class="subtle" style="margin-bottom:16px;">We sent a 6-digit code to <b class="mono">+91 98254 42108</b>. It expires in <span class="countdown" style="color:var(--primary);font-weight:700;">4:58</span>.</p>
+              <div class="otprow" style="margin-bottom:16px;">
+                <div class="obox filled">4</div>
+                <div class="obox cursor"></div>
+                <div class="obox"></div>
+                <div class="obox"></div>
+                <div class="obox"></div>
+                <div class="obox"></div>
+              </div>
+              <div style="text-align:center;font-size:13px;color:var(--text-2);margin-bottom:16px;">Resend in <span class="countdown">0:26</span></div>
+              <button class="btn btn-primary btn-block" style="margin-bottom:10px;">Verify phone</button>
+              <button class="btn btn-text btn-block" style="color:var(--text-2);">Change number</button>
+            </div>
+          </div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-footer">Goswami Parivaar · MVP UI design · Phase 1 · Duplicate phone/email → inline error "This number already has an account. Sign in instead?" (FR-REG-03)</div>
+</div>
+<script src="proto.js"></script>
+</body>
+</html>

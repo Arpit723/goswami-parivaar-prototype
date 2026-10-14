@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GP-015 · Blocked Users — Goswami Parivaar UI</title>
+<link rel="stylesheet" href="design-tokens.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="doc">
+  <div class="doc-header">
+    <div class="kicker">Phase 1 · Core &amp; Identity</div>
+    <h1>GP-015 · Blocked Users</h1>
+    <div class="fr-chips"><span>FR-SET-01</span><span>FR-MAT-10 (blocked invisible both ways)</span></div>
+  </div>
+
+  <details class="annot" open>
+    <summary>GP-015 · Blocked users</summary>
+    <table>
+      <tr><th>Role / entry</th><td>Approved member · Settings → Blocked users</td></tr>
+      <tr><th>Primary action</th><td>Unblock (with confirmation)</td></tr>
+      <tr><th>Rules</th><td>Blocked users are invisible to each other in both directions — profiles, listings and matrimony discovery. Unblock takes effect immediately but does not restore past interests.</td></tr>
+      <tr><th>Key states</th><td>Has blocked users (shown) · empty (variant)</td></tr>
+    </table>
+  </details>
+
+  <div class="row">
+    <div class="frame-block">
+      <div class="frame-label">Default <small>· 2 blocked</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+          <div class="appbar">
+            <a class="iconbtn"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <div class="title">Blocked users</div>
+          </div>
+          <div style="padding:12px 16px 8px;">
+            <div class="banner info">
+              <svg class="ic sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              <div>Blocked members can't see your profile, listings or matrimony profile — and you can't see theirs.</div>
+            </div>
+          </div>
+          <div class="list" style="margin:8px 16px 0;">
+            <div class="li">
+              <span class="avatar">MG</span>
+              <div class="lmain">
+                <div class="lt">Mahesh Goswami</div>
+                <div class="ls">Blocked 02 Oct · spam enquiries</div>
+              </div>
+              <button class="btn btn-outline btn-sm">Unblock</button>
+            </div>
+            <div class="li">
+              <span class="avatar">SP</span>
+              <div class="lmain">
+                <div class="lt">Suresh Prajapati</div>
+                <div class="ls">Blocked 28 Sep · reported listing</div>
+              </div>
+              <button class="btn btn-outline btn-sm">Unblock</button>
+            </div>
+          </div>
+          <div style="padding:20px 16px;">
+            <div class="card flat" style="text-align:center;padding:18px;">
+              <div class="subtle" style="font-size:13px;">Blocked someone by mistake? Unblock reconnects you to the community view, but withdrawn interests are not restored.</div>
+            </div>
+          </div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+
+    <div class="frame-block">
+      <div class="frame-label">Variant <small>· empty</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+          <div class="appbar">
+            <a class="iconbtn"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <div class="title">Blocked users</div>
+          </div>
+          <div class="empty" style="margin-top:120px;">
+            <div class="eico"><svg class="ic lg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="4.9" y1="4.9" x2="19.1" y2="19.1"/></svg></div>
+            <h3>No one blocked</h3>
+            <p>If someone misbehaves, use Report or Block on their profile, listing or message. Admins review every report.</p>
+          </div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-footer">Goswami Parivaar · MVP UI design · Phase 1</div>
+</div>
+<script src="proto.js"></script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GP-012 · Profile — Goswami Parivaar UI</title>
+<link rel="stylesheet" href="design-tokens.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="doc">
+  <div class="doc-header">
+    <div class="kicker">Phase 1 · Core &amp; Identity</div>
+    <h1>GP-012 · Profile — View</h1>
+    <div class="fr-chips"><span>FR-PRO-01</span><span>FR-PRO-02</span></div>
+  </div>
+
+  <details class="annot" open>
+    <summary>GP-012 · Profile view (own profile)</summary>
+    <table>
+      <tr><th>Role / entry</th><td>Approved member · Profile tab</td></tr>
+      <tr><th>Primary action</th><td>Edit profile · open quick links to own items across modules</td></tr>
+      <tr><th>Rules</th><td>Phone/email hidden by default; revealed only through approved flows (FR-PRO-02). Private info (address) marked. City change requires admin approval (FR-CITY-04).</td></tr>
+      <tr><th>Next screens</th><td>GP-013 Edit profile · module "My items" screens</td></tr>
+    </table>
+  </details>
+
+  <div class="row">
+    <div class="frame-block">
+      <div class="frame-label">Default</div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+          <div class="appbar">
+            <div class="title">Profile</div>
+            <a class="btn-text" href="gp-013-edit-profile.html" style="font-size:14px;font-weight:700;">Edit</a>
+          </div>
+
+          <div style="padding:8px 24px 0;display:flex;flex-direction:column;align-items:center;gap:8px;">
+            <div class="avatar lg">RG</div>
+            <div style="text-align:center;">
+              <div style="font-size:20px;font-weight:800;display:flex;align-items:center;gap:8px;justify-content:center;">Ritesh Goswami
+                <span class="vbadge"><svg class="ic xs" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><polyline points="9 12 11 14 15 10"/></svg>Verified</span>
+              </div>
+              <div class="subtle" style="margin-top:4px;display:flex;align-items:center;gap:6px;justify-content:center;">
+                <svg class="ic xs" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>Ahmedabad · member since Oct 2026
+              </div>
+            </div>
+          </div>
+
+          <div class="section-h"><h2>Contact</h2><span class="overline">hidden by default</span></div>
+          <div class="list" style="margin:0 16px;">
+            <div class="li">
+              <svg class="ic sm" style="color:var(--text-3);" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.8a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z"/></svg>
+              <div class="lmain"><div class="lt" style="font-weight:600;">Phone</div><div class="ls mono">+91 ••••• 42108</div></div>
+              <span class="pill neutral"><svg class="ic xs" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Hidden</span>
+            </div>
+            <div class="li">
+              <svg class="ic sm" style="color:var(--text-3);" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22 6 12 13 2 6"/></svg>
+              <div class="lmain"><div class="lt" style="font-weight:600;">Email</div><div class="ls">r••••••@gmail.com</div></div>
+              <span class="pill neutral"><svg class="ic xs" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Hidden</span>
+            </div>
+          </div>
+
+          <div class="section-h"><h2>About</h2></div>
+          <div class="card" style="margin:0 16px;">
+            <div class="kv"><span class="k">Date of birth</span><span class="v mono">14 Aug 1997 · 29</span></div>
+            <div class="kv"><span class="k">Gender</span><span class="v">Male</span></div>
+            <div class="kv"><span class="k">Gotra</span><span class="v">Kashyap</span></div>
+            <div class="kv"><span class="k">Native place</span><span class="v">Mansa, Gandhinagar</span></div>
+            <div class="kv"><span class="k">Occupation</span><span class="v">Software Engineer · IT</span></div>
+            <div class="kv"><span class="k">Education</span><span class="v">M.Tech (Computer Engg.)</span></div>
+            <div class="kv"><span class="k">Address</span><span class="v" style="display:flex;align-items:center;gap:6px;"><svg class="ic xs" style="color:var(--text-3);" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Bapunagar, Ahmedabad</span></div>
+          </div>
+
+          <div class="section-h"><h2>My activity</h2></div>
+          <div class="list" style="margin:0 16px 24px;">
+            <a class="li">
+              <span style="width:40px;height:40px;border-radius:12px;background:var(--info-bg);color:var(--info);display:flex;align-items:center;justify-content:center;flex:none;"><svg class="ic sm" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></span>
+              <div class="lmain"><div class="lt">My job posts &amp; applications</div><div class="ls">2 posts · 4 applications</div></div>
+              <svg class="ic sm" style="color:var(--text-3);" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+            <a class="li">
+              <span style="width:40px;height:40px;border-radius:12px;background:var(--primary-tint);color:var(--primary);display:flex;align-items:center;justify-content:center;flex:none;"><svg class="ic sm" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span>
+              <div class="lmain"><div class="lt">My shop</div><div class="ls">3 active listings · 1 enquiry</div></div>
+              <svg class="ic sm" style="color:var(--text-3);" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+            <a class="li">
+              <span style="width:40px;height:40px;border-radius:12px;background:var(--matrimony-bg);color:var(--matrimony);display:flex;align-items:center;justify-content:center;flex:none;"><svg class="ic sm" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg></span>
+              <div class="lmain"><div class="lt">Matrimony profile</div><div class="ls">Active · 2 interests</div></div>
+              <svg class="ic sm" style="color:var(--text-3);" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+            <a class="li">
+              <span style="width:40px;height:40px;border-radius:12px;background:var(--verified-bg);color:var(--verified);display:flex;align-items:center;justify-content:center;flex:none;"><svg class="ic sm" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
+              <div class="lmain"><div class="lt">My event registrations</div><div class="ls">1 upcoming</div></div>
+              <svg class="ic sm" style="color:var(--text-3);" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="bottomnav">
+          <a href="gp-009-home.html"><svg class="ic" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h5v-6h4v6h5V9.5"/></svg>Home</a>
+          <a href="gp-010-inbox.html"><svg class="ic" viewBox="0 0 24 24"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.4 5.1 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.4-6.9A2 2 0 0 0 16.8 4H7.2a2 2 0 0 0-1.8 1.1Z"/></svg>Inbox<span class="nbadge">3</span></a>
+          <a class="active"><svg class="ic" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Profile</a>
+          <a href="gp-014-settings.html"><svg class="ic" viewBox="0 0 24 24"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>Settings</a>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-footer">Goswami Parivaar · MVP UI design · Phase 1 · City change → "Request city change (needs admin approval)" sheet (FR-CITY-04)</div>
+</div>
+<script src="proto.js"></script>
+</body>
+</html>

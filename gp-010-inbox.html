@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GP-010 · Inbox — Goswami Parivaar UI</title>
+<link rel="stylesheet" href="design-tokens.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="doc">
+  <div class="doc-header">
+    <div class="kicker">Phase 1 · Core &amp; Identity</div>
+    <h1>GP-010 · Inbox — List</h1>
+    <div class="fr-chips"><span>FR-INB-01</span><span>FR-INB-02</span><span>FR-INB-03</span><span>FR-INB-04</span></div>
+  </div>
+
+  <details class="annot" open>
+    <summary>GP-010 · Inbox list (read-only — no chat)</summary>
+    <table>
+      <tr><th>Role / entry</th><td>Approved member · Inbox tab</td></tr>
+      <tr><th>Primary action</th><td>Open a message · filter by type · mark read</td></tr>
+      <tr><th>Content types</th><td>Verification results · admin broadcasts · approved matrimony messages · approval/rejection notices · event reminders · city announcements</td></tr>
+      <tr><th>Rules</th><td>Unread badge · type filters · pagination · 12-month retention. Important messages also push (mandatory notices ignore preferences).</td></tr>
+      <tr><th>Key states</th><td>Loaded (shown) · loading skeleton · empty · network error</td></tr>
+    </table>
+  </details>
+
+  <div class="row">
+    <div class="frame-block">
+      <div class="frame-label">Default <small>· loaded</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+          <div class="appbar">
+            <div class="title">Inbox</div>
+            <span class="pill neutral" style="margin-right:8px;">3 unread</span>
+          </div>
+          <div class="chiprow">
+            <span class="chip active">All</span>
+            <span class="chip"><span class="cdot" style="background:var(--info);"></span>Verification</span>
+            <span class="chip"><span class="cdot" style="background:var(--primary);"></span>Admin</span>
+            <span class="chip"><span class="cdot" style="background:var(--matrimony);"></span>Matrimony</span>
+            <span class="chip"><span class="cdot" style="background:var(--verified);"></span>Events</span>
+          </div>
+          <div class="list">
+            <a class="li unread" href="gp-011-inbox-detail.html">
+              <span class="tico c-jobs" style="width:44px;height:44px;border-radius:99px;display:flex;align-items:center;justify-content:center;background:var(--primary-tint);color:var(--primary);flex:none;"><svg class="ic sm" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></span>
+              <div class="lmain">
+                <div class="lt">Parivaar Milan Samaroh — registrations open</div>
+                <div class="ls">From admin · All cities</div>
+              </div>
+              <div class="ltr">2h</div>
+            </a>
+            <a class="li unread" href="gp-011-inbox-detail.html">
+              <span style="width:44px;height:44px;border-radius:99px;display:flex;align-items:center;justify-content:center;background:var(--matrimony-bg);color:var(--matrimony);flex:none;"><svg class="ic sm" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg></span>
+              <div class="lmain">
+                <div class="lt">Priya Goswami marked interest in your profile</div>
+                <div class="ls">Matrimony · interest received</div>
+              </div>
+              <div class="ltr">5h</div>
+            </a>
+            <a class="li unread" href="gp-011-inbox-detail.html">
+              <span style="width:44px;height:44px;border-radius:99px;display:flex;align-items:center;justify-content:center;background:var(--verified-bg);color:var(--verified);flex:none;"><svg class="ic sm" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
+              <div class="lmain">
+                <div class="lt">Reminder: Investment Planning starts tomorrow</div>
+                <div class="ls">Events · Sun 08 Nov · 5:30 PM IST</div>
+              </div>
+              <div class="ltr">1d</div>
+            </a>
+            <a class="li" href="gp-011-inbox-detail.html">
+              <span style="width:44px;height:44px;border-radius:99px;display:flex;align-items:center;justify-content:center;background:var(--verified-bg);color:var(--verified);flex:none;"><svg class="ic sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <div class="lmain">
+                <div class="lt">Your job post is live</div>
+                <div class="ls">"Field Sales Executive" approved and published</div>
+              </div>
+              <div class="ltr">2d</div>
+            </a>
+            <a class="li" href="gp-011-inbox-detail.html">
+              <span style="width:44px;height:44px;border-radius:99px;display:flex;align-items:center;justify-content:center;background:var(--matrimony-bg);color:var(--matrimony);flex:none;"><svg class="ic sm" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></svg></span>
+              <div class="lmain">
+                <div class="lt">Message from Priya — approved &amp; delivered</div>
+                <div class="ls">Matrimony · reviewed by admin · read</div>
+              </div>
+              <div class="ltr">3d</div>
+            </a>
+            <a class="li" href="gp-011-inbox-detail.html">
+              <span style="width:44px;height:44px;border-radius:99px;display:flex;align-items:center;justify-content:center;background:var(--info-bg);color:var(--info);flex:none;"><svg class="ic sm" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><polyline points="9 12 11 14 15 10"/></svg></span>
+              <div class="lmain">
+                <div class="lt">Welcome to Goswami Parivaar</div>
+                <div class="ls">Your account was approved · Ahmedabad</div>
+              </div>
+              <div class="ltr">12 Oct</div>
+            </a>
+          </div>
+          <div style="text-align:center;padding:16px;font-size:12px;color:var(--text-3);">Showing recent · older messages load as you scroll</div>
+          <div style="height:12px;"></div>
+        </div>
+        <div class="bottomnav">
+          <a href="gp-009-home.html"><svg class="ic" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h5v-6h4v6h5V9.5"/></svg>Home</a>
+          <a class="active"><svg class="ic" viewBox="0 0 24 24"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.4 5.1 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.4-6.9A2 2 0 0 0 16.8 4H7.2a2 2 0 0 0-1.8 1.1Z"/></svg>Inbox<span class="nbadge">3</span></a>
+          <a href="gp-012-profile.html"><svg class="ic" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Profile</a>
+          <a href="gp-014-settings.html"><svg class="ic" viewBox="0 0 24 24"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>Settings</a>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+
+    <div class="frame-block">
+      <div class="frame-label">Variant <small>· loading</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+          <div class="appbar"><div class="title">Inbox</div></div>
+          <div class="chiprow">
+            <span class="sk" style="width:48px;height:32px;border-radius:999px;"></span>
+            <span class="sk" style="width:96px;height:32px;border-radius:999px;"></span>
+            <span class="sk" style="width:84px;height:32px;border-radius:999px;"></span>
+            <span class="sk" style="width:90px;height:32px;border-radius:999px;"></span>
+          </div>
+          <div class="stack gap2" style="padding:4px 16px;">
+            <div class="card" style="display:flex;gap:12px;align-items:center;">
+              <span class="sk" style="width:44px;height:44px;border-radius:99px;flex:none;"></span>
+              <div style="flex:1;" class="stack gap2"><span class="sk" style="height:14px;width:80%;"></span><span class="sk" style="height:12px;width:50%;"></span></div>
+            </div>
+            <div class="card" style="display:flex;gap:12px;align-items:center;">
+              <span class="sk" style="width:44px;height:44px;border-radius:99px;flex:none;"></span>
+              <div style="flex:1;" class="stack gap2"><span class="sk" style="height:14px;width:70%;"></span><span class="sk" style="height:12px;width:45%;"></span></div>
+            </div>
+            <div class="card" style="display:flex;gap:12px;align-items:center;">
+              <span class="sk" style="width:44px;height:44px;border-radius:99px;flex:none;"></span>
+              <div style="flex:1;" class="stack gap2"><span class="sk" style="height:14px;width:75%;"></span><span class="sk" style="height:12px;width:55%;"></span></div>
+            </div>
+            <div class="card" style="display:flex;gap:12px;align-items:center;">
+              <span class="sk" style="width:44px;height:44px;border-radius:99px;flex:none;"></span>
+              <div style="flex:1;" class="stack gap2"><span class="sk" style="height:14px;width:60%;"></span><span class="sk" style="height:12px;width:40%;"></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="bottomnav">
+          <a><svg class="ic" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h5v-6h4v6h5V9.5"/></svg>Home</a>
+          <a class="active"><svg class="ic" viewBox="0 0 24 24"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.4 5.1 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.4-6.9A2 2 0 0 0 16.8 4H7.2a2 2 0 0 0-1.8 1.1Z"/></svg>Inbox</a>
+          <a><svg class="ic" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Profile</a>
+          <a><svg class="ic" viewBox="0 0 24 24"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>Settings</a>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+
+    <div class="frame-block">
+      <div class="frame-label">Variant <small>· empty</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+          <div class="appbar"><div class="title">Inbox</div></div>
+          <div class="chiprow">
+            <span class="chip active">All</span><span class="chip">Verification</span><span class="chip">Admin</span><span class="chip">Matrimony</span><span class="chip">Events</span>
+          </div>
+          <div class="empty" style="margin-top:60px;">
+            <div class="eico"><svg class="ic lg" viewBox="0 0 24 24"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.4 5.1 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.4-6.9A2 2 0 0 0 16.8 4H7.2a2 2 0 0 0-1.8 1.1Z"/></svg></div>
+            <h3>No messages here</h3>
+            <p>Important notices from admins, event reminders and approved matrimony messages will appear in this inbox.</p>
+          </div>
+        </div>
+        <div class="bottomnav">
+          <a><svg class="ic" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h5v-6h4v6h5V9.5"/></svg>Home</a>
+          <a class="active"><svg class="ic" viewBox="0 0 24 24"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.4 5.1 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.4-6.9A2 2 0 0 0 16.8 4H7.2a2 2 0 0 0-1.8 1.1Z"/></svg>Inbox</a>
+          <a><svg class="ic" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Profile</a>
+          <a><svg class="ic" viewBox="0 0 24 24"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>Settings</a>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+
+    <div class="frame-block">
+      <div class="frame-label">Variant <small>· network error</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+          <div class="appbar"><div class="title">Inbox</div></div>
+          <div style="padding:20px 16px;display:flex;flex-direction:column;gap:16px;">
+            <div class="banner err">
+              <svg class="ic sm" viewBox="0 0 24 24"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              <div><b>Couldn't load your inbox.</b>Check your connection and try again.</div>
+            </div>
+            <div class="empty">
+              <div class="eico" style="background:var(--error-bg);color:var(--error);"><svg class="ic lg" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg></div>
+              <h3>Offline</h3>
+              <p>Cached messages from your last visit are shown below.</p>
+            </div>
+            <button class="btn btn-primary btn-block">
+              <svg class="ic sm" viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.5 15a9 9 0 1 1-2.1-9.4L23 10"/></svg>
+              Try again
+            </button>
+          </div>
+        </div>
+        <div class="bottomnav">
+          <a><svg class="ic" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h5v-6h4v6h5V9.5"/></svg>Home</a>
+          <a class="active"><svg class="ic" viewBox="0 0 24 24"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.4 5.1 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.4-6.9A2 2 0 0 0 16.8 4H7.2a2 2 0 0 0-1.8 1.1Z"/></svg>Inbox</a>
+          <a><svg class="ic" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Profile</a>
+          <a><svg class="ic" viewBox="0 0 24 24"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>Settings</a>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-footer">Goswami Parivaar · MVP UI design · Phase 1 · Inbox is read-only — users never reply here (FR-INB-01)</div>
+</div>
+<script src="proto.js"></script>
+</body>
+</html>

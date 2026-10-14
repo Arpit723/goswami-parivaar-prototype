@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GP-008 · Account Status Screens — Goswami Parivaar UI</title>
+<link rel="stylesheet" href="design-tokens.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="doc">
+  <div class="doc-header">
+    <div class="kicker">Phase 1 · Core &amp; Identity</div>
+    <h1>GP-008 · Verification Status — Pending / Needs Info / Rejected</h1>
+    <div class="fr-chips"><span>FR-REG-07</span><span>FR-REG-08</span><span>FR-AUTH-10</span></div>
+  </div>
+
+  <details class="annot" open>
+    <summary>GP-008 · Status screens (lifecycle: DRAFT → PENDING_VERIFICATION → APPROVED | REJECTED | NEEDS_INFO → SUSPENDED)</summary>
+    <table>
+      <tr><th>Role / entry</th><td>Unapproved user · after login attempt or push</td></tr>
+      <tr><th>Primary action</th><td>Pending: wait / contact support · Needs info: update &amp; resubmit · Rejected: view reason / contact support</td></tr>
+      <tr><th>Rules</th><td>Users are notified by Inbox + push + email (FR-REG-07). Rejection always carries a mandatory reason. These screens are the whole app surface until APPROVED.</td></tr>
+      <tr><th>Key states</th><td>The three variants shown here · SUSPENDED uses the rejected layout with a "suspended" label</td></tr>
+    </table>
+  </details>
+
+  <div class="row">
+    <div class="frame-block">
+      <div class="frame-label">Pending verification</div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content" style="display:flex;flex-direction:column;">
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 28px;gap:16px;text-align:center;">
+            <div class="bigico" style="background:var(--warning-bg);color:var(--warning);width:104px;height:104px;">
+              <svg class="ic" style="width:46px;height:46px;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <div style="font-size:21px;font-weight:800;">Application submitted</div>
+              <p class="subtle" style="margin-top:8px;line-height:21px;">Your details are with the <b>Ahmedabad</b> admin team. You'll get an Inbox message and push notification once reviewed.</p>
+            </div>
+            <div class="card" style="width:100%;text-align:left;">
+              <div class="overline" style="margin-bottom:8px;">What happens next</div>
+              <div class="kv"><span class="k">Submitted</span><span class="v">14 Oct, 12:44</span></div>
+              <div class="kv"><span class="k">Review window</span><span class="v">usually 24–48 h</span></div>
+              <div class="kv"><span class="k">Your data</span><span class="v">Private · admins only</span></div>
+            </div>
+            <button class="btn btn-plain btn-block">
+              <svg class="ic sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              Contact support
+            </button>
+          </div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+
+    <div class="frame-block">
+      <div class="frame-label">Needs info</div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content" style="display:flex;flex-direction:column;">
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 28px;gap:16px;text-align:center;">
+            <div class="bigico" style="background:var(--info-bg);color:var(--info);width:104px;height:104px;">
+              <svg class="ic" style="width:44px;height:44px;" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            </div>
+            <div>
+              <div style="font-size:21px;font-weight:800;">A few more details</div>
+              <p class="subtle" style="margin-top:8px;line-height:21px;">The admin team needs one correction before approving you.</p>
+            </div>
+            <div class="card accent" style="width:100%;text-align:left;">
+              <div class="overline" style="color:var(--primary);">Message from admin · 15 Oct</div>
+              <p style="font-size:14px;line-height:20px;margin-top:6px;">"The address proof photo is blurred — the street name can't be read. Please re-upload a clearer image of any one address document."</p>
+            </div>
+            <button class="btn btn-primary btn-block">Update &amp; resubmit</button>
+            <div style="font-size:12px;color:var(--text-3);">Your other details stay as submitted</div>
+          </div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+
+    <div class="frame-block">
+      <div class="frame-label">Rejected</div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content" style="display:flex;flex-direction:column;">
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 28px;gap:16px;text-align:center;">
+            <div class="bigico" style="background:var(--error-bg);color:var(--error);width:104px;height:104px;">
+              <svg class="ic" style="width:44px;height:44px;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+            </div>
+            <div>
+              <div style="font-size:21px;font-weight:800;">Application not approved</div>
+              <p class="subtle" style="margin-top:8px;line-height:21px;">We're sorry — your application couldn't be approved. The reason from the admin team is below.</p>
+            </div>
+            <div class="card" style="width:100%;text-align:left;border-left:4px solid var(--error);border-radius:8px var(--r-lg) var(--r-lg) 8px;">
+              <div class="overline" style="color:var(--error);">Reason · 16 Oct</div>
+              <p style="font-size:14px;line-height:20px;margin-top:6px;">"Submitted ID had already been used for another account. Duplicate accounts are not allowed."</p>
+            </div>
+            <button class="btn btn-plain btn-block">
+              <svg class="ic sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              Contact support
+            </button>
+            <div style="font-size:12px;color:var(--text-3);">Your ID documents will be deleted 30 days after this decision</div>
+          </div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-footer">Goswami Parivaar · MVP UI design · Phase 1</div>
+</div>
+<script src="proto.js"></script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GP-013 · Edit Profile — Goswami Parivaar UI</title>
+<link rel="stylesheet" href="design-tokens.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="doc">
+  <div class="doc-header">
+    <div class="kicker">Phase 1 · Core &amp; Identity</div>
+    <h1>GP-013 · Edit Profile</h1>
+    <div class="fr-chips"><span>FR-PRO-01</span><span>FR-PRO-02</span></div>
+  </div>
+
+  <details class="annot" open>
+    <summary>GP-013 · Edit profile (verified-field guardrails)</summary>
+    <table>
+      <tr><th>Role / entry</th><td>Approved member · Profile → Edit</td></tr>
+      <tr><th>Primary action</th><td>Save changes · toggle contact visibility</td></tr>
+      <tr><th>Rules</th><td>Edits to verified fields (name, DOB, ID) return the account to pending re-verification. Verified fields show a lock indicator. Contact visibility defaults to hidden (FR-PRO-02).</td></tr>
+      <tr><th>Key states</th><td>Editing with re-verification warning (shown) · save confirmation snackbar (annotated)</td></tr>
+    </table>
+  </details>
+
+  <div class="row">
+    <div class="frame-block">
+      <div class="frame-label">Default <small>· DOB changed → warning</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content" style="display:flex;flex-direction:column;">
+          <div class="appbar">
+            <a class="iconbtn"><svg class="ic" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></a>
+            <div class="title">Edit profile</div>
+            <a class="btn-text" style="font-size:14px;font-weight:800;color:var(--primary);">Save</a>
+          </div>
+
+          <div style="padding:12px 24px 34px;display:flex;flex-direction:column;gap:16px;">
+            <div class="banner warn">
+              <svg class="ic sm" viewBox="0 0 24 24"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              <div><b>You changed a verified field.</b>Saving date of birth sends it back to admin re-verification. Other features stay available meanwhile.</div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;align-items:center;">
+              <div class="avatar lg" style="position:relative;">
+                RG
+                <span style="position:absolute;right:-2px;bottom:-2px;width:30px;height:30px;border-radius:99px;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;border:3px solid var(--bg);"><svg class="ic xs" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></span>
+              </div>
+              <a class="btn-text" style="font-size:13px;">Change photo</a>
+            </div>
+
+            <div class="field">
+              <label>Full name <small>· verified</small></label>
+              <div class="suffix">
+                <div class="input" style="display:flex;align-items:center;gap:8px;"><svg class="ic xs" style="color:var(--text-3);" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Ritesh Goswami</div>
+                <button class="btn-sm btn-plain" style="min-height:var(--touch);border:1.5px solid var(--border-strong);border-radius:0 var(--r-md) var(--r-md) 0;">Edit</button>
+              </div>
+              <div class="helper">Editing name triggers re-verification</div>
+            </div>
+
+            <div class="field error">
+              <label>Date of birth <small>· verified · changed</small></label>
+              <div class="input" style="display:flex;justify-content:space-between;align-items:center;border-color:var(--warning);">
+                <span class="mono">12 Aug 1997</span>
+                <span class="pill warn">Re-verify</span>
+              </div>
+              <div class="helper" style="color:var(--warning);font-weight:600;">Was 14 Aug 1997 — admin will review this change</div>
+            </div>
+
+            <div class="field">
+              <label>Occupation</label>
+              <input type="text" value="Software Engineer · IT">
+            </div>
+
+            <div class="field">
+              <label>Education</label>
+              <input type="text" value="M.Tech (Computer Engg.)">
+            </div>
+
+            <div class="field">
+              <label>Native place</label>
+              <input type="text" value="Mansa, Gandhinagar">
+            </div>
+
+            <div class="card flat">
+              <div class="overline" style="margin-bottom:10px;">Contact visibility</div>
+              <div class="spread" style="padding:8px 0;">
+                <div>
+                  <div style="font-size:14px;font-weight:600;">Show phone to members</div>
+                  <div class="subtle" style="font-size:12px;">Revealed only through approved flows</div>
+                </div>
+                <label class="switch"><input type="checkbox" checked><span></span></label>
+              </div>
+              <div class="spread" style="padding:8px 0;">
+                <div>
+                  <div style="font-size:14px;font-weight:600;">Show email to members</div>
+                  <div class="subtle" style="font-size:12px;">Revealed only through approved flows</div>
+                </div>
+                <label class="switch"><input type="checkbox"><span></span></label>
+              </div>
+            </div>
+
+            <button class="btn btn-primary btn-block">Save changes</button>
+          </div>
+
+          <div class="snackbar">
+            <svg class="ic sm" style="color:#7CC79A;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Profile saved · DOB sent for re-verification
+          </div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-footer">Goswami Parivaar · MVP UI design · Phase 1</div>
+</div>
+<script src="proto.js"></script>
+</body>
+</html>

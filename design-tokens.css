@@ -1,0 +1,98 @@
+/* ============================================================
+   Goswami Parivaar — Design Tokens
+   Trust-first, warm community palette. Material 3–aligned.
+   Tokens are scoped to .phone so each mockup frame can be
+   themed independently (.phone.theme-dark overrides below).
+   ============================================================ */
+
+.phone {
+  /* Brand */
+  --primary:        #C2571B;   /* deep saffron */
+  --primary-hover:  #A84813;
+  --primary-ink:    #FFFFFF;   /* text on primary */
+  --primary-tint:   #FBEADB;   /* light fill */
+  --primary-tint-2: #F5D9BC;
+
+  /* Surfaces */
+  --bg:             #FAF6EF;   /* warm cream */
+  --surface:        #FFFFFF;
+  --surface-2:      #F5EFE5;   /* sunken / cards on cream */
+  --border:         #E8DFD2;
+  --border-strong:  #D6C8B4;
+
+  /* Text */
+  --text:           #3B2E25;   /* deep brown-grey */
+  --text-2:         #7A6A5C;
+  --text-3:         #A5947F;
+  --text-inverse:   #FFFFFF;
+
+  /* Semantic */
+  --verified:       #2E7D46;
+  --verified-bg:    #E6F3EA;
+  --error:          #C0392B;
+  --error-bg:       #FBEAE7;
+  --warning:        #9A5B00;
+  --warning-bg:     #FDF3E1;
+  --info:           #34618E;
+  --info-bg:        #E9F0F7;
+  --matrimony:      #8C3B6E;   /* plum accent for matrimony surfaces */
+  --matrimony-bg:   #F6E9F1;
+
+  /* Type scale */
+  --fs-display: 28px; --lh-display: 36px;
+  --fs-headline: 22px; --lh-headline: 28px;
+  --fs-title: 17px;   --lh-title: 24px;
+  --fs-body: 15px;    --lh-body: 22px;
+  --fs-label: 13px;   --lh-label: 18px;
+  --fs-caption: 12px; --lh-caption: 16px;
+  --fs-overline: 11px; --lh-overline: 14px;
+
+  /* Shape */
+  --r-sm: 8px; --r-md: 12px; --r-lg: 16px; --r-xl: 22px; --r-full: 999px;
+
+  /* Spacing (4pt base) */
+  --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 20px; --s6: 24px; --s8: 32px;
+
+  /* Elevation */
+  --shadow-1: 0 1px 2px rgba(59, 46, 37, .06), 0 1px 3px rgba(59, 46, 37, .08);
+  --shadow-2: 0 4px 12px rgba(59, 46, 37, .10);
+  --shadow-nav: 0 -4px 16px rgba(59, 46, 37, .07);
+
+  /* Metrics */
+  --touch: 48px;               /* accessibility: min touch target */
+  --statusbar-h: 44px;
+  --bottomnav-h: 64px;
+}
+
+/* Dark theme — applied per frame via class */
+.phone.theme-dark {
+  --primary:        #E8823F;
+  --primary-hover:  #F2955A;
+  --primary-tint:   #3A2A1D;
+  --primary-tint-2: #4A3423;
+
+  --bg:             #1C1510;
+  --surface:        #2A211A;
+  --surface-2:      #332820;
+  --border:         #443629;
+  --border-strong:  #57462F;
+
+  --text:           #F3EAE0;
+  --text-2:         #C4B2A0;
+  --text-3:         #94826F;
+
+  --verified:       #7CC79A;
+  --verified-bg:    #1F3527;
+  --error:          #E58073;
+  --error-bg:       #3E241F;
+  --warning:        #E3B36A;
+  --warning-bg:     #3A2C15;
+  --info:           #8FB4DA;
+  --info-bg:        #1F2C3A;
+  --matrimony:      #D99BC4;
+  --matrimony-bg:   #33202C;
+
+  --shadow-1: 0 1px 2px rgba(0,0,0,.4);
+  --shadow-2: 0 4px 12px rgba(0,0,0,.5);
+  --shadow-nav: 0 -4px 16px rgba(0,0,0,.45);
+}

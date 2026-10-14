@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GP-014 · Settings — Goswami Parivaar UI</title>
+<link rel="stylesheet" href="design-tokens.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="doc">
+  <div class="doc-header">
+    <div class="kicker">Phase 1 · Core &amp; Identity</div>
+    <h1>GP-014 · Settings</h1>
+    <div class="fr-chips"><span>FR-SET-01</span><span>FR-AUTH-09</span></div>
+  </div>
+
+  <details class="annot" open>
+    <summary>GP-014 · Settings</summary>
+    <table>
+      <tr><th>Role / entry</th><td>Approved member · Settings tab</td></tr>
+      <tr><th>Primary action</th><td>Manage notifications, language, privacy, blocked users · logout · delete account</td></tr>
+      <tr><th>Rules</th><td>Important/mandatory notices cannot be muted (FR-INB-04). Gujarati &amp; Hindi arrive in Phase 2 — visible but disabled. Logout offers current-device or all-devices (FR-AUTH-09).</td></tr>
+      <tr><th>Next screens</th><td>GP-013 Edit profile · GP-015 Blocked users · GP-016 Delete account</td></tr>
+    </table>
+  </details>
+
+  <div class="row">
+    <div class="frame-block">
+      <div class="frame-label">Default</div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+          <div class="appbar"><div class="title">Settings</div></div>
+
+          <div class="section-h" style="margin-top:14px;"><h2>Account</h2></div>
+          <div class="list" style="margin:0 16px;">
+            <a class="li" href="gp-013-edit-profile.html">
+              <svg class="ic sm" style="color:var(--text-2);" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <div class="lmain"><div class="lt">Edit profile</div></div>
+              <svg class="ic sm" style="color:var(--text-3);" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+            <a class="li" href="gp-015-blocked-users.html">
+              <svg class="ic sm" style="color:var(--text-2);" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="4.9" y1="4.9" x2="19.1" y2="19.1"/></svg>
+              <div class="lmain"><div class="lt">Blocked users</div><div class="ls">2 people</div></div>
+              <svg class="ic sm" style="color:var(--text-3);" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+            <a class="li" href="gp-016-delete-account.html">
+              <svg class="ic sm" style="color:var(--error);" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+              <div class="lmain"><div class="lt" style="color:var(--error);">Delete account</div></div>
+              <svg class="ic sm" style="color:var(--text-3);" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+          </div>
+
+          <div class="section-h"><h2>Notifications</h2></div>
+          <div class="card" style="margin:0 16px;">
+            <div class="spread" style="padding:8px 0;">
+              <div><div style="font-size:14px;font-weight:600;">Push notifications</div><div class="subtle" style="font-size:12px;">Inbox messages also notify here</div></div>
+              <label class="switch"><input type="checkbox" checked><span></span></label>
+            </div>
+            <div class="spread" style="padding:8px 0;">
+              <div><div style="font-size:14px;font-weight:600;">Important notices</div><div class="subtle" style="font-size:12px;">Admin &amp; safety messages</div></div>
+              <label class="switch"><input type="checkbox" checked disabled><span></span></label>
+            </div>
+            <div class="spread" style="padding:8px 0;">
+              <div><div style="font-size:14px;font-weight:600;">Event reminders</div><div class="subtle" style="font-size:12px;">24 h and 1 h before</div></div>
+              <label class="switch"><input type="checkbox" checked><span></span></label>
+            </div>
+            <div class="spread" style="padding:8px 0;">
+              <div><div style="font-size:14px;font-weight:600;">Matrimony activity</div><div class="subtle" style="font-size:12px;">Interests and approvals</div></div>
+              <label class="switch"><input type="checkbox" checked><span></span></label>
+            </div>
+          </div>
+
+          <div class="section-h"><h2>Language</h2></div>
+          <div class="card" style="margin:0 16px;">
+            <div class="rowline" style="padding:9px 0;"><span class="radio on"></span><div><div style="font-size:14px;font-weight:600;">English</div></div><span class="pill ok" style="margin-left:auto;">Selected</span></div>
+            <div class="rowline" style="padding:9px 0;opacity:.5;"><span class="radio"></span><div><div style="font-size:14px;font-weight:600;">ગુજરાતી</div><div class="subtle" style="font-size:12px;">Coming in Phase 2</div></div></div>
+            <div class="rowline" style="padding:9px 0;opacity:.5;"><span class="radio"></span><div><div style="font-size:14px;font-weight:600;">हिन्दी</div><div class="subtle" style="font-size:12px;">Coming in Phase 2</div></div></div>
+          </div>
+
+          <div class="section-h"><h2>Privacy</h2></div>
+          <div class="list" style="margin:0 16px;">
+            <a class="li">
+              <svg class="ic sm" style="color:var(--text-2);" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8Z"/><circle cx="12" cy="12" r="3"/></svg>
+              <div class="lmain"><div class="lt">Contact visibility</div><div class="ls">Phone hidden · email hidden</div></div>
+              <svg class="ic sm" style="color:var(--text-3);" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+            <a class="li">
+              <svg class="ic sm" style="color:var(--text-2);" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>
+              <div class="lmain"><div class="lt">Permissions</div><div class="ls">Camera, notifications, files</div></div>
+              <svg class="ic sm" style="color:var(--text-3);" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+          </div>
+
+          <div class="section-h"><h2>About</h2></div>
+          <div class="list" style="margin:0 16px 24px;">
+            <a class="li">
+              <svg class="ic sm" style="color:var(--text-2);" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><polyline points="14 2 14 8 20 8"/></svg>
+              <div class="lmain"><div class="lt">Terms of use</div></div>
+              <svg class="ic sm" style="color:var(--text-3);" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+            <a class="li">
+              <svg class="ic sm" style="color:var(--text-2);" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>
+              <div class="lmain"><div class="lt">Privacy policy</div></div>
+              <svg class="ic sm" style="color:var(--text-3);" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+            <div class="li" style="cursor:default;">
+              <div class="lmain"><div class="lt">Version</div></div>
+              <div class="ltr">1.0.0 (MVP)</div>
+            </div>
+          </div>
+
+          <div style="padding:0 16px 30px;">
+            <button class="btn btn-plain btn-block">
+              <svg class="ic sm" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+              Log out
+            </button>
+          </div>
+        </div>
+        <div class="bottomnav">
+          <a href="gp-009-home.html"><svg class="ic" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h5v-6h4v6h5V9.5"/></svg>Home</a>
+          <a href="gp-010-inbox.html"><svg class="ic" viewBox="0 0 24 24"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.4 5.1 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.4-6.9A2 2 0 0 0 16.8 4H7.2a2 2 0 0 0-1.8 1.1Z"/></svg>Inbox<span class="nbadge">3</span></a>
+          <a href="gp-012-profile.html"><svg class="ic" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Profile</a>
+          <a class="active"><svg class="ic" viewBox="0 0 24 24"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>Settings</a>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-footer">Goswami Parivaar · MVP UI design · Phase 1 · Logout sheet offers "Log out (this device)" and "Log out all devices" (FR-AUTH-09)</div>
+</div>
+<script src="proto.js"></script>
+</body>
+</html>

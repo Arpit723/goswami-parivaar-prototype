@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Goswami Parivaar — Interactive Prototype</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+    background: #201913;
+    background-image: radial-gradient(rgba(255,255,255,.05) 1px, transparent 1px);
+    background-size: 22px 22px;
+    color: #F3EAE0;
+    display: flex; flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* ---------- Top bar ---------- */
+  .topbar {
+    height: 56px; flex: none; display: flex; align-items: center; gap: 14px;
+    padding: 0 20px; background: rgba(28, 21, 16, .92); border-bottom: 1px solid #3A2E23;
+  }
+  .topbar .logo { width: 34px; height: 34px; border-radius: 10px; background: linear-gradient(150deg, #D96C26, #A8430F); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 12px; color: #fff; }
+  .topbar h1 { font-size: 15px; font-weight: 700; }
+  .topbar .sub { font-size: 11.5px; color: #A5947F; margin-top: 1px; }
+  .current { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+  .current .cid { font-size: 11px; font-weight: 800; letter-spacing: .06em; color: #E8823F; background: rgba(232,130,63,.12); border: 1px solid rgba(232,130,63,.35); padding: 4px 10px; border-radius: 999px; }
+  .current .cname { font-size: 13px; color: #C4B2A0; max-width: 300px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .pbtn {
+    height: 36px; padding: 0 16px; border-radius: 9px; border: 1px solid #4A3A2B; background: #2A211A; color: #F3EAE0;
+    font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 7px;
+  }
+  .pbtn:hover { background: #352A20; }
+  .pbtn.primary { background: #C2571B; border-color: #C2571B; color: #fff; }
+  .pbtn.primary:hover { background: #A84813; }
+  .pbtn svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* ---------- Layout ---------- */
+  .main { flex: 1; display: flex; min-height: 0; }
+
+  .sidebar {
+    width: 268px; flex: none; background: rgba(28, 21, 16, .92); border-right: 1px solid #3A2E23;
+    overflow-y: auto; padding: 14px 10px 24px;
+  }
+  .sidebar::-webkit-scrollbar { width: 8px; }
+  .sidebar::-webkit-scrollbar-thumb { background: #3A2E23; border-radius: 99px; }
+  .sgroup { font-size: 10.5px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #8A7663; padding: 16px 10px 7px; }
+  .sitem {
+    display: flex; align-items: center; gap: 9px; padding: 8px 10px; border-radius: 9px; cursor: pointer;
+    font-size: 13px; color: #C4B2A0; border: none; background: none; width: 100%; text-align: left; font-family: inherit;
+  }
+  .sitem:hover { background: rgba(255,255,255,.05); color: #F3EAE0; }
+  .sitem.active { background: rgba(232,130,63,.14); color: #F2B27E; }
+  .sitem .sid { font-size: 10.5px; font-weight: 800; color: #8A7663; min-width: 52px; font-variant-numeric: tabular-nums; }
+  .sitem.active .sid { color: #E8823F; }
+  .sitem .sname { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .sitem.entry .sid { color: #7CC79A; }
+  .sitem.entry.active { background: rgba(124,199,154,.13); color: #A9DCC0; }
+  .sitem.entry.active .sid { color: #7CC79A; }
+
+  .stage { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; min-width: 0; padding: 18px; position: relative; }
+  .phone-space { position: relative; }
+  .phone {
+    width: 410px; height: 864px; background: #FAF6EF; border-radius: 52px; border: 10px solid #0E0A07;
+    box-shadow: 0 30px 70px rgba(0,0,0,.5), inset 0 0 0 2px #3A2E23; overflow: hidden; position: relative;
+    transform-origin: top center;
+  }
+  .phone iframe { width: 390px; height: 844px; border: 0; display: block; background: #FAF6EF; }
+  .hint { margin-top: 16px; font-size: 12px; color: #A5947F; display: flex; align-items: center; gap: 8px; }
+  .hint .dot { width: 7px; height: 7px; border-radius: 99px; background: #E8823F; animation: pulse 1.6s infinite; }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .3; } }
+
+  @media (max-width: 900px) { .sidebar { display: none; } .current .cname { display: none; } }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="logo">GP</div>
+  <div>
+    <h1>Goswami Parivaar — Interactive Prototype</h1>
+    <div class="sub">MVP · Phase 1 screens · tap inside the phone to navigate</div>
+  </div>
+  <div class="current">
+    <span class="cid" id="cur-id">GP-001</span>
+    <span class="cname" id="cur-name">Splash / session restore</span>
+  </div>
+  <button class="pbtn" id="btn-back" title="Previous screen">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>Back
+  </button>
+  <button class="pbtn primary" id="btn-restart" title="Back to splash">
+    <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.5 15a9 9 0 1 1-2.1-9.4L23 10"/></svg>Restart
+  </button>
+</div>
+
+<div class="main">
+  <nav class="sidebar" id="sidebar" aria-label="Prototype screens"></nav>
+  <div class="stage">
+    <div class="phone-space" id="phone-space">
+      <div class="phone" id="phone"><iframe id="frame" title="Prototype screen" src="gp-001-splash.html"></iframe></div>
+    </div>
+    <div class="hint"><span class="dot"></span>Buttons, cards and tabs inside the phone are connected — start from the splash.</div>
+  </div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var START = "gp-001-splash.html";
+
+  var SCREENS = [
+    ["Start here", [
+      ["gp-001-splash.html", "GP-001", "Splash — single entry point", true]
+    ]],
+    ["Identity & registration", [
+      ["gp-002-onboarding.html", "GP-002", "Onboarding (3 slides)"],
+      ["gp-003-login.html", "GP-003", "Login (password / OTP / social)"],
+      ["gp-004-otp.html", "GP-004", "OTP verification"],
+      ["gp-005-forgot-password.html", "GP-005", "Forgot / reset password"],
+      ["gp-006-registration-step1.html", "GP-006", "Registration step 1"],
+      ["gp-007-registration-step2.html", "GP-007", "Registration step 2"],
+      ["gp-008-status-screens.html", "GP-008", "Status: pending / info / rejected"]
+    ]],
+    ["Main app", [
+      ["gp-009-home.html", "GP-009", "Home (light · dark · tablet)"],
+      ["gp-010-inbox.html", "GP-010", "Inbox list"],
+      ["gp-011-inbox-detail.html", "GP-011", "Inbox detail"],
+      ["gp-012-profile.html", "GP-012", "Profile"],
+      ["gp-013-edit-profile.html", "GP-013", "Edit profile"],
+      ["gp-014-settings.html", "GP-014", "Settings"],
+      ["gp-015-blocked-users.html", "GP-015", "Blocked users"],
+      ["gp-016-delete-account.html", "GP-016", "Delete account"]
+    ]],
+    ["Modules (next phases)", [
+      ["placeholder-jobs.html", "GP-020", "Jobs — Phase 2 preview"],
+      ["placeholder-events.html", "GP-030", "Events — Phase 2 preview"],
+      ["placeholder-marketplace.html", "GP-040", "Marketplace — Phase 3 preview"],
+      ["placeholder-matrimony.html", "GP-053", "Matrimony — Phase 4 preview"]
+    ]]
+  ];
+
+  var sidebar = document.getElementById("sidebar");
+  var frame = document.getElementById("frame");
+  var curId = document.getElementById("cur-id");
+  var curName = document.getElementById("cur-name");
+  var phone = document.getElementById("phone");
+  var phoneSpace = document.getElementById("phone-space");
+  var history_ = [START];
+  var meta = {};
+
+  SCREENS.forEach(function (group) {
+    var h = document.createElement("div");
+    h.className = "sgroup";
+    h.textContent = group[0];
+    sidebar.appendChild(h);
+    group[1].forEach(function (item) {
+      meta[item[0]] = { id: item[1], name: item[2] };
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "sitem" + (item[3] ? " entry" : "");
+      btn.setAttribute("data-file", item[0]);
+      btn.innerHTML = '<span class="sid">' + item[1] + '</span><span class="sname">' + item[2] + "</span>";
+      btn.addEventListener("click", function () { load(item[0], true); });
+      sidebar.appendChild(btn);
+    });
+  });
+
+  function setActive(f) {
+    var m = meta[f] || { id: "—", name: f };
+    curId.textContent = m.id;
+    curName.textContent = m.name;
+    Array.prototype.forEach.call(sidebar.querySelectorAll(".sitem"), function (el) {
+      el.classList.toggle("active", el.getAttribute("data-file") === f);
+    });
+  }
+
+  function load(f, remember) {
+    if (remember && history_[history_.length - 1] !== f) history_.push(f);
+    if (history_.length > 60) history_.splice(0, history_.length - 60);
+    frame.src = f;
+    setActive(f);
+  }
+
+  document.getElementById("btn-back").addEventListener("click", function () {
+    if (history_.length > 1) { history_.pop(); load(history_[history_.length - 1], false); }
+  });
+  document.getElementById("btn-restart").addEventListener("click", function () {
+    history_ = [START];
+    load(START, false);
+  });
+
+  window.addEventListener("message", function (e) {
+    if (e.data && e.data.type === "gp-proto") {
+      var f = e.data.file;
+      if (history_[history_.length - 1] !== f) history_.push(f);
+      setActive(f);
+    }
+  });
+
+  // Scale the phone to fit the available height
+  function fit() {
+    var stage = document.querySelector(".stage");
+    var avail = stage.clientHeight - 60; // hint bar + padding
+    var scale = Math.min(1, avail / 864);
+    phone.style.transform = "scale(" + scale + ")";
+    phoneSpace.style.height = (864 * scale) + "px";
+    phoneSpace.style.width = (410 * scale) + "px";
+  }
+  window.addEventListener("resize", fit);
+  fit();
+
+  setActive(START);
+})();
+</script>
+</body>
+</html>

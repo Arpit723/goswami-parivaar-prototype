@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GP-004 · OTP Verification — Goswami Parivaar UI</title>
+<link rel="stylesheet" href="design-tokens.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="doc">
+  <div class="doc-header">
+    <div class="kicker">Phase 1 · Core &amp; Identity</div>
+    <h1>GP-004 · OTP Verification</h1>
+    <div class="fr-chips"><span>FR-AUTH-05</span><span>FR-AUTH-08</span></div>
+  </div>
+
+  <details class="annot" open>
+    <summary>GP-004 · OTP verification</summary>
+    <table>
+      <tr><th>Role / entry</th><td>Guest · login with OTP, forgot password, or registration phone/email verification</td></tr>
+      <tr><th>Primary action</th><td>Enter 6-digit code · Verify</td></tr>
+      <tr><th>Rules</th><td>6 digits · 5-minute expiry · max 5 attempts · resend after 30 s · max 5 sends/hour per identifier (FR-AUTH-05). Destination shown masked.</td></tr>
+      <tr><th>Key states</th><td>Entering (shown) · expired/invalid code (variant) · attempts exhausted → banner with retry timer</td></tr>
+    </table>
+  </details>
+
+  <div class="row">
+    <div class="frame-block">
+      <div class="frame-label">Default <small>· entering code</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+          <div class="appbar">
+            <a class="iconbtn"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <div class="title">Verify contact</div>
+          </div>
+          <div style="padding:28px 24px;display:flex;flex-direction:column;gap:24px;">
+            <div style="text-align:center;">
+              <div class="bigico" style="width:72px;height:72px;background:var(--primary-tint);color:var(--primary);margin-bottom:16px;">
+                <svg class="ic lg" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22 6 12 13 2 6"/></svg>
+              </div>
+              <div style="font-size:20px;font-weight:800;">Enter the 6-digit code</div>
+              <p class="subtle" style="margin-top:8px;">Sent to <b class="mono">+91 ••••• 42108</b><br>Expires in <span class="countdown" style="color:var(--primary);">4:32</span></p>
+            </div>
+
+            <div class="otprow">
+              <div class="obox filled">4</div>
+              <div class="obox filled">7</div>
+              <div class="obox filled">2</div>
+              <div class="obox filled">9</div>
+              <div class="obox cursor"></div>
+              <div class="obox"></div>
+            </div>
+
+            <div style="text-align:center;font-size:13.5px;color:var(--text-2);">
+              Didn't get the code? Resend in <span class="countdown">0:28</span><br>
+              <a style="color:var(--primary);font-weight:700;">Wrong number? Change it</a>
+            </div>
+
+            <button class="btn btn-primary btn-block disabled">Verify</button>
+            <div style="text-align:center;font-size:11.5px;color:var(--text-3);">3 attempts remaining · 5 sends per hour maximum</div>
+          </div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+
+    <div class="frame-block">
+      <div class="frame-label">Variant <small>· expired / invalid code</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+          <div class="appbar">
+            <a class="iconbtn"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <div class="title">Verify contact</div>
+          </div>
+          <div style="padding:28px 24px;display:flex;flex-direction:column;gap:24px;">
+            <div style="text-align:center;">
+              <div class="bigico" style="width:72px;height:72px;background:var(--error-bg);color:var(--error);margin-bottom:16px;">
+                <svg class="ic lg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              </div>
+              <div style="font-size:20px;font-weight:800;">Code expired</div>
+              <p class="subtle" style="margin-top:8px;">Codes are valid for 5 minutes.<br>Request a new one below.</p>
+            </div>
+
+            <div class="otprow">
+              <div class="obox" style="border-color:var(--error);color:var(--error);">4</div>
+              <div class="obox" style="border-color:var(--error);color:var(--error);">7</div>
+              <div class="obox" style="border-color:var(--error);color:var(--error);">2</div>
+              <div class="obox" style="border-color:var(--error);color:var(--error);">9</div>
+              <div class="obox" style="border-color:var(--error);"></div>
+              <div class="obox" style="border-color:var(--error);"></div>
+            </div>
+
+            <div class="banner err">
+              <svg class="ic sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <div><b>This code has expired.</b>2 attempts remaining.</div>
+            </div>
+
+            <button class="btn btn-tonal btn-block">
+              <svg class="ic sm" viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.5 15a9 9 0 1 1-2.1-9.4L23 10"/></svg>
+              Send new code
+            </button>
+            <div style="text-align:center;font-size:11.5px;color:var(--text-3);">Sent to +91 ••••• 42108 · 5 sends per hour maximum</div>
+          </div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-footer">Goswami Parivaar · MVP UI design · Phase 1</div>
+</div>
+<script src="proto.js"></script>
+</body>
+</html>
