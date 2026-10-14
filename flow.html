@@ -95,7 +95,7 @@
     </marker>
   </defs></svg>
   <div id="groups"></div>
-  <div class="hint">Hover a screen to highlight its connections · click a screen to open it in the interactive prototype · <b>⤢</b> opens the raw screen (app content only)</div>
+  <div class="hint">Hover a screen to highlight its connections · click a screen for the full-screen viewer (only app UI, tap-through + ‹ › buttons) · <b>▶</b> opens the interactive prototype</div>
 </div>
 
 <script>
@@ -226,7 +226,7 @@
     var h = "<h2>" + g[0] + " <span class='cnt'>" + g[2].length + " screens</span></h2><p>" + g[1] + "</p><div class='nodes'>";
     g[2].forEach(function (s) {
       h += "<div class='node" + (g[3] ? " next" : "") + "' id='n-" + s[0] + "' data-file='" + s[0] + "'>" +
-           "<a class='open' href='" + s[0] + "#clean' target='_blank' title='Open raw screen'>&#10530;</a>" +
+           "<a class='open' href='prototype.html#" + s[0] + "' target='_blank' title='Open in interactive prototype'>▶</a>" +
            "<div class='mini'><iframe src='" + s[0] + "#clean' loading='lazy' scrolling='no' tabindex='-1' title='" + s[1] + "'></iframe></div>" +
            "<div class='nlabel'><b>" + s[1] + "</b><span>" + s[2] + "</span></div></div>";
     });
@@ -302,7 +302,7 @@
     n.addEventListener("mouseleave", function () { wires.classList.remove("focus-on"); });
     n.addEventListener("click", function (ev) {
       if (ev.target.closest(".open")) return;
-      window.open("prototype.html#" + f, "_blank");
+      window.open("viewer.html#" + f, "_blank");
     });
   });
 

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Goswami Parivaar — Screen Viewer</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+    background: #201913;
+    background-image: radial-gradient(rgba(255,255,255,.05) 1px, transparent 1px);
+    background-size: 22px 22px;
+    color: #F3EAE0;
+    display: flex; flex-direction: column; overflow: hidden;
+  }
+
+  .topbar {
+    height: 54px; flex: none; display: flex; align-items: center; gap: 12px;
+    padding: 0 18px; background: rgba(28, 21, 16, .92); border-bottom: 1px solid #3A2E23; z-index: 10;
+  }
+  .topbar .logo { width: 32px; height: 32px; border-radius: 9px; background: linear-gradient(150deg, #D96C26, #A8430F); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 11px; color: #fff; }
+  .topbar .t { font-size: 14px; font-weight: 700; }
+  .cur { margin-left: auto; display: flex; align-items: center; gap: 10px; min-width: 0; }
+  .cur .cid { font-size: 11px; font-weight: 800; letter-spacing: .06em; color: #E8823F; background: rgba(232,130,63,.12); border: 1px solid rgba(232,130,63,.35); padding: 4px 10px; border-radius: 999px; white-space: nowrap; }
+  .cur .cname { font-size: 13px; color: #C4B2A0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .cur .pos { font-size: 12px; color: #8A7663; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .pbtn {
+    height: 36px; padding: 0 14px; border-radius: 9px; border: 1px solid #4A3A2B; background: #2A211A; color: #F3EAE0;
+    font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 7px;
+    text-decoration: none; white-space: nowrap;
+  }
+  .pbtn:hover { background: #352A20; }
+  .pbtn.nav { min-width: 40px; justify-content: center; font-size: 16px; }
+  .pbtn.primary { background: #C2571B; border-color: #C2571B; color: #fff; }
+  .pbtn.primary:hover { background: #A84813; }
+  .pbtn[disabled] { opacity: .35; cursor: default; }
+  @media (max-width: 760px) { .cur .cname, .topbar .t, .links .pbtn:not(.primary) { display: none; } }
+
+  .stage { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 0; padding: 16px 16px 10px; }
+  .fitwrap { position: relative; }
+  .phone {
+    width: 406px; height: 860px; background: #FAF6EF; border-radius: 44px; border: 8px solid #0E0A07;
+    box-shadow: 0 30px 70px rgba(0,0,0,.5), inset 0 0 0 2px #3A2E23; overflow: hidden;
+    transform-origin: top center;
+  }
+  .phone iframe { width: 390px; height: 844px; border: 0; display: block; background: #FAF6EF; }
+
+  .hint { flex: none; padding: 10px 0 14px; font-size: 12px; color: #A5947F; display: flex; align-items: center; gap: 10px; justify-content: center; }
+  .hint kbd { background: #2A211A; border: 1px solid #4A3A2B; border-radius: 5px; padding: 1px 7px; font-family: inherit; font-size: 11px; color: #C4B2A0; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="logo">GP</div>
+  <div class="t">Screen Viewer</div>
+  <div class="cur">
+    <span class="cid" id="cur-id">GP-001</span>
+    <span class="cname" id="cur-name">Splash</span>
+    <span class="pos" id="cur-pos">1 / 32</span>
+  </div>
+  <button class="pbtn nav" id="btn-prev" title="Previous screen (←)">‹</button>
+  <button class="pbtn nav" id="btn-next" title="Next screen (→)">›</button>
+  <span class="links" style="display:flex;gap:8px;">
+    <a class="pbtn" href="flow.html">Flow map</a>
+    <a class="pbtn" href="index.html">Catalogue</a>
+    <a class="pbtn primary" href="prototype.html">Prototype</a>
+  </span>
+</div>
+
+<div class="stage">
+  <div class="fitwrap" id="fitwrap">
+    <div class="phone" id="phone"><iframe id="frame" title="Screen" src="gp-001-splash.html#clean"></iframe></div>
+  </div>
+</div>
+<div class="hint">Tap buttons inside the app to navigate · or use <kbd>←</kbd><kbd>→</kbd> / the ‹ › buttons above to flip screens</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var SCREENS = [
+    ["gp-001-splash.html", "GP-001", "Splash"],
+    ["gp-002-onboarding.html", "GP-002", "Onboarding (3 slides)"],
+    ["gp-003-login.html", "GP-003", "Login"],
+    ["gp-004-otp.html", "GP-004", "OTP verification"],
+    ["gp-005-forgot-password.html", "GP-005", "Forgot / reset password"],
+    ["gp-006-registration-step1.html", "GP-006", "Registration step 1"],
+    ["gp-007-registration-step2.html", "GP-007", "Registration step 2"],
+    ["gp-008-status-screens.html", "GP-008", "Status screens"],
+    ["gp-009-home.html", "GP-009", "Home"],
+    ["gp-010-inbox.html", "GP-010", "Inbox"],
+    ["gp-011-inbox-detail.html", "GP-011", "Inbox detail"],
+    ["gp-012-profile.html", "GP-012", "Profile"],
+    ["gp-013-edit-profile.html", "GP-013", "Edit profile"],
+    ["gp-014-settings.html", "GP-014", "Settings"],
+    ["gp-015-blocked-users.html", "GP-015", "Blocked users"],
+    ["gp-016-delete-account.html", "GP-016", "Delete account"],
+    ["gp-020-jobs-browse.html", "GP-020", "Jobs browse"],
+    ["gp-021-job-detail.html", "GP-021", "Job detail"],
+    ["gp-022-post-job.html", "GP-022", "Post a job"],
+    ["gp-023-my-jobs.html", "GP-023", "My jobs"],
+    ["gp-024-applicants.html", "GP-024", "Applicants"],
+    ["gp-025-applicant-detail.html", "GP-025", "Applicant detail"],
+    ["gp-026-seeker-profile.html", "GP-026", "Seeker profile"],
+    ["gp-027-apply-flow.html", "GP-027", "Apply flow"],
+    ["gp-028-my-applications.html", "GP-028", "My applications"],
+    ["gp-030-events-browse.html", "GP-030", "Events browse"],
+    ["gp-031-event-detail.html", "GP-031", "Event detail (Meet gating)"],
+    ["gp-032-create-event.html", "GP-032", "Create event"],
+    ["gp-033-my-registrations.html", "GP-033", "My registrations"],
+    ["gp-034-attendees.html", "GP-034", "Attendees + CSV"],
+    ["placeholder-marketplace.html", "GP-040", "Marketplace (Phase 3)"],
+    ["placeholder-matrimony.html", "GP-053", "Matrimony (Phase 4)"]
+  ];
+
+  var frame = document.getElementById("frame");
+  var curId = document.getElementById("cur-id");
+  var curName = document.getElementById("cur-name");
+  var curPos = document.getElementById("cur-pos");
+  var btnPrev = document.getElementById("btn-prev");
+  var btnNext = document.getElementById("btn-next");
+  var idx = 0;
+
+  function indexOfFile(f) {
+    for (var i = 0; i < SCREENS.length; i++) if (SCREENS[i][0] === f) return i;
+    return -1;
+  }
+  function show(i, replaceHash) {
+    idx = Math.max(0, Math.min(SCREENS.length - 1, i));
+    var s = SCREENS[idx];
+    frame.src = s[0] + "#clean";
+    curId.textContent = s[1];
+    curName.textContent = s[2];
+    curPos.textContent = (idx + 1) + " / " + SCREENS.length;
+    btnPrev.disabled = idx === 0;
+    btnNext.disabled = idx === SCREENS.length - 1;
+    if (replaceHash !== false) {
+      try { history.replaceState(null, "", "#" + s[0]); } catch (e) {}
+      document.title = s[1] + " · " + s[2] + " — Goswami Parivaar";
+    }
+  }
+
+  btnPrev.addEventListener("click", function () { show(idx - 1); });
+  btnNext.addEventListener("click", function () { show(idx + 1); });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") { show(idx - 1); }
+    if (e.key === "ArrowRight") { show(idx + 1); }
+  });
+
+  // Track in-screen hotspot navigation (proto.js announces every screen load)
+  window.addEventListener("message", function (e) {
+    if (e.data && e.data.type === "gp-proto") {
+      var i = indexOfFile(e.data.file);
+      if (i >= 0 && i !== idx) show(i);
+    }
+  });
+
+  // Deep link: viewer.html#<screen-file>
+  var initial = decodeURIComponent(location.hash.slice(1));
+  var startIdx = indexOfFile(initial);
+  show(startIdx >= 0 ? startIdx : 0, false);
+
+  // Scale the phone to fit the viewport
+  var phone = document.getElementById("phone");
+  var fitwrap = document.getElementById("fitwrap");
+  function fit() {
+    var stage = document.querySelector(".stage");
+    var availH = stage.clientHeight - 10;
+    var availW = stage.clientWidth - 8;
+    var s = Math.min(availH / 860, availW / 406, 1);
+    phone.style.transform = "scale(" + s + ")";
+    fitwrap.style.height = (860 * s) + "px";
+    fitwrap.style.width = (406 * s) + "px";
+  }
+  window.addEventListener("resize", fit);
+  fit();
+})();
+</script>
+</body>
+</html>
