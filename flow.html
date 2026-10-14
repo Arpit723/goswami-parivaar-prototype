@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Goswami Parivaar — Screen Flow Map</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+    background: #F4EEE3;
+    background-image: radial-gradient(rgba(59,46,37,.10) 1px, transparent 1px);
+    background-size: 20px 20px;
+    color: #3B2E25;
+  }
+
+  .topbar {
+    position: sticky; top: 0; z-index: 20; background: rgba(244,238,227,.96); backdrop-filter: blur(6px);
+    border-bottom: 1px solid #E0D6C6; padding: 14px 26px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  }
+  .topbar .logo { width: 36px; height: 36px; border-radius: 11px; background: linear-gradient(150deg,#D96C26,#A8430F); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:12.5px; }
+  .topbar h1 { font-size: 17px; }
+  .topbar .sub { font-size: 12px; color: #7A6A5C; margin-top: 2px; }
+  .legend { margin-left: auto; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .lg { display: flex; align-items: center; gap: 7px; font-size: 12px; color: #5B4C3E; }
+  .lg svg { width: 30px; height: 10px; flex: none; }
+  .lg .l-tap { stroke: #C2571B; }
+  .lg .l-tab { stroke: #34618E; }
+  .lg .l-back { stroke: #A5947F; stroke-dasharray: 4 3; }
+  .topbtns { display: flex; gap: 10px; }
+  .topbtns a {
+    font-size: 13px; font-weight: 700; text-decoration: none; border-radius: 9px; padding: 9px 15px;
+    border: 1px solid #D6C8B4; color: #3B2E25; background: #fff;
+  }
+  .topbtns a.primary { background: #C2571B; border-color: #C2571B; color: #fff; }
+
+  .canvas { position: relative; padding: 30px 26px 70px; max-width: 1500px; margin: 0 auto; }
+  #wires { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 5; overflow: visible; }
+  #wires path { fill: none; stroke-width: 1.7; opacity: .85; transition: opacity .15s; }
+  #wires path.k-tap { stroke: #C2571B; }
+  #wires path.k-tab { stroke: #34618E; stroke-width: 1.4; }
+  #wires path.k-back { stroke: #A5947F; stroke-dasharray: 5 4; }
+  #wires.focus-on path { opacity: .06; }
+  #wires.focus-on path.on { opacity: 1; stroke-width: 2.4; }
+
+  .group { position: relative; z-index: 10; background: rgba(255,255,255,.66); border: 1px solid #E8DFD2; border-radius: 18px; padding: 16px 18px 20px; margin-bottom: 30px; }
+  .group > h2 { font-size: 14px; display: flex; align-items: baseline; gap: 10px; margin-bottom: 4px; }
+  .group > h2 .cnt { font-size: 11px; color: #A5947F; font-weight: 600; }
+  .group > p { font-size: 12px; color: #7A6A5C; margin-bottom: 14px; }
+  .nodes { display: flex; flex-wrap: wrap; gap: 26px 24px; }
+
+  .node { width: 122px; cursor: pointer; position: relative; }
+  .node .mini {
+    width: 122px; height: 264px; border: 3px solid #17120E; border-radius: 17px; overflow: hidden;
+    background: #FAF6EF; position: relative; box-shadow: 0 6px 16px rgba(59,46,37,.14);
+    transition: transform .12s, box-shadow .12s;
+  }
+  .node:hover .mini { transform: translateY(-3px); box-shadow: 0 12px 24px rgba(59,46,37,.22); }
+  .node .mini iframe { width: 390px; height: 844px; transform: scale(0.313); transform-origin: 0 0; border: 0; pointer-events: none; }
+  .node.next .mini { opacity: .6; }
+  .nlabel { margin-top: 8px; line-height: 1.35; }
+  .nlabel b { display: block; font-size: 11px; color: #C2571B; letter-spacing: .03em; }
+  .nlabel span { font-size: 11.5px; color: #5B4C3E; }
+  .node .open {
+    position: absolute; top: 6px; right: 6px; z-index: 3; width: 26px; height: 26px; border-radius: 8px;
+    background: rgba(23,18,14,.75); color: #fff; font-size: 13px; display: none; align-items: center; justify-content: center; text-decoration: none;
+  }
+  .node:hover .open { display: flex; }
+  .hint { text-align: center; font-size: 12.5px; color: #7A6A5C; padding: 6px 0 0; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="logo">GP</div>
+  <div>
+    <h1>Goswami Parivaar — Screen Flow Map</h1>
+    <div class="sub" id="counts"></div>
+  </div>
+  <div class="legend">
+    <span class="lg"><svg viewBox="0 0 30 10"><line class="l-tap" x1="1" y1="5" x2="29" y2="5" stroke-width="1.7"/></svg>Tap / action</span>
+    <span class="lg"><svg viewBox="0 0 30 10"><line class="l-tab" x1="1" y1="5" x2="29" y2="5" stroke-width="1.4"/></svg>Module tab</span>
+    <span class="lg"><svg viewBox="0 0 30 10"><line class="l-back" x1="1" y1="5" x2="29" y2="5" stroke-width="1.7"/></svg>Back</span>
+  </div>
+  <div class="topbtns">
+    <a href="index.html">Catalogue</a>
+    <a class="primary" href="prototype.html">Interactive prototype</a>
+  </div>
+</div>
+
+<div class="canvas">
+  <svg id="wires"><defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="context-stroke"/>
+    </marker>
+  </defs></svg>
+  <div id="groups"></div>
+  <div class="hint">Hover a screen to highlight its connections · click a screen to open it in the interactive prototype · <b>⤢</b> opens the raw screen (app content only)</div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var SCREENS = [
+    ["Entry & identity", "Splash to admin-verified access", [
+      ["gp-001-splash.html", "GP-001", "Splash"],
+      ["gp-002-onboarding.html", "GP-002", "Onboarding"],
+      ["gp-003-login.html", "GP-003", "Login"],
+      ["gp-004-otp.html", "GP-004", "OTP verify"],
+      ["gp-005-forgot-password.html", "GP-005", "Forgot password"],
+      ["gp-006-registration-step1.html", "GP-006", "Register · step 1"],
+      ["gp-007-registration-step2.html", "GP-007", "Register · step 2"],
+      ["gp-008-status-screens.html", "GP-008", "Status screens"]
+    ]],
+    ["Main app", "Home, Inbox, Profile, Settings", [
+      ["gp-009-home.html", "GP-009", "Home"],
+      ["gp-010-inbox.html", "GP-010", "Inbox"],
+      ["gp-011-inbox-detail.html", "GP-011", "Inbox detail"],
+      ["gp-012-profile.html", "GP-012", "Profile"],
+      ["gp-013-edit-profile.html", "GP-013", "Edit profile"],
+      ["gp-014-settings.html", "GP-014", "Settings"],
+      ["gp-015-blocked-users.html", "GP-015", "Blocked users"],
+      ["gp-016-delete-account.html", "GP-016", "Delete account"]
+    ]],
+    ["Jobs module", "Browse · post · apply · manage (FR-JOB)", [
+      ["gp-020-jobs-browse.html", "GP-020", "Jobs browse"],
+      ["gp-021-job-detail.html", "GP-021", "Job detail"],
+      ["gp-022-post-job.html", "GP-022", "Post a job"],
+      ["gp-023-my-jobs.html", "GP-023", "My jobs"],
+      ["gp-024-applicants.html", "GP-024", "Applicants"],
+      ["gp-025-applicant-detail.html", "GP-025", "Applicant detail"],
+      ["gp-026-seeker-profile.html", "GP-026", "Seeker profile"],
+      ["gp-027-apply-flow.html", "GP-027", "Apply flow"],
+      ["gp-028-my-applications.html", "GP-028", "My applications"]
+    ]],
+    ["Events module", "Browse · Meet-gated detail · organise (FR-EVT)", [
+      ["gp-030-events-browse.html", "GP-030", "Events browse"],
+      ["gp-031-event-detail.html", "GP-031", "Event detail"],
+      ["gp-032-create-event.html", "GP-032", "Create event"],
+      ["gp-033-my-registrations.html", "GP-033", "My registrations"],
+      ["gp-034-attendees.html", "GP-034", "Attendees + CSV"]
+    ]],
+    ["Coming next", "Placeholder previews", [
+      ["placeholder-marketplace.html", "GP-040", "Marketplace · Phase 3"],
+      ["placeholder-matrimony.html", "GP-053", "Matrimony · Phase 4"]
+    ], true]
+  ];
+
+  var EDGES = [
+    ["gp-001-splash.html","gp-003-login.html","tap","session restored / tap"],
+    ["gp-002-onboarding.html","gp-003-login.html","tap","Continue · Sign in"],
+    ["gp-002-onboarding.html","gp-006-registration-step1.html","tap","Create account"],
+    ["gp-003-login.html","gp-009-home.html","tap","Log in"],
+    ["gp-003-login.html","gp-005-forgot-password.html","tap","Forgot password"],
+    ["gp-003-login.html","gp-006-registration-step1.html","tap","Create account"],
+    ["gp-004-otp.html","gp-009-home.html","tap","Verify"],
+    ["gp-004-otp.html","gp-003-login.html","back","back / change number"],
+    ["gp-005-forgot-password.html","gp-004-otp.html","tap","Send code"],
+    ["gp-005-forgot-password.html","gp-003-login.html","tap","Save password"],
+    ["gp-006-registration-step1.html","gp-007-registration-step2.html","tap","Continue"],
+    ["gp-006-registration-step1.html","gp-003-login.html","back","back"],
+    ["gp-007-registration-step2.html","gp-008-status-screens.html","tap","Submit application"],
+    ["gp-007-registration-step2.html","gp-006-registration-step1.html","back","back"],
+    ["gp-008-status-screens.html","gp-007-registration-step2.html","tap","Update & resubmit"],
+    ["gp-009-home.html","gp-010-inbox.html","tap","Inbox tab / bell"],
+    ["gp-009-home.html","gp-012-profile.html","tap","Profile tab"],
+    ["gp-009-home.html","gp-014-settings.html","tap","Settings tab"],
+    ["gp-009-home.html","gp-020-jobs-browse.html","tap","Jobs tile"],
+    ["gp-009-home.html","gp-030-events-browse.html","tap","Events tile / See all"],
+    ["gp-009-home.html","gp-031-event-detail.html","tap","Register"],
+    ["gp-009-home.html","placeholder-marketplace.html","tap","Marketplace tile"],
+    ["gp-009-home.html","placeholder-matrimony.html","tap","Matrimony tile"],
+    ["gp-010-inbox.html","gp-011-inbox-detail.html","tap","message"],
+    ["gp-011-inbox-detail.html","gp-010-inbox.html","back","back"],
+    ["gp-011-inbox-detail.html","gp-031-event-detail.html","tap","Register"],
+    ["gp-011-inbox-detail.html","gp-015-blocked-users.html","tap","Block user"],
+    ["gp-012-profile.html","gp-013-edit-profile.html","tap","Edit"],
+    ["gp-012-profile.html","gp-023-my-jobs.html","tap","quick link"],
+    ["gp-012-profile.html","gp-033-my-registrations.html","tap","quick link"],
+    ["gp-013-edit-profile.html","gp-012-profile.html","back","Save"],
+    ["gp-014-settings.html","gp-013-edit-profile.html","tap","Edit profile"],
+    ["gp-014-settings.html","gp-015-blocked-users.html","tap","Blocked users"],
+    ["gp-014-settings.html","gp-016-delete-account.html","tap","Delete account"],
+    ["gp-014-settings.html","gp-003-login.html","tap","Log out"],
+    ["gp-016-delete-account.html","gp-014-settings.html","back","Cancel / Keep"],
+    ["gp-016-delete-account.html","gp-003-login.html","tap","sign back in"],
+    ["gp-015-blocked-users.html","gp-014-settings.html","back","back"],
+    ["gp-020-jobs-browse.html","gp-021-job-detail.html","tap","job card"],
+    ["gp-020-jobs-browse.html","gp-022-post-job.html","tab","Post a Job tab"],
+    ["gp-020-jobs-browse.html","gp-023-my-jobs.html","tab","My Jobs tab"],
+    ["gp-020-jobs-browse.html","gp-026-seeker-profile.html","tab","Seeker tab"],
+    ["gp-020-jobs-browse.html","gp-009-home.html","back","back to Home"],
+    ["gp-021-job-detail.html","gp-027-apply-flow.html","tap","Apply"],
+    ["gp-021-job-detail.html","gp-020-jobs-browse.html","back","back"],
+    ["gp-022-post-job.html","gp-023-my-jobs.html","tap","Submit for approval"],
+    ["gp-022-post-job.html","gp-020-jobs-browse.html","back","back"],
+    ["gp-023-my-jobs.html","gp-024-applicants.html","tap","post → applicants"],
+    ["gp-023-my-jobs.html","gp-022-post-job.html","tab","Post tab"],
+    ["gp-024-applicants.html","gp-025-applicant-detail.html","tap","applicant"],
+    ["gp-024-applicants.html","gp-023-my-jobs.html","back","back"],
+    ["gp-025-applicant-detail.html","gp-024-applicants.html","back","Shortlist / Reject"],
+    ["gp-026-seeker-profile.html","gp-020-jobs-browse.html","tab","Browse tab"],
+    ["gp-027-apply-flow.html","gp-028-my-applications.html","tap","Submit / Track"],
+    ["gp-027-apply-flow.html","gp-021-job-detail.html","back","back"],
+    ["gp-028-my-applications.html","gp-026-seeker-profile.html","back","back"],
+    ["gp-030-events-browse.html","gp-031-event-detail.html","tap","event card"],
+    ["gp-030-events-browse.html","gp-032-create-event.html","tab","Create tab"],
+    ["gp-030-events-browse.html","gp-033-my-registrations.html","tab","My Registrations tab"],
+    ["gp-030-events-browse.html","gp-009-home.html","back","back to Home"],
+    ["gp-031-event-detail.html","gp-033-my-registrations.html","tap","Register / waitlist"],
+    ["gp-031-event-detail.html","gp-030-events-browse.html","tap","Unregister"],
+    ["gp-032-create-event.html","gp-033-my-registrations.html","tap","Submit for approval"],
+    ["gp-032-create-event.html","gp-030-events-browse.html","back","back"],
+    ["gp-033-my-registrations.html","gp-031-event-detail.html","tap","event"],
+    ["gp-033-my-registrations.html","gp-034-attendees.html","tap","Attendees"],
+    ["gp-033-my-registrations.html","gp-030-events-browse.html","tab","Upcoming tab"],
+    ["gp-034-attendees.html","gp-033-my-registrations.html","back","back"]
+  ];
+
+  // Build the DOM
+  var groupsEl = document.getElementById("groups");
+  SCREENS.forEach(function (g) {
+    var sec = document.createElement("section");
+    sec.className = "group" + (g[3] ? " next" : "");
+    var h = "<h2>" + g[0] + " <span class='cnt'>" + g[2].length + " screens</span></h2><p>" + g[1] + "</p><div class='nodes'>";
+    g[2].forEach(function (s) {
+      h += "<div class='node" + (g[3] ? " next" : "") + "' id='n-" + s[0] + "' data-file='" + s[0] + "'>" +
+           "<a class='open' href='" + s[0] + "#clean' target='_blank' title='Open raw screen'>&#10530;</a>" +
+           "<div class='mini'><iframe src='" + s[0] + "#clean' loading='lazy' scrolling='no' tabindex='-1' title='" + s[1] + "'></iframe></div>" +
+           "<div class='nlabel'><b>" + s[1] + "</b><span>" + s[2] + "</span></div></div>";
+    });
+    h += "</div>";
+    sec.innerHTML = h;
+    groupsEl.appendChild(sec);
+  });
+  document.getElementById("counts").textContent =
+    EDGES.length + " connections · " + SCREENS.reduce(function (n, g) { return n + g[2].length; }, 0) + " screens · Phases 1–2";
+
+  // Draw connection wires
+  var wires = document.getElementById("wires");
+  function center(el) {
+    var r = el.getBoundingClientRect();
+    var c = document.querySelector(".canvas").getBoundingClientRect();
+    return { x: r.left - c.left + r.width / 2, y: r.top - c.top + r.height / 2, r: r };
+  }
+  function anchorPoint(from, to) {
+    // pick source/target anchor sides based on relative position
+    var dx = to.x - from.x, dy = to.y - from.y;
+    if (Math.abs(dx) > Math.abs(dy) * 1.15) {
+      return dx > 0
+        ? { a: { x: from.r.right - from.r.left ? from.x + 55 : from.x, y: from.y }, b: { x: to.x - 55, y: to.y }, ax: 1 }
+        : { a: { x: from.x - 55, y: from.y }, b: { x: to.x + 55, y: to.y }, ax: -1 };
+    }
+    return dy > 0
+      ? { a: { x: from.x, y: from.y + 132 }, b: { x: to.x, y: to.y - 145 }, ax: 0 }
+      : { a: { x: from.x, y: from.y - 145 }, b: { x: to.x, y: to.y + 132 }, ax: 0 };
+  }
+  function draw() {
+    var canvas = document.querySelector(".canvas");
+    wires.setAttribute("width", canvas.scrollWidth);
+    wires.setAttribute("height", canvas.scrollHeight);
+    wires.querySelectorAll("path.edge").forEach(function (p) { p.remove(); });
+    EDGES.forEach(function (e) {
+      var na = document.getElementById("n-" + e[0]), nb = document.getElementById("n-" + e[1]);
+      if (!na || !nb) return;
+      var from = center(na), to = center(nb);
+      var an = anchorPoint(from, to);
+      var off = an.ax !== 0 ? Math.min(90, Math.abs(to.x - from.x) * 0.4) : Math.min(80, Math.abs(to.y - from.y) * 0.4);
+      var c1, c2;
+      if (an.ax === 1) { c1 = { x: an.a.x + off, y: an.a.y }; c2 = { x: an.b.x - off, y: an.b.y }; }
+      else if (an.ax === -1) { c1 = { x: an.a.x - off, y: an.a.y }; c2 = { x: an.b.x + off, y: an.b.y }; }
+      else if (to.y > from.y) { c1 = { x: an.a.x, y: an.a.y + off }; c2 = { x: an.b.x, y: an.b.y - off }; }
+      else { c1 = { x: an.a.x, y: an.a.y - off }; c2 = { x: an.b.x, y: an.b.y + off }; }
+      var d = "M " + an.a.x + " " + an.a.y + " C " + c1.x + " " + c1.y + ", " + c2.x + " " + c2.y + ", " + an.b.x + " " + an.b.y;
+      var p = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      p.setAttribute("d", d);
+      p.setAttribute("class", "edge k-" + e[2]);
+      p.setAttribute("marker-end", "url(#arr)");
+      var t = document.createElementNS("http://www.w3.org/2000/svg", "title");
+      t.textContent = e[3];
+      p.appendChild(t);
+      wires.appendChild(p);
+    });
+  }
+
+  // Hover focus: highlight only the connected wires
+  document.querySelectorAll(".node").forEach(function (n) {
+    var f = n.getAttribute("data-file");
+    n.addEventListener("mouseenter", function () {
+      wires.classList.add("focus-on");
+      wires.querySelectorAll("path.edge").forEach(function (p) {
+        p.classList.remove("on");
+      });
+      EDGES.forEach(function (e, i) {
+        if (e[0] === f || e[1] === f) {
+          var p = wires.querySelectorAll("path.edge")[i];
+          if (p) p.classList.add("on");
+        }
+      });
+    });
+    n.addEventListener("mouseleave", function () { wires.classList.remove("focus-on"); });
+    n.addEventListener("click", function (ev) {
+      if (ev.target.closest(".open")) return;
+      window.open("prototype.html#" + f, "_blank");
+    });
+  });
+
+  window.addEventListener("load", function () { setTimeout(draw, 400); });
+  window.addEventListener("resize", function () { clearTimeout(window.__t); window.__t = setTimeout(draw, 200); });
+})();
+</script>
+</body>
+</html>

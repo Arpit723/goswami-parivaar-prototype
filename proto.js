@@ -310,6 +310,22 @@
   st.textContent = "[data-goto]{cursor:pointer}";
   document.head.appendChild(st);
 
+  // Clean mode (#clean): show ONLY the primary app frame — no docs chrome,
+  // no variant frames. Used by the Marvel-style flow map.
+  if (/#clean/.test(location.hash)) {
+    document.documentElement.classList.add("gp-clean");
+    var cs = document.createElement("style");
+    cs.textContent =
+      "html.gp-clean, html.gp-clean body { background: transparent !important; }" +
+      "html.gp-clean .doc { max-width: none; margin: 0; padding: 0; }" +
+      "html.gp-clean .doc-header, html.gp-clean .annot, html.gp-clean .doc-footer, html.gp-clean .frame-label { display: none !important; }" +
+      "html.gp-clean .row { margin: 0 !important; gap: 0 !important; }" +
+      "html.gp-clean .frame-block { gap: 0 !important; }" +
+      "html.gp-clean .frame-block:not(:first-of-type) { display: none !important; }" +
+      "html.gp-clean .phone { width: 390px; height: 844px; border: 0; border-radius: 0; box-shadow: none; }";
+    document.head.appendChild(cs);
+  }
+
   // Tell the presentation shell which screen is showing
   try {
     parent.postMessage({ type: "gp-proto", file: file, title: document.title }, "*");

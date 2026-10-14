@@ -228,7 +228,13 @@
   window.addEventListener("resize", fit);
   fit();
 
-  setActive(START);
+  // Deep link: prototype.html#<screen-file> starts the flow at that screen
+  var initialScreen = decodeURIComponent(location.hash.slice(1));
+  if (initialScreen && meta[initialScreen]) {
+    history_ = [initialScreen];
+    frame.src = initialScreen;
+  }
+  setActive(history_[0]);
 })();
 </script>
 </body>
