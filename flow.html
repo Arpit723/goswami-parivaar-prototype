@@ -43,6 +43,7 @@
   .nodes { display: flex; flex-wrap: wrap; gap: 26px 24px; align-items: flex-start; }
 
   .node { width: 122px; cursor: pointer; position: relative; }
+  .node.sel .mini { outline: 3px solid #C2571B; outline-offset: 3px; }
   .node .mini { width: 122px; height: 264px; border: 3px solid #17120E; border-radius: 17px; overflow: hidden; background: #FAF6EF; position: relative; box-shadow: 0 6px 16px rgba(59,46,37,.14); transition: transform .12s, box-shadow .12s; }
   .node:hover .mini { transform: translateY(-3px); box-shadow: 0 12px 24px rgba(59,46,37,.22); }
   .node .mini iframe { width: 390px; height: 844px; transform: scale(0.313); transform-origin: 0 0; border: 0; pointer-events: none; }
@@ -83,7 +84,7 @@
     </marker>
   </defs></svg>
   <div id="groups"></div>
-  <div class="hint">Hover a screen to highlight its connections · click a screen for the full-screen viewer · <b>▶</b> opens the interactive prototype</div>
+  <div class="hint">Hover a screen to highlight its connections · click a screen for the full-screen viewer · <b>←</b><b>→</b> walk screens on the map, <b>Enter</b> opens the viewer · <b>▶</b> opens the interactive prototype</div>
 </div>
 
 <script>
@@ -366,6 +367,29 @@
       window.open("viewer.html#" + f, "_blank");
     });
   });
+
+  // Keyboard navigation: arrows select a screen on the map, Enter opens the viewer
+  var nodes = Array.prototype.slice.call(document.querySelectorAll(".node"));
+  var selIdx = -1;
+  function select(i) {
+    if (!nodes.length) return;
+    selIdx = Math.max(0, Math.min(nodes.length - 1, i));
+    nodes.forEach(function (n, k) { n.classList.toggle("sel", k === selIdx); });
+    nodes[selIdx].scrollIntoView({ block: "nearest", inline: "center", behavior: "smooth" });
+    var f = nodes[selIdx].getAttribute("data-file");
+    nodes[selIdx].dispatchEvent(new MouseEvent("mouseenter"));
+    var meta = null;
+    SCREENS.forEach(function (g) { g[2].forEach(function (s) { if (s[0] === f) meta = s; }); });
+    document.getElementById("counts").textContent = (meta ? meta[1] + " · " + meta[2] + " · " : "") + "Enter to open";
+  }
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowRight" || e.key === "ArrowDown") { select(selIdx + 1); e.preventDefault(); }
+    if (e.key === "ArrowLeft" || e.key === "ArrowUp") { select(selIdx === -1 ? 0 : selIdx - 1); e.preventDefault(); }
+    if ((e.key === "Enter" || e.key === " ") && selIdx >= 0) {
+      window.open("viewer.html#" + nodes[selIdx].getAttribute("data-file"), "_blank");
+    }
+  });
+  nodes.forEach(function (n, k) { n.addEventListener("click", function () { select(k); }); });
 
   window.addEventListener("load", function () { setTimeout(draw, 500); });
   window.addEventListener("resize", function () { clearTimeout(window.__t); window.__t = setTimeout(draw, 200); });

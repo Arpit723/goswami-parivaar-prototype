@@ -218,6 +218,18 @@
   document.addEventListener("click", function (e) {
     var el = e.target.closest ? e.target.closest("[data-goto]") : null;
     if (el) { e.preventDefault(); go(el.getAttribute("data-goto")); return; }
+    if (cleanMode) {
+      // keep every in-app link inside the clean view (e.g. admin sidebar)
+      var a = e.target.closest ? e.target.closest("a[href]") : null;
+      if (a) {
+        var href = a.getAttribute("href") || "";
+        if (/\.html?$/.test(href.split("?")[0]) && !/^(https?:|mailto:)/.test(href) &&
+            !/^(viewer|prototype|index|flow)\.html/.test(href)) {
+          e.preventDefault(); go(href);
+          return;
+        }
+      }
+    }
     if (rules.anywhere && !e.target.closest("a[href]")) {
       e.preventDefault(); go(rules.anywhere);
     }
