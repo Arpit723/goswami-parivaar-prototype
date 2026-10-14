@@ -296,12 +296,14 @@
     });
   }
 
-  // Click handling: data-goto wins over any href
+  // Click handling: data-goto wins over any href; preserve clean mode across navigation
+  var cleanMode = /#clean/.test(location.hash);
+  function go(target) { location.href = target + (cleanMode ? "#clean" : ""); }
   document.addEventListener("click", function (e) {
     var el = e.target.closest ? e.target.closest("[data-goto]") : null;
-    if (el) { e.preventDefault(); location.href = el.getAttribute("data-goto"); return; }
+    if (el) { e.preventDefault(); go(el.getAttribute("data-goto")); return; }
     if (rules.anywhere && !e.target.closest("a[href]")) {
-      e.preventDefault(); location.href = rules.anywhere;
+      e.preventDefault(); go(rules.anywhere);
     }
   }, true);
 
