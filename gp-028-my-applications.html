@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GP-028 · My Applications — Goswami Parivaar UI</title>
+<link rel="stylesheet" href="design-tokens.css">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .tl { display:flex; gap:10px; margin-top:10px; }
+  .tl .rail { display:flex; flex-direction:column; align-items:center; width:14px; flex:none; }
+  .tl .dot { width:10px; height:10px; border-radius:99px; background:var(--verified); flex:none; }
+  .tl .dot.muted { background:var(--border-strong); }
+  .tl .line { width:2px; flex:1; background:var(--border); min-height:10px; }
+  .tl .steps { flex:1; display:flex; flex-direction:column; gap:10px; padding-bottom:2px; }
+  .tl .st { font-size:12px; color:var(--text-2); line-height:14px; }
+  .tl .st b { color:var(--text); }
+</style>
+</head>
+<body>
+<div class="doc">
+  <div class="doc-header">
+    <div class="kicker">Phase 2 · Jobs</div>
+    <h1>GP-028 · My Applications — Status Timeline</h1>
+    <div class="fr-chips"><span>FR-JOB-05</span></div>
+  </div>
+
+  <details class="annot" open>
+    <summary>GP-028 · My applications (seeker view)</summary>
+    <table>
+      <tr><th>Role / entry</th><td>Job seeker · Seeker tab → My applications, or confirmation screen</td></tr>
+      <tr><th>Primary action</th><td>Track status · withdraw application (before close)</td></tr>
+      <tr><th>Statuses</th><td>Submitted → In review → Shortlisted → Interview → Offered / Hired · Rejected · Withdrawn (SRS lifecycle)</td></tr>
+      <tr><th>Key states</th><td>Loaded with mixed statuses (shown) · empty ("You haven't applied yet — browse jobs")</td></tr>
+    </table>
+  </details>
+
+  <div class="row">
+    <div class="frame-block">
+      <div class="frame-label">Default <small>· 3 applications</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+          <div class="appbar">
+            <a class="iconbtn"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <div class="title">My applications</div>
+          </div>
+
+          <div class="stack gap3" style="padding:12px 16px 24px;">
+            <div class="card">
+              <div class="spread">
+                <div style="flex:1;min-width:0;">
+                  <div style="font-size:15px;font-weight:700;">Junior Accountant</div>
+                  <div class="subtle" style="font-size:12.5px;margin-top:2px;">Patel &amp; Associates · applied 13 Oct</div>
+                </div>
+                <span class="pill info">In review</span>
+              </div>
+              <div class="tl">
+                <div class="rail"><span class="dot"></span><span class="line"></span><span class="dot muted"></span><span class="line"></span><span class="dot muted"></span></div>
+                <div class="steps">
+                  <span class="st"><b>Submitted</b> · 13 Oct, 4:12 PM</span>
+                  <span class="st">In review · current stage</span>
+                  <span class="st">Shortlist / decision</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="spread">
+                <div style="flex:1;min-width:0;">
+                  <div style="font-size:15px;font-weight:700;">React Native Intern</div>
+                  <div class="subtle" style="font-size:12.5px;margin-top:2px;">Infocity IT Solutions · applied 10 Oct</div>
+                </div>
+                <span class="pill ok">Interview</span>
+              </div>
+              <div class="tl">
+                <div class="rail"><span class="dot"></span><span class="line"></span><span class="dot"></span><span class="line"></span><span class="dot"></span><span class="line"></span><span class="dot muted"></span></div>
+                <div class="steps">
+                  <span class="st"><b>Submitted</b> · 10 Oct</span>
+                  <span class="st"><b>In review</b> · 11 Oct</span>
+                  <span class="st"><b>Shortlisted</b> · 13 Oct — "portfolio impressed us"</span>
+                  <span class="st">Interview · Fri 16 Oct, 11:00 AM · Infocity office</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card" style="opacity:.8;">
+              <div class="spread">
+                <div style="flex:1;min-width:0;">
+                  <div style="font-size:15px;font-weight:700;">Delivery Partner (Part-time)</div>
+                  <div class="subtle" style="font-size:12.5px;margin-top:2px;">Community Kirana · applied 07 Oct</div>
+                </div>
+                <span class="pill err">Rejected</span>
+              </div>
+              <div class="banner err" style="margin-top:10px;">
+                <svg class="ic sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                <div><b>Position filled.</b>"They hired someone from the same lane." · 12 Oct</div>
+              </div>
+            </div>
+
+            <button class="btn btn-text btn-block" style="color:var(--text-2);">Withdraw an application</button>
+          </div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-footer">Goswami Parivaar · MVP UI design · Phase 2 · Every status change also arrives as an Inbox message with push</div>
+</div>
+<script src="proto.js"></script>
+</body>
+</html>

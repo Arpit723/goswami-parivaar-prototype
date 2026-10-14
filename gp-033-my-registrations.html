@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GP-033 · My Registrations — Goswami Parivaar UI</title>
+<link rel="stylesheet" href="design-tokens.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="doc">
+  <div class="doc-header">
+    <div class="kicker">Phase 2 · Events</div>
+    <h1>GP-033 · My Registrations</h1>
+    <div class="fr-chips"><span>FR-EVT-03</span><span>FR-EVT-04</span></div>
+  </div>
+
+  <details class="annot" open>
+    <summary>GP-033 · My registrations (module tab 2)</summary>
+    <table>
+      <tr><th>Role / entry</th><td>Member · Events → My Registrations tab</td></tr>
+      <tr><th>Primary action</th><td>Open event · unregister · organiser opens attendee list (GP-034)</td></tr>
+      <tr><th>Rules</th><td>Reminders at 24 h and 1 h via Inbox + push (FR-EVT-04). Unregistering frees the seat to the next waitlisted member. Own organised events show the attendee-list action (FR-EVT-05).</td></tr>
+    </table>
+  </details>
+
+  <div class="row">
+    <div class="frame-block">
+      <div class="frame-label">Default <small>· upcoming + past</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+          <div class="appbar">
+            <a class="iconbtn"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <div class="title">My registrations</div>
+          </div>
+          <div class="chiprow" style="padding-bottom:10px;">
+            <span class="chip">Upcoming</span><span class="chip active">My Registrations</span><span class="chip">Create</span>
+          </div>
+
+          <div class="list" style="margin:0 16px 16px;">
+            <a class="li">
+              <div class="dateblock" style="width:46px;height:50px;"><span class="mo">SUN</span><span class="dd" style="font-size:18px;">08</span></div>
+              <div class="lmain">
+                <div class="lt">Investment Planning <span class="pill ok">Registered</span></div>
+                <div class="ls">Online · 5:30 PM · Meet link in details</div>
+              </div>
+              <svg class="ic sm" style="color:var(--text-3);" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+            <a class="li">
+              <div class="dateblock" style="width:46px;height:50px;"><span class="mo">SUN</span><span class="dd" style="font-size:18px;">15</span></div>
+              <div class="lmain">
+                <div class="lt">Career Guidance <span class="pill ok">Registered</span></div>
+                <div class="ls">Satellite Road hall · 11:00 AM · +2 seats added</div>
+              </div>
+              <svg class="ic sm" style="color:var(--text-3);" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+            <a class="li">
+              <div class="dateblock" style="width:46px;height:50px;"><span class="mo">SUN</span><span class="dd" style="font-size:18px;">26</span></div>
+              <div class="lmain">
+                <div class="lt">Parivaar Milan Samaroh <span class="pill warn">Waitlist #47</span></div>
+                <div class="ls">Goswami Wadi Hall · 4:00 PM · notified if a seat opens</div>
+              </div>
+              <svg class="ic sm" style="color:var(--text-3);" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+          </div>
+
+          <div class="section-h"><h2>You are organising</h2></div>
+          <div style="padding:0 16px;">
+            <div class="card">
+              <div class="spread">
+                <div style="flex:1;">
+                  <div style="font-size:15px;font-weight:700;">Tech Careers Q&amp;A</div>
+                  <div class="subtle" style="font-size:12.5px;margin-top:2px;">Sat 21 Nov · 5:00 PM · Online · 23/40 registered</div>
+                </div>
+                <span class="pill ok">Live</span>
+              </div>
+              <div style="display:flex;gap:10px;margin-top:12px;">
+                <button class="btn btn-tonal btn-sm" style="flex:1;">
+                  <svg class="ic xs" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                  Attendees
+                </button>
+                <button class="btn btn-outline btn-sm" style="flex:1;">Edit event</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="section-h"><h2>Past</h2></div>
+          <div style="padding:0 16px 26px;">
+            <div class="li" style="opacity:.65;cursor:default;">
+              <div class="dateblock" style="width:46px;height:50px;background:var(--surface-2);color:var(--text-3);"><span class="mo">MON</span><span class="dd" style="font-size:18px;">28</span></div>
+              <div class="lmain">
+                <div class="lt">GST Basics Workshop</div>
+                <div class="ls">28 Sep · attended</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-footer">Goswami Parivaar · MVP UI design · Phase 2 · Unregister = swipe row or detail action; waitlisted members are promoted automatically in order</div>
+</div>
+<script src="proto.js"></script>
+</body>
+</html>

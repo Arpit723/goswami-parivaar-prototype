@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GP-023 · My Jobs — Goswami Parivaar UI</title>
+<link rel="stylesheet" href="design-tokens.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="doc">
+  <div class="doc-header">
+    <div class="kicker">Phase 2 · Jobs</div>
+    <h1>GP-023 · My Jobs — Postings Management</h1>
+    <div class="fr-chips"><span>FR-JOB-06</span><span>FR-JOB-05</span><span>FR-JOB-07</span></div>
+  </div>
+
+  <details class="annot" open>
+    <summary>GP-023 · My Jobs (poster view)</summary>
+    <table>
+      <tr><th>Role / entry</th><td>Job poster · Jobs → My Jobs tab</td></tr>
+      <tr><th>Primary action</th><td>Open a post → applicants (GP-024) · edit · close · renew expired</td></tr>
+      <tr><th>Rules</th><td>Edit, close or delete own jobs at any time; posts auto-expire after the expiry date. Pending posts await city-admin approval; rejected shows the admin reason.</td></tr>
+      <tr><th>Key states</th><td>Live · pending approval · expired (all shown) · rejected (annotation)</td></tr>
+    </table>
+  </details>
+
+  <div class="row">
+    <div class="frame-block">
+      <div class="frame-label">Default <small>· live + pending + expired</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+          <div class="appbar">
+            <a class="iconbtn"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <div class="title">My jobs</div>
+            <a class="btn-text" style="font-size:14px;font-weight:700;">Post a Job</a>
+          </div>
+          <div class="chiprow" style="padding-bottom:10px;">
+            <span class="chip">Browse</span><span class="chip active">My Jobs</span><span class="chip">Post a Job</span><span class="chip">Seeker</span>
+          </div>
+
+          <div class="list" style="margin:0 16px 16px;">
+            <a class="li">
+              <span class="avatar sq" style="background:var(--info-bg);color:var(--info);font-size:13px;">ST</span>
+              <div class="lmain">
+                <div class="lt">Field Sales Executive <span class="pill ok">Live</span></div>
+                <div class="ls">4 applicants · closes 30 Oct · 42 views</div>
+              </div>
+              <svg class="ic sm" style="color:var(--text-3);" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+            <a class="li">
+              <span class="avatar sq" style="font-size:13px;">GP</span>
+              <div class="lmain">
+                <div class="lt">Maths Tuition Teacher <span class="pill warn">Pending approval</span></div>
+                <div class="ls">Submitted yesterday · under city-admin review</div>
+              </div>
+              <svg class="ic sm" style="color:var(--text-3);" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+            <a class="li" style="opacity:.75;">
+              <span class="avatar sq" style="font-size:13px;">ST</span>
+              <div class="lmain">
+                <div class="lt">Data Entry Operator <span class="pill neutral">Expired</span></div>
+                <div class="ls">Auto-closed 05 Oct · 9 applicants received</div>
+              </div>
+              <button class="btn btn-outline btn-sm">Renew</button>
+            </a>
+          </div>
+
+          <div style="padding:0 16px;">
+            <div class="card flat" style="padding:12px 14px;display:flex;gap:10px;align-items:flex-start;">
+              <svg class="ic sm" style="color:var(--text-3);margin-top:2px;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              <span class="subtle" style="font-size:12.5px;line-height:18px;">Edit, close or delete from any post's menu. Closed jobs stop receiving applications immediately; past applicants stay visible to you.</span>
+            </div>
+          </div>
+          <div style="height:24px;"></div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-footer">Goswami Parivaar · MVP UI design · Phase 2 · Rejected state: card with red pill + admin reason line ("Duplicate of an existing listing")</div>
+</div>
+<script src="proto.js"></script>
+</body>
+</html>
