@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How Family Linking Works — Goswami Parivaar</title>
+<link rel="stylesheet" href="design-tokens.css">
+<link rel="stylesheet" href="styles.css">
+<style>
+  body { background: var(--bg); }
+  .xpage { max-width: 1080px; margin: 0 auto; padding: 40px 28px 70px; }
+
+  .xhero { text-align: center; padding: 26px 20px 30px; }
+  .xhero .logo-mark { margin: 0 auto 18px; }
+  .xhero h1 { font-size: 34px; line-height: 42px; font-weight: 800; }
+  .xhero .sub { font-size: 16px; color: var(--text-2); margin-top: 10px; }
+  .xhero .bigidea {
+    margin: 26px auto 0; max-width: 720px; background: var(--primary-tint); border: 1.5px solid var(--primary-tint-2);
+    border-radius: 18px; padding: 18px 24px; font-size: 17px; line-height: 27px; color: var(--primary-hover); font-weight: 600;
+  }
+  .xhero .bigidea b { color: var(--primary); }
+
+  .xsec { margin-top: 46px; }
+  .xsec > .xh { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+  .xsec > .xh .num {
+    width: 40px; height: 40px; border-radius: 13px; background: var(--primary); color: #fff;
+    display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 17px; flex: none;
+  }
+  .xsec > .xh h2 { font-size: 22px; font-weight: 800; }
+  .xsec > .xh small { display: block; font-size: 13px; color: var(--text-2); font-weight: 500; margin-top: 2px; }
+
+  /* flow cards */
+  .flowrow { display: flex; gap: 0; align-items: stretch; flex-wrap: wrap; }
+  .fcard { flex: 1 1 190px; background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 18px; box-shadow: var(--shadow-1); position: relative; min-width: 190px; }
+  .fcard .fk { font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--primary); margin-bottom: 8px; }
+  .fcard .ft { font-size: 15.5px; font-weight: 800; line-height: 21px; }
+  .fcard .fd { font-size: 13px; color: var(--text-2); line-height: 19px; margin-top: 8px; }
+  .farrow { align-self: center; color: var(--primary); font-size: 26px; font-weight: 800; padding: 0 10px; flex: none; }
+  @media (max-width: 900px) { .farrow { transform: rotate(90deg); padding: 8px 0; width: 100%; text-align: center; } }
+
+  /* name matching */
+  .codebox { display: flex; gap: 18px; flex-wrap: wrap; align-items: stretch; }
+  .codecard { flex: 1; min-width: 280px; }
+  .coderow { display: flex; align-items: center; gap: 10px; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 12px 16px; margin-top: 10px; }
+  .coderow .w { font-size: 16px; font-weight: 700; }
+  .coderow .arrow { color: var(--text-3); }
+  .coderow .chip.code { background: var(--primary-tint); color: var(--primary-hover); font-family: ui-monospace, monospace; font-size: 15px; font-weight: 800; letter-spacing: .1em; }
+  .sameres { background: var(--verified-bg); color: var(--verified); border-radius: 12px; padding: 14px; text-align: center; font-weight: 700; font-size: 14px; margin-top: 12px; }
+
+  /* score meter */
+  .meter { display: flex; height: 34px; border-radius: 99px; overflow: hidden; font-size: 12px; font-weight: 800; color: #fff; }
+  .meter .m1 { background: var(--border-strong); color: var(--text-2); flex: 4; display: flex; align-items: center; justify-content: center; }
+  .meter .m2 { background: var(--warning); flex: 3; display: flex; align-items: center; justify-content: center; }
+  .meter .m3 { background: var(--verified); flex: 3; display: flex; align-items: center; justify-content: center; }
+  .scoregrid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
+  .scorechip { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 10px 14px; font-size: 13px; flex: 1; min-width: 200px; display: flex; justify-content: space-between; gap: 10px; box-shadow: var(--shadow-1); }
+  .scorechip b { color: var(--primary-hover); white-space: nowrap; }
+
+  /* database */
+  .dbrow { display: flex; gap: 14px; flex-wrap: wrap; }
+  .dbcard { flex: 1 1 190px; background: #241A12; color: #E9DCCB; border-radius: 16px; padding: 16px; min-width: 190px; }
+  .dbcard .tname { font-family: ui-monospace, monospace; font-size: 14px; font-weight: 800; color: #F2B27E; }
+  .dbcard .tjob { font-size: 12px; color: #C9B8A3; line-height: 18px; margin-top: 6px; }
+  .kvlist { margin-top: 10px; border-top: 1px solid #3A2E23; }
+  .kvlist div { display: flex; justify-content: space-between; font-size: 11.5px; padding: 6px 0; border-bottom: 1px solid #3A2E23; color: #A99682; }
+  .kvlist div span:last-child { color: #E9DCCB; font-family: ui-monospace, monospace; }
+
+  /* tree */
+  .treewrap { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 22px; box-shadow: var(--shadow-1); }
+  .pathgrid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
+  .pathcard { flex: 1 1 240px; background: var(--surface-2); border-radius: 14px; padding: 14px 16px; }
+  .pathcard .pth { font-family: ui-monospace, monospace; font-size: 12.5px; color: var(--text-2); background: var(--surface); border-radius: 8px; padding: 7px 10px; display: inline-block; }
+  .pathcard .res { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
+  .pathcard .res b { font-size: 15px; }
+  .pathcard .res .how { font-size: 11px; color: var(--text-3); }
+
+  /* mini phones */
+  .phonerow { display: flex; gap: 26px; flex-wrap: wrap; justify-content: center; }
+  .miniphone { width: 264px; background: var(--bg); border: 6px solid #17120E; border-radius: 30px; overflow: hidden; box-shadow: 0 14px 30px rgba(59,46,37,.2); }
+  .miniphone .mstatus { height: 26px; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; font-size: 10px; font-weight: 700; }
+  .miniphone .mbody { padding: 10px 12px 16px; }
+  .mtitle { font-size: 14px; font-weight: 800; margin: 4px 2px 10px; }
+  .cand { background: var(--surface); border: 1px solid var(--border); border-radius: 13px; padding: 10px 12px; margin-bottom: 8px; }
+  .cand .cn { font-size: 13px; font-weight: 800; display: flex; align-items: center; gap: 6px; }
+  .cand .cm { font-size: 10.5px; color: var(--text-2); margin-top: 2px; }
+  .btnrow { display: flex; gap: 6px; margin-top: 8px; }
+  .mbtn { flex: 1; height: 30px; border-radius: 99px; font-size: 10.5px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+  .mbtn.p { background: var(--primary); color: #fff; }
+  .mbtn.o { border: 1.2px solid var(--border-strong); color: var(--text-2); background: var(--surface); }
+  .caption { text-align: center; font-size: 12.5px; color: var(--text-2); margin-top: 12px; font-weight: 600; }
+
+  /* rules */
+  .rulerow { display: flex; gap: 14px; flex-wrap: wrap; }
+  .rulecard { flex: 1 1 220px; background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--primary); border-radius: 14px; padding: 16px; box-shadow: var(--shadow-1); }
+  .rulecard b { font-size: 14.5px; }
+  .rulecard p { font-size: 12.5px; color: var(--text-2); line-height: 18px; margin-top: 6px; }
+
+  .xfoot { margin-top: 50px; text-align: center; font-size: 12px; color: var(--text-3); border-top: 1px solid var(--border); padding-top: 16px; }
+</style>
+</head>
+<body>
+<div class="xpage">
+
+  <!-- HERO -->
+  <div class="xhero">
+    <div class="logo-mark">GP</div>
+    <h1>How Family Linking Works</h1>
+    <div class="sub">Goswami Parivaar · one-page explainer for the team</div>
+    <div class="bigidea">
+      You only ever confirm <b>3 kinds of links — parent, spouse, child.</b><br>
+      Every other relative — dada, kaka, mama, cousin — <b>the app calculates automatically.</b>
+    </div>
+  </div>
+
+  <!-- 1. THE FLOW -->
+  <div class="xsec">
+    <div class="xh"><div class="num">1</div><div><h2>The flow</h2><small>from typing a name to a live family link</small></div></div>
+    <div class="flowrow">
+      <div class="fcard"><div class="fk">Step 1 · You type</div><div class="ft">"Father: Dinesh Parekh"</div><div class="fd">One name field, in the "Your family" step after registration.</div></div>
+      <div class="farrow">→</div>
+      <div class="fcard"><div class="fk">Step 2 · App guesses</div><div class="ft">3 candidate cards</div><div class="fd">Name, city, age band + a match score. "★ Strong match 82".</div></div>
+      <div class="farrow">→</div>
+      <div class="fcard"><div class="fk">Step 3 · You confirm</div><div class="ft">"Yes, that's him"</div><div class="fd">Link becomes <b>Pending</b> — nothing is visible to anyone yet.</div></div>
+      <div class="farrow">→</div>
+      <div class="fcard"><div class="fk">Step 4 · They confirm</div><div class="ft">Inbox card → Confirm</div><div class="fd">"Rahul says you are his father." One tap and the link is <b>live</b>.</div></div>
+      <div class="farrow">→</div>
+      <div class="fcard" style="border:1.5px solid var(--verified);"><div class="fk" style="color:var(--verified);">Step 5 · Auto-discovery</div><div class="ft">Relatives appear free</div><div class="fd">Dada, kaka and "Is Meena your mother?" — all derived from that one link.</div></div>
+    </div>
+  </div>
+
+  <!-- 2. NAME MATCHING -->
+  <div class="xsec">
+    <div class="xh"><div class="num">2</div><div><h2>Why "Parekh" finds "Parikh"</h2><small>every name gets a sound-code</small></div></div>
+    <div class="codebox">
+      <div class="codecard card">
+        <div class="overline">Rule</div>
+        <div class="coderow"><span class="w">Parekh</span><span class="arrow">→</span><span class="chip code">prk</span></div>
+        <div class="coderow"><span class="w">Parikh</span><span class="arrow">→</span><span class="chip code">prk</span></div>
+        <div class="coderow"><span class="w">Shri Rameshbhai</span><span class="arrow">→</span><span class="chip code">rmsh</span><span style="font-size:10.5px;color:var(--text-3);margin-left:auto;">titles dropped</span></div>
+      </div>
+      <div class="codecard card">
+        <div class="overline">How the code is made</div>
+        <div style="font-size:13.5px;line-height:22px;margin-top:8px;">
+          1 · Drop titles (Shri, Smt, Bhai, Ben)<br>
+          2 · Merge similar sounds — ph→f, w→v, ee→i, ck→k, th→t<br>
+          3 · Remove vowels after the first letter<br>
+          4 · Collapse doubled letters
+        </div>
+        <div class="sameres">Same sound-code ⇒ treated as the same surname ⇒ candidate found ✔</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. SCORING -->
+  <div class="xsec">
+    <div class="xh"><div class="num">3</div><div><h2>The match score (0–100)</h2><small>a confidence number, not magic</small></div></div>
+    <div class="meter">
+      <div class="m1">0–39 · hidden</div>
+      <div class="m2">40–69 · Possible</div>
+      <div class="m3">70–100 · Strong ★</div>
+    </div>
+    <div class="scoregrid">
+      <div class="scorechip"><span>Names sound alike</span><b>up to 40</b></div>
+      <div class="scorechip"><span>Same surname sound-code</span><b>15</b></div>
+      <div class="scorechip"><span>Same native place</span><b>20</b></div>
+      <div class="scorechip"><span>Same current city</span><b>10</b></div>
+      <div class="scorechip"><span>Their spouse = your other parent's name</span><b>20</b></div>
+      <div class="scorechip"><span>Linked to your reference member</span><b>15</b></div>
+    </div>
+    <div class="caption" style="margin-top:14px;">Example: Dinesh Parikh scores 82 = name 40 + surname 15 + city 10 + spouse-match 17 → "Strong", pre-ticked</div>
+  </div>
+
+  <!-- 4. DATABASE -->
+  <div class="xsec">
+    <div class="xh"><div class="num">4</div><div><h2>What the database stores</h2><small>5 small tables — and the word "kaka" is never stored</small></div></div>
+    <div class="dbrow">
+      <div class="dbcard"><div class="tname">person</div><div class="tjob">Every member (and "placeholder" ghosts for invited relatives)</div><div class="kvlist"><div><span>name sound-code</span><span>prk</span></div><div><span>city · gender</span><span>…</span></div></div></div>
+      <div class="dbcard"><div class="tname">relationship</div><div class="tjob">One row per link: parent–child or partner</div><div class="kvlist"><div><span>status</span><span>pending → confirmed</span></div><div><span>who confirmed</span><span>both sides</span></div></div></div>
+      <div class="dbcard"><div class="tname">declared_relation</div><div class="tjob">Names you typed that aren't linked yet</div><div class="kvlist"><div><span>"Father: Dinesh"</span><span>waiting</span></div></div></div>
+      <div class="dbcard"><div class="tname">match_suggestion</div><div class="tjob">The guesses + scores, and your verdicts</div><div class="kvlist"><div><span>score</span><span>82</span></div><div><span>result</span><span>yes / not him</span></div></div></div>
+      <div class="dbcard"><div class="tname">invite</div><div class="tjob">WhatsApp tokens for relatives not on the app</div><div class="kvlist"><div><span>token</span><span>expires 7d</span></div></div></div>
+    </div>
+    <div class="banner info" style="margin-top:14px;">
+      <svg class="ic sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+      <div><b>The trick:</b>the Family tab doesn't read "kaka" from anywhere — it walks confirmed links (up / down / partner) and translates the path into the right Gujarati term on the fly.</div>
+    </div>
+  </div>
+
+  <!-- 5. PATHS -->
+  <div class="xsec">
+    <div class="xh"><div class="num">5</div><div><h2>How relatives are calculated</h2><small>nobody confirms these — they come free</small></div></div>
+    <div class="treewrap">
+      <svg viewBox="0 0 760 210" style="width:100%;height:auto;" role="img" aria-label="Family tree example">
+        <defs><style>
+          .ln { stroke:#D6C8B4; stroke-width:2; fill:none; }
+          .lnm { stroke:#C2571B; stroke-width:2.5; stroke-dasharray:6 5; fill:none; }
+          .bx { fill:#FFFFFF; stroke:#E8DFD2; }
+          .bxr { fill:#FBEADB; stroke:#F5D9BC; }
+          .bt { font:700 13px -apple-system,'Segoe UI',sans-serif; fill:#3B2E25; }
+          .bs { font:600 10.5px -apple-system,'Segoe UI',sans-serif; fill:#7A6A5C; }
+          .tag { font:800 10px -apple-system,'Segoe UI',sans-serif; fill:#2E7D46; }
+        </style></defs>
+        <!-- grandpa row -->
+        <line class="ln" x1="380" y1="62" x2="250" y2="62"/>
+        <line class="ln" x1="380" y1="62" x2="380" y2="86"/>
+        <line class="ln" x1="250" y1="62" x2="250" y2="86"/>
+        <rect class="bx" x="330" y="34" width="100" height="28" rx="9"/>
+        <text class="bt" x="380" y="52" text-anchor="middle">Grandpa</text>
+        <text class="tag" x="444" y="52">DADA — auto</text>
+        <!-- parents row -->
+        <rect class="bxr" x="180" y="86" width="140" height="32" rx="10"/>
+        <text class="bt" x="250" y="100" text-anchor="middle">Dinesh</text>
+        <text class="bs" x="250" y="112" text-anchor="middle">father · confirmed ✔</text>
+        <rect class="bxr" x="320" y="86" width="140" height="32" rx="10"/>
+        <text class="bt" x="390" y="100" text-anchor="middle">Meena</text>
+        <text class="bs" x="390" y="112" text-anchor="middle">mother · 1-tap</text>
+        <line class="lnm" x1="320" y1="102" x2="270" y2="102"/>
+        <!-- mahesh -->
+        <line class="ln" x1="180" y1="102" x2="120" y2="102"/>
+        <rect class="bx" x="40" y="86" width="140" height="32" rx="10"/>
+        <text class="bt" x="110" y="100" text-anchor="middle">Mahesh</text>
+        <text class="bs" x="110" y="112" text-anchor="middle">father's brother</text>
+        <text class="tag" x="110" y="78" text-anchor="middle">KAKA — auto</text>
+        <!-- rahul -->
+        <line class="ln" x1="250" y1="118" x2="250" y2="150"/>
+        <rect class="bxr" x="190" y="150" width="120" height="32" rx="10"/>
+        <text class="bt" x="250" y="164" text-anchor="middle">Rahul</text>
+        <text class="bs" x="250" y="176" text-anchor="middle">you</text>
+        <!-- jay -->
+        <line class="ln" x1="310" y1="166" x2="350" y2="166"/>
+        <rect class="bx" x="350" y="150" width="110" height="32" rx="10"/>
+        <text class="bt" x="405" y="164" text-anchor="middle">Jay</text>
+        <text class="bs" x="405" y="176" text-anchor="middle">BHAI — auto</text>
+        <!-- legend -->
+        <rect class="bx" x="540" y="140" width="196" height="52" rx="10"/>
+        <text class="bs" x="552" y="158">up = parent link</text>
+        <text class="bs" x="552" y="173">down = child link</text>
+        <text class="bs" x="552" y="188">═ partner link</text>
+      </svg>
+      <div class="pathgrid">
+        <div class="pathcard"><span class="pth">Rahul ↑ Dinesh</span><div class="res"><b>Papa / Mummy</b><span class="how">confirmed directly</span></div></div>
+        <div class="pathcard"><span class="pth">Rahul ↑ ↑ (father's father)</span><div class="res"><b>Dada / Nana</b><span class="how">auto by side</span></div></div>
+        <div class="pathcard"><span class="pth">Rahul ↑ ↑ ↓ (father's brother)</span><div class="res"><b>Kaka / Mama</b><span class="how">auto by side</span></div></div>
+        <div class="pathcard"><span class="pth">Rahul ↑ ↓ (same parent)</span><div class="res"><b>Bhai / Ben</b><span class="how">auto</span></div></div>
+        <div class="pathcard"><span class="pth">Rahul ─═ (partner)</span><div class="res"><b>Pati / Patni</b><span class="how">confirmed directly</span></div></div>
+        <div class="pathcard"><span class="pth">Rahul ─═ ↑ (partner's parent)</span><div class="res"><b>Sasra / Sasu</b><span class="how">auto</span></div></div>
+      </div>
+      <div class="caption">One confirmed link ("Dinesh is my father") unlocks dada, kaka and the mother suggestion — three relatives for one tap.</div>
+    </div>
+  </div>
+
+  <!-- 6. IN THE APP -->
+  <div class="xsec">
+    <div class="xh"><div class="num">6</div><div><h2>What you see in the app</h2><small>three key moments</small></div></div>
+    <div class="phonerow">
+      <div>
+        <div class="miniphone">
+          <div class="mstatus"><span>9:41</span><span>▂▄▆ 🔋</span></div>
+          <div class="mbody">
+            <div class="mtitle">Add your father</div>
+            <div class="field"><input type="text" value="Dinesh Parekh" style="min-height:38px;font-size:13px;"></div>
+            <div class="cand" style="margin-top:10px;">
+              <div class="cn">Dinesh Parikh <span class="pill ok">★ Strong 82</span></div>
+              <div class="cm">Gandhinagar · age 55–60 · teacher</div>
+              <div class="btnrow"><div class="mbtn p">Yes, that's him</div><div class="mbtn o">Not him</div></div>
+            </div>
+            <div class="cand" style="opacity:.7;">
+              <div class="cn">Dinesh Prajapati <span class="pill neutral">Possible 54</span></div>
+              <div class="cm">Ahmedabad · age 50–55</div>
+            </div>
+            <div class="btnrow" style="margin-top:10px;"><div class="mbtn o" style="flex:2;">＋ Not in the app yet — invite</div></div>
+          </div>
+        </div>
+        <div class="caption">① Suggestion sheet while typing</div>
+      </div>
+      <div>
+        <div class="miniphone">
+          <div class="mstatus"><span>9:41</span><span>▂▄▆ 🔋</span></div>
+          <div class="mbody">
+            <div class="mtitle">Inbox · for Dinesh</div>
+            <div class="cand" style="border-left:4px solid var(--primary);">
+              <div class="cn">Rahul Parekh</div>
+              <div class="cm">"Rahul says you are his father."</div>
+              <div class="btnrow"><div class="mbtn p">Confirm</div><div class="mbtn o">Not me</div></div>
+            </div>
+            <div class="mtitle" style="margin-top:14px;">Rahul's side, meanwhile</div>
+            <div class="cand">
+              <div class="cn" style="font-size:12px;color:var(--text-2);">⏳ Waiting for Dinesh to confirm</div>
+              <div class="btnrow"><div class="mbtn o">Resend</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="caption">② Both sides confirm — never one</div>
+      </div>
+      <div>
+        <div class="miniphone">
+          <div class="mstatus"><span>9:41</span><span>▂▄▆ 🔋</span></div>
+          <div class="mbody">
+            <div class="mtitle">Your family</div>
+            <div class="cand"><div class="cn">👤 Parents</div><div class="cm">Dinesh ✔ · Meena ✔</div></div>
+            <div class="cand"><div class="cn">👥 Siblings</div><div class="cm">Jay (auto)</div></div>
+            <div class="cand"><div class="cn">👴 Uncles · Grandparents</div><div class="cm">Mahesh kaka · Grandpa dada (auto)</div></div>
+            <div class="cand" style="border:1.5px dashed var(--border-strong);"><div class="cn" style="color:var(--text-2);">＋ Add spouse / children</div></div>
+          </div>
+        </div>
+        <div class="caption">③ Family tab — confirmed + auto-derived</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. SAFETY -->
+  <div class="xsec">
+    <div class="xh"><div class="num">7</div><div><h2>The three safety rules</h2><small>the only rules that matter</small></div></div>
+    <div class="rulerow">
+      <div class="rulecard"><b>Two Yes votes, always</b><p>No link is ever created from one side. Pending → Confirmed needs both people to tap yes.</p></div>
+      <div class="rulecard"><b>Wrong guesses are remembered</b><p>"Not him" is stored — that person is never suggested to you for that relation again.</p></div>
+      <div class="rulecard"><b>Fights go to a human</b><p>Two claims on the same person → Disputed → the city Sub-Admin decides. The app never judges family disputes.</p></div>
+    </div>
+  </div>
+
+  <div class="xfoot">Goswami Parivaar · Family Linking — concept explainer · matches the app's design system · full UI screens &amp; database migrations follow once approved</div>
+</div>
+</body>
+</html>
