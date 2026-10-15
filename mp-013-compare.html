@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MP-013 · Compare — Goswami Parivaar UI</title>
+<link rel="stylesheet" href="design-tokens.css">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .cmp { display: grid; grid-template-columns: 104px 1fr 1fr; gap: 0; border: 1px solid var(--border); border-radius: var(--r-lg); overflow: hidden; background: var(--surface); box-shadow: var(--shadow-1); font-size: 12px; }
+  .cmp > div { padding: 10px 8px; border-bottom: 1px solid var(--border); display: flex; align-items: center; }
+  .cmp > div:nth-child(3n+1) { background: var(--surface-2); font-weight: 700; color: var(--text-2); font-size: 11px; text-transform: uppercase; letter-spacing: .04em; }
+  .cmp > div:nth-last-child(-n+3) { border-bottom: none; }
+  .cmp .cimg { height: 56px; border-radius: 9px; color: #fff; font-size: 8px; font-weight: 800; justify-content: center; }
+  .cmp .cbest { background: var(--verified-bg); color: var(--verified); font-weight: 800; }
+  .cmp .cname { font-weight: 700; line-height: 15px; }
+</style>
+</head>
+<body>
+<div class="doc">
+  <div class="doc-header">
+    <div class="kicker">Marketplace · business-linked e-commerce</div>
+    <h1>MP-013 · Compare Products</h1>
+    <div class="fr-chips"><span>FR-MKT-07</span><span>FR-MKT-08</span></div>
+  </div>
+
+  <details class="annot" open>
+    <summary>MP-013 · side-by-side comparison (2–3 products)</summary>
+    <table>
+      <tr><th>Role / entry</th><td>Guest or member · compare tray → Compare</td></tr>
+      <tr><th>Primary action</th><td>Open a compared product · remove from compare · clear all</td></tr>
+      <tr><th>Rules</th><td>Lowest price cell is highlighted (green "best"). Attribute rows: price, category, business, city, availability, highlights. Tray selection persists across browsing (FR-MKT-08).</td></tr>
+    </table>
+  </details>
+
+  <div class="row">
+    <div class="frame-block">
+      <div class="frame-label">Default <small>· 2 products compared</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+          <div class="appbar">
+            <a class="iconbtn" href="mp-011-product-list.html"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <div class="title">Compare</div>
+            <a class="btn-text" style="font-size:13px;font-weight:700;">Clear all</a>
+          </div>
+
+          <div style="padding:12px 16px 4px;">
+            <div class="cmp">
+              <div>&nbsp;</div>
+              <div class="cimg" style="background:linear-gradient(135deg,#B4622A,#8F3E0D);">DIYA SET</div>
+              <div class="cimg" style="background:linear-gradient(135deg,#34618E,#22415F);">TORAN</div>
+
+              <div>Product</div>
+              <div class="cname">Brass Diya Set (6 pc)<br><span style="font-size:10px;color:var(--text-3);font-weight:500;">RG Handicrafts</span></div>
+              <div class="cname">Wooden Bead Toran<br><span style="font-size:10px;color:var(--text-3);font-weight:500;">RG Handicrafts</span></div>
+
+              <div>Price</div>
+              <div>₹450 <span class="pill ok" style="margin-left:4px;padding:2px 7px;">lowest</span></div>
+              <div>₹300 <span class="pill ok" style="margin-left:4px;padding:2px 7px;">lowest</span></div>
+
+              <div>Category</div>
+              <div>Home &amp; Puja</div>
+              <div>Home &amp; Puja</div>
+
+              <div>City</div>
+              <div>Ahmedabad</div>
+              <div>Ahmedabad</div>
+
+              <div>Availability</div>
+              <div>In stock</div>
+              <div>In stock</div>
+
+              <div>Highlights</div>
+              <div style="display:block;line-height:17px;">• Set of 6<br>• Cotton wicks incl.<br>• 3-pc variant on request</div>
+              <div style="display:block;line-height:17px;">• 90 cm length<br>• Mango-wood beads<br>• 2 colour options</div>
+
+              <div>&nbsp;</div>
+              <div><a class="btn btn-primary btn-sm" style="width:100%;">View</a></div>
+              <div><a class="btn btn-primary btn-sm" style="width:100%;">View</a></div>
+            </div>
+          </div>
+
+          <div style="padding:14px 16px 24px;">
+            <div class="card flat" style="display:flex;align-items:center;gap:10px;padding:11px 14px;">
+              <span style="width:30px;height:30px;border-radius:9px;border:1.5px dashed var(--border-strong);color:var(--text-3);display:flex;align-items:center;justify-content:center;flex:none;"><svg class="ic xs" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+              <span class="subtle" style="font-size:12px;flex:1;">Add a third product to compare (1 slot left)</span>
+              <a class="btn-text" style="font-size:12px;font-weight:700;" href="mp-011-product-list.html">Browse</a>
+            </div>
+            <div class="subtle" style="font-size:11px;margin-top:10px;text-align:center;">Comparison is for shopping help only — prices are set by businesses and verified at enquiry time.</div>
+          </div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-footer">Goswami Parivaar · Marketplace module · comparison is client-side, no extra data tables</div>
+</div>
+<script src="proto.js"></script>
+</body>
+</html>

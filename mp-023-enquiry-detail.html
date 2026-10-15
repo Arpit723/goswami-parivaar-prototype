@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GP-045 · Enquiry Detail — Goswami Parivaar UI</title>
+<title>MP-023 · Enquiry Detail (Business) — Goswami Parivaar UI</title>
 <link rel="stylesheet" href="design-tokens.css">
 <link rel="stylesheet" href="styles.css">
 <style>
@@ -13,18 +13,18 @@
 <body>
 <div class="doc">
   <div class="doc-header">
-    <div class="kicker">Phase 3 · E-Commerce</div>
-    <h1>GP-045 · Enquiry Detail (Seller)</h1>
-    <div class="fr-chips"><span>FR-COM-03</span><span>FR-PRO-02 (visibility)</span></div>
+    <div class="kicker">Marketplace · business console</div>
+    <h1>MP-023 · Enquiry Detail &amp; Reply (Business)</h1>
+    <div class="fr-chips"><span>FR-MKT-17</span><span>FR-MKT-13</span></div>
   </div>
 
   <details class="annot" open>
-    <summary>GP-045 · Enquiry detail — buyer profile + consent-gated contact</summary>
+    <summary>MP-023 · enquiry detail — buyer profile + consent-gated contact + reply</summary>
     <table>
-      <tr><th>Role / entry</th><td>Seller · Enquiries list row</td></tr>
-      <tr><th>Primary action</th><td>Reply (goes to buyer's Inbox) · share own phone · close enquiry</td></tr>
-      <tr><th>Rules</th><td>Buyer contact shown ONLY if buyer consented on enquiry (FR-COM-03). Seller may share their own number in the reply. Both sides see a plain record, not a chat thread.</td></tr>
-      <tr><th>Key states</th><td>Contact shared (shown) · contact withheld (phone row shows lock + "Meera chose not to share her number")</td></tr>
+      <tr><th>Role / entry</th><td>Business staff · MP-022 row</td></tr>
+      <tr><th>Primary action</th><td>Reply (goes to buyer's Inbox) · optionally include business phone · close enquiry</td></tr>
+      <tr><th>Rules</th><td>Buyer contact shown ONLY if they consented (scope principle 2). Staff see buyer's public profile (name, city, member-since). Both sides keep a plain record — no chat thread.</td></tr>
+      <tr><th>Key states</th><td>Contact shared (shown) · contact withheld (lock row: "Meera chose not to share her number")</td></tr>
     </table>
   </details>
 
@@ -77,11 +77,11 @@
           <div style="padding:18px 16px 20px;">
             <div class="field">
               <label>Your reply <small>· sent to Meera's Inbox</small></label>
-              <textarea placeholder="Yes, the 3 pc set is available for ₹260…">Yes, the 3 pc set is available for ₹260. Ready by Friday — Bapunagar pickup works, or I can send via a community member travelling that side.</textarea>
+              <textarea>Yes, the 3 pc set is available for ₹260. Ready by Friday — Bapunagar pickup works, or I can send via a community member travelling that side.</textarea>
             </div>
             <div class="checkrow" style="margin-top:12px;">
               <span class="cbox"></span>
-              <span style="font-size:12.5px;line-height:17px;color:var(--text-2);">Include my phone number in the reply</span>
+              <span style="font-size:12.5px;line-height:17px;color:var(--text-2);">Include the business phone number in the reply</span>
             </div>
           </div>
         </div>
@@ -94,7 +94,7 @@
     </div>
   </div>
 
-  <div class="doc-footer">Goswami Parivaar · MVP UI design · Phase 3 · Send reply → snackbar "Reply sent — Meera will get it in her Inbox" + status becomes Replied</div>
+  <div class="doc-footer">Goswami Parivaar · Marketplace module · Send reply → snackbar "Reply sent — Meera will get it in her Inbox" + status becomes Replied</div>
 </div>
 <script src="proto.js"></script>
 </body>

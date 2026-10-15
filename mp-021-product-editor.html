@@ -3,31 +3,31 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GP-042 · Add Product — Goswami Parivaar UI</title>
+<title>MP-021 · Product Editor — Goswami Parivaar UI</title>
 <link rel="stylesheet" href="design-tokens.css">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <div class="doc">
   <div class="doc-header">
-    <div class="kicker">Phase 3 · E-Commerce</div>
-    <h1>GP-042 · Add / Edit Product</h1>
-    <div class="fr-chips"><span>FR-COM-01</span><span>FR-COM-04</span><span>FR-COM-05</span></div>
+    <div class="kicker">Marketplace · business console</div>
+    <h1>MP-021 · Product Editor (Add / Edit)</h1>
+    <div class="fr-chips"><span>FR-MKT-15</span><span>FR-MKT-16</span></div>
   </div>
 
   <details class="annot" open>
-    <summary>GP-042 · Add product (seller)</summary>
+    <summary>MP-021 · add or edit a product</summary>
     <table>
-      <tr><th>Role / entry</th><td>Verified member · Marketplace → Add Product tab (creates shop profile on first listing)</td></tr>
-      <tr><th>Primary action</th><td>Publish listing → moderation queue → visible after admin approval (FR-COM-05)</td></tr>
-      <tr><th>Fields</th><td>Up to 6 photos · title · category · price · description · stock status · city</td></tr>
-      <tr><th>Rules</th><td>Draft autosaves. Sellers manage listings later (edit / mark sold / delete — FR-COM-04). No payment fields anywhere.</td></tr>
+      <tr><th>Role / entry</th><td>Business staff · MP-020 → + Add / Edit</td></tr>
+      <tr><th>Primary action</th><td>Submit listing → admin approval queue (never straight to public)</td></tr>
+      <tr><th>Fields</th><td>≤6 photos · title · category (admin-managed list) · price (display only) · description · stock status · city</td></tr>
+      <tr><th>Rules</th><td>First photo = cover. Draft autosaves. Edits to a live product re-enter review. No payment fields anywhere by design.</td></tr>
     </table>
   </details>
 
   <div class="row">
     <div class="frame-block">
-      <div class="frame-label">Default <small>· form + photo picker</small></div>
+      <div class="frame-label">Default <small>· form + photo grid</small></div>
       <div class="phone">
         <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
         <div class="content">
@@ -39,7 +39,7 @@
 
           <div style="padding:14px 24px 34px;display:flex;flex-direction:column;gap:16px;">
             <div>
-              <div class="overline" style="margin-bottom:8px;">Photos <small style="text-transform:none;letter-spacing:0;">· up to 6</small></div>
+              <div class="overline" style="margin-bottom:8px;">Photos <small style="text-transform:none;letter-spacing:0;">· up to 6, first is cover</small></div>
               <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
                 <div style="aspect-ratio:1;border-radius:12px;background:linear-gradient(135deg,#B4622A,#8F3E0D);position:relative;overflow:hidden;"><span style="position:absolute;top:6px;right:6px;width:20px;height:20px;border-radius:99px;background:rgba(0,0,0,.4);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;">✕</span></div>
                 <div style="aspect-ratio:1;border-radius:12px;background:linear-gradient(135deg,#C4783A,#9A5518);position:relative;overflow:hidden;"><span style="position:absolute;top:6px;right:6px;width:20px;height:20px;border-radius:99px;background:rgba(0,0,0,.4);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;">✕</span></div>
@@ -48,7 +48,7 @@
                   <span style="font-size:10.5px;font-weight:700;">Add photo</span>
                 </div>
               </div>
-              <div class="helper" style="margin-top:8px;">First photo is the cover · JPG/PNG · max 5 MB each</div>
+              <div class="helper" style="margin-top:8px;">JPG/PNG · max 5 MB each · real product photos only</div>
             </div>
 
             <div class="field">
@@ -59,11 +59,12 @@
             <div class="field">
               <label>Category</label>
               <div class="input" style="display:flex;justify-content:space-between;align-items:center;"><span>Home &amp; Puja</span><svg class="ic xs" style="color:var(--text-3);" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+              <div class="helper">Categories are managed by admins (FR-MKT-20)</div>
             </div>
 
             <div style="display:flex;gap:10px;">
               <div class="field" style="flex:1;">
-                <label>Price (₹)</label>
+                <label>Price (₹) <small>· display only</small></label>
                 <input type="text" value="450" class="mono">
               </div>
               <div class="field" style="flex:1;">
@@ -74,7 +75,7 @@
 
             <div class="field">
               <label>Description</label>
-              <textarea>Set of 6 handcrafted brass diyas from Morbi artisans. Polished finish, cotton wicks included. Ideal for Diwali and daily puja.</textarea>
+              <textarea>Set of 6 handcrafted brass diyas from Morbi artisans. Polished finish, cotton wicks included. Ideal for Diwali and daily puja. 3-piece variant available on request.</textarea>
             </div>
 
             <div class="field">
@@ -84,10 +85,10 @@
 
             <div class="banner info">
               <svg class="ic sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-              <div>Listings appear after a quick admin review (usually 24 h). Buyers pay you directly — the app never handles money.</div>
+              <div>Listings appear after a quick admin review (usually 24 h). Buyers enquire directly — the app never handles money, so there are no payment fields here.</div>
             </div>
 
-            <button class="btn btn-primary btn-block">Submit listing</button>
+            <button class="btn btn-primary btn-block">Submit for approval</button>
           </div>
         </div>
         <div class="homebar"></div>
@@ -95,7 +96,7 @@
     </div>
   </div>
 
-  <div class="doc-footer">Goswami Parivaar · MVP UI design · Phase 3 · First-time sellers also set a shop name here ("RG Handicrafts")</div>
+  <div class="doc-footer">Goswami Parivaar · Marketplace module · editing a live product: banner "Changes re-enter admin review; current listing stays visible meanwhile"</div>
 </div>
 <script src="proto.js"></script>
 </body>

@@ -3,52 +3,52 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GP-043 · My Shop — Goswami Parivaar UI</title>
+<title>MP-020 · Product Catalog Manager — Goswami Parivaar UI</title>
 <link rel="stylesheet" href="design-tokens.css">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <div class="doc">
   <div class="doc-header">
-    <div class="kicker">Phase 3 · E-Commerce</div>
-    <h1>GP-043 · My Shop — Listings Management</h1>
-    <div class="fr-chips"><span>FR-COM-04</span><span>FR-COM-05</span></div>
+    <div class="kicker">Marketplace · business console</div>
+    <h1>MP-020 · Product Catalog Manager (Business)</h1>
+    <div class="fr-chips"><span>FR-MKT-14</span><span>FR-MKT-16</span></div>
   </div>
 
   <details class="annot" open>
-    <summary>GP-043 · My shop (seller view)</summary>
+    <summary>MP-020 · business product catalog — live / pending / sold states</summary>
     <table>
-      <tr><th>Role / entry</th><td>Seller · Marketplace → My Shop tab</td></tr>
-      <tr><th>Primary action</th><td>Edit listing · mark sold · delete · open enquiries</td></tr>
-      <tr><th>Rules</th><td>Shows all own listings with their moderation state (pending / live / rejected). Marking sold hides from browse but keeps the record. Deleting a listing never erases past enquiries.</td></tr>
-      <tr><th>Key states</th><td>Live · pending review · sold (all shown)</td></tr>
+      <tr><th>Role / entry</th><td>Business owner/staff (Business module roles) · Business console → Marketplace</td></tr>
+      <tr><th>Primary action</th><td>Add product (MP-021) · edit · mark sold / out of stock · open enquiries (MP-022)</td></tr>
+      <tr><th>Rules</th><td>New and edited listings go to admin approval before going public (FR-MKT-16). Staff can manage listings per their business role; only owners change business settings (Business module).</td></tr>
+      <tr><th>Key states</th><td>Live · In review · Sold/Out of stock (shown) · Rejected (admin reason + fix &amp; resubmit)</td></tr>
     </table>
   </details>
 
   <div class="row">
     <div class="frame-block">
-      <div class="frame-label">Default <small>· 4 listings</small></div>
+      <div class="frame-label">Default <small>· 4 products</small></div>
       <div class="phone">
         <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
         <div class="content">
           <div class="appbar">
             <a class="iconbtn"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
-            <div class="title">My shop</div>
-            <a class="btn-text" style="font-size:14px;font-weight:700;">+ Add</a>
-          </div>
-          <div class="chiprow" style="padding-bottom:10px;">
-            <span class="chip">Browse</span><span class="chip active">My Shop</span><span class="chip">Add Product</span><span class="chip">Enquiries</span>
+            <div class="title">Products</div>
+            <a class="btn-text" style="font-size:14px;font-weight:700;" href="mp-021-product-editor.html">+ Add</a>
           </div>
 
           <div style="padding:0 16px 12px;">
             <div class="card flat" style="display:flex;align-items:center;gap:12px;">
               <span class="avatar sq" style="background:var(--primary-tint);color:var(--primary-hover);">RH</span>
               <div style="flex:1;">
-                <div style="font-size:15px;font-weight:700;">RG Handicrafts</div>
-                <div class="subtle" style="font-size:12px;">Bapunagar, Ahmedabad · 4 listings · 12 sales · 4.8 ★</div>
+                <div style="font-size:15px;font-weight:700;">RG Handicrafts <span class="vbadge" style="padding:2px 8px;">Verified</span></div>
+                <div class="subtle" style="font-size:12px;margin-top:2px;">Bapunagar, Ahmedabad · 4 products · 12 sales this month</div>
               </div>
-              <button class="btn btn-outline btn-sm">Edit shop</button>
             </div>
+          </div>
+
+          <div class="chiprow">
+            <span class="chip active">All (4)</span><span class="chip">Live (2)</span><span class="chip">In review (1)</span><span class="chip">Sold (1)</span>
           </div>
 
           <div class="list" style="margin:0 16px 16px;">
@@ -61,7 +61,7 @@
               <a class="iconbtn" style="min-width:40px;min-height:40px;color:var(--text-3);"><svg class="ic sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg></a>
             </div>
             <div class="li">
-              <span style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#2E7D46,#1D5C30);flex:none;"></span>
+              <span style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#34618E,#22415F);flex:none;"></span>
               <div class="lmain">
                 <div class="lt">Wooden Bead Toran <span class="pill ok">Live</span></div>
                 <div class="ls">₹300 · 1 enquiry · 28 views</div>
@@ -69,7 +69,7 @@
               <a class="iconbtn" style="min-width:40px;min-height:40px;color:var(--text-3);"><svg class="ic sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg></a>
             </div>
             <div class="li">
-              <span style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#C4783A,#9A5518);flex:none;opacity:.7;"></span>
+              <span style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#2E7D46,#1D5C30);flex:none;opacity:.7;"></span>
               <div class="lmain">
                 <div class="lt">Copper Pooja Thali <span class="pill warn">In review</span></div>
                 <div class="ls">₹860 · submitted yesterday · admin reviewing</div>
@@ -87,9 +87,12 @@
           </div>
 
           <div style="padding:0 16px 24px;">
-            <div class="card flat" style="padding:12px 14px;display:flex;gap:10px;align-items:flex-start;">
-              <svg class="ic sm" style="color:var(--text-3);margin-top:2px;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-              <span class="subtle" style="font-size:12.5px;line-height:18px;">Listing menu: Edit · Mark sold · Delete. Rejected listings show the admin's reason and a "Fix &amp; resubmit" action.</span>
+            <div style="display:flex;gap:10px;">
+              <button class="btn btn-plain" style="flex:1;">
+                <svg class="ic sm" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></svg>
+                Enquiries (3)
+              </button>
+              <button class="btn btn-tonal" style="flex:1;" onclick="location.href='mp-021-product-editor.html'">+ Add product</button>
             </div>
           </div>
         </div>
@@ -98,7 +101,7 @@
     </div>
   </div>
 
-  <div class="doc-footer">Goswami Parivaar · MVP UI design · Phase 3</div>
+  <div class="doc-footer">Goswami Parivaar · Marketplace module · product menu: Edit · Mark sold · Mark out of stock · Delete</div>
 </div>
 <script src="proto.js"></script>
 </body>

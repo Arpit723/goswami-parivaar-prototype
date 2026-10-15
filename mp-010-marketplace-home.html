@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MP-010 · Marketplace Home — Goswami Parivaar UI</title>
+<link rel="stylesheet" href="design-tokens.css">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .catgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 0 16px; }
+  .catcard { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 12px 8px; text-align: center; text-decoration: none; color: var(--text); box-shadow: var(--shadow-1); }
+  .catcard .ci { width: 38px; height: 38px; border-radius: 12px; margin: 0 auto 7px; display: flex; align-items: center; justify-content: center; }
+  .catcard .cn { font-size: 11.5px; font-weight: 700; line-height: 14px; }
+  .catcard .cc { font-size: 10px; color: var(--text-3); margin-top: 2px; }
+  .hrow { display: flex; gap: 12px; overflow-x: auto; padding: 4px 16px 8px; scrollbar-width: none; }
+  .hrow::-webkit-scrollbar { display: none; }
+  .hcard { flex: none; width: 132px; }
+  .hcard .himg { height: 96px; border-radius: 13px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 10px; font-weight: 800; letter-spacing: .04em; }
+  .hcard .hname { font-size: 12px; font-weight: 700; margin-top: 6px; line-height: 15px; }
+  .hcard .hprice { font-size: 12.5px; font-weight: 800; color: var(--primary-hover); margin-top: 2px; }
+</style>
+</head>
+<body>
+<div class="doc">
+  <div class="doc-header">
+    <div class="kicker">Marketplace · business-linked e-commerce</div>
+    <h1>MP-010 · Marketplace Home</h1>
+    <div class="fr-chips"><span>FR-MKT-01</span><span>FR-MKT-02</span><span>FR-MKT-05</span></div>
+  </div>
+
+  <details class="annot" open>
+    <summary>MP-010 · Marketplace home (guest-capable)</summary>
+    <table>
+      <tr><th>Role / entry</th><td>Member · Home → Marketplace tile · <b>Guests: browse freely, no login (FR-MKT-02)</b></td></tr>
+      <tr><th>Primary action</th><td>Open category · open product · compare later in list view (MP-011)</td></tr>
+      <tr><th>Rules</th><td>Everything shown is admin-approved and public. Sign-in is requested only when the guest tries to enquire (MP-014 gate).</td></tr>
+      <tr><th>Next screens</th><td>MP-011 list · MP-012 detail · GP-003 login (guest)</td></tr>
+      <tr><th>Key states</th><td>Member view (shown) · guest view (variant: browsing banner)</td></tr>
+    </table>
+  </details>
+
+  <div class="row">
+    <div class="frame-block">
+      <div class="frame-label">Member view</div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+          <div class="appbar">
+            <a class="iconbtn"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <div class="title">Marketplace</div>
+            <span class="citychip"><svg class="ic xs" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>Ahmedabad</span>
+          </div>
+
+          <div class="pad-h" style="padding-top:10px;">
+            <div class="field">
+              <div class="input" style="display:flex;align-items:center;gap:10px;color:var(--text-2);">
+                <svg class="ic sm" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                Search products, businesses…
+              </div>
+            </div>
+          </div>
+
+          <div class="section-h"><h2>Categories</h2><a href="mp-011-product-list.html">See all</a></div>
+          <div class="catgrid">
+            <a class="catcard" href="mp-011-product-list.html"><span class="ci" style="background:var(--primary-tint);color:var(--primary);"><svg class="ic sm" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span><span class="cn">Home &amp; Puja</span><span class="cc">64 items</span></a>
+            <a class="catcard" href="mp-011-product-list.html"><span class="ci" style="background:var(--matrimony-bg);color:var(--matrimony);"><svg class="ic sm" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg></span><span class="cn">Clothing</span><span class="cc">51 items</span></a>
+            <a class="catcard" href="mp-011-product-list.html"><span class="ci" style="background:var(--verified-bg);color:var(--verified);"><svg class="ic sm" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span><span class="cn">Food &amp; Pickles</span><span class="cc">38 items</span></a>
+            <a class="catcard" href="mp-011-product-list.html"><span class="ci" style="background:var(--warning-bg);color:var(--warning);"><svg class="ic sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg></span><span class="cn">Jewellery</span><span class="cc">19 items</span></a>
+            <a class="catcard" href="mp-011-product-list.html"><span class="ci" style="background:var(--info-bg);color:var(--info);"><svg class="ic sm" viewBox="0 0 24 24"><path d="M14.7 6.3a5 5 0 0 0-7 7L3 18v3h3l4.7-4.7a5 5 0 0 0 7-7Z"/></svg></span><span class="cn">Handicrafts</span><span class="cc">44 items</span></a>
+            <a class="catcard" href="mp-011-product-list.html"><span class="ci" style="background:var(--surface-2);color:var(--text-2);"><svg class="ic sm" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span><span class="cn">Electronics</span><span class="cc">12 items</span></a>
+          </div>
+
+          <div class="section-h"><h2>New arrivals</h2><a href="mp-011-product-list.html">See all</a></div>
+          <div class="hrow">
+            <a class="hcard" href="mp-012-product-detail.html">
+              <div class="himg" style="background:linear-gradient(135deg,#B4622A,#8F3E0D);">BRASS DIYA SET</div>
+              <div class="hname">Brass Diya Set (6 pc)</div>
+              <div class="hprice">₹450</div>
+            </a>
+            <a class="hcard" href="mp-012-product-detail.html">
+              <div class="himg" style="background:linear-gradient(135deg,#8C3B6E,#5E2450);">PATOLA DUPATTA</div>
+              <div class="hname">Patola Silk Dupatta</div>
+              <div class="hprice">₹1,250</div>
+            </a>
+            <a class="hcard" href="mp-012-product-detail.html">
+              <div class="himg" style="background:linear-gradient(135deg,#2E7D46,#1D5C30);">MANGO CHUNDA</div>
+              <div class="hname">Gujarati Mango Chunda</div>
+              <div class="hprice">₹180</div>
+            </a>
+            <a class="hcard" href="mp-012-product-detail.html">
+              <div class="himg" style="background:linear-gradient(135deg,#34618E,#22415F);">TORAN</div>
+              <div class="hname">Wooden Bead Toran</div>
+              <div class="hprice">₹300</div>
+            </a>
+          </div>
+
+          <div class="section-h"><h2>Featured businesses</h2></div>
+          <div style="padding:0 16px 24px;">
+            <div class="list">
+              <a class="li">
+                <span class="avatar sq" style="background:var(--primary-tint);color:var(--primary-hover);">RH</span>
+                <div class="lmain"><div class="lt">RG Handicrafts <span class="vbadge" style="padding:2px 8px;">Verified</span></div><div class="ls">Home &amp; Puja · Bapunagar · 9 products</div></div>
+                <svg class="ic sm" style="color:var(--text-3);" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+              </a>
+              <a class="li">
+                <span class="avatar sq" style="background:var(--matrimony-bg);color:var(--matrimony);">MC</span>
+                <div class="lmain"><div class="lt">Meera's Collection <span class="vbadge" style="padding:2px 8px;">Verified</span></div><div class="ls">Clothing · Maninagar · 14 products</div></div>
+                <svg class="ic sm" style="color:var(--text-3);" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+              </a>
+            </div>
+            <div class="subtle" style="font-size:11px;text-align:center;margin-top:10px;">Business storefronts are managed by the Business module</div>
+          </div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+
+    <div class="frame-block">
+      <div class="frame-label">Guest view <small>· browsing as visitor</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+          <div class="appbar">
+            <a class="iconbtn"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <div class="title">Marketplace</div>
+            <span class="citychip">Ahmedabad</span>
+          </div>
+
+          <div style="padding:10px 16px 0;">
+            <div class="banner info">
+              <svg class="ic sm" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <div><b>Browsing as visitor.</b>You can browse and compare freely — <a href="gp-003-login.html" style="font-weight:700;text-decoration:none;color:var(--info);">sign in</a> only when you want to enquire.</div>
+            </div>
+          </div>
+
+          <div class="pad-h" style="padding-top:10px;">
+            <div class="field">
+              <div class="input" style="display:flex;align-items:center;gap:10px;color:var(--text-2);">
+                <svg class="ic sm" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                Search products, businesses…
+              </div>
+            </div>
+          </div>
+
+          <div class="section-h"><h2>Categories</h2></div>
+          <div class="catgrid">
+            <a class="catcard" href="mp-011-product-list.html"><span class="ci" style="background:var(--primary-tint);color:var(--primary);"><svg class="ic sm" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span><span class="cn">Home &amp; Puja</span><span class="cc">64</span></a>
+            <a class="catcard" href="mp-011-product-list.html"><span class="ci" style="background:var(--matrimony-bg);color:var(--matrimony);"><svg class="ic sm" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg></span><span class="cn">Clothing</span><span class="cc">51</span></a>
+            <a class="catcard" href="mp-011-product-list.html"><span class="ci" style="background:var(--verified-bg);color:var(--verified);"><svg class="ic sm" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span><span class="cn">Food</span><span class="cc">38</span></a>
+          </div>
+
+          <div class="section-h"><h2>New arrivals</h2></div>
+          <div class="hrow">
+            <a class="hcard" href="mp-012-product-detail.html">
+              <div class="himg" style="background:linear-gradient(135deg,#B4622A,#8F3E0D);">BRASS DIYA SET</div>
+              <div class="hname">Brass Diya Set (6 pc)</div>
+              <div class="hprice">₹450</div>
+            </a>
+            <a class="hcard" href="mp-012-product-detail.html">
+              <div class="himg" style="background:linear-gradient(135deg,#8C3B6E,#5E2450);">PATOLA DUPATTA</div>
+              <div class="hname">Patola Silk Dupatta</div>
+              <div class="hprice">₹1,250</div>
+            </a>
+          </div>
+          <div style="height:16px;"></div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-footer">Goswami Parivaar · Marketplace module · scope: docs/scope-marketplace.md</div>
+</div>
+<script src="proto.js"></script>
+</body>
+</html>

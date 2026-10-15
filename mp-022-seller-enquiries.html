@@ -3,24 +3,24 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GP-044 · Seller Enquiries — Goswami Parivaar UI</title>
+<title>MP-022 · Enquiries Inbox (Business) — Goswami Parivaar UI</title>
 <link rel="stylesheet" href="design-tokens.css">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <div class="doc">
   <div class="doc-header">
-    <div class="kicker">Phase 3 · E-Commerce</div>
-    <h1>GP-044 · Seller Enquiries Inbox</h1>
-    <div class="fr-chips"><span>FR-COM-03</span></div>
+    <div class="kicker">Marketplace · business console</div>
+    <h1>MP-022 · Enquiries Inbox (Business)</h1>
+    <div class="fr-chips"><span>FR-MKT-17</span></div>
   </div>
 
   <details class="annot" open>
-    <summary>GP-044 · Seller enquiries (module tab 4)</summary>
+    <summary>MP-022 · business enquiries inbox</summary>
     <table>
-      <tr><th>Role / entry</th><td>Seller · Marketplace → Enquiries tab; new enquiry also notifies via Inbox + push</td></tr>
-      <tr><th>Primary action</th><td>Open enquiry (GP-045) — buyer's profile + message; contact revealed only if buyer consented</td></tr>
-      <tr><th>Rules</th><td>Enquiry states: New → Replied → Closed. Seller response goes to the buyer's Inbox. No chat — each side sends enquiry/reply records.</td></tr>
+      <tr><th>Role / entry</th><td>Business staff · MP-020 → Enquiries (new enquiry also notifies via Inbox + push)</td></tr>
+      <tr><th>Primary action</th><td>Open enquiry (MP-023) — buyer profile + message; contact revealed only if the buyer consented</td></tr>
+      <tr><th>Rules</th><td>One thread per buyer per product. Statuses: New → Replied → Closed. Business reply goes to the buyer's Inbox; no live chat.</td></tr>
       <tr><th>Key states</th><td>Loaded (shown) · empty ("No enquiries yet — they arrive when a member taps Enquire")</td></tr>
     </table>
   </details>
@@ -36,8 +36,8 @@
             <div class="title">Enquiries</div>
             <span class="pill neutral">1 new</span>
           </div>
-          <div class="chiprow" style="padding-bottom:10px;">
-            <span class="chip">Browse</span><span class="chip">My Shop</span><span class="chip">Add Product</span><span class="chip active">Enquiries</span>
+          <div class="chiprow">
+            <span class="chip active">All (3)</span><span class="chip">New (1)</span><span class="chip">Replied</span><span class="chip">Closed</span>
           </div>
 
           <div class="list" style="margin:0 16px 14px;">
@@ -70,7 +70,7 @@
           <div style="padding:0 16px 24px;">
             <div class="banner info">
               <svg class="ic sm" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-              <div>A buyer's phone number appears only when they chose to share it with you. Everything else stays in the community Inbox.</div>
+              <div>A buyer's phone number appears only when they chose to share it with your business. Everything else stays in the community Inbox.</div>
             </div>
           </div>
         </div>
@@ -79,7 +79,7 @@
     </div>
   </div>
 
-  <div class="doc-footer">Goswami Parivaar · MVP UI design · Phase 3</div>
+  <div class="doc-footer">Goswami Parivaar · Marketplace module</div>
 </div>
 <script src="proto.js"></script>
 </body>

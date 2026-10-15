@@ -31,7 +31,7 @@
       "Update & resubmit": "gp-007-registration-step2.html" } },
     "gp-009-home.html": {
       btn: { "Register": "gp-031-event-detail.html", "Read in Inbox": "gp-010-inbox.html", "See all": "gp-030-events-browse.html" },
-      tile: { "Jobs": "gp-020-jobs-browse.html", "Marketplace": "gp-040-marketplace-browse.html",
+      tile: { "Jobs": "gp-020-jobs-browse.html", "Marketplace": "mp-010-marketplace-home.html",
               "Matrimony": "gp-053-matrimony-browse.html", "Events": "gp-030-events-browse.html" },
       sel: { ".homehead .iconbtn": "gp-010-inbox.html" } },
     "gp-010-inbox.html": {},
@@ -39,7 +39,7 @@
       "Register": "gp-031-event-detail.html", "Block user": "gp-015-blocked-users.html" } },
     "gp-012-profile.html": { li: {
       "My job posts & applications": "gp-023-my-jobs.html",
-      "My shop": "gp-043-my-shop.html",
+      "My shop": "mp-020-catalog-manager.html",
       "Matrimony profile": "gp-054-matrimony-profile-detail.html",
       "My event registrations": "gp-033-my-registrations.html" } },
     "gp-013-edit-profile.html": { back: "gp-012-profile.html", btn: {
@@ -97,24 +97,32 @@
       btn: { "Attendees": "gp-034-attendees.html" } },
     "gp-034-attendees.html": { back: "gp-033-my-registrations.html" },
 
-    /* ---------- Phase 3 · Marketplace ---------- */
-    "gp-040-marketplace-browse.html": { back: "gp-009-home.html",
-      sel: { ".pgrid .pcard:nth-child(1)": "gp-041-product-detail.html", ".pgrid .pcard:nth-child(2)": "gp-041-product-detail.html",
-             ".pgrid .pcard:nth-child(3)": "gp-041-product-detail.html", ".pgrid .pcard:nth-child(4)": "gp-041-product-detail.html" },
-      chip: { "My Shop": "gp-043-my-shop.html", "Add Product": "gp-042-add-product.html", "Enquiries": "gp-044-seller-enquiries.html" } },
-    "gp-041-product-detail.html": { back: "gp-040-marketplace-browse.html", btn: {
-      "Enquire about this": "gp-046-buyer-enquiry.html" } },
-    "gp-042-add-product.html": { back: "gp-040-marketplace-browse.html", btn: {
-      "Submit listing": "gp-043-my-shop.html" } },
-    "gp-043-my-shop.html": { back: "gp-040-marketplace-browse.html",
-      chip: { "Browse": "gp-040-marketplace-browse.html", "Add Product": "gp-042-add-product.html", "Enquiries": "gp-044-seller-enquiries.html" },
-      btn: { "+ Add": "gp-042-add-product.html" } },
-    "gp-044-seller-enquiries.html": { back: "gp-043-my-shop.html",
-      li: { "Meera Trivedi": "gp-045-enquiry-detail.html", "Harsh Vyas": "gp-045-enquiry-detail.html",
-            "Dipak Joshi": "gp-045-enquiry-detail.html" } },
-    "gp-045-enquiry-detail.html": { back: "gp-044-seller-enquiries.html" },
-    "gp-046-buyer-enquiry.html": { back: "gp-041-product-detail.html", btn: {
-      "Send enquiry": "gp-010-inbox.html", "Back to marketplace": "gp-040-marketplace-browse.html" } },
+    /* ---------- Marketplace (business-linked, re-scoped 15 Oct) ---------- */
+    "mp-010-marketplace-home.html": { back: "gp-009-home.html",
+      sel: { ".catcard": "mp-011-product-list.html", ".hcard": "mp-012-product-detail.html" },
+      btn: { "sign in": "gp-003-login.html", "Sign in / Create account": "gp-003-login.html", "See all": "mp-011-product-list.html" } },
+    "mp-011-product-list.html": { back: "mp-010-marketplace-home.html",
+      sel: { ".pcard": "mp-012-product-detail.html" },
+      btn: { "Compare": "mp-013-compare.html", "Browse": "mp-011-product-list.html" } },
+    "mp-012-product-detail.html": { back: "mp-011-product-list.html",
+      btn: { "Enquire about this": "mp-014-enquiry-flow.html", "Compare": "mp-013-compare.html" } },
+    "mp-013-compare.html": { back: "mp-011-product-list.html",
+      btn: { "View": "mp-012-product-detail.html", "Browse": "mp-011-product-list.html", "Clear all": "mp-011-product-list.html" } },
+    "mp-014-enquiry-flow.html": { back: "mp-012-product-detail.html",
+      btn: { "Sign in / Create account": "gp-003-login.html", "Keep browsing instead": "mp-010-marketplace-home.html",
+             "Send enquiry": "mp-015-my-enquiries.html", "View my enquiries": "mp-015-my-enquiries.html",
+             "Continue browsing": "mp-011-product-list.html" } },
+    "mp-015-my-enquiries.html": { back: "mp-010-marketplace-home.html" },
+    "mp-020-catalog-manager.html": { back: "gp-009-home.html",
+      li: { "Brass Diya Set": "mp-021-product-editor.html", "Wooden Bead Toran": "mp-021-product-editor.html",
+            "Copper Pooja Thali": "mp-021-product-editor.html", "Embroidered Clutch": "mp-021-product-editor.html" },
+      btn: { "+ Add": "mp-021-product-editor.html", "Enquiries (3)": "mp-022-seller-enquiries.html", "+ Add product": "mp-021-product-editor.html" } },
+    "mp-021-product-editor.html": { back: "mp-020-catalog-manager.html",
+      btn: { "Submit for approval": "mp-020-catalog-manager.html" } },
+    "mp-022-seller-enquiries.html": { back: "mp-020-catalog-manager.html",
+      li: { "Meera Trivedi": "mp-023-enquiry-detail.html", "Harsh Vyas": "mp-023-enquiry-detail.html", "Dipak Joshi": "mp-023-enquiry-detail.html" } },
+    "mp-023-enquiry-detail.html": { back: "mp-022-seller-enquiries.html",
+      btn: { "Send reply": "mp-022-seller-enquiries.html" } },
 
     /* ---------- Phase 4 · Matrimony & calls ---------- */
     "gp-050-matrimony-intro.html": { back: "gp-009-home.html", btn: {
