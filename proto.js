@@ -115,6 +115,8 @@
              "Continue browsing": "mp-011-product-list.html" } },
     "mp-015-my-enquiries.html": { back: "mp-010-marketplace-home.html" },
     "mp-090-edge-states.html": { back: "mp-012-product-detail.html" },
+    "mp-031-review-moderation.html": { back: "mp-030-product-reviews.html",
+      btn: { "Edit my review": "mp-030-product-reviews.html" } },
     "mp-030-product-reviews.html": { back: "mp-012-product-detail.html",
       btn: { "Write a review": "mp-030-product-reviews.html", "Post review": "mp-012-product-detail.html",
              "Cancel": "mp-030-product-reviews.html", "Edit": "mp-030-product-reviews.html" } },

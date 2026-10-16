@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MP-031 · Review Moderation — Goswami Parivaar UI</title>
+<link rel="stylesheet" href="design-tokens.css">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .actionbar { flex:none; background:var(--surface); border-top:1px solid var(--border); box-shadow:var(--shadow-nav); display:flex; gap:12px; padding:12px 16px; }
+  .revcard { border-left:4px solid var(--border-strong); }
+</style>
+</head>
+<body>
+<div class="doc">
+  <div class="doc-header">
+    <div class="kicker">Marketplace · review moderation (FR-MKT-36…38)</div>
+    <h1>MP-031 · Reported Review — Moderation States</h1>
+    <div class="fr-chips"><span>FR-MKT-36 report → queue</span><span>FR-MKT-37 hide + reason</span><span>author notified</span></div>
+  </div>
+
+  <details class="annot" open>
+    <summary>MP-031 · the three moderation states — public view, admin case, author notice</summary>
+    <table>
+      <tr><th>Purpose</th><td>Completes the review trust loop: a reported review leaves public view pending admin decision; the admin keeps/hides with reason; the author is always notified.</td></tr>
+      <tr><th>Frames</th><td>① Public list after report (review hidden-pending, banner) · ② Admin case detail (Keep / Hide) · ③ Author's Inbox notice with reason</td></tr>
+      <tr><th>Rules</th><td>Hidden reviews drop from the average (FR-MKT-37) · author sees reason, never the reporter's identity · business response hides with the review · restore = back to VISIBLE + stats refresh (trigger-verified)</td></tr>
+    </table>
+  </details>
+
+  <div class="row">
+    <div class="frame-block">
+      <div class="frame-label">① After a report <small>· public list — review hidden pending review</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+          <div class="appbar">
+            <a class="iconbtn"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <div class="title">Reviews</div>
+          </div>
+          <div style="padding:12px 16px 0;">
+            <div class="banner warn">
+              <svg class="ic sm" viewBox="0 0 24 24"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              <div><b>1 review is under admin review</b> after being reported. It's temporarily hidden and doesn't count toward the rating.</div>
+            </div>
+          </div>
+
+          <div style="padding:12px 16px 0;display:flex;align-items:center;gap:14px;opacity:.85;">
+            <div style="text-align:center;">
+              <div style="font-size:28px;font-weight:800;">4.7</div>
+              <div class="stars" style="color:var(--warning);font-size:11px;letter-spacing:1px;">★★★★<span style="color:var(--border-strong);">★</span></div>
+              <div class="subtle" style="font-size:10px;">22 reviews</div>
+            </div>
+            <div class="subtle" style="font-size:11px;line-height:15px;">was 4.8 (23) — hidden review excluded while under review</div>
+          </div>
+
+          <div class="list" style="margin:12px 16px;">
+            <div class="li revcard" style="opacity:.6;background:var(--surface-2);">
+              <span class="avatar" style="width:34px;height:34px;font-size:12px;">MT</span>
+              <div class="lmain">
+                <div class="lt">Meera Trivedi <span class="pill warn">Under review</span></div>
+                <div class="ls">★★★★★ · 12 Oct · reported 14 Oct</div>
+              </div>
+            </div>
+            <div class="li">
+              <span class="avatar" style="width:34px;height:34px;font-size:12px;">HV</span>
+              <div class="lmain">
+                <div class="lt">Harsh Vyas</div>
+                <div class="ls">★★★★ · 9 Oct · "Good diyas…"</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="padding:0 16px 20px;">
+            <div class="card flat" style="padding:11px 14px;display:flex;gap:10px;">
+              <svg class="ic sm" style="color:var(--text-3);flex:none;margin-top:2px;" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><polyline points="9 12 11 14 15 10"/></svg>
+              <span class="subtle" style="font-size:12px;line-height:17px;">If the admin restores it, the rating returns to 4.8 (23). If hidden, it stays out permanently and the author is told why.</span>
+            </div>
+          </div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+
+    <div class="frame-block">
+      <div class="frame-label">② Admin case <small>· keep or hide, reason mandatory</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+          <div class="appbar">
+            <a class="iconbtn"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <div class="title">Reported review</div>
+            <span class="pill err">Open</span>
+          </div>
+
+          <div style="padding:14px 16px 0;">
+            <div class="card flat">
+              <div class="overline" style="margin-bottom:8px;">The review</div>
+              <div class="rowline" style="gap:9px;"><span class="avatar" style="width:34px;height:34px;font-size:12px;">MT</span>
+                <div><div style="font-size:13px;font-weight:700;">Meera Trivedi</div><div style="font-size:10.5px;color:var(--warning);">★★★★★ · 12 Oct</div></div></div>
+              <p style="font-size:13px;line-height:19px;margin-top:8px;">Beautiful finish, wicks included as promised. Picked up from Bapunagar — smooth experience.</p>
+              <div class="subtle" style="font-size:11px;margin-top:6px;">On: Brass Diya Set · RG Handicrafts · business response exists</div>
+            </div>
+          </div>
+
+          <div style="padding:12px 16px 0;">
+            <div class="card" style="border-left:4px solid var(--error);">
+              <div class="overline" style="color:var(--error);">Report · 14 Oct</div>
+              <div style="font-size:12.5px;line-height:18px;margin-top:5px;color:var(--text-2);"><b>Reporter:</b> Harsh Vyas (verified member)<br><b>Reason:</b> Fake review — this person is the seller's relative; no real pickup happened.</div>
+            </div>
+          </div>
+
+          <div style="padding:12px 16px 0;">
+            <div class="card flat">
+              <div class="overline" style="margin-bottom:6px;">Cross-checks</div>
+              <div class="kv" style="font-size:12px;"><span class="k">Enquiry exists</span><span class="v" style="color:var(--verified);">REPLIED · 12 Oct ✓</span></div>
+              <div class="kv" style="font-size:12px;"><span class="k">Contact-pattern scan</span><span class="v" style="color:var(--verified);">clean</span></div>
+              <div class="kv" style="font-size:12px;"><span class="k">Author history</span><span class="v">3 reviews · 0 prior reports</span></div>
+            </div>
+          </div>
+
+          <div style="padding:14px 16px 0;">
+            <div class="field">
+              <label>Decision note <small>· required when hiding; goes to the author</small></label>
+              <textarea style="min-height:52px;">Eligibility and content verified; reporter provided no evidence. Keeping the review visible.</textarea>
+            </div>
+          </div>
+        </div>
+        <div class="actionbar">
+          <button class="btn btn-plain" style="flex:1;">Hide review</button>
+          <button class="btn btn-primary" style="flex:1;">Keep visible</button>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+
+    <div class="frame-block">
+      <div class="frame-label">③ Author notified <small>· only when hidden</span></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content" style="display:flex;flex-direction:column;">
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 26px;gap:16px;text-align:center;">
+            <div class="bigico" style="background:var(--error-bg);color:var(--error);">
+              <svg class="ic lg" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
+            <div>
+              <div style="font-size:20px;font-weight:800;">Your review was hidden</div>
+              <p class="subtle" style="margin-top:8px;line-height:21px;">On <b>Brass Diya Set (6 pc)</b> · posted 12 Oct</p>
+            </div>
+            <div class="card" style="width:100%;text-align:left;border-left:4px solid var(--error);">
+              <div class="overline" style="color:var(--error);">Reason from admin</div>
+              <p style="font-size:13px;line-height:19px;margin-top:5px;">"Review content violated the community guidelines — it contained contact details, which aren't allowed in reviews."</p>
+            </div>
+            <div class="banner info" style="width:100%;">
+              <svg class="ic sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              <div>You may edit the review and resubmit it. The reporter's identity is never shared.</div>
+            </div>
+            <button class="btn btn-primary btn-block">Edit my review</button>
+          </div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-footer">Goswami Parivaar · Marketplace module · pairs with MP-030 (reviews) · FR-MKT-36…38 · admin actions audited (FR-ADM-08)</div>
+</div>
+<script src="proto.js"></script>
+</body>
+</html>
