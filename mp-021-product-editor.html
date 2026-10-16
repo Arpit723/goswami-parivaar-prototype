@@ -64,14 +64,19 @@
 
             <div style="display:flex;gap:10px;">
               <div class="field" style="flex:1;">
-                <label>Price (₹) <small>· display only</small></label>
+                <label>Original price (₹)</label>
                 <input type="text" value="450" class="mono">
+              </div>
+              <div class="field" style="flex:1;">
+                <label>Discounted price (₹) <small>· optional</small></label>
+                <div class="input mono" style="display:flex;justify-content:space-between;align-items:center;"><span>360</span><span class="pill ok" style="margin-right:6px;">20% off</span></div>
               </div>
               <div class="field" style="flex:1;">
                 <label>Stock status</label>
                 <div class="seg"><button class="active">In stock</button><button>Made to order</button></div>
               </div>
             </div>
+            <div class="helper" style="margin-top:-6px;">Discounted must be lower than original (validated) · discount truthfulness is the business's responsibility and reportable (FR-MKT-40)</div>
 
             <div class="field">
               <label>Description</label>

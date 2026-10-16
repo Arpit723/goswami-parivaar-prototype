@@ -11,47 +11,22 @@
 <div class="doc">
   <div class="doc-header">
     <div class="kicker">Marketplace · business-linked e-commerce</div>
-    <h1>MP-014 · Enquiry Flow (3 frames)</h1>
-    <div class="fr-chips"><span>FR-MKT-09</span><span>FR-MKT-10</span><span>FR-MKT-11</span></div>
+    <h1>MP-014 · Enquiry Flow (2 frames)</h1>
+    <div class="fr-chips"><span>FR-MKT-14</span><span>FR-MKT-15</span><span>FR-MKT-16 · flow pending discussion — Bhavik bhai</span></div>
   </div>
 
   <details class="annot" open>
-    <summary>MP-014 · enquiry — guest gate → compose with consent → confirmation</summary>
+    <summary>MP-014 · enquiry — compose with consent → confirmation (members only)</summary>
     <table>
-      <tr><th>Role / entry</th><td>Guest (gate) or member (compose) · product detail → Enquire</td></tr>
-      <tr><th>Primary action</th><td>Sign in first (guests) · send message + optional phone consent → business notified</td></tr>
-      <tr><th>Rules</th><td>Contact shared only via the consent switch (default off). Repeat enquiry on the same product merges into one thread (FR-MKT-11). Reply lands in buyer's Inbox (FR-MKT-13). No payments messaging mandatory.</td></tr>
+      <tr><th>Role / entry</th><td>Member · product detail → Enquire. Overall enquiry/consent flow pending discussion (Bhavik bhai).</td></tr>
+      <tr><th>Primary action</th><td>Send message + optional phone consent → provider notified</td></tr>
+      <tr><th>Rules</th><td>Contact shared only via the consent switch (default off). Repeat enquiry on the same product merges into one thread (FR-MKT-15). Reply lands in buyer's Inbox (FR-MKT-16). "No payments" messaging mandatory.</td></tr>
     </table>
   </details>
 
   <div class="row">
     <div class="frame-block">
-      <div class="frame-label">Guest gate <small>· sign-in first</small></div>
-      <div class="phone">
-        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
-        <div class="content" style="display:flex;flex-direction:column;">
-          <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 26px;gap:16px;text-align:center;">
-            <div class="bigico" style="background:var(--primary-tint);color:var(--primary);">
-              <svg class="ic lg" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></svg>
-            </div>
-            <div>
-              <div style="font-size:20px;font-weight:800;">One step before you enquire</div>
-              <p class="subtle" style="margin-top:8px;font-size:13.5px;line-height:20px;">Enquiries need a community account so the business knows who is reaching out — and you get replies in your Inbox.</p>
-            </div>
-            <div class="card flat" style="width:100%;text-align:left;">
-              <div class="kv"><span class="k">Enquiring about</span><span class="v" style="font-size:12.5px;">Brass Diya Set · ₹450</span></div>
-              <div class="kv"><span class="k">You were browsing as</span><span class="v" style="font-size:12.5px;">Visitor (no account needed)</span></div>
-            </div>
-            <button class="btn btn-primary btn-block" href="gp-003-login.html">Sign in / Create account</button>
-            <a class="btn-text" style="color:var(--text-2);">Keep browsing instead</a>
-          </div>
-        </div>
-        <div class="homebar"></div>
-      </div>
-    </div>
-
-    <div class="frame-block">
-      <div class="frame-label">Compose <small>· member, consent switch</small></div>
+      <div class="frame-label">Compose <small>· consent switch</small></div>
       <div class="phone">
         <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
         <div class="content">
@@ -65,13 +40,13 @@
               <div class="overline" style="margin-bottom:8px;">Enquiring about</div>
               <div style="display:flex;align-items:center;gap:12px;">
                 <span style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#B4622A,#8F3E0D);flex:none;"></span>
-                <div><div style="font-size:14px;font-weight:700;">Brass Diya Set (6 pc)</div><div class="subtle" style="font-size:12px;">₹450 · RG Handicrafts</div></div>
+                <div><div style="font-size:14px;font-weight:700;">Brass Diya Set (6 pc)</div><div class="subtle" style="font-size:12px;">₹360 <span style="text-decoration:line-through;color:var(--text-3);">₹450</span> · RG Handicrafts</div></div>
               </div>
             </div>
 
             <div class="field">
               <label>Message to the business</label>
-              <textarea>Is the 3-piece set also available? I need it before Diwali and I'm in Bapunagar — can pick up myself.</textarea>
+              <textarea>Is the 3-piece set also available at the discounted price? I need it before Diwali and I'm in Bapunagar — can pick up myself.</textarea>
             </div>
 
             <div class="card" style="border-left:4px solid var(--warning);">
@@ -114,8 +89,8 @@
               <div class="kv"><span class="k">Replies arrive in</span><span class="v">Inbox + push</span></div>
               <div class="kv"><span class="k">Payment</span><span class="v">Settle directly</span></div>
             </div>
-            <button class="btn btn-primary btn-block" href="mp-015-my-enquiries.html">View my enquiries</button>
-            <a class="btn-text" style="font-size:13.5px;" href="mp-011-product-list.html">Continue browsing</a>
+            <button class="btn btn-primary btn-block">View my enquiries</button>
+            <a class="btn-text" style="font-size:13.5px;">Continue browsing</a>
           </div>
         </div>
         <div class="homebar"></div>

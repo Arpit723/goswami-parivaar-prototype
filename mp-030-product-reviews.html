@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MP-030 · Ratings & Reviews — Goswami Parivaar UI</title>
+<link rel="stylesheet" href="design-tokens.css">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .stars { color: var(--warning); font-size: 13px; letter-spacing: 1px; }
+  .stars .off { color: var(--border-strong); }
+  .starpick { display: flex; gap: 6px; font-size: 30px; color: var(--border-strong); }
+  .starpick .on { color: var(--warning); }
+</style>
+</head>
+<body>
+<div class="doc">
+  <div class="doc-header">
+    <div class="kicker">Marketplace · ratings &amp; reviews (FR-MKT-32…38)</div>
+    <h1>MP-030 · Product Reviews</h1>
+    <div class="fr-chips"><span>FR-MKT-32</span><span>FR-MKT-34</span><span>FR-MKT-35</span><span>FR-MKT-36</span></div>
+  </div>
+
+  <details class="annot" open>
+    <summary>MP-030 · reviews list + write-review sheet (product; same pattern for business reviews)</summary>
+    <table>
+      <tr><th>Role / entry</th><td>Member · product detail → rating pill / reviews row</td></tr>
+      <tr><th>Primary action</th><td>Read reviews · write/edit own review (1–5 stars + text ≤1000) · report a review</td></tr>
+      <tr><th>Rules</th><td>Only members who enquired about this product may review (FR-MKT-32). One review per member, editable. Business response shown under the review but cannot edit it. Report → admin queue; hidden reviews drop from the average.</td></tr>
+      <tr><th>Key states</th><td>Loaded with own-review edit + business response (shown) · write sheet · empty ("No reviews yet — bought this? Be the first to review")</td></tr>
+    </table>
+  </details>
+
+  <div class="row">
+    <div class="frame-block">
+      <div class="frame-label">Reviews list <small>· with own review + business response</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+          <div class="appbar">
+            <a class="iconbtn"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <div class="title">Reviews</div>
+          </div>
+
+          <div style="padding:12px 16px 4px;display:flex;align-items:center;gap:14px;">
+            <div style="text-align:center;">
+              <div style="font-size:30px;font-weight:800;">4.8</div>
+              <div class="stars">★★★★<span class="off">★</span></div>
+              <div class="subtle" style="font-size:10.5px;">23 reviews</div>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;gap:3px;font-size:10.5px;color:var(--text-2);">
+              <div class="rowline" style="gap:6px;">5 <span style="flex:1;height:5px;border-radius:99px;background:var(--surface-2);overflow:hidden;"><i style="display:block;width:78%;height:100%;background:var(--warning);"></i></span></div>
+              <div class="rowline" style="gap:6px;">4 <span style="flex:1;height:5px;border-radius:99px;background:var(--surface-2);overflow:hidden;"><i style="display:block;width:15%;height:100%;background:var(--warning);"></i></span></div>
+              <div class="rowline" style="gap:6px;">3 <span style="flex:1;height:5px;border-radius:99px;background:var(--surface-2);overflow:hidden;"><i style="display:block;width:7%;height:100%;background:var(--warning);"></i></span></div>
+              <div class="rowline" style="gap:6px;">2 <span style="flex:1;height:5px;border-radius:99px;background:var(--surface-2);"></span></div>
+              <div class="rowline" style="gap:6px;">1 <span style="flex:1;height:5px;border-radius:99px;background:var(--surface-2);"></span></div>
+            </div>
+          </div>
+
+          <div style="padding:10px 16px;">
+            <button class="btn btn-primary btn-block">Write a review</button>
+            <div class="subtle" style="font-size:10.5px;text-align:center;margin-top:6px;">Only members who enquired about this product can review it</div>
+          </div>
+
+          <div class="stack gap3" style="padding:8px 16px 24px;">
+            <div class="card" style="border-left:4px solid var(--primary-tint-2);">
+              <div class="spread">
+                <div class="rowline" style="gap:8px;"><span class="avatar" style="width:34px;height:34px;font-size:12px;">MT</span>
+                <div><div style="font-size:13px;font-weight:700;">Meera Trivedi <span class="pill ok" style="padding:1px 7px;font-size:9.5px;">Your review</span></div><div class="stars" style="font-size:11px;">★★★★★ <span class="subtle" style="font-size:10px;">12 Oct</span></div></div></div>
+                <a class="btn-text" style="font-size:12px;">Edit</a>
+              </div>
+              <p style="font-size:13px;line-height:19px;margin-top:8px;">Beautiful finish, wicks included as promised. Picked up from Bapunagar — smooth experience.</p>
+              <a class="btn-text" style="font-size:11px;color:var(--text-3);">Report</a>
+            </div>
+
+            <div class="card">
+              <div class="rowline" style="gap:8px;"><span class="avatar" style="width:34px;height:34px;font-size:12px;">HV</span>
+              <div><div style="font-size:13px;font-weight:700;">Harsh Vyas</div><div class="stars" style="font-size:11px;">★★★★<span class="off">★</span> <span class="subtle" style="font-size:10px;">9 Oct</span></div></div></div>
+              <p style="font-size:13px;line-height:19px;margin-top:8px;">Good diyas, delivered via a community member to Viratnagar in two days. Would have liked a bigger size option.</p>
+              <div style="display:flex;justify-content:flex-end;"><a class="btn-text" style="font-size:11px;color:var(--text-3);">Report</a></div>
+              <div class="card flat" style="margin-top:8px;background:var(--surface-2);border:none;padding:10px 12px;">
+                <div style="font-size:11px;font-weight:800;color:var(--primary-hover);">RG Handicrafts · business response</div>
+                <p style="font-size:12.5px;line-height:18px;margin-top:4px;">Thank you! The 8-inch set is coming before Diwali — enquire and we'll hold one for you.</p>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="rowline" style="gap:8px;"><span class="avatar" style="width:34px;height:34px;font-size:12px;">DJ</span>
+              <div><div style="font-size:13px;font-weight:700;">Dipak Joshi</div><div class="stars" style="font-size:11px;">★★★★★ <span class="subtle" style="font-size:10px;">5 Oct</span></div></div></div>
+              <p style="font-size:13px;line-height:19px;margin-top:8px;">Third Diwali purchase from this shop. Consistent quality, fair prices.</p>
+              <div style="display:flex;justify-content:flex-end;"><a class="btn-text" style="font-size:11px;color:var(--text-3);">Report</a></div>
+            </div>
+          </div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+
+    <div class="frame-block">
+      <div class="frame-label">Write review <small>· sheet</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content" style="filter:brightness(.9);">
+          <div class="appbar"><div class="title">Reviews</div></div>
+          <div class="scrim">
+            <div class="sheet">
+              <div class="grabber"></div>
+              <h3>Review · Brass Diya Set</h3>
+              <div class="starpick" style="margin:12px 0 4px;"><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span></div>
+              <div class="subtle" style="font-size:11px;margin-bottom:12px;">Tap to rate · 5 selected</div>
+              <div class="field">
+                <label>Your review <small>· ≤1000 characters</small></label>
+                <textarea>Beautiful finish, wicks included as promised. Picked up from Bapunagar — smooth experience.</textarea>
+              </div>
+              <div class="banner info" style="margin-top:12px;">
+                <svg class="ic sm" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><polyline points="9 12 11 14 15 10"/></svg>
+                <div>Reviews are public with your display name. No phone numbers or links. Businesses can respond but never edit your review — admins moderate reports.</div>
+              </div>
+              <div style="display:flex;gap:10px;margin-top:16px;">
+                <button class="btn btn-plain" style="flex:1;">Cancel</button>
+                <button class="btn btn-primary" style="flex:2;">Post review</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-footer">Goswami Parivaar · Marketplace module · business reviews (MP-031) reuse this screen against the business profile · hidden reviews drop from the average (FR-MKT-37)</div>
+</div>
+<script src="proto.js"></script>
+</body>
+</html>
