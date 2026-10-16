@@ -26,7 +26,7 @@
     <table>
       <tr><th>Role / entry</th><td>Member · product detail → rating pill / reviews row</td></tr>
       <tr><th>Primary action</th><td>Read reviews · write/edit own review (1–5 stars + text ≤1000) · report a review</td></tr>
-      <tr><th>Rules</th><td>Only members who enquired about this product may review (FR-MKT-32). One review per member, editable. Business response shown under the review but cannot edit it. Report → admin queue; hidden reviews drop from the average.</td></tr>
+      <tr><th>Rules</th><td>Any verified member may review — one per member per product, editable (FR-MKT-32, changed 16 Oct). Business response shown under the review but cannot edit it. Report → admin queue; hidden reviews drop from the average.</td></tr>
       <tr><th>Key states</th><td>Loaded with own-review edit + business response (shown) · write sheet · empty ("No reviews yet — bought this? Be the first to review")</td></tr>
     </table>
   </details>
@@ -59,7 +59,7 @@
 
           <div style="padding:10px 16px;">
             <button class="btn btn-primary btn-block">Write a review</button>
-            <div class="subtle" style="font-size:10.5px;text-align:center;margin-top:6px;">Only members who enquired about this product can review it</div>
+            <div class="subtle" style="font-size:10.5px;text-align:center;margin-top:6px;">Any verified member can review — one review per product</div>
           </div>
 
           <div class="stack gap3" style="padding:8px 16px 24px;">
