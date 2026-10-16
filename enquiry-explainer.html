@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How Enquiry Works — Goswami Parivaar</title>
+<link rel="stylesheet" href="design-tokens.css">
+<link rel="stylesheet" href="styles.css">
+<style>
+  body { background: var(--bg); }
+  .xpage { max-width: 1080px; margin: 0 auto; padding: 40px 28px 70px; }
+
+  .xhero { text-align: center; padding: 26px 20px 30px; }
+  .xhero .logo-mark { margin: 0 auto 18px; }
+  .xhero h1 { font-size: 34px; line-height: 42px; font-weight: 800; }
+  .xhero .sub { font-size: 16px; color: var(--text-2); margin-top: 10px; }
+  .xhero .bigidea {
+    margin: 26px auto 0; max-width: 760px; background: var(--primary-tint); border: 1.5px solid var(--primary-tint-2);
+    border-radius: 18px; padding: 18px 24px; font-size: 17px; line-height: 27px; color: var(--primary-hover); font-weight: 600;
+  }
+  .xhero .bigidea b { color: var(--primary); }
+
+  .xsec { margin-top: 46px; }
+  .xsec > .xh { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+  .xsec > .xh .num {
+    width: 40px; height: 40px; border-radius: 13px; background: var(--primary); color: #fff;
+    display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 17px; flex: none;
+  }
+  .xsec > .xh h2 { font-size: 22px; font-weight: 800; }
+  .xsec > .xh small { display: block; font-size: 13px; color: var(--text-2); font-weight: 500; margin-top: 2px; }
+
+  .flowrow { display: flex; gap: 0; align-items: stretch; flex-wrap: wrap; }
+  .fcard { flex: 1 1 170px; background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 16px; box-shadow: var(--shadow-1); min-width: 170px; }
+  .fcard .fk { font-size: 10.5px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--primary); margin-bottom: 7px; }
+  .fcard .ft { font-size: 15px; font-weight: 800; line-height: 20px; }
+  .fcard .fd { font-size: 12.5px; color: var(--text-2); line-height: 18px; margin-top: 6px; }
+  .farrow { align-self: center; color: var(--primary); font-size: 24px; font-weight: 800; padding: 0 8px; flex: none; }
+  @media (max-width: 900px) { .farrow { transform: rotate(90deg); padding: 8px 0; width: 100%; text-align: center; } }
+
+  /* form anatomy */
+  .anatomy { display: flex; gap: 30px; flex-wrap: wrap; align-items: flex-start; }
+  .formphone { width: 320px; background: var(--bg); border: 7px solid #17120E; border-radius: 34px; overflow: hidden; box-shadow: 0 16px 34px rgba(59,46,37,.22); flex: none; }
+  .formphone .fbody { padding: 12px 14px 20px; }
+  .callouts { flex: 1; min-width: 300px; display: flex; flex-direction: column; gap: 12px; }
+  .callout { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 13px 16px; box-shadow: var(--shadow-1); }
+  .callout .cn { display: flex; align-items: center; gap: 9px; margin-bottom: 5px; }
+  .callout .cn .badge { width: 24px; height: 24px; border-radius: 8px; background: var(--primary); color: #fff; font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex: none; }
+  .callout .cn b { font-size: 14px; }
+  .callout p { font-size: 12.5px; color: var(--text-2); line-height: 18px; }
+  .callout p b { color: var(--text); }
+  .pillrow { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 7px; }
+</style>
+</head>
+<body>
+<div class="xpage">
+
+  <div class="xhero">
+    <div class="logo-mark">GP</div>
+    <h1>How Enquiry Works</h1>
+    <div class="sub">Goswami Parivaar · Marketplace · one-page field &amp; screen guide</div>
+    <div class="bigidea">
+      An enquiry is a <b>letter, not a chat.</b> The buyer writes once,
+      both sides choose <b>independently</b> whether to share their phone,
+      the reply lands in the buyer's <b>Inbox</b> — and the deal settles <b>outside the app</b>.
+    </div>
+  </div>
+
+  <!-- 1. FLOW -->
+  <div class="xsec">
+    <div class="xh"><div class="num">1</div><div><h2>The journey</h2><small>six moments, two people, zero chat</small></div></div>
+    <div class="flowrow">
+      <div class="fcard"><div class="fk">1 · Discover</div><div class="ft">Meera finds diyas</div><div class="fd">Product detail — no contact details visible anywhere.</div></div>
+      <div class="farrow">→</div>
+      <div class="fcard"><div class="fk">2 · Compose</div><div class="ft">She writes her need</div><div class="fd">One message (≤500 chars) + one big decision: share my phone?</div></div>
+      <div class="farrow">→</div>
+      <div class="fcard"><div class="fk">3 · Consent</div><div class="ft">Switch: OFF by default</div><div class="fd">ON = Ritesh sees her number for this enquiry only. Audited.</div></div>
+      <div class="farrow">→</div>
+      <div class="fcard"><div class="fk">4 · Delivered</div><div class="ft">Ritesh is notified</div><div class="fd">Status NEW. He sees her message — and her phone only if she consented.</div></div>
+      <div class="farrow">→</div>
+      <div class="fcard"><div class="fk">5 · Reply</div><div class="ft">His answer → her Inbox</div><div class="fd">Immutable letter + his own phone switch. Status REPLIED.</div></div>
+      <div class="farrow">→</div>
+      <div class="fcard" style="border:1.5px solid var(--verified);"><div class="fk" style="color:var(--verified);">6 · Connect</div><div class="ft">Call · meet · settle</div><div class="fd">Outside the app. Then she reviews him. Status CLOSED.</div></div>
+    </div>
+  </div>
+
+  <!-- 2. FORM ANATOMY -->
+  <div class="xsec">
+    <div class="xh"><div class="num">2</div><div><h2>The enquiry form — field by field</h2><small>exactly what the buyer sees and every rule behind it</small></div></div>
+    <div class="anatomy">
+      <div class="formphone">
+        <div style="height:24px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-size:10px;font-weight:700;"><span>9:41</span><span>▂▄▆ 🔋</span></div>
+        <div class="fbody">
+          <div style="font-size:15px;font-weight:800;margin:2px 2px 10px;">Enquire</div>
+          <div class="card flat" style="padding:9px 11px;display:flex;gap:10px;align-items:center;margin-bottom:10px;">
+            <span style="width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,#B4622A,#8F3E0D);flex:none;"></span>
+            <div><div style="font-size:12.5px;font-weight:700;">Brass Diya Set (6 pc)</div><div style="font-size:10.5px;color:var(--text-2);">₹360 <s style="color:var(--text-3);">₹450</s> · RG Handicrafts</div></div>
+          </div>
+          <div style="font-size:11px;font-weight:700;margin:0 2px 5px;">Message to the business <span style="color:var(--error);">*</span></div>
+          <div style="border:1.5px solid var(--border-strong);border-radius:10px;background:var(--surface);padding:9px 11px;font-size:11.5px;line-height:16px;min-height:72px;">Is the 3-pc set also available at the discounted price? I need it before Diwali — can pick up from Bapunagar.</div>
+          <div style="text-align:right;font-size:9.5px;color:var(--text-3);margin:3px 2px 10px;">132 / 500</div>
+          <div class="card" style="border-left:4px solid var(--warning);padding:10px 12px;display:flex;gap:9px;align-items:flex-start;">
+            <div style="flex:1;">
+              <div style="font-size:12px;font-weight:800;">Share my phone number</div>
+              <div style="font-size:10px;color:var(--text-2);line-height:14px;margin-top:2px;">+91 98•••• 71134 becomes visible to <b>RG Handicrafts</b> for this enquiry.</div>
+            </div>
+            <span style="width:36px;height:20px;border-radius:99px;background:var(--warning);position:relative;flex:none;"><span style="position:absolute;right:2px;top:2px;width:16px;height:16px;border-radius:99px;background:#fff;"></span></span>
+          </div>
+          <div class="banner info" style="margin-top:10px;padding:8px 11px;font-size:10px;line-height:14px;">
+            <b>Goswami Parivaar never handles money.</b> You and the business settle directly.
+          </div>
+          <button class="btn btn-primary btn-block" style="margin-top:12px;min-height:44px;font-size:13.5px;">Send enquiry</button>
+        </div>
+      </div>
+
+      <div class="callouts">
+        <div class="callout"><div class="cn"><span class="badge">1</span><b>Product context card</b></div>
+          <p>Auto-filled, read-only. <b>API:</b> product must be LIVE — sold/pending → blocked screen (EC-E-02). Own business's product → blocked (EC-E-01).</p></div>
+        <div class="callout"><div class="cn"><span class="badge">2</span><b>Message · required · 1–500 chars</b></div>
+          <p>Live counter, trims spaces, blocks send when empty or over. <b>API:</b> re-checks length; scans for phone/email/links and strips + flags them (EC-E-06) — consent switch can't be bypassed by typing the number in.</p>
+          <div class="pillrow"><span class="pill neutral">UI: counter</span><span class="pill neutral">API: CHECK 1–500</span><span class="pill warn">contact scan</span></div></div>
+        <div class="callout"><div class="cn"><span class="badge">3</span><b>Preferred time · services only</b></div>
+          <p>Optional text ≤100 chars ("Weekends, mornings"). <b>Hidden on products</b> — appears only on service listings (FR-SVC-05).</p></div>
+        <div class="callout"><div class="cn"><span class="badge">4</span><b>Share my phone · the consent switch</b></div>
+          <p>Default <b>OFF</b>. ON = number visible to this business for this exchange only. <b>Stored with timestamp → audit log</b>, so "I never shared it" is checkable from data (EC-E-05).</p>
+          <div class="pillrow"><span class="pill ok">default OFF</span><span class="pill neutral">per exchange</span><span class="pill neutral">audited</span></div></div>
+        <div class="callout"><div class="cn"><span class="badge">5</span><b>Send · idempotent</b></div>
+          <p>One tap = one enquiry even on double-tap or flaky network (Idempotency-Key). Duplicate on same product <b>merges into the existing thread</b> (FR-MKT-15). Rate limit: 20/hour as anti-flood (EC-E-08).</p>
+          <div class="pillrow"><span class="pill neutral">Idempotency-Key</span><span class="pill neutral">merge duplicates</span><span class="pill warn">20/hour</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. CONSENT MATRIX -->
+  <div class="xsec">
+    <div class="xh"><div class="num">3</div><div><h2>Who sees whose phone?</h2><small>four outcomes — two independent switches</small></div></div>
+    <div class="flowrow">
+      <div class="fcard" style="border-top:4px solid var(--verified);"><div class="fk" style="color:var(--verified);">Both ON</div><div class="ft">📞 + 📞</div><div class="fd">Buyer's number visible to business · business number travels in the reply. Fastest path — just call.</div></div>
+      <div class="fcard" style="border-top:4px solid var(--info);"><div class="fk" style="color:var(--info);">Buyer ON · Business OFF</div><div class="ft">📞 → 📵</div><div class="fd">Business can call the buyer; buyer reaches business only via Inbox replies.</div></div>
+      <div class="fcard" style="border-top:4px solid var(--info);"><div class="fk" style="color:var(--info);">Buyer OFF · Business ON</div><div class="ft">📵 → 📞</div><div class="fd">Business gets no number; its reply letter includes its own number for the buyer.</div></div>
+      <div class="fcard" style="border-top:4px solid var(--border-strong);"><div class="fk">Both OFF</div><div class="ft">📵 ⇄ 📵</div><div class="fd">Full letters-only exchange inside the app. Perfectly fine — many deals close this way.</div></div>
+    </div>
+    <div class="banner info" style="margin-top:14px;">
+      <svg class="ic sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+      <div><b>"Per exchange" means every enquiry starts fresh.</b> Sharing on one enquiry never carries to the next. Blocked users see a generic "not available" — the block is never disclosed.</div>
+    </div>
+  </div>
+
+  <!-- 4. LIFECYCLE -->
+  <div class="xsec">
+    <div class="xh"><div class="num">4</div><div><h2>The life of an enquiry</h2><small>three states, strict rules</small></div></div>
+    <div class="treewrap">
+      <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:center;padding:8px 0;">
+        <span class="pill info" style="padding:9px 18px;font-size:13px;">NEW — waiting for the business</span>
+        <span style="color:var(--text-3);font-weight:800;">→</span>
+        <span class="pill ok" style="padding:9px 18px;font-size:13px;">REPLIED — answer in buyer's Inbox</span>
+        <span style="color:var(--text-3);font-weight:800;">→</span>
+        <span class="pill neutral" style="padding:9px 18px;font-size:13px;">CLOSED — archived (either side)</span>
+      </div>
+      <div class="pathgrid" style="margin-top:16px;">
+        <div class="pathcard"><span class="pth">NEW</span><div class="res" style="margin-top:8px;"><span style="font-size:12px;color:var(--text-2);line-height:18px;">Buyer waiting. Reply unlocks REPLIED. Buyer may close or withdraw. Auto-merges duplicates.</span></div></div>
+        <div class="pathcard"><span class="pth">REPLIED</span><div class="res" style="margin-top:8px;"><span style="font-size:12px;color:var(--text-2);line-height:18px;">Reply is <b>immutable</b> — no editing after send. Buyer's phone decision already locked. Review now becomes possible.</span></div></div>
+        <div class="pathcard"><span class="pth">CLOSED</span><div class="res" style="margin-top:8px;"><span style="font-size:12px;color:var(--text-2);line-height:18px;">Either side closes. Moves to Archived. Kept 12 months. A closed thread still qualifies the buyer to review.</span></div></div>
+      </div>
+      <div class="caption" style="margin-top:14px;">Review eligibility: an enquiry that reached REPLIED or CLOSED — no drive-by ratings (EC-R-01)</div>
+    </div>
+  </div>
+
+  <!-- 5. SCREENS -->
+  <div class="xsec">
+    <div class="xh"><div class="num">5</div><div><h2>Which screen shows what</h2><small>every moment has a designed screen (MP-014 · 015 · 022 · 023 · 090)</small></div></div>
+    <div class="dbrow">
+      <div class="dbcard"><div class="tname">MP-014 · Compose</div><div class="tjob">Buyer writes. Message + consent + send.</div></div>
+      <div class="dbcard"><div class="tname">MP-014 · Confirmation</div><div class="tjob">"Enquiry sent" — echoes the consent choice.</div></div>
+      <div class="dbcard"><div class="tname">MP-015 · My enquiries</div><div class="tjob">Buyer's threads — waiting, replied (+ Call), archived.</div></div>
+      <div class="dbcard"><div class="tname">MP-022 · Business inbox</div><div class="tjob">New/Replied rows; buyer phone only if consented.</div></div>
+      <div class="dbcard"><div class="tname">MP-023 · Reply workspace</div><div class="tjob">Buyer card, message, consent phone, reply + business phone switch.</div></div>
+      <div class="dbcard"><div class="tname">MP-090 · Edge states</div><div class="tjob">Sold (enquiry closed) · blocked user · offline · rate limit.</div></div>
+    </div>
+  </div>
+
+  <div class="xfoot">Goswami Parivaar · Enquiry Flow — field &amp; screen guide · pairs with marketplace-edge-cases.md · screens: MP-014/015/022/023/090</div>
+</div>
+</body>
+</html>
