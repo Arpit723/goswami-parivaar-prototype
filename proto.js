@@ -118,9 +118,26 @@
     "mp-020-catalog-manager.html": { back: "gp-009-home.html",
       li: { "Brass Diya Set": "mp-021-product-editor.html", "Wooden Bead Toran": "mp-021-product-editor.html",
             "Copper Pooja Thali": "mp-021-product-editor.html", "Embroidered Clutch": "mp-021-product-editor.html" },
-      btn: { "+ Add": "mp-021-product-editor.html", "+ Add product": "mp-021-product-editor.html" } },
+      btn: { "+ Add": "mp-021-product-editor.html", "+ Add product": "mp-021-product-editor.html",
+             "Services (2)": "mp-053-my-services.html" } },
     "mp-021-product-editor.html": { back: "mp-020-catalog-manager.html",
       btn: { "Submit for approval": "mp-020-catalog-manager.html" } },
+
+    /* ---------- Marketplace · Services (MP-050 series, 17 Oct) ---------- */
+    "mp-050-services-list.html": { back: "mp-010-marketplace-home.html",
+      sel: { ".scard": "mp-051-service-detail.html" },
+      btn: { "Products": "mp-011-product-list.html", "Browse all services": "mp-050-services-list.html",
+             "Show 23 services": "mp-050-services-list.html" } },
+    "mp-051-service-detail.html": { back: "mp-050-services-list.html",
+      btn: { "Browse similar Tuition & Coaching services": "mp-050-services-list.html" } },
+    "mp-052-service-editor.html": { back: "mp-053-my-services.html",
+      btn: { "Submit for approval": "mp-053-my-services.html" } },
+    "mp-053-my-services.html": { back: "mp-020-catalog-manager.html",
+      li: { "Home Tuition 8–12": "mp-052-service-editor.html", "Gujarati Coaching": "mp-052-service-editor.html",
+            "Science Crash Course": "mp-052-service-editor.html", "Olympiad Prep": "mp-052-service-editor.html" },
+      btn: { "+ Add": "mp-052-service-editor.html", "+ Add service": "mp-052-service-editor.html",
+             "Fix & resubmit": "mp-052-service-editor.html", "+ Add your first service": "mp-052-service-editor.html",
+             "Pause": "mp-053-my-services.html", "Resume": "mp-053-my-services.html", "Fix": "mp-052-service-editor.html" } },
 
     /* ---------- Phase 4 · Matrimony & calls ---------- */
     "gp-050-matrimony-intro.html": { back: "gp-009-home.html", btn: {

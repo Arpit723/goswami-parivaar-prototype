@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MP-052 · Service Editor — Goswami Parivaar UI</title>
+<link rel="stylesheet" href="design-tokens.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="doc">
+  <div class="doc-header">
+    <div class="kicker">Marketplace · provider console</div>
+    <h1>MP-052 · Service Editor (Add / Edit)</h1>
+    <div class="fr-chips"><span>FR-SVC-01</span><span>FR-SVC-02</span><span>FR-SVC-04</span></div>
+  </div>
+
+  <details class="annot" open>
+    <summary>MP-052 · add or edit a service — form + validation-errors frames</summary>
+    <table>
+      <tr><th>Role / entry</th><td>Individual provider (occupation-registered) or business staff · MP-053 → + Add / Edit</td></tr>
+      <tr><th>Primary action</th><td>Submit service → admin approval queue (edits to a live service shadow-review; live keeps serving)</td></tr>
+      <tr><th>Fields</th><td>Portfolio 0–6 (optional, first = cover) · title 3–80 · service category (8, admin-managed) · description ≤2000 · price model Fixed / Starting-from / On-request + only that model's amount · area modes 1–3 (At provider / At customer / Online) · availability ≤200 · experience ≤200 optional · languages · city (read-only, from profile)</td></tr>
+      <tr><th>Rules</th><td>No stock/sold, no discounts (product-only), no booking fields (Phase 2). City is derived from the provider's profile — never typed here. Draft autosaves.</td></tr>
+      <tr><th>Key states</th><td>Clean form (shown) · validation errors (price-model conflict + missing mode + short title)</td></tr>
+    </table>
+  </details>
+
+  <div class="row">
+    <div class="frame-block">
+      <div class="frame-label">Default <small>· form</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+          <div class="appbar">
+            <a class="iconbtn" href="mp-053-my-services.html"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <div class="title">Add service</div>
+            <span class="pill neutral"><svg class="ic xs" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Draft saved</span>
+          </div>
+
+          <div style="padding:14px 24px 34px;display:flex;flex-direction:column;gap:16px;">
+            <div>
+              <div class="overline" style="margin-bottom:8px;">Portfolio <small style="text-transform:none;letter-spacing:0;">· 0–6, optional · first is cover</small></div>
+              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
+                <div style="aspect-ratio:1;border-radius:12px;background:linear-gradient(135deg,#34618E,#22415F);position:relative;overflow:hidden;"><span style="position:absolute;top:6px;right:6px;width:20px;height:20px;border-radius:99px;background:rgba(0,0,0,.4);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;">✕</span></div>
+                <div style="aspect-ratio:1;border-radius:12px;background:linear-gradient(135deg,#4A7AB0,#2F557F);position:relative;overflow:hidden;"><span style="position:absolute;top:6px;right:6px;width:20px;height:20px;border-radius:99px;background:rgba(0,0,0,.4);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;">✕</span></div>
+                <div style="aspect-ratio:1;border:1.5px dashed var(--border-strong);border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:var(--text-3);">
+                  <svg class="ic sm" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                  <span style="font-size:10.5px;font-weight:700;">Add photo</span>
+                </div>
+              </div>
+              <div class="helper" style="margin-top:8px;">JPG/PNG · max 5 MB each · unlike products, a service may go live with no photos (neutral cover is shown)</div>
+            </div>
+
+            <div class="field">
+              <label>Title</label>
+              <input type="text" value="Home Tuition for Maths &amp; Science (Class 8–12)">
+              <div class="helper">3–80 characters · counted after trimming</div>
+            </div>
+
+            <div class="field">
+              <label>Service category</label>
+              <div class="input" style="display:flex;justify-content:space-between;align-items:center;"><span>Tuition &amp; Coaching</span><svg class="ic xs" style="color:var(--text-3);" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+              <div class="helper">Admin-managed service list — Tuition · Repairs · Health · Professional · Events &amp; Photo · Beauty · Transport · Other</div>
+            </div>
+
+            <div>
+              <div class="overline" style="margin-bottom:8px;">Price model</div>
+              <div class="seg"><button class="active">Fixed</button><button>Starting from</button><button>On request</button></div>
+              <div class="field" style="margin-top:10px;">
+                <label>Price per session (₹)</label>
+                <input type="text" value="2,000" class="mono">
+                <div class="helper">Only the selected model's price field is kept — switching models clears the others (validated end-to-end)</div>
+              </div>
+            </div>
+
+            <div>
+              <div class="overline" style="margin-bottom:8px;">Service mode <small style="text-transform:none;letter-spacing:0;">· pick 1–3</small></div>
+              <div style="display:flex;flex-wrap:wrap;gap:8px;">
+                <span class="chip">At provider</span><span class="chip active">At customer</span><span class="chip active">Online</span>
+              </div>
+              <div class="helper" style="margin-top:6px;">Where the service happens — shown as chips on your listing and usable as a filter</div>
+            </div>
+
+            <div class="field">
+              <label>City</label>
+              <div class="input" style="display:flex;justify-content:space-between;align-items:center;color:var(--text-2);"><span>Ahmedabad</span><svg class="ic xs" style="color:var(--verified);" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+              <div class="helper">Taken from your profile — the service is offered from your home city</div>
+            </div>
+
+            <div class="field">
+              <label>Availability <small>· optional</small></label>
+              <input type="text" value="Mon–Sat, 4–8 PM">
+              <div class="helper">Free text, ≤200 chars — e.g. days and hours you take calls</div>
+            </div>
+
+            <div class="field">
+              <label>Experience <small>· optional</small></label>
+              <input type="text" value="M.Sc. Maths · 8 years teaching">
+              <div class="helper">One line, ≤200 chars — shown in Details on your listing</div>
+            </div>
+
+            <div>
+              <div class="overline" style="margin-bottom:8px;">Languages <small style="text-transform:none;letter-spacing:0;">· optional</small></div>
+              <div style="display:flex;flex-wrap:wrap;gap:8px;">
+                <span class="chip active">English</span><span class="chip active">ગુજરાતી</span><span class="chip">हिन्दी</span>
+              </div>
+            </div>
+
+            <div class="banner info">
+              <svg class="ic sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              <div>Services appear after a quick admin review (usually 24 h). Members see your verified phone and email on the listing — no bookings or payments in the app.</div>
+            </div>
+
+            <button class="btn btn-primary btn-block">Submit for approval</button>
+          </div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+
+    <div class="frame-block">
+      <div class="frame-label">Variant <small>· validation errors (PRICE_MODEL_CONFLICT · AREA_MODES_INVALID · title length)</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+          <div class="appbar">
+            <a class="iconbtn" href="mp-053-my-services.html"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <div class="title">Add service</div>
+            <span class="pill err">3 issues</span>
+          </div>
+
+          <div style="padding:14px 24px 34px;display:flex;flex-direction:column;gap:16px;">
+            <div class="banner warn">
+              <svg class="ic sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <div><b>Fix 3 things to submit.</b>Fields with errors are marked below — nothing was sent to review.</div>
+            </div>
+
+            <div class="field">
+              <label>Title</label>
+              <input type="text" value="Tu" style="border-color:var(--error);">
+              <div class="helper" style="color:var(--error);">Title needs 3–80 characters — "Tu" is too short</div>
+            </div>
+
+            <div>
+              <div class="overline" style="margin-bottom:8px;">Price model</div>
+              <div class="seg"><button>Fixed</button><button>Starting from</button><button class="active">On request</button></div>
+              <div class="field" style="margin-top:10px;">
+                <label>Price (₹)</label>
+                <input type="text" value="2,000" class="mono" style="border-color:var(--error);">
+                <div class="helper" style="color:var(--error);">On-request services carry no price — clear this field or switch the model (PRICE_MODEL_CONFLICT)</div>
+              </div>
+            </div>
+
+            <div>
+              <div class="overline" style="margin-bottom:8px;color:var(--error);">Service mode — pick at least 1</div>
+              <div style="display:flex;flex-wrap:wrap;gap:8px;">
+                <span class="chip">At provider</span><span class="chip">At customer</span><span class="chip">Online</span>
+              </div>
+              <div class="helper" style="margin-top:6px;color:var(--error);">Choose 1–3 modes so members know where the service happens (AREA_MODES_INVALID)</div>
+            </div>
+
+            <div class="field">
+              <label>Description</label>
+              <textarea>Class 8–12 Mathematics and Science at your home. Chapter-wise revision, weekly tests.</textarea>
+            </div>
+
+            <button class="btn btn-primary btn-block" style="opacity:.55;">Submit for approval</button>
+            <div class="subtle" style="font-size:11px;text-align:center;">Same rules re-checked by the API (422) and the database (CHECKs) — the UI is the first gate, never the only one</div>
+          </div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-footer">Goswami Parivaar · Marketplace module · editing a live service: banner "Changes re-enter admin review; your current listing stays visible meanwhile" (shadow edit — 409 if one is already pending)</div>
+</div>
+<script src="proto.js"></script>
+</body>
+</html>

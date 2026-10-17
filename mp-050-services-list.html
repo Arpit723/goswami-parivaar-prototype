@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MP-050 · Services List — Goswami Parivaar UI</title>
+<link rel="stylesheet" href="design-tokens.css">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .slist { display:flex;flex-direction:column;gap:10px;padding:0 16px; }
+  .scard { background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r-lg);box-shadow:var(--shadow-1);display:flex;overflow:hidden; }
+  .scard .sthumb { width:86px;flex:none;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:10px;letter-spacing:.05em;text-align:center;line-height:1.35;padding:8px; }
+  .scard .sthumb.nophoto { background:var(--surface-2);color:var(--text-3);border-right:1.5px solid var(--border); }
+  .scard .sbody { padding:10px 12px;flex:1;min-width:0; }
+  .scard .sname { font-size:13.5px;font-weight:700;line-height:17px; }
+  .scard .sprov { font-size:11px;color:var(--text-2);margin-top:2px;display:flex;align-items:center;gap:4px; }
+  .scard .sprice { font-size:13px;font-weight:800;color:var(--primary-hover);margin-top:4px; }
+  .scard .smeta { display:flex;gap:4px;margin-top:6px;flex-wrap:wrap;align-items:center; }
+  .mini { font-size:10px;font-weight:700;padding:2.5px 8px;border-radius:99px;background:var(--surface-2);color:var(--text-2);border:1px solid var(--border);white-space:nowrap; }
+  .mini.rate { color:#9A5B00;border-color:transparent;background:#F6E7D4; }
+</style>
+</head>
+<body>
+<div class="doc">
+  <div class="doc-header">
+    <div class="kicker">Marketplace · services (individual providers &amp; businesses)</div>
+    <h1>MP-050 · Services — Browse, Search &amp; Filters</h1>
+    <div class="fr-chips"><span>FR-SVC-07</span><span>FR-SVC-01</span><span>FR-MKT-04 city toggle</span></div>
+  </div>
+
+  <details class="annot" open>
+    <summary>MP-050 · services tab — search + category, city, price-model, area-mode filters — 3 frames</summary>
+    <table>
+      <tr><th>Role / entry</th><td>Member · Marketplace home → Services tab (MP-010 seg)</td></tr>
+      <tr><th>Primary action</th><td>Open a service (MP-051) and contact the provider directly</td></tr>
+      <tr><th>Rules</th><td>Feed shows ACTIVE services only. Cards never show phone/email — contact lives on detail. Price line follows the model: ₹ fixed / "from ₹X" / "Price on request". Rating shown is the <b>provider's</b> rating (never per-listing); new providers show "New".</td></tr>
+      <tr><th>Filters</th><td>Category (8 admin-managed) · city (mine + All) · price model (Fixed / Starting-from / On-request) · area mode (At provider / At customer / Online) · sort (Newest · ₹ ↑ · ₹ ↓ — on-request sorts last)</td></tr>
+      <tr><th>Key states</th><td>Loaded (shown) · filter sheet · empty</td></tr>
+    </table>
+  </details>
+
+  <div class="row">
+    <div class="frame-block">
+      <div class="frame-label">Loaded <small>· my city first</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+          <div class="appbar">
+            <a class="iconbtn" href="mp-010-marketplace-home.html"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <div class="title">Marketplace</div>
+            <a class="iconbtn"><svg class="ic" viewBox="0 0 24 24"><polygon points="22 3 2 3 10 12.5 10 19 14 21 14 12.5 22 3"/></svg></a>
+          </div>
+          <div class="pad-h" style="padding-top:4px;">
+            <div class="seg"><a class="btn-plain" style="flex:1;text-align:center;padding:0;" href="mp-011-product-list.html">Products</a><button class="active" style="flex:1;">Services</button></div>
+          </div>
+          <div class="pad-h" style="padding-top:10px;">
+            <div class="field"><div class="input" style="display:flex;align-items:center;gap:10px;color:var(--text-2);"><svg class="ic sm" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Search services — tuition, repairs, makeup…</div></div>
+          </div>
+          <div class="chiprow">
+            <span class="chip"><svg class="ic xs" viewBox="0 0 24 24"><polygon points="22 3 2 3 10 12.5 10 19 14 21 14 12.5 22 3"/></svg>Filters</span>
+            <span class="chip active">Ahmedabad</span><span class="chip">Tuition &amp; Coaching</span><span class="chip">Sort: Newest</span>
+          </div>
+          <div class="pad-h subtle" style="font-size:12px;padding-top:0;">23 services · Ahmedabad (tap a card for details)</div>
+
+          <div class="slist" style="margin-top:10px;">
+            <a class="scard" href="mp-051-service-detail.html">
+              <div class="sthumb" style="background:linear-gradient(135deg,#34618E,#22415F);">MATHS TUITION</div>
+              <div class="sbody">
+                <div class="sname">Home Tuition for Maths &amp; Science (Class 8–12)</div>
+                <div class="sprov"><svg class="ic xs" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Meera Patel · individual provider</div>
+                <div class="sprice">₹2,000 / session</div>
+                <div class="smeta"><span class="mini">At customer</span><span class="mini rate">★ 4.9 (12)</span><span class="mini">Online also</span></div>
+              </div>
+            </a>
+            <a class="scard" href="mp-051-service-detail.html">
+              <div class="sthumb" style="background:linear-gradient(135deg,#8C3B6E,#5E2450);">BRIDAL MAKEUP</div>
+              <div class="sbody">
+                <div class="sname">Bridal Makeup &amp; Hairstyling — full package</div>
+                <div class="sprov"><svg class="ic xs" viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg>Glow Studio by Jaya · business</div>
+                <div class="sprice">from ₹8,000</div>
+                <div class="smeta"><span class="mini">At customer</span><span class="mini rate">★ 4.7 (8)</span></div>
+              </div>
+            </a>
+            <a class="scard" href="mp-051-service-detail.html">
+              <div class="sthumb" style="background:linear-gradient(135deg,#2E7D46,#1D5C30);">AC REPAIR</div>
+              <div class="sbody">
+                <div class="sname">AC &amp; Refrigerator Repairs at home</div>
+                <div class="sprov"><svg class="ic xs" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Ritesh Goswami · individual provider</div>
+                <div class="sprice">Price on request</div>
+                <div class="smeta"><span class="mini">At customer</span><span class="mini">New provider</span></div>
+              </div>
+            </a>
+            <a class="scard" href="mp-051-service-detail.html">
+              <div class="sthumb nophoto"><svg class="ic sm" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+              <div class="sbody">
+                <div class="sname">Wedding Photography &amp; Cinematography</div>
+                <div class="sprov"><svg class="ic xs" viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg>Shah Films · business</div>
+                <div class="sprice">from ₹15,000</div>
+                <div class="smeta"><span class="mini">At customer</span><span class="mini">At provider</span><span class="mini rate">★ 4.8 (21)</span></div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+
+    <div class="frame-block">
+      <div class="frame-label">Variant <small>· filter sheet</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content" style="filter:brightness(.92);">
+          <div class="appbar"><div class="title">Marketplace</div></div>
+          <div class="chiprow"><span class="chip"><svg class="ic xs" viewBox="0 0 24 24"><polygon points="22 3 2 3 10 12.5 10 19 14 21 14 12.5 22 3"/></svg>Filters</span><span class="chip">Ahmedabad</span></div>
+          <div class="slist">
+            <div class="scard"><div class="sthumb" style="background:linear-gradient(135deg,#34618E,#22415F);">MATHS TUITION</div><div class="sbody"><div class="sname">Home Tuition for Maths &amp; Science</div><div class="sprice">₹2,000 / session</div></div></div>
+            <div class="scard"><div class="sthumb" style="background:linear-gradient(135deg,#8C3B6E,#5E2450);">BRIDAL MAKEUP</div><div class="sbody"><div class="sname">Bridal Makeup &amp; Hairstyling</div><div class="sprice">from ₹8,000</div></div></div>
+          </div>
+          <div class="scrim">
+            <div class="sheet">
+              <div class="grabber"></div>
+              <h3>Filters &amp; sort</h3>
+              <div class="stack gap3" style="margin-top:14px;">
+                <div>
+                  <div class="overline" style="margin-bottom:8px;">Category</div>
+                  <div style="display:flex;flex-wrap:wrap;gap:8px;">
+                    <span class="chip active">Tuition &amp; Coaching</span><span class="chip">Repairs</span><span class="chip">Health &amp; Wellness</span><span class="chip">Professional</span><span class="chip">Events &amp; Photo</span><span class="chip">Beauty</span><span class="chip">Transport</span><span class="chip">Other</span>
+                  </div>
+                </div>
+                <div>
+                  <div class="overline" style="margin-bottom:8px;">Price model</div>
+                  <div class="seg"><button class="active">Any</button><button>Fixed</button><button>From</button><button>On request</button></div>
+                </div>
+                <div>
+                  <div class="overline" style="margin-bottom:8px;">Service mode <small style="text-transform:none;letter-spacing:0;">· pick up to 3</small></div>
+                  <div style="display:flex;flex-wrap:wrap;gap:8px;">
+                    <span class="chip">At provider</span><span class="chip active">At customer</span><span class="chip">Online</span>
+                  </div>
+                </div>
+                <div>
+                  <div class="overline" style="margin-bottom:8px;">City</div>
+                  <div class="seg"><button class="active">Ahmedabad</button><button>Gandhinagar</button><button>All</button></div>
+                </div>
+                <div>
+                  <div class="overline" style="margin-bottom:8px;">Sort</div>
+                  <div class="seg"><button class="active">Newest</button><button>₹ ↑</button><button>₹ ↓</button></div>
+                  <div class="helper">Price sorts use the effective price; on-request services always sort last.</div>
+                </div>
+              </div>
+              <div style="display:flex;gap:10px;margin-top:20px;">
+                <button class="btn btn-plain" style="flex:1;">Reset</button>
+                <button class="btn btn-primary" style="flex:2;">Show 23 services</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+
+    <div class="frame-block">
+      <div class="frame-label">Variant <small>· empty</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+          <div class="appbar"><div class="title">Services</div></div>
+          <div class="chiprow"><span class="chip">Transport</span><span class="chip">Online only</span></div>
+          <div class="empty" style="margin-top:90px;">
+            <div class="eico"><svg class="ic lg" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+            <h3>No services match</h3>
+            <p>Nothing in Transport offers online service yet. Try another category — or remove the mode filter.</p>
+            <div style="display:flex;gap:10px;margin-top:6px;">
+              <button class="btn btn-plain">Clear filters</button>
+              <button class="btn btn-tonal">Browse all services</button>
+            </div>
+          </div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-footer">Goswami Parivaar · Marketplace module · services feed = status ACTIVE only; error/offline = platform banner + retry pattern</div>
+</div>
+<script src="proto.js"></script>
+</body>
+</html>

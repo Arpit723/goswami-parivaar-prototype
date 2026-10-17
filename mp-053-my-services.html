@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MP-053 · My Services — Goswami Parivaar UI</title>
+<link rel="stylesheet" href="design-tokens.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="doc">
+  <div class="doc-header">
+    <div class="kicker">Marketplace · provider console</div>
+    <h1>MP-053 · My Services (Provider Console)</h1>
+    <div class="fr-chips"><span>FR-SVC-03</span><span>FR-SVC-04</span><span>FR-MKT-07 stale</span><span>FR-MKT-24</span></div>
+  </div>
+
+  <details class="annot" open>
+    <summary>MP-053 · provider's service list — active / paused / in-review / rejected — 3 frames</summary>
+    <table>
+      <tr><th>Role / entry</th><td>Individual provider (occupation-registered) or business staff · console → Services / profile → My services</td></tr>
+      <tr><th>Primary action</th><td>Add service (MP-052) · edit · <b>pause / resume</b> (no re-approval — content unchanged) · delete (confirm names the service)</td></tr>
+      <tr><th>Rules</th><td>No sold/out-of-stock for services (FR-SVC-03). Views are aggregate-only, shown to the provider. 6-month stale badge + one Inbox nudge; the listing stays public. Rejected rows always show the admin's reason with Fix &amp; resubmit.</td></tr>
+      <tr><th>Key states</th><td>Default list (shown) · rejected-with-reason · empty</td></tr>
+    </table>
+  </details>
+
+  <div class="row">
+    <div class="frame-block">
+      <div class="frame-label">Default <small>· 4 services</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+          <div class="appbar">
+            <a class="iconbtn" href="mp-020-catalog-manager.html"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <div class="title">My services</div>
+            <a class="btn-text" style="font-size:14px;font-weight:700;" href="mp-052-service-editor.html">+ Add</a>
+          </div>
+
+          <div style="padding:0 16px 12px;">
+            <div class="card flat" style="display:flex;align-items:center;gap:12px;">
+              <span class="avatar" style="background:var(--primary-tint);color:var(--primary-hover);">MP</span>
+              <div style="flex:1;">
+                <div style="font-size:15px;font-weight:700;">Meera Patel <span class="vbadge" style="padding:2px 8px;">Verified</span></div>
+                <div class="subtle" style="font-size:12px;margin-top:2px;">Individual provider · Tutor · Ahmedabad · 4 services · ★ 4.9 (12)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="chiprow">
+            <span class="chip active">All (4)</span><span class="chip">Active (1)</span><span class="chip">Paused (1)</span><span class="chip">In review (1)</span><span class="chip">Rejected (1)</span>
+          </div>
+
+          <div class="list" style="margin:0 16px 16px;">
+            <div class="li">
+              <span style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#34618E,#22415F);flex:none;"></span>
+              <div class="lmain">
+                <div class="lt">Home Tuition 8–12 <span class="pill ok">Active</span></div>
+                <div class="ls">₹2,000 · 128 views · ★ 4.9 on you</div>
+              </div>
+              <button class="btn btn-outline btn-sm">Pause</button>
+            </div>
+            <div class="li" style="opacity:.85;">
+              <span style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#8C3B6E,#5E2450);flex:none;"></span>
+              <div class="lmain">
+                <div class="lt">Gujarati Coaching <span class="pill warn">Paused</span></div>
+                <div class="ls">from ₹800 · paused 2 Oct · 56 views</div>
+              </div>
+              <button class="btn btn-tonal btn-sm">Resume</button>
+            </div>
+            <div class="li">
+              <span style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#4A7AB0,#2F557F);flex:none;opacity:.7;"></span>
+              <div class="lmain">
+                <div class="lt">Science Crash Course <span class="pill warn">In review</span></div>
+                <div class="ls">edit submitted yesterday · live version still showing</div>
+              </div>
+              <a class="iconbtn" style="min-width:40px;min-height:40px;color:var(--text-3);"><svg class="ic sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg></a>
+            </div>
+            <div class="li" style="opacity:.75;">
+              <span style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#B26A00,#7E4C00);flex:none;"></span>
+              <div class="lmain">
+                <div class="lt">Olympiad Prep <span class="pill err">Rejected</span></div>
+                <div class="ls">tap to see the admin's reason · 9 views</div>
+              </div>
+              <button class="btn btn-outline btn-sm">Fix</button>
+            </div>
+          </div>
+
+          <div style="padding:0 16px 24px;">
+            <a class="btn btn-tonal" style="width:100%;" href="mp-052-service-editor.html">+ Add service</a>
+            <div class="subtle" style="font-size:11px;margin-top:10px;text-align:center;">Pause hides the service and its contact card at once · Resume brings it back without a new review</div>
+          </div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+
+    <div class="frame-block">
+      <div class="frame-label">Variant <small>· rejected — admin reason is always shown</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+          <div class="appbar">
+            <a class="iconbtn"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <div class="title">Olympiad Prep</div>
+            <span class="pill err">Rejected</span>
+          </div>
+
+          <div style="padding:16px;">
+            <div class="card" style="border-left:4px solid var(--error);padding:14px;">
+              <div class="overline" style="color:var(--error);margin-bottom:6px;">Admin's reason · 14 Oct</div>
+              <p style="font-size:14px;line-height:21px;">"Please add your Olympiad experience or a result photo to the description, then resubmit. Title 'Olympiad Prep' alone doesn't tell members what they get."</p>
+            </div>
+            <div class="banner info" style="margin-top:12px;">
+              <svg class="ic sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              <div>Rejections always carry a reason (the database refuses blank reasons) — fix it and resubmit; it goes back into the review queue.</div>
+            </div>
+            <div style="display:flex;gap:10px;margin-top:14px;">
+              <button class="btn btn-plain" style="flex:1;">Delete service</button>
+              <a class="btn btn-primary" style="flex:2;" href="mp-052-service-editor.html">Fix &amp; resubmit</a>
+            </div>
+            <div class="subtle" style="font-size:11px;margin-top:10px;text-align:center;">Delete asks "Delete 'Olympiad Prep'?" — destructive actions name the object</div>
+          </div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+
+    <div class="frame-block">
+      <div class="frame-label">Variant <small>· empty</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+          <div class="appbar">
+            <a class="iconbtn"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <div class="title">My services</div>
+          </div>
+          <div class="empty" style="margin-top:80px;">
+            <div class="eico"><svg class="ic lg" viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5Z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+            <h3>No services yet</h3>
+            <p>Your registered occupation (Tutor) already qualifies you — share what you do and members will call you directly.</p>
+            <a class="btn btn-primary" style="margin-top:6px;" href="mp-052-service-editor.html">+ Add your first service</a>
+          </div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-footer">Goswami Parivaar · Marketplace module · service menu: Edit · Pause/Resume · Delete · 6-month stale rows show a "Stale — nudge sent" chip and stay public</div>
+</div>
+<script src="proto.js"></script>
+</body>
+</html>

@@ -12,14 +12,14 @@
   <div class="doc-header">
     <div class="kicker">Marketplace · business console</div>
     <h1>MP-020 · Product Catalog Manager (Business)</h1>
-    <div class="fr-chips"><span>FR-MKT-14</span><span>FR-MKT-16</span></div>
+    <div class="fr-chips"><span>FR-MKT-20</span><span>FR-MKT-24</span></div>
   </div>
 
   <details class="annot" open>
     <summary>MP-020 · business product catalog — live / pending / sold states</summary>
     <table>
       <tr><th>Role / entry</th><td>Business owner/staff (Business module roles) · Business console → Marketplace</td></tr>
-      <tr><th>Primary action</th><td>Add product (MP-021) · edit · mark sold / out of stock · open enquiries (MP-022)</td></tr>
+      <tr><th>Primary action</th><td>Add product (MP-021) · edit · mark sold / out of stock · manage services (MP-053)</td></tr>
       <tr><th>Rules</th><td>New and edited listings go to admin approval before going public (FR-MKT-16). Staff can manage listings per their business role; only owners change business settings (Business module).</td></tr>
       <tr><th>Key states</th><td>Live · In review · Sold/Out of stock (shown) · Rejected (admin reason + fix &amp; resubmit)</td></tr>
     </table>
@@ -56,7 +56,7 @@
               <span style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#B4622A,#8F3E0D);flex:none;"></span>
               <div class="lmain">
                 <div class="lt">Brass Diya Set <span class="pill ok">Live</span></div>
-                <div class="ls">₹450 · 3 enquiries · 42 views</div>
+                <div class="ls">₹450 · 42 views</div>
               </div>
               <a class="iconbtn" style="min-width:40px;min-height:40px;color:var(--text-3);"><svg class="ic sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg></a>
             </div>
@@ -64,7 +64,7 @@
               <span style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#34618E,#22415F);flex:none;"></span>
               <div class="lmain">
                 <div class="lt">Wooden Bead Toran <span class="pill ok">Live</span></div>
-                <div class="ls">₹300 · 1 enquiry · 28 views</div>
+                <div class="ls">₹300 · 28 views</div>
               </div>
               <a class="iconbtn" style="min-width:40px;min-height:40px;color:var(--text-3);"><svg class="ic sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg></a>
             </div>
@@ -88,10 +88,10 @@
 
           <div style="padding:0 16px 24px;">
             <div style="display:flex;gap:10px;">
-              <button class="btn btn-plain" style="flex:1;">
-                <svg class="ic sm" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></svg>
-                Enquiries (3)
-              </button>
+              <a class="btn btn-plain" style="flex:1;" href="mp-053-my-services.html">
+                <svg class="ic sm" viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5Z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                Services (2)
+              </a>
               <button class="btn btn-tonal" style="flex:1;" onclick="location.href='mp-021-product-editor.html'">+ Add product</button>
             </div>
           </div>

@@ -44,14 +44,14 @@
     <div class="logo">MP</div>
     <div>
       <h1>Marketplace — Full UI</h1>
-      <div class="sub">Goswami Parivaar · every screen of the module, organised by persona · scope v1.5 · 16 screens</div>
+      <div class="sub">Goswami Parivaar · every screen of the module, organised by persona · scope v2.0 · 13 screens</div>
     </div>
   </div>
 
   <div class="toplinks">
     <a class="primary" href="viewer.html#mp-010-marketplace-home.html">▶ Tap-through viewer</a>
     <a href="flow.html">⇄ Flow map</a>
-    <a href="enquiry-explainer.html">✉️ Enquiry guide</a>
+    <a href="enquiry-explainer.html">✉️ Enquiry guide (retired model)</a>
     <a href="family-explainer.html">👨‍👩‍👦 Family guide</a>
     <a href="index.html">All modules</a>
   </div>
@@ -60,7 +60,7 @@
   <div class="persona">
     <div class="p-head">
       <div class="p-ico" style="background:#FBEADB;">🛍️</div>
-      <div><h2>Member UI — Buyer</h2><div class="who">verified members · browse, compare, enquire, review</div></div>
+      <div><h2>Member UI — Buyer</h2><div class="who">verified members · browse, compare, contact, review</div></div>
     </div>
     <p class="p-desc">The shopping journey: discover products in your city, inspect details and discounts, see the business's phone and email right on the listing, call or email directly, and review the experience. No middleman — Compare is a Phase-2 candidate.</p>
     <div class="grid">
@@ -72,11 +72,27 @@
     <div class="flowstrip"><b>Buyer journey:</b> Home → category/list → product detail → see phone + email → Call / Email directly → meet & settle outside the app → review.</div>
   </div>
 
+  <!-- ================= SERVICES ================= -->
+  <div class="persona">
+    <div class="p-head">
+      <div class="p-ico" style="background:#E9F0F7;">🧰</div>
+      <div><h2>Services — individuals &amp; businesses</h2><div class="who">occupation-registered members and registered businesses · direct contact</div></div>
+    </div>
+    <p class="p-desc">Services run beside products in the same Marketplace: tuition, repairs, photography and more. Providers set a price model (fixed · starting-from · on-request) and a service area (at provider · at customer · online). Members browse the Services tab and call or email the provider directly — the rating on a service belongs to the <b>provider</b>, not the listing.</p>
+    <div class="grid">
+      <div class="thumb"><a href="viewer.html#mp-050-services-list.html" target="_blank"><div class="tframe"><iframe src="mp-050-services-list.html" loading="lazy" scrolling="no"></iframe></div><div class="tmeta"><b>MP-050 · Services tab</b><span>search · price-model + mode filters</span></div></a></div>
+      <div class="thumb"><a href="viewer.html#mp-051-service-detail.html" target="_blank"><div class="tframe"><iframe src="mp-051-service-detail.html" loading="lazy" scrolling="no"></iframe></div><div class="tmeta"><b>MP-051 · Service detail</b><span>provider card · Call/Email · paused state</span></div></a></div>
+      <div class="thumb"><a href="viewer.html#mp-053-my-services.html" target="_blank"><div class="tframe"><iframe src="mp-053-my-services.html" loading="lazy" scrolling="no"></iframe></div><div class="tmeta"><b>MP-053 · My services</b><span>active · paused · rejected+reason</span></div></a></div>
+      <div class="thumb"><a href="viewer.html#mp-052-service-editor.html" target="_blank"><div class="tframe"><iframe src="mp-052-service-editor.html" loading="lazy" scrolling="no"></iframe></div><div class="tmeta"><b>MP-052 · Service editor</b><span>price model · modes · validation</span></div></a></div>
+    </div>
+    <div class="flowstrip"><b>Service journeys:</b> member — Services tab → filter → detail → call/email → review the provider · provider — My services → add/edit (MP-052) → admin approval → Active · pause/resume anytime (no re-approval).</div>
+  </div>
+
   <!-- ================= SELLER ================= -->
   <div class="persona">
     <div class="p-head">
       <div class="p-ico" style="background:#E6F3EA;">🏪</div>
-      <div><h2>Member UI — Seller (Business console)</h2><div class="who">business owner &amp; staff · listings, moderation states, enquiries</div></div>
+      <div><h2>Member UI — Seller (Business console)</h2><div class="who">business owner &amp; staff · listings, moderation states, services</div></div>
     </div>
     <p class="p-desc">Everything a registered business needs to sell: manage the catalog, submit through admin approval, handle lifecycle (live · in review · sold · rejected-with-reason). Buyer contact is direct — no inbox to manage.</p>
     <div class="grid">
@@ -105,14 +121,14 @@
   <div class="persona">
     <div class="p-head">
       <div class="p-ico" style="background:#F6E9F1;">⭐</div>
-      <div><h2>Ratings &amp; Reviews</h2><div class="who">earned trust · only real enquiries can review · moderated</div></div>
+      <div><h2>Ratings &amp; Reviews</h2><div class="who">earned trust · any verified member may review · moderated</div></div>
     </div>
     <p class="p-desc">Reviews are the module's memory: 1–5 stars + text, one per member per product (and per business), editable, with one business response that can never alter the review. Reported reviews leave public view and go to the admin queue; hidden reviews drop from the average automatically.</p>
     <div class="grid">
       <div class="thumb"><a href="viewer.html#mp-030-product-reviews.html" target="_blank"><div class="tframe"><iframe src="mp-030-product-reviews.html" loading="lazy" scrolling="no"></iframe></div><div class="tmeta"><b>MP-030 · Reviews</b><span>summary · histogram · response · write sheet</span></div></a></div>
       <div class="thumb"><a href="viewer.html#mp-031-review-moderation.html" target="_blank"><div class="tframe"><iframe src="mp-031-review-moderation.html" loading="lazy" scrolling="no"></iframe></div><div class="tmeta"><b>MP-031 · Moderation</b><span>reported → pending → decision → notice</span></div></a></div>
     </div>
-    <div class="flowstrip"><b>Review rules:</b> eligibility = own enquiry in Replied/Closed · 1 review per member (editable) · no contact details (validated) · report → hidden pending admin · hidden = excluded from average · author always told why.</div>
+    <div class="flowstrip"><b>Review rules:</b> eligibility = any verified member · 1 review per member per target (product · business · individual provider), editable · no contact details (validated) · report → hidden pending admin · hidden = excluded from average · author always told why.</div>
   </div>
 
 </div>

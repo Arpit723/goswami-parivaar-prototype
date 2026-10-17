@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MP-051 · Service Detail — Goswami Parivaar UI</title>
+<link rel="stylesheet" href="design-tokens.css">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .gallery { height: 300px; background: linear-gradient(135deg,#34618E,#22415F); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; letter-spacing:.05em; position:relative; text-align:center; padding:0 20px; }
+  .gallery .dots { position:absolute; bottom:14px; left:16px; display:flex; gap:6px; }
+  .gallery .dots i { width:6px;height:6px;border-radius:99px;background:rgba(255,255,255,.45); }
+  .gallery .dots i.on { background:#fff; width:16px; }
+  .gallery .pcount { position:absolute; top:14px; right:14px; background:rgba(0,0,0,.35); border-radius:99px; font-size:11px; padding:4px 10px; font-weight:700; }
+  .actionbar { flex:none; background:var(--surface); border-top:1px solid var(--border); box-shadow:var(--shadow-nav); display:flex; gap:12px; padding:12px 16px; }
+</style>
+</head>
+<body>
+<div class="doc">
+  <div class="doc-header">
+    <div class="kicker">Marketplace · services (individual providers &amp; businesses)</div>
+    <h1>MP-051 · Service Detail</h1>
+    <div class="fr-chips"><span>FR-SVC-02</span><span>FR-SVC-06 provider rating</span><span>FR-MKT-41..45 direct contact</span><span>EC-E-16 scam warning</span></div>
+  </div>
+
+  <details class="annot" open>
+    <summary>MP-051 · service detail (direct contact) — default + paused, 2 frames</summary>
+    <table>
+      <tr><th>Role / entry</th><td>Member · service card in MP-050</td></tr>
+      <tr><th>Primary action</th><td>Call / Email the provider directly (FR-MKT-41..45) · report via ⋮</td></tr>
+      <tr><th>Rules</th><td>Price line follows the model (₹ fixed · from ₹X · on request — no ₹ shown). Rating is the <b>provider's</b> aggregate (provider_reviews / business_reviews), never per-listing. 0-photo services show a neutral cover placeholder. Contact card only while ACTIVE; paused/pending/rejected → state banner (FR-MKT-43). Advance-payment scam warning is mandatory here.</td></tr>
+      <tr><th>Key states</th><td>Active (shown) · paused (state banner replaces contact, buttons disabled)</td></tr>
+    </table>
+  </details>
+
+  <div class="row">
+    <div class="frame-block">
+      <div class="frame-label">Default <small>· active · individual provider</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content" style="padding-bottom:8px;">
+          <div class="appbar float" style="position:absolute;z-index:5;">
+            <a class="iconbtn" style="background:var(--surface);box-shadow:var(--shadow-1);" href="mp-050-services-list.html"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <div style="flex:1;"></div>
+            <a class="iconbtn" style="background:var(--surface);box-shadow:var(--shadow-1);"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg></a>
+          </div>
+          <div class="gallery">
+            HOME TUITION — CLASS 8–12
+            <span class="pcount">1 / 3 portfolio</span>
+            <span class="dots"><i class="on"></i><i></i><i></i></span>
+          </div>
+
+          <div style="padding:16px 16px 0;">
+            <div style="font-size:20px;font-weight:800;line-height:26px;">Home Tuition for Maths &amp; Science (Class 8–12)</div>
+            <div style="display:flex;align-items:baseline;gap:10px;margin-top:8px;flex-wrap:wrap;">
+              <span style="font-size:24px;font-weight:800;color:var(--primary-hover);">₹2,000</span>
+              <span class="subtle" style="font-size:12.5px;">per session · fixed price</span>
+              <span class="subtle" style="font-size:12.5px;">Tuition &amp; Coaching · Ahmedabad</span>
+            </div>
+            <div style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap;">
+              <span class="pill neutral">At customer's home</span><span class="pill neutral">Online also</span><span class="pill warn" style="color:#9A5B00;">★ 4.9 · provider (12 reviews)</span><span class="pill neutral">Listed 2 weeks ago</span>
+            </div>
+          </div>
+
+          <div style="padding:16px 16px 0;">
+            <div class="overline" style="margin-bottom:8px;">About this service</div>
+            <p style="font-size:14px;line-height:22px;">Class 8–12 Mathematics and Science at your home. Chapter-wise revision, weekly tests, and a parent progress note every month. First session free so you can decide.</p>
+          </div>
+
+          <div class="section-h"><h2>Details</h2></div>
+          <div style="padding:0 16px;">
+            <div class="card" style="padding:4px 14px;">
+              <div class="kv" style="border-bottom:1px solid var(--border);"><span>Availability</span><b>Mon–Sat, 4–8 PM</b></div>
+              <div class="kv" style="border-bottom:1px solid var(--border);"><span>Experience</span><b>M.Sc. Maths · 8 years</b></div>
+              <div class="kv" style="border-bottom:1px solid var(--border);"><span>Languages</span><b>English · ગુજરાતી · हिन्दी</b></div>
+              <div class="kv" style="border-bottom:1px solid var(--border);"><span>Service area</span><b>Ahmedabad · at customer</b></div>
+              <div class="kv"><span>Stock / booking</span><b>None — contact to schedule</b></div>
+            </div>
+            <div class="subtle" style="font-size:11px;margin-top:8px;">No booking or calendar in the app — fix the time on the call (Phase-2 candidates)</div>
+          </div>
+
+          <div class="section-h"><h2>Provider</h2><span class="pill ok">Verified member</span></div>
+          <div style="padding:0 16px;">
+            <div class="card" style="display:flex;align-items:center;gap:12px;">
+              <span class="avatar" style="background:var(--primary-tint);color:var(--primary-hover);">MP</span>
+              <div style="flex:1;">
+                <div style="font-size:14.5px;font-weight:700;">Meera Patel</div>
+                <div class="subtle" style="font-size:12px;">Individual provider · occupation: Tutor · 2 services · member since 2024</div>
+              </div>
+              <span class="vbadge"><svg class="ic xs" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><polyline points="9 12 11 14 15 10"/></svg>Verified</span>
+            </div>
+            <div class="subtle" style="font-size:11px;margin-top:8px;text-align:center;">Occupation registration is verified by the Business module — Marketplace never re-verifies (FR-SVC-01)</div>
+          </div>
+
+          <div class="section-h"><h2>Contact the provider</h2><span class="pill ok">Shown to members</span></div>
+          <div style="padding:0 16px;">
+            <div class="card" style="border:1.5px solid var(--verified);">
+              <div class="li" style="border-bottom:1px solid var(--border);">
+                <svg class="ic sm" style="color:var(--verified);" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.8a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z"/></svg>
+                <div class="lmain"><div class="lt mono" style="font-weight:700;">+91 98795 62108</div><div class="ls">Meera's phone · 4–8 PM best</div></div>
+                <a class="btn btn-primary btn-sm" href="tel:+919879562108">Call</a>
+              </div>
+              <div class="li">
+                <svg class="ic sm" style="color:var(--info);" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22 6 12 13 2 6"/></svg>
+                <div class="lmain"><div class="lt" style="font-weight:600;">meera.tutor@gmail.com</div><div class="ls">Meera's email</div></div>
+                <a class="btn btn-outline btn-sm" href="mailto:meera.tutor@gmail.com">Email</a>
+              </div>
+            </div>
+            <div class="subtle" style="font-size:11px;margin-top:8px;text-align:center;">Details come from Meera's verified member profile · report wrong numbers via ⋮</div>
+          </div>
+
+          <div style="padding:16px 16px 20px;">
+            <div class="banner warn" style="margin-bottom:8px;">
+              <svg class="ic sm" viewBox="0 0 24 24"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              <div><b>Never pay in advance.</b>Real providers never ask for UPI money before the first session. Agree on payment when you meet.</div>
+            </div>
+            <div class="banner info">
+              <svg class="ic sm" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+              <div><b>No in-app payment.</b>Call or email directly and settle between yourselves — then rate the provider so others benefit.</div>
+            </div>
+            <a class="btn-text" style="font-size:13px;color:var(--text-2);display:flex;justify-content:center;margin-top:8px;">Report this listing</a>
+          </div>
+        </div>
+        <div class="actionbar">
+          <a class="btn btn-primary" style="flex:1;" href="tel:+919879562108">📞 Call</a>
+          <a class="btn btn-tonal" style="flex:1;" href="mailto:meera.tutor@gmail.com">✉️ Email</a>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+
+    <div class="frame-block">
+      <div class="frame-label">Variant <small>· paused — contact replaced by state banner (FR-MKT-43)</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content" style="padding-bottom:8px;">
+          <div class="appbar float" style="position:absolute;z-index:5;">
+            <a class="iconbtn" style="background:var(--surface);box-shadow:var(--shadow-1);" href="mp-050-services-list.html"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <div style="flex:1;"></div>
+            <a class="iconbtn" style="background:var(--surface);box-shadow:var(--shadow-1);"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg></a>
+          </div>
+          <div class="gallery" style="filter:grayscale(.9);opacity:.75;">HOME TUITION — CLASS 8–12</div>
+
+          <div style="padding:16px 16px 0;">
+            <div style="font-size:20px;font-weight:800;line-height:26px;">Home Tuition for Maths &amp; Science (Class 8–12)</div>
+            <div style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap;">
+              <span class="pill warn">⏸ Paused by provider · since 2 Oct</span><span class="pill neutral">Tuition &amp; Coaching · Ahmedabad</span>
+            </div>
+          </div>
+
+          <div style="padding:16px 16px 20px;">
+            <div class="banner warn">
+              <svg class="ic sm" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+              <div><b>This service is paused.</b>Meera has temporarily stopped taking students — the phone and email are hidden while paused. Check back soon or browse similar tutors.</div>
+            </div>
+            <button class="btn btn-tonal btn-block" style="margin-top:4px;">Browse similar Tuition &amp; Coaching services</button>
+            <div class="subtle" style="font-size:11px;margin-top:10px;text-align:center;">Paused listings leave the feed; old links show this banner instead of contact details</div>
+          </div>
+        </div>
+        <div class="actionbar">
+          <button class="btn btn-plain" style="flex:1;" disabled>📞 Call</button>
+          <button class="btn btn-plain" style="flex:1;" disabled>✉️ Email</button>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-footer">Goswami Parivaar · Marketplace module · 0-photo services: gallery shows a neutral cover placeholder · business providers show the business card + storefront link (Business module)</div>
+</div>
+<script src="proto.js"></script>
+</body>
+</html>
