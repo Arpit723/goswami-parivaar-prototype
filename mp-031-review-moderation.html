@@ -20,17 +20,17 @@
   </div>
 
   <details class="annot" open>
-    <summary>MP-031 · the moderation states — pending approval, reported, admin case, author notice</summary>
+    <summary>MP-031 · the moderation states — reported review, admin case, author notice</summary>
     <table>
-      <tr><th>Purpose</th><td>Completes the review trust loop: every review waits for admin approval before going public (pre-moderation, 19 Oct); reported reviews leave public view pending decision; admin approves/keeps/hides with reason; the author is always notified.</td></tr>
-      <tr><th>Frames</th><td>① Public list — hidden pending decision (new submissions and reported reviews look the same) · ② Admin case detail (Approve pending · Keep / Hide) · ③ Author's Inbox notice with reason</td></tr>
-      <tr><th>Rules</th><td>New reviews start as PENDING — invisible and uncounted until approved (FR-MKT-53) · editing a published review re-queues it · hidden reviews drop from the average (FR-MKT-37) · author sees reason, never the reporter's identity · seller response hides with the review · restore = back to VISIBLE + stats refresh (trigger-verified)</td></tr>
+      <tr><th>Purpose</th><td>The report-driven trust loop: reviews publish instantly (19 Oct — no approval needed), but a REPORT pulls one from public view (PENDING, out of averages) pending an admin decision; admin keeps or hides with reason; the author is always notified when hidden.</td></tr>
+      <tr><th>Frames</th><td>① Public list after a report (review PENDING, banner, "was" note) · ② Admin case detail (Keep / Hide) · ③ Author's Inbox notice with reason</td></tr>
+      <tr><th>Rules</th><td>Reports auto-move the review to PENDING — invisible and uncounted · Keep restores it to public + average · Hide needs a reason (FR-MKT-37) · author sees reason, never the reporter's identity · seller response hides with the review · restore = back to VISIBLE + stats refresh (trigger-verified)</td></tr>
     </table>
   </details>
 
   <div class="row">
     <div class="frame-block">
-      <div class="frame-label">① Hidden pending decision <small>· new submissions &amp; reported reviews look the same</small></div>
+      <div class="frame-label">① After a report <small>· review PENDING — out of public view and average</small></div>
       <div class="phone">
         <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
         <div class="content">
@@ -83,7 +83,7 @@
     </div>
 
     <div class="frame-block">
-      <div class="frame-label">② Admin case <small>· approve pending · keep or hide reported, reason mandatory</small></div>
+      <div class="frame-label">② Admin case <small>· keep or hide, reason mandatory when hiding</small></div>
       <div class="phone">
         <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
         <div class="content">
