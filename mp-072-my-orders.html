@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MP-072 · My Orders — Goswami Parivaar UI</title>
+<link rel="stylesheet" href="design-tokens.css">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .steps { display:flex; gap:0; margin-top:10px; }
+  .steps .st { flex:1; text-align:center; font-size:10px; color:var(--text-3); position:relative; padding-top:14px; }
+  .steps .st::before { content:''; position:absolute; top:4px; left:50%; transform:translateX(-50%); width:10px; height:10px; border-radius:99px; background:var(--surface-2); border:1.5px solid var(--border-strong); }
+  .steps .st.on { color:var(--text); font-weight:700; }
+  .steps .st.on::before { background:var(--verified); border-color:var(--verified); }
+</style>
+</head>
+<body>
+<div class="doc">
+  <div class="doc-header">
+    <div class="kicker">Marketplace · cart &amp; orders (payment channel undecided — payment-agnostic)</div>
+    <h1>MP-072 · My Orders (Buyer)</h1>
+    <div class="fr-chips"><span>FR-MKT-56</span><span>FR-MKT-57 payment PENDING→SETTLED</span></div>
+  </div>
+
+  <details class="annot" open>
+    <summary>MP-072 · buyer order tracking — list + detail timeline — 2 frames</summary>
+    <table>
+      <tr><th>Role / entry</th><td>Member · order success → Track orders · profile → My orders</td></tr>
+      <tr><th>Primary action</th><td>Track status · call the seller · cancel before fulfilment</td></tr>
+      <tr><th>Rules</th><td>Status: PLACED → ACCEPTED / DECLINED (seller note) → FULFILLED; CANCELLED (by buyer or seller, recorded). Payment line: PENDING until the seller confirms receipt (SETTLED) — in-app payment undecided, order shows the channel. Items show snapshotted prices. Declined orders show the seller's note prominently.</td></tr>
+      <tr><th>Key states</th><td>List (shown) · order detail with timeline</td></tr>
+    </table>
+  </details>
+
+  <div class="row">
+    <div class="frame-block">
+      <div class="frame-label">List <small>· mixed statuses</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+          <div class="appbar">
+            <a class="iconbtn" href="mp-010-marketplace-home.html"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <div class="title">My orders</div>
+          </div>
+          <div class="chiprow">
+            <span class="chip active">All (3)</span><span class="chip">Placed (1)</span><span class="chip">Accepted (1)</span><span class="chip">Done (1)</span>
+          </div>
+          <div class="list" style="margin:8px 16px 16px;">
+            <a class="li" href="#detail">
+              <span style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#B4622A,#8F3E0D);flex:none;"></span>
+              <div class="lmain">
+                <div class="lt">RG Handicrafts <span class="pill warn">Placed</span></div>
+                <div class="ls">#1042 · today 10:24 · 2 items · ₹1,580</div>
+              </div>
+              <svg class="ic sm" style="color:var(--text-3);" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+            <a class="li" href="#detail">
+              <span style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#34618E,#22415F);flex:none;"></span>
+              <div class="lmain">
+                <div class="lt">Meera Patel <span class="pill ok">Accepted</span></div>
+                <div class="ls">#1041 · yesterday · Toran × 1 · ₹350 · ready Sat</div>
+              </div>
+              <svg class="ic sm" style="color:var(--text-3);" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+            <div class="li" style="opacity:.8;">
+              <span style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#8C3B6E,#5E2450);flex:none;opacity:.75;"></span>
+              <div class="lmain">
+                <div class="lt">Shah Films <span class="pill neutral">Declined</span></div>
+                <div class="ls">"Album print out of stock this week — reorder Monday?"</div>
+              </div>
+            </div>
+          </div>
+          <div style="padding:0 16px 20px;">
+            <div class="banner info">
+              <svg class="ic sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              <div>Declines always carry the seller's note. Payment shows on each order — PENDING until the seller confirms receipt.</div>
+            </div>
+          </div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+
+    <div class="frame-block">
+      <div class="frame-label">Order detail <small>· timeline + payment line + cancel</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+          <div class="appbar">
+            <a class="iconbtn" href="mp-072-my-orders.html"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <div class="title">Order #1042</div>
+            <span class="pill warn">Placed</span>
+          </div>
+
+          <div style="padding:14px 16px 0;">
+            <div class="card" style="padding:12px 14px;">
+              <div class="steps">
+                <div class="st on">Placed<br>10:24</div>
+                <div class="st">Accepted</div>
+                <div class="st">Fulfilled</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section-h"><h2>Items</h2></div>
+          <div class="list" style="margin:0 16px;">
+            <div class="li"><div class="lmain"><div class="lt">Brass Diya Set × 2</div><div class="ls">₹360 each (−20%) — price locked at order</div></div><b>₹720</b></div>
+            <div class="li"><div class="lmain"><div class="lt">Copper Pooja Thali × 1</div><div class="ls">made to order</div></div><b>₹860</b></div>
+          </div>
+
+          <div class="section-h"><h2>Seller</h2></div>
+          <div style="padding:0 16px;">
+            <div class="card flat" style="display:flex;align-items:center;gap:12px;">
+              <span class="avatar sq" style="background:var(--primary-tint);color:var(--primary-hover);">RH</span>
+              <div style="flex:1;"><div style="font-size:14px;font-weight:700;">RG Handicrafts</div><div class="subtle" style="font-size:12px;">payment: direct · status: <b>PENDING</b></div></div>
+              <a class="btn btn-primary btn-sm" href="tel:+919879562108">📞 Call</a>
+            </div>
+          </div>
+
+          <div style="padding:16px 16px 20px;">
+            <div class="banner info">
+              <svg class="ic sm" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+              <div>Pay ₹1,580 directly to the seller (call to arrange). When they confirm receipt, payment shows <b>SETTLED</b> and the order can be marked fulfilled.</div>
+            </div>
+            <button class="btn btn-outline btn-block" style="margin-top:10px;">Cancel order</button>
+            <div class="subtle" style="font-size:11px;margin-top:6px;text-align:center;">Cancellable until fulfilled — seller is notified with the time and your name</div>
+          </div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-footer">Goswami Parivaar · Marketplace · FULFILLED requires settled payment (DB-enforced) · buyer hard-deleted → order shows "Deleted member" (anonymised, record kept)</div>
+</div>
+<script src="proto.js"></script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MP-073 · Seller Orders — Goswami Parivaar UI</title>
+<link rel="stylesheet" href="design-tokens.css">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .actionbar { flex:none; background:var(--surface); border-top:1px solid var(--border); box-shadow:var(--shadow-nav); display:flex; gap:8px; padding:12px 16px; }
+</style>
+</head>
+<body>
+<div class="doc">
+  <div class="doc-header">
+    <div class="kicker">Marketplace · cart &amp; orders (payment channel undecided — payment-agnostic)</div>
+    <h1>MP-073 · Seller Orders</h1>
+    <div class="fr-chips"><span>FR-MKT-56</span><span>FR-MKT-58 stock at fulfilment</span><span>EC-O-03/06/07</span></div>
+  </div>
+
+  <details class="annot" open>
+    <summary>MP-073 · seller order queue — queue + case with actions — 2 frames</summary>
+    <table>
+      <tr><th>Role / entry</th><td>Business staff or individual seller · seller console → Orders</td></tr>
+      <tr><th>Primary action</th><td>Accept · Decline (note mandatory) · Fulfil (confirms receipt = payment SETTLED + stock decremented)</td></tr>
+      <tr><th>Rules</th><td>Accept re-checks stock in a locked transaction (two sellers on one item: first wins). Decline always carries a note shown to the buyer. Fulfil requires payment settled — in the direct world, tapping "Fulfil" = "I received payment"; made-to-order items skip the stock decrement. Cancel possible before fulfilment.</td></tr>
+      <tr><th>Key states</th><td>Queue (shown) · order case with action bar · decline sheet</td></tr>
+    </table>
+  </details>
+
+  <div class="row">
+    <div class="frame-block">
+      <div class="frame-label">Queue <small>· 2 new · 1 in progress</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+          <div class="appbar">
+            <a class="iconbtn" href="mp-020-catalog-manager.html"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <div class="title">Orders</div>
+            <span class="pill warn">2 new</span>
+          </div>
+          <div class="chiprow">
+            <span class="chip active">New (2)</span><span class="chip">Accepted (1)</span><span class="chip">Done (12)</span><span class="chip">Declined (2)</span>
+          </div>
+          <div class="list" style="margin:8px 16px 16px;">
+            <a class="li" href="#case">
+              <span class="avatar" style="background:var(--primary-tint);color:var(--primary-hover);flex:none;">MT</span>
+              <div class="lmain">
+                <div class="lt">#1042 · Meera Trivedi <span class="pill warn">Placed</span></div>
+                <div class="ls">2 items · ₹1,580 · today 10:24 · "pickup Saturday"</div>
+              </div>
+              <svg class="ic sm" style="color:var(--text-3);" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+            <a class="li" href="#case">
+              <span class="avatar" style="background:var(--warning-bg);color:var(--warning);flex:none;">JS</span>
+              <div class="lmain">
+                <div class="lt">#1043 · Jaya Shah <span class="pill warn">Placed</span></div>
+                <div class="ls">1 item · ₹450 · 5 min ago</div>
+              </div>
+              <svg class="ic sm" style="color:var(--text-3);" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+            <div class="li" style="opacity:.85;">
+              <span class="avatar" style="background:var(--surface-2);color:var(--text-2);flex:none;">RP</span>
+              <div class="lmain">
+                <div class="lt">#1039 · Ritesh Patel <span class="pill ok">Accepted</span></div>
+                <div class="ls">awaiting fulfilment · payment pending · ₹860</div>
+              </div>
+            </div>
+          </div>
+          <div style="padding:0 16px 20px;">
+            <div class="banner info">
+              <svg class="ic sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              <div>"Fulfil" means you received the payment in hand — it settles the order and updates your stock counts automatically.</div>
+            </div>
+          </div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+
+    <div class="frame-block">
+      <div class="frame-label">Order case <small>· accept / decline / fulfil</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content" style="padding-bottom:8px;">
+          <div class="appbar">
+            <a class="iconbtn" href="mp-073-seller-orders.html"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <div class="title">#1042 · Meera T.</div>
+            <span class="pill warn">Placed</span>
+          </div>
+
+          <div class="list" style="margin:12px 16px 0;">
+            <div class="li"><div class="lmain"><div class="lt">Brass Diya Set × 2</div><div class="ls">₹360 each · stock 6 → will become 4</div></div><b>₹720</b></div>
+            <div class="li"><div class="lmain"><div class="lt">Copper Pooja Thali × 1</div><div class="ls">made to order · no count change</div></div><b>₹860</b></div>
+          </div>
+
+          <div class="section-h"><h2>Buyer</h2></div>
+          <div style="padding:0 16px;">
+            <div class="card flat" style="display:flex;align-items:center;gap:12px;">
+              <span class="avatar" style="background:var(--primary-tint);color:var(--primary-hover);">MT</span>
+              <div style="flex:1;"><div style="font-size:14px;font-weight:700;">Meera Trivedi <span class="vbadge" style="padding:2px 8px;">Verified</span></div><div class="subtle" style="font-size:12px;">member since 2024 · 3 past orders</div></div>
+              <a class="btn btn-outline btn-sm" href="tel:+919825012345">📞 Call</a>
+            </div>
+            <div class="subtle" style="font-size:11px;margin-top:8px;text-align:center;">Note: "Please keep diyas ready — picking up Saturday evening."</div>
+          </div>
+        </div>
+        <div class="actionbar">
+          <button class="btn btn-outline" style="flex:1;">Decline…</button>
+          <button class="btn btn-primary" style="flex:2;">Accept order</button>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+
+    <div class="frame-block">
+      <div class="frame-label">Decline sheet <small>· note mandatory</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content" style="filter:brightness(.92);">
+          <div class="appbar"><div class="title">Orders</div></div>
+          <div class="list" style="margin:12px 16px;">
+            <div class="li"><span class="avatar" style="background:var(--primary-tint);color:var(--primary-hover);flex:none;">MT</span><div class="lmain"><div class="lt">#1042 · Meera T.</div><div class="ls">2 items · ₹1,580</div></div></div>
+          </div>
+          <div class="scrim">
+            <div class="sheet">
+              <div class="grabber"></div>
+              <h3>Decline this order?</h3>
+              <p class="subtle" style="font-size:12.5px;margin-top:6px;">Meera sees your note in her orders — make it something she can act on. The order isn't deleted; it moves to Declined with the reason.</p>
+              <div class="field" style="margin-top:14px;">
+                <label>Reason for declining</label>
+                <textarea>Out of stock this week — new brass stock arrives Monday. Please reorder then!</textarea>
+                <div class="helper">Mandatory — the database refuses a blank decline (same rule as every rejection in the app)</div>
+              </div>
+              <div style="display:flex;gap:10px;margin-top:18px;">
+                <button class="btn btn-plain" style="flex:1;">Keep order</button>
+                <button class="btn btn-primary" style="flex:2;">Send decline</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-footer">Goswami Parivaar · Marketplace · accepted orders show a "Fulfil — payment received" button; fulfilment settles payment + decrements in-stock counts (made-to-order skips) · decline needs a note (DB CHECK)</div>
+</div>
+<script src="proto.js"></script>
+</body>
+</html>

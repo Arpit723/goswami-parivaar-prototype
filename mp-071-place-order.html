@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MP-071 · Place Order — Goswami Parivaar UI</title>
+<link rel="stylesheet" href="design-tokens.css">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .actionbar { flex:none; background:var(--surface); border-top:1px solid var(--border); box-shadow:var(--shadow-nav); display:flex; gap:12px; padding:12px 16px; align-items:center; }
+</style>
+</head>
+<body>
+<div class="doc">
+  <div class="doc-header">
+    <div class="kicker">Marketplace · cart &amp; orders (payment channel undecided — payment-agnostic)</div>
+    <h1>MP-071 · Place Order</h1>
+    <div class="fr-chips"><span>FR-MKT-55</span><span>per-seller split · price snapshots</span><span>FR-MKT-57 payment-agnostic</span></div>
+  </div>
+
+  <details class="annot" open>
+    <summary>MP-071 · review &amp; submit — 2 frames (review + success)</summary>
+    <table>
+      <tr><th>Role / entry</th><td>Member · Cart → Place order</td></tr>
+      <tr><th>Primary action</th><td>Submit — creates one order per seller (snapshots prices), clears those cart rows, idempotent on double-tap</td></tr>
+      <tr><th>Rules</th><td>Optional buyer note ≤300 per submission. Availability re-validated at placement (live + visible + not own listing + stock ≥ qty for in-stock). No payment is taken — each seller is contacted/confirmed directly; order tracks PLACED → ACCEPTED/FULFILLED and payment PENDING → SETTLED when the seller confirms receipt.</td></tr>
+      <tr><th>Key states</th><td>Review (shown) · success</td></tr>
+    </table>
+  </details>
+
+  <div class="row">
+    <div class="frame-block">
+      <div class="frame-label">Review <small>· 2 orders will be created</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+          <div class="appbar">
+            <a class="iconbtn" href="mp-070-cart.html"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <div class="title">Place order</div>
+          </div>
+
+          <div class="section-h"><h2>Order 1 · RG Handicrafts</h2></div>
+          <div class="list" style="margin:0 16px;">
+            <div class="li"><div class="lmain"><div class="lt">Brass Diya Set × 2</div><div class="ls">₹360 each (−20%) · ₹720</div></div></div>
+            <div class="li"><div class="lmain"><div class="lt">Copper Pooja Thali × 1</div><div class="ls">₹860 · made to order</div></div></div>
+          </div>
+
+          <div class="section-h"><h2>Order 2 · Meera Patel</h2></div>
+          <div class="list" style="margin:0 16px;">
+            <div class="li"><div class="lmain"><div class="lt">Wooden Bead Toran × 1</div><div class="ls">₹350 · in stock</div></div></div>
+          </div>
+
+          <div style="padding:16px 16px 0;">
+            <div class="field">
+              <label>Note to sellers <small>· optional, ≤300</small></label>
+              <textarea>Please keep diyas ready — picking up Saturday evening.</textarea>
+            </div>
+          </div>
+
+          <div style="padding:14px 16px 20px;">
+            <div class="banner info">
+              <svg class="ic sm" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+              <div><b>No payment in the app.</b>Each seller accepts your order and you settle with them directly — the order tracks payment until the seller confirms receipt. (In-app payment may come later; nothing changes for this order.)</div>
+            </div>
+          </div>
+        </div>
+        <div class="actionbar">
+          <div style="flex:1;"><div class="subtle" style="font-size:11px;">2 orders · total</div><div style="font-weight:800;font-size:16px;">₹1,930</div></div>
+          <button class="btn btn-primary">Submit orders</button>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+
+    <div class="frame-block">
+      <div class="frame-label">Success <small>· per-seller orders created</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+          <div class="appbar"><div class="title">Order placed</div></div>
+          <div class="empty" style="margin-top:60px;">
+            <div class="eico" style="background:var(--verified-bg);color:var(--verified);"><svg class="ic lg" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+            <h3>2 orders placed!</h3>
+            <p>Both sellers are notified. You'll see each order move from <b>Placed</b> to <b>Accepted</b> to <b>Fulfilled</b> in My orders — with the seller's phone one tap away.</p>
+            <a class="btn btn-primary" style="margin-top:6px;" href="mp-072-my-orders.html">Track my orders</a>
+            <a class="btn-text" style="margin-top:10px;font-size:13px;color:var(--text-2);">Keep browsing</a>
+          </div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-footer">Goswami Parivaar · Marketplace · submit is idempotent (double-tap creates nothing extra) · prices snapshotted — later listing edits never change these orders</div>
+</div>
+<script src="proto.js"></script>
+</body>
+</html>

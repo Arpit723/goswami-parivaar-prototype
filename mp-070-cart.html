@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MP-070 · Cart — Goswami Parivaar UI</title>
+<link rel="stylesheet" href="design-tokens.css">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .stepper { display:inline-flex; align-items:center; gap:10px; }
+  .stepper b { min-width:22px; text-align:center; font-size:14px; }
+  .actionbar { flex:none; background:var(--surface); border-top:1px solid var(--border); box-shadow:var(--shadow-nav); display:flex; gap:12px; padding:12px 16px; align-items:center; }
+</style>
+</head>
+<body>
+<div class="doc">
+  <div class="doc-header">
+    <div class="kicker">Marketplace · cart &amp; orders (payment channel undecided — payment-agnostic)</div>
+    <h1>MP-070 · Cart</h1>
+    <div class="fr-chips"><span>FR-MKT-54</span><span>one row per product, qty 1–20</span></div>
+  </div>
+
+  <details class="annot" open>
+    <summary>MP-070 · cart — grouped by seller, quantity steppers, checkout bar — 2 frames</summary>
+    <table>
+      <tr><th>Role / entry</th><td>Member · "Add to cart" on product detail (MP-012) · cart icon on list screens</td></tr>
+      <tr><th>Primary action</th><td>Review quantities → Place order (MP-071)</td></tr>
+      <tr><th>Rules</th><td>Cart groups by seller — submitting splits into one order per seller (FR-MKT-55). Quantity 1–20, updates in place (no duplicate rows). Payable prices shown live (discount computed). Items that went sold/hidden while in cart show a warning row. No payment happens here — channel undecided.</td></tr>
+      <tr><th>Key states</th><td>Loaded (shown) · empty</td></tr>
+    </table>
+  </details>
+
+  <div class="row">
+    <div class="frame-block">
+      <div class="frame-label">Loaded <small>· 2 sellers · payable ₹1,570</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+          <div class="appbar">
+            <a class="iconbtn" href="mp-011-product-list.html"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <div class="title">Cart</div>
+            <span class="pill neutral">3 items</span>
+          </div>
+
+          <div class="section-h"><h2>RG Handicrafts <span class="pill ok" style="margin-left:6px;">verified business</span></h2></div>
+          <div class="list" style="margin:0 16px;">
+            <div class="li">
+              <span style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#B4622A,#8F3E0D);flex:none;"></span>
+              <div class="lmain">
+                <div class="lt">Brass Diya Set (6 pc)</div>
+                <div class="ls">₹450 −20% → ₹360 each</div>
+              </div>
+              <div class="stepper"><a class="iconbtn" style="min-width:32px;min-height:32px;"><svg class="ic xs" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/></svg></a><b>2</b><a class="iconbtn" style="min-width:32px;min-height:32px;"><svg class="ic xs" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><line x1="12" y1="5" x2="12" y2="19"/></svg></a></div>
+            </div>
+            <div class="li">
+              <span style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#2E7D46,#1D5C30);flex:none;"></span>
+              <div class="lmain">
+                <div class="lt">Copper Pooja Thali</div>
+                <div class="ls">₹860 · made to order</div>
+              </div>
+              <div class="stepper"><a class="iconbtn" style="min-width:32px;min-height:32px;"><svg class="ic xs" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/></svg></a><b>1</b><a class="iconbtn" style="min-width:32px;min-height:32px;"><svg class="ic xs" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><line x1="12" y1="5" x2="12" y2="19"/></svg></a></div>
+            </div>
+          </div>
+
+          <div class="section-h"><h2>Meera Patel <span class="pill ok" style="margin-left:6px;">individual seller</span></h2></div>
+          <div class="list" style="margin:0 16px 16px;">
+            <div class="li">
+              <span style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#34618E,#22415F);flex:none;"></span>
+              <div class="lmain">
+                <div class="lt">Wooden Bead Toran</div>
+                <div class="ls">₹350 · in stock · 5 left</div>
+              </div>
+              <div class="stepper"><a class="iconbtn" style="min-width:32px;min-height:32px;"><svg class="ic xs" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/></svg></a><b>1</b><a class="iconbtn" style="min-width:32px;min-height:32px;"><svg class="ic xs" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><line x1="12" y1="5" x2="12" y2="19"/></svg></a></div>
+            </div>
+          </div>
+
+          <div style="padding:0 16px 20px;">
+            <div class="banner info">
+              <svg class="ic sm" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+              <div>Submitting splits this cart into <b>2 orders — one per seller</b>, each tracked separately. Payment happens directly with each seller (in-app payment not decided yet).</div>
+            </div>
+          </div>
+        </div>
+        <div class="actionbar">
+          <div style="flex:1;"><div class="subtle" style="font-size:11px;">Payable total</div><div style="font-weight:800;font-size:16px;">₹1,930 <span class="subtle" style="font-size:12px;font-weight:500;">−20% on diyas</span></div></div>
+          <a class="btn btn-primary" href="mp-071-place-order.html">Place order · 2 sellers</a>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+
+    <div class="frame-block">
+      <div class="frame-label">Empty <small>· next-best action</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+          <div class="appbar"><div class="title">Cart</div></div>
+          <div class="empty" style="margin-top:90px;">
+            <div class="eico"><svg class="ic lg" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></div>
+            <h3>Your cart is empty</h3>
+            <p>Browse the marketplace and tap "Add to cart" on any product — orders go straight to the seller.</p>
+            <a class="btn btn-primary" style="margin-top:6px;" href="mp-010-marketplace-home.html">Browse products</a>
+          </div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-footer">Goswami Parivaar · Marketplace · sold-out/hidden items appear as warn rows with "remove" only — quantities of live items are re-validated at order placement</div>
+</div>
+<script src="proto.js"></script>
+</body>
+</html>
