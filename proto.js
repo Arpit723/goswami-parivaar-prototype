@@ -124,6 +124,18 @@
 
     /* ---------- Services (MP-050..053): PARKED 19 Oct — screens unwired, files kept ---------- */
 
+    /* ---------- Marketplace · Admin console (MP-060..062, 19 Oct — in-app, role-gated) ---------- */
+    "mp-060-admin-dashboard.html": { back: "gp-009-home.html",
+      li: { "Listing approvals": "mp-061-approval-queue.html", "Reported reviews": "mp-031-review-moderation.html",
+            "Categories": "mp-062-categories-manager.html" } },
+    "mp-061-approval-queue.html": { back: "mp-060-admin-dashboard.html",
+      btn: { "Approve": "mp-061-approval-queue.html", "Request change": "mp-061-approval-queue.html",
+             "Hold": "mp-061-approval-queue.html", "Send note": "mp-061-approval-queue.html",
+             "Cancel": "mp-061-approval-queue.html" } },
+    "mp-062-categories-manager.html": { back: "mp-060-admin-dashboard.html",
+      btn: { "+ Add": "mp-062-categories-manager.html", "Add — live instantly": "mp-062-categories-manager.html",
+             "Cancel": "mp-062-categories-manager.html" } },
+
     /* ---------- Phase 4 · Matrimony & calls ---------- */
     "gp-050-matrimony-intro.html": { back: "gp-009-home.html", btn: {
       "Begin — create my profile": "gp-051-matrimony-profile-setup.html",

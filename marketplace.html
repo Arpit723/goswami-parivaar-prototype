@@ -44,7 +44,7 @@
     <div class="logo">MP</div>
     <div>
       <h1>Marketplace — Full UI</h1>
-      <div class="sub">Goswami Parivaar · every screen of the module, organised by persona · scope v2.1 · 9 screens · services parked (19 Oct)</div>
+      <div class="sub">Goswami Parivaar · every screen of the module, organised by persona · scope v2.1 · 12 screens · incl. in-app admin console · services parked (19 Oct)</div>
     </div>
   </div>
 
@@ -92,13 +92,15 @@
       <div class="p-ico" style="background:#E9F0F7;">🛡️</div>
       <div><h2>Admin UI</h2><div class="who">admins &amp; Sub-Admins (city-scoped) · in-app module, 2FA login · server-enforced RBAC</div></div>
     </div>
-    <p class="p-desc">Nothing is public without approval: new listings and edits pass the admin queue; reported reviews and listings get evidence-based decisions (keep / hide with reason); every action lands in the immutable audit log. The full in-app admin console screens are the next design batch — the marketplace-specific states are shown below.</p>
+    <p class="p-desc">Nothing is public without approval: new listings and edits pass the admin queue (approve / request change / hold — no rejections), reported reviews get evidence-based decisions, categories are managed live, and every action lands in the immutable audit log. The console is a role-gated section of the SAME app on iOS, Android and Web — unlocked after 2FA login; Sub-Admins see city-scoped queues.</p>
     <div class="grid">
+      <div class="thumb"><a href="viewer.html#mp-060-admin-dashboard.html" target="_blank"><div class="tframe"><iframe src="mp-060-admin-dashboard.html" loading="lazy" scrolling="no"></iframe></div><div class="tmeta"><b>MP-060 · Dashboard</b><span>counts · SLA aging · queue entries</span></div></a></div>
+      <div class="thumb"><a href="viewer.html#mp-061-approval-queue.html" target="_blank"><div class="tframe"><iframe src="mp-061-approval-queue.html" loading="lazy" scrolling="no"></iframe></div><div class="tmeta"><b>MP-061 · Approval queue</b><span>case + cross-checks · approve/note/hold</span></div></a></div>
+      <div class="thumb"><a href="viewer.html#mp-062-categories-manager.html" target="_blank"><div class="tframe"><iframe src="mp-062-categories-manager.html" loading="lazy" scrolling="no"></iframe></div><div class="tmeta"><b>MP-062 · Categories</b><span>add · rename · hide · reorder</span></div></a></div>
       <div class="thumb"><a href="viewer.html#mp-031-review-moderation.html" target="_blank"><div class="tframe"><iframe src="mp-031-review-moderation.html" loading="lazy" scrolling="no"></iframe></div><div class="tmeta"><b>MP-031 · Review moderation</b><span>report → cross-checks → keep/hide</span></div><span class="badge admin">frame ② = admin view</span></a></div>
-      <div class="thumb"><a href="viewer.html#mp-090-edge-states.html" target="_blank"><div class="tframe"><iframe src="mp-090-edge-states.html" loading="lazy" scrolling="no"></iframe></div><div class="tmeta"><b>MP-090 · Edge states</b><span>sold · rejected+reason · offline · blocked</span></div></a></div>
-      <div class="thumb"><a href="viewer.html#ad-004-approvals.html" target="_blank"><div class="tframe"><iframe src="ad-004-approvals.html" loading="lazy" scrolling="no"></iframe></div><div class="tmeta"><b>AD-004 · Approval queues</b><span>listing review pattern (desktop ref)</span></div><span class="badge admin">redesign pending</span></a></div>
+      <div class="thumb"><a href="viewer.html#mp-090-edge-states.html" target="_blank"><div class="tframe"><iframe src="mp-090-edge-states.html" loading="lazy" scrolling="no"></iframe></div><div class="tmeta"><b>MP-090 · Edge states</b><span>sold · admin hold · offline · empty</span></div></a></div>
     </div>
-    <div class="flowstrip"><b>Admin flow:</b> 2FA login → dashboard queue → open listing/review case → cross-checks (eligibility, scans, history) → approve / reject+reason / keep / hide → author + business notified → action audited.</div>
+    <div class="flowstrip"><b>Admin flow:</b> 2FA login → dashboard (pending + reported counts, SLA) → open a case → cross-checks (contact scan, discount sanity, seller history) → approve / request-change (note to seller) / hold → seller + buyers notified → action audited. Two admins on one item: first wins, second sees "already handled".</div>
   </div>
 
   <!-- ================= REVIEWS ================= -->

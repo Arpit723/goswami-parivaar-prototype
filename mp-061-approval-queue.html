@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MP-061 · Listing Approval Queue — Goswami Parivaar UI</title>
+<link rel="stylesheet" href="design-tokens.css">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .photostrip { display:flex; gap:8px; padding:0 16px; }
+  .photostrip .ph { width:76px; height:76px; border-radius:12px; flex:none; }
+  .actionbar { flex:none; background:var(--surface); border-top:1px solid var(--border); box-shadow:var(--shadow-nav); display:flex; gap:8px; padding:12px 16px; }
+</style>
+</head>
+<body>
+<div class="doc">
+  <div class="doc-header">
+    <div class="kicker">Marketplace · admin console (role-gated · same app on iOS/Android/Web)</div>
+    <h1>MP-061 · Listing Approval Queue</h1>
+    <div class="fr-chips"><span>FR-MKT-26</span><span>FR-MKT-52 no double-approve</span><span>FR-MKT-51 audit</span><span>EC-P-26/27</span></div>
+  </div>
+
+  <details class="annot" open>
+    <summary>MP-061 · pending listings + edits — queue list · case · request-change sheet — 3 frames</summary>
+    <table>
+      <tr><th>Role / entry</th><td>Admin / city-scoped Sub-Admin · MP-060 → Listing approvals</td></tr>
+      <tr><th>Primary action</th><td>Approve (publish or promote shadow edit) · Request change (note → seller console) · Hold (hide pending review). No reject — 19 Oct.</td></tr>
+      <tr><th>Rules</th><td>Photos are part of the review. Cross-checks shown per case (contact scan, discount sanity, stock count, seller history). Two admins on one item: first action wins, second sees "already handled" (status transition inside a row lock — FR-MKT-52). Everything audit-logged.</td></tr>
+      <tr><th>Key states</th><td>Queue list (shown) · case detail · request-change sheet</td></tr>
+    </table>
+  </details>
+
+  <div class="row">
+    <div class="frame-block">
+      <div class="frame-label">① Queue list <small>· 3 pending · 1 over SLA</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+          <div class="appbar">
+            <a class="iconbtn" href="mp-060-admin-dashboard.html"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <div class="title">Listing approvals</div>
+            <span class="pill warn">3</span>
+          </div>
+          <div class="chiprow">
+            <span class="chip active">Pending (3)</span><span class="chip">Held (1)</span><span class="chip">Handled today (5)</span>
+          </div>
+          <div class="list" style="margin:8px 16px 16px;">
+            <a class="li" href="#case">
+              <span style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#B4622A,#8F3E0D);flex:none;"></span>
+              <div class="lmain">
+                <div class="lt">Brass Diya Set (6 pc) <span class="pill warn">SLA 2d</span></div>
+                <div class="ls">new · Meera Patel (individual) · Home &amp; Puja · ₹450 −20%</div>
+              </div>
+              <svg class="ic sm" style="color:var(--text-3);" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+            <a class="li" href="#case">
+              <span style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#8C3B6E,#5E2450);flex:none;"></span>
+              <div class="lmain">
+                <div class="lt">Silk Saree — price edit <span class="pill neutral">edit</span></div>
+                <div class="ls">shadow edit of a LIVE listing · RG Handicrafts · ₹1,200 → ₹999</div>
+              </div>
+              <svg class="ic sm" style="color:var(--text-3);" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+            <a class="li" href="#case">
+              <span style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#34618E,#22415F);flex:none;"></span>
+              <div class="lmain">
+                <div class="lt">Copper Pooja Thali <span class="pill ok">1st listing</span></div>
+                <div class="ls">new · first-time seller · Handicrafts · ₹860</div>
+              </div>
+              <svg class="ic sm" style="color:var(--text-3);" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+          </div>
+          <div style="padding:0 16px 20px;">
+            <div class="banner info">
+              <svg class="ic sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              <div>"Edit" cases show what changed next to the live version — the live listing keeps serving until you approve.</div>
+            </div>
+          </div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+
+    <div class="frame-block">
+      <div class="frame-label">② Case detail <small>· cross-checks + three actions</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content" style="padding-bottom:8px;">
+          <div class="appbar">
+            <a class="iconbtn" href="mp-061-approval-queue.html"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <div class="title">Brass Diya Set (6 pc)</div>
+            <span class="pill warn">Pending 2d</span>
+          </div>
+
+          <div class="photostrip" style="margin-top:12px;">
+            <div class="ph" style="background:linear-gradient(135deg,#B4622A,#8F3E0D);"></div>
+            <div class="ph" style="background:linear-gradient(135deg,#C4783A,#9A5518);"></div>
+            <div class="ph" style="background:linear-gradient(135deg,#8F3E0D,#6B2E08);"></div>
+          </div>
+
+          <div style="padding:14px 16px 0;">
+            <div class="kv-row" style="display:flex;justify-content:space-between;font-size:13px;padding:4px 0;"><span class="subtle">Price</span><b>₹450 − 20% → ₹360</b></div>
+            <div class="kv-row" style="display:flex;justify-content:space-between;font-size:13px;padding:4px 0;"><span class="subtle">Stock</span><b>In stock · 6 left</b></div>
+            <div class="kv-row" style="display:flex;justify-content:space-between;font-size:13px;padding:4px 0;"><span class="subtle">Seller</span><b>Meera Patel · individual · verified</b></div>
+          </div>
+
+          <div class="section-h"><h2>Cross-checks</h2></div>
+          <div style="padding:0 16px;">
+            <div class="card" style="padding:4px 14px;">
+              <div class="kv" style="border-bottom:1px solid var(--border);"><span>Contact details in text</span><b style="color:var(--verified);">none found ✓</b></div>
+              <div class="kv" style="border-bottom:1px solid var(--border);"><span>Discount sanity (1–90%)</span><b style="color:var(--verified);">20% ✓</b></div>
+              <div class="kv" style="border-bottom:1px solid var(--border);"><span>Photos — real product shots</span><b style="color:var(--verified);">3 photos ✓</b></div>
+              <div class="kv" style="border-bottom:1px solid var(--border);"><span>Seller history</span><b>1st listing · member since 2024</b></div>
+              <div class="kv"><span>Similar listings (spam check)</span><b>no duplicates ✓</b></div>
+            </div>
+          </div>
+        </div>
+        <div class="actionbar">
+          <button class="btn btn-outline" style="flex:1;">Hold</button>
+          <button class="btn btn-tonal" style="flex:1;">Request change</button>
+          <button class="btn btn-primary" style="flex:1.2;">Approve</button>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+
+    <div class="frame-block">
+      <div class="frame-label">③ Request change <small>· sheet — note goes to the seller's console</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content" style="filter:brightness(.92);">
+          <div class="appbar"><div class="title">Listing approvals</div></div>
+          <div class="list" style="margin:12px 16px;">
+            <div class="li"><span style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#B4622A,#8F3E0D);flex:none;"></span><div class="lmain"><div class="lt">Brass Diya Set (6 pc)</div><div class="ls">pending · Meera Patel</div></div></div>
+          </div>
+          <div class="scrim">
+            <div class="sheet">
+              <div class="grabber"></div>
+              <h3>Request a change</h3>
+              <p class="subtle" style="font-size:12.5px;margin-top:6px;">Meera sees this note in her seller console, fixes the listing, and resubmits — it comes back to this queue. The listing is never rejected; nothing is deleted.</p>
+              <div class="field" style="margin-top:14px;">
+                <label>Note to the seller</label>
+                <textarea>Please add the diya size (inches) to the description and make photo 1 the full set laid out — it helps buyers judge.</textarea>
+                <div class="helper">Plain and specific · the seller can act on it directly · cleared automatically on resubmit</div>
+              </div>
+              <div style="display:flex;gap:10px;margin-top:18px;">
+                <button class="btn btn-plain" style="flex:1;">Cancel</button>
+                <button class="btn btn-primary" style="flex:2;">Send note</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-footer">Goswami Parivaar · Marketplace admin · no REJECTED status (19 Oct): approve / request change / hold are the only dispositions · hold overrides the seller's visibility until released (EC-P-27)</div>
+</div>
+<script src="proto.js"></script>
+</body>
+</html>

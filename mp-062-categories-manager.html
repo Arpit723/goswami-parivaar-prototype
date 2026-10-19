@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MP-062 · Categories Manager — Goswami Parivaar UI</title>
+<link rel="stylesheet" href="design-tokens.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="doc">
+  <div class="doc-header">
+    <div class="kicker">Marketplace · admin console (role-gated · same app on iOS/Android/Web)</div>
+    <h1>MP-062 · Product Categories Manager</h1>
+    <div class="fr-chips"><span>FR-MKT-27</span><span>product_categories table</span><span>FR-MKT-51 audit</span></div>
+  </div>
+
+  <details class="annot" open>
+    <summary>MP-062 · admin-managed category list — list + add sheet — 2 frames</summary>
+    <table>
+      <tr><th>Role / entry</th><td>Admin / Sub-Admin · MP-060 → Categories</td></tr>
+      <tr><th>Primary action</th><td>Add category · rename · hide/show (is_active) · reorder (sort)</td></tr>
+      <tr><th>Rules</th><td>Changes go live instantly — no app release needed (FR-MKT-27). Hiding a category never deletes or hides its listings; it only leaves the pickers. Counts show live listings per category. Renames and hides are audit-logged. Delete = Admin-only, blocked while listings use the category.</td></tr>
+      <tr><th>Key states</th><td>List (shown) · add-category sheet</td></tr>
+    </table>
+  </details>
+
+  <div class="row">
+    <div class="frame-block">
+      <div class="frame-label">① List <small>· 6 active · 1 hidden</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+          <div class="appbar">
+            <a class="iconbtn" href="mp-060-admin-dashboard.html"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <div class="title">Categories</div>
+            <a class="btn-text" style="font-size:14px;font-weight:700;">+ Add</a>
+          </div>
+          <div class="pad-h subtle" style="font-size:12px;padding-top:4px;">Drag ⋮⋮ to reorder · toggle to show/hide in pickers</div>
+
+          <div class="list" style="margin:10px 16px 16px;">
+            <div class="li">
+              <svg class="ic sm" style="color:var(--text-3);flex:none;" viewBox="0 0 24 24"><circle cx="9" cy="5" r="1"/><circle cx="9" cy="12" r="1"/><circle cx="9" cy="19" r="1"/><circle cx="15" cy="5" r="1"/><circle cx="15" cy="12" r="1"/><circle cx="15" cy="19" r="1"/></svg>
+              <div class="lmain"><div class="lt">Home &amp; Puja <span class="pill neutral">64 live</span></div><div class="ls">slug: home-puja · since launch</div></div>
+              <div class="switch" style="background:var(--primary);"><div class="knob" style="background:#fff;transform:translateX(16px);"></div></div>
+            </div>
+            <div class="li">
+              <svg class="ic sm" style="color:var(--text-3);flex:none;" viewBox="0 0 24 24"><circle cx="9" cy="5" r="1"/><circle cx="9" cy="12" r="1"/><circle cx="9" cy="19" r="1"/><circle cx="15" cy="5" r="1"/><circle cx="15" cy="12" r="1"/><circle cx="15" cy="19" r="1"/></svg>
+              <div class="lmain"><div class="lt">Clothing <span class="pill neutral">51 live</span></div><div class="ls">slug: clothing</div></div>
+              <div class="switch" style="background:var(--primary);"><div class="knob" style="background:#fff;transform:translateX(16px);"></div></div>
+            </div>
+            <div class="li">
+              <svg class="ic sm" style="color:var(--text-3);flex:none;" viewBox="0 0 24 24"><circle cx="9" cy="5" r="1"/><circle cx="9" cy="12" r="1"/><circle cx="9" cy="19" r="1"/><circle cx="15" cy="5" r="1"/><circle cx="15" cy="12" r="1"/><circle cx="15" cy="19" r="1"/></svg>
+              <div class="lmain"><div class="lt">Food &amp; Pickles <span class="pill neutral">38 live</span></div><div class="ls">slug: food-pickles</div></div>
+              <div class="switch" style="background:var(--primary);"><div class="knob" style="background:#fff;transform:translateX(16px);"></div></div>
+            </div>
+            <div class="li">
+              <svg class="ic sm" style="color:var(--text-3);flex:none;" viewBox="0 0 24 24"><circle cx="9" cy="5" r="1"/><circle cx="9" cy="12" r="1"/><circle cx="9" cy="19" r="1"/><circle cx="15" cy="5" r="1"/><circle cx="15" cy="12" r="1"/><circle cx="15" cy="19" r="1"/></svg>
+              <div class="lmain"><div class="lt">Jewellery <span class="pill neutral">19 live</span></div><div class="ls">slug: jewellery</div></div>
+              <div class="switch" style="background:var(--primary);"><div class="knob" style="background:#fff;transform:translateX(16px);"></div></div>
+            </div>
+            <div class="li">
+              <svg class="ic sm" style="color:var(--text-3);flex:none;" viewBox="0 0 24 24"><circle cx="9" cy="5" r="1"/><circle cx="9" cy="12" r="1"/><circle cx="9" cy="19" r="1"/><circle cx="15" cy="5" r="1"/><circle cx="15" cy="12" r="1"/><circle cx="15" cy="19" r="1"/></svg>
+              <div class="lmain"><div class="lt">Handicrafts <span class="pill neutral">44 live</span></div><div class="ls">slug: handicrafts</div></div>
+              <div class="switch" style="background:var(--primary);"><div class="knob" style="background:#fff;transform:translateX(16px);"></div></div>
+            </div>
+            <div class="li">
+              <svg class="ic sm" style="color:var(--text-3);flex:none;" viewBox="0 0 24 24"><circle cx="9" cy="5" r="1"/><circle cx="9" cy="12" r="1"/><circle cx="9" cy="19" r="1"/><circle cx="15" cy="5" r="1"/><circle cx="15" cy="12" r="1"/><circle cx="15" cy="19" r="1"/></svg>
+              <div class="lmain"><div class="lt">Electronics <span class="pill neutral">12 live</span></div><div class="ls">slug: electronics</div></div>
+              <div class="switch" style="background:var(--primary);"><div class="knob" style="background:#fff;transform:translateX(16px);"></div></div>
+            </div>
+            <div class="li" style="opacity:.6;">
+              <svg class="ic sm" style="color:var(--text-3);flex:none;" viewBox="0 0 24 24"><circle cx="9" cy="5" r="1"/><circle cx="9" cy="12" r="1"/><circle cx="9" cy="19" r="1"/><circle cx="15" cy="5" r="1"/><circle cx="15" cy="12" r="1"/><circle cx="15" cy="19" r="1"/></svg>
+              <div class="lmain"><div class="lt">Puja Services <span class="pill warn">hidden · 0 live</span></div><div class="ls">hidden with services (19 Oct) — kept for history</div></div>
+              <div class="switch"><div class="knob" style="background:#fff;"></div></div>
+            </div>
+          </div>
+
+          <div style="padding:0 16px 20px;">
+            <div class="banner info">
+              <svg class="ic sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              <div>Hiding a category hides it from pickers only — existing listings stay live and reachable. Deleting needs Admin role and is blocked while listings use the category.</div>
+            </div>
+          </div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+
+    <div class="frame-block">
+      <div class="frame-label">② Add category <small>· sheet</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content" style="filter:brightness(.92);">
+          <div class="appbar"><div class="title">Categories</div></div>
+          <div class="list" style="margin:12px 16px;">
+            <div class="li"><div class="lmain"><div class="lt">Handicrafts</div></div></div>
+          </div>
+          <div class="scrim">
+            <div class="sheet">
+              <div class="grabber"></div>
+              <h3>Add category</h3>
+              <div class="field" style="margin-top:12px;">
+                <label>Name</label>
+                <input type="text" value="Festive Decor">
+                <div class="helper">Shown to buyers in pickers and filters</div>
+              </div>
+              <div class="field" style="margin-top:10px;">
+                <label>Slug <small>· auto-suggested</small></label>
+                <input type="text" value="festive-decor" class="mono">
+                <div class="helper">Lowercase, no spaces · unique · used in URLs and filters</div>
+              </div>
+              <div class="field" style="margin-top:10px;">
+                <label>Position</label>
+                <div class="seg"><button>After Jewellery</button><button class="active">At end</button></div>
+              </div>
+              <div style="display:flex;gap:10px;margin-top:18px;">
+                <button class="btn btn-plain" style="flex:1;">Cancel</button>
+                <button class="btn btn-primary" style="flex:2;">Add — live instantly</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-footer">Goswami Parivaar · Marketplace admin · renames apply instantly everywhere (feeds, filters, editor picker) · every change audit-logged (FR-MKT-51)</div>
+</div>
+<script src="proto.js"></script>
+</body>
+</html>

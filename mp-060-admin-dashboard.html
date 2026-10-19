@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MP-060 · Admin Dashboard — Goswami Parivaar UI</title>
+<link rel="stylesheet" href="design-tokens.css">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .statgrid { display:grid; grid-template-columns:1fr 1fr; gap:10px; padding:0 16px; }
+  .statcard { background:var(--surface); border:1.5px solid var(--border); border-radius:var(--r-lg); padding:12px 14px; box-shadow:var(--shadow-1); }
+  .statcard .sv { font-size:24px; font-weight:800; color:var(--primary-hover); }
+  .statcard .sl { font-size:11px; color:var(--text-3); margin-top:2px; }
+</style>
+</head>
+<body>
+<div class="doc">
+  <div class="doc-header">
+    <div class="kicker">Marketplace · admin console (role-gated · same app on iOS/Android/Web)</div>
+    <h1>MP-060 · Marketplace Admin Dashboard</h1>
+    <div class="fr-chips"><span>FR-MKT-49</span><span>FR-MKT-50 same-app admin</span><span>FR-MKT-51 audit</span></div>
+  </div>
+
+  <details class="annot" open>
+    <summary>MP-060 · admin dashboard — counts, SLA aging, queue entries</summary>
+    <table>
+      <tr><th>Role / entry</th><td>Admin or Sub-Admin · after 2FA login, the app unlocks this Admin section (same app, all 3 platforms)</td></tr>
+      <tr><th>Primary action</th><td>Jump into a queue: listing approvals (MP-061) · reported reviews (MP-031) · categories (MP-062)</td></tr>
+      <tr><th>Rules</th><td>Sub-Admins see city-scoped counts (user_roles). Items waiting &gt; 48 h show an SLA chip. Every action from here is audit-logged (FR-MKT-51). Members never see this screen — RBAC server-side.</td></tr>
+      <tr><th>Key states</th><td>Normal (shown) · all-caught-up (counts zero, celebratory empty)</td></tr>
+    </table>
+  </details>
+
+  <div class="row">
+    <div class="frame-block">
+      <div class="frame-label">Default <small>· 3 pending · 1 over SLA</small></div>
+      <div class="phone">
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+          <div class="appbar">
+            <a class="iconbtn" href="gp-009-home.html"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
+            <div class="title">Marketplace · Admin</div>
+            <span class="pill ok"><svg class="ic xs" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><polyline points="9 12 11 14 15 10"/></svg>2FA</span>
+          </div>
+
+          <div style="padding:10px 16px 0;">
+            <div class="card flat" style="padding:10px 14px;display:flex;justify-content:space-between;align-items:center;">
+              <span class="subtle" style="font-size:12px;">Scope: Gandhinagar (Sub-Admin)</span>
+              <span class="pill neutral">Today · 10:24</span>
+            </div>
+          </div>
+
+          <div class="section-h"><h2>Needs attention</h2></div>
+          <div class="statgrid">
+            <div class="statcard">
+              <div class="sv">3</div>
+              <div class="sl">listings awaiting approval · oldest <b style="color:var(--warning);">2 days ⏳</b></div>
+            </div>
+            <div class="statcard">
+              <div class="sv">2</div>
+              <div class="sl">reviews reported · 1 over SLA</div>
+            </div>
+            <div class="statcard">
+              <div class="sv">1</div>
+              <div class="sl">listing held pending review</div>
+            </div>
+            <div class="statcard">
+              <div class="sv">6</div>
+              <div class="sl">active categories · 1 hidden</div>
+            </div>
+          </div>
+
+          <div class="section-h"><h2>Queues</h2></div>
+          <div class="list" style="margin:0 16px 16px;">
+            <a class="li" href="mp-061-approval-queue.html">
+              <span style="width:44px;height:44px;border-radius:12px;background:var(--primary-tint);color:var(--primary);display:flex;align-items:center;justify-content:center;flex:none;"><svg class="ic sm" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 19.5 4 17 4 12V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1 1 0 0 1 1.52 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1z"/></svg></span>
+              <div class="lmain"><div class="lt">Listing approvals <span class="pill warn">3 · 1 over SLA</span></div><div class="ls">new listings + edits waiting · MP-061</div></div>
+              <svg class="ic sm" style="color:var(--text-3);" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+            <a class="li" href="mp-031-review-moderation.html">
+              <span style="width:44px;height:44px;border-radius:12px;background:var(--warning-bg);color:var(--warning);display:flex;align-items:center;justify-content:center;flex:none;"><svg class="ic sm" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
+              <div class="lmain"><div class="lt">Reported reviews <span class="pill warn">2</span></div><div class="ls">keep-visible or hide with reason · MP-031</div></div>
+              <svg class="ic sm" style="color:var(--text-3);" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+            <a class="li" href="mp-062-categories-manager.html">
+              <span style="width:44px;height:44px;border-radius:12px;background:var(--info-bg);color:var(--info);display:flex;align-items:center;justify-content:center;flex:none;"><svg class="ic sm" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
+              <div class="lmain"><div class="lt">Categories <span class="pill neutral">6 active</span></div><div class="ls">add · rename · hide · reorder · MP-062</div></div>
+              <svg class="ic sm" style="color:var(--text-3);" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+          </div>
+
+          <div style="padding:0 16px 20px;">
+            <div class="banner info">
+              <svg class="ic sm" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>
+              <div>Every action you take here — approve, request change, hold, release — is written to the immutable audit log with your name and timestamp.</div>
+            </div>
+          </div>
+        </div>
+        <div class="homebar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-footer">Goswami Parivaar · Marketplace admin · all-caught-up state: cards show 0 with a "Nice — queue clear" note · same layout on iOS/Android/Web (responsive)</div>
+</div>
+<script src="proto.js"></script>
+</body>
+</html>
