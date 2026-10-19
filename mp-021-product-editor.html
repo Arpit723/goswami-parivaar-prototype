@@ -12,7 +12,7 @@
   <div class="doc-header">
     <div class="kicker">Marketplace · business console</div>
     <h1>MP-021 · Product Editor (Add / Edit)</h1>
-    <div class="fr-chips"><span>FR-MKT-15</span><span>FR-MKT-16</span></div>
+    <div class="fr-chips"><span>FR-MKT-20</span><span>FR-MKT-21</span><span>FR-MKT-40 discount %</span><span>FR-MKT-48 stock count</span></div>
   </div>
 
   <details class="annot" open>
@@ -20,7 +20,7 @@
     <table>
       <tr><th>Role / entry</th><td>Business staff · MP-020 → + Add / Edit</td></tr>
       <tr><th>Primary action</th><td>Submit listing → admin approval queue (never straight to public)</td></tr>
-      <tr><th>Fields</th><td>≤6 photos · title · category (admin-managed list) · price (display only) · description · stock status · city</td></tr>
+      <tr><th>Fields</th><td>≤6 photos · title · category (admin-managed list) · original price + <b>discount % (1–90, payable computed)</b> · description · highlights (optional) · stock mode + <b>remaining count</b> · <b>no city (19 Oct)</b></td></tr>
       <tr><th>Rules</th><td>First photo = cover. Draft autosaves. Edits to a live product re-enter review. No payment fields anywhere by design.</td></tr>
     </table>
   </details>
@@ -68,29 +68,32 @@
                 <input type="text" value="450" class="mono">
               </div>
               <div class="field" style="flex:1;">
-                <label>Discounted price (₹) <small>· optional</small></label>
-                <div class="input mono" style="display:flex;justify-content:space-between;align-items:center;"><span>360</span><span class="pill ok" style="margin-right:6px;">20% off</span></div>
-              </div>
-              <div class="field" style="flex:1;">
-                <label>Stock status</label>
-                <div class="seg"><button class="active">In stock</button><button>Made to order</button></div>
+                <label>Discount % <small>· optional</small></label>
+                <div class="input mono" style="display:flex;justify-content:space-between;align-items:center;"><span>20</span><span class="pill ok" style="margin-right:6px;">→ ₹360</span></div>
               </div>
             </div>
-            <div class="helper" style="margin-top:-6px;">Discounted must be lower than original (validated) · discount truthfulness is the business's responsibility and reportable (FR-MKT-40)</div>
+            <div class="helper" style="margin-top:-8px;">1–90 only · buyers see the computed payable price (₹360) — you never type two prices that can disagree (FR-MKT-40)</div>
+
+            <div style="display:flex;gap:10px;">
+              <div class="field" style="flex:1.2;">
+                <label>Stock mode</label>
+                <div class="seg"><button class="active">In stock</button><button>Made to order</button></div>
+              </div>
+              <div class="field" style="flex:1;">
+                <label>Remaining count</label>
+                <input type="text" value="6" class="mono">
+              </div>
+            </div>
+            <div class="helper" style="margin-top:-8px;">Update the count as items sell (no auto-decrement — payment happens outside the app) · 0 shows "Out of stock" · hidden for Made to order (FR-MKT-48)</div>
 
             <div class="field">
               <label>Description</label>
               <textarea>Set of 6 handcrafted brass diyas from Morbi artisans. Polished finish, cotton wicks included. Ideal for Diwali and daily puja. 3-piece variant available on request.</textarea>
             </div>
 
-            <div class="field">
-              <label>City</label>
-              <div class="seg"><button class="active">Ahmedabad</button><button>Gandhinagar</button></div>
-            </div>
-
             <div class="banner info">
               <svg class="ic sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-              <div>Listings appear after a quick admin review (usually 24 h). Buyers enquire directly — the app never handles money, so there are no payment fields here.</div>
+              <div>Listings appear after a quick admin review (usually 24 h) — no rejections anymore: admins request changes or hold. Buyers call you directly; the app never handles money. You can hide the listing anytime.</div>
             </div>
 
             <button class="btn btn-primary btn-block">Submit for approval</button>
