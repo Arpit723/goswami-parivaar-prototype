@@ -113,7 +113,7 @@
     "mp-031-review-moderation.html": { back: "mp-030-product-reviews.html",
       btn: { "Edit my review": "mp-030-product-reviews.html" } },
     "mp-030-product-reviews.html": { back: "mp-012-product-detail.html",
-      btn: { "Write a review": "mp-030-product-reviews.html", "Post review": "mp-012-product-detail.html",
+      btn: { "Write a review": "mp-030-product-reviews.html", "Submit for approval": "mp-012-product-detail.html",
              "Cancel": "mp-030-product-reviews.html", "Edit": "mp-030-product-reviews.html" } },
     "mp-020-catalog-manager.html": { back: "gp-009-home.html",
       li: { "Brass Diya Set": "mp-021-product-editor.html", "Wooden Bead Toran": "mp-021-product-editor.html",
