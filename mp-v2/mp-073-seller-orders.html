@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MP-073 · Seller Orders — v2</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  .socard { margin:12px 18px 0; background:#fff; border:1px solid var(--border); border-radius:var(--radius-card); box-shadow:var(--shadow-card); padding:13px 14px; }
+  .socard .sh { display:flex; align-items:center; gap:8px; }
+  .socard .buyer { font-size:11px; font-weight:800; color:var(--text-1); }
+  .soitem { display:flex; align-items:center; gap:9px; padding:8px 0; border-bottom:1px dashed var(--border); }
+  .soitem:last-of-type { border-bottom:none; }
+  .soitem img { width:38px; height:38px; border-radius:10px; object-fit:cover; flex:none; }
+  .soitem .st2 { flex:1; font-size:10px; font-weight:700; color:var(--text-1); line-height:1.3; }
+  .soitem .sq { font-size:8.5px; color:var(--text-3); font-weight:600; }
+  .soitem .sp { font-size:10px; font-weight:800; color:var(--text-1); }
+  .stocknote { margin-top:8px; background:var(--chip-teal); border-radius:10px; padding:8px 10px; font-size:9px; color:#0F766E; font-weight:700; }
+  .declinesheet { margin-top:8px; background:var(--chip-rose); border-radius:10px; padding:9px 11px; font-size:9px; color:#9D174D; font-weight:600; line-height:1.5; }
+  .settle { margin-top:8px; background:var(--warning-tint); border-radius:10px; padding:8px 10px; font-size:9px; color:var(--warning-text); font-weight:700; }
+  .so-btns { display:flex; gap:8px; margin-top:10px; align-items:center; }
+</style>
+</head>
+<body>
+<div class="doc">
+  <div class="doc-header">
+    <div class="kicker">Marketplace v2 · Goswami Connect theme</div>
+    <h1>MP-073 · Seller Orders</h1>
+    <div class="sub">The fulfilment dock — Accept → Dispatch → Deliver; stock moves at delivery.</div>
+    <div class="fr-chips"><span>FR-MKT-56</span><span>FR-MKT-58</span><span>stock @ delivery</span><span>decline needs note</span></div>
+    <div class="step-chip">Screen 10 of 15 · Seller flow · theme v2</div>
+  </div>
+
+  <details class="annot" open>
+    <summary>MP-073 — requirements map</summary>
+    <table>
+      <tr><th>Role / entry</th><td>Seller · badge on MP-020 console / push notification.</td></tr>
+      <tr><th>Accept</th><td>Row-locked stock re-check inside the transaction (someone else's order may have taken the last unit) → status ACCEPTED.</td></tr>
+      <tr><th>Decline</th><td>Mandatory <code>seller_note</code> — shown verbatim to the buyer (MP-072 red card). No reason, no decline.</td></tr>
+      <tr><th>Dispatch → Deliver</th><td>Dispatch requires prior accept (DB CHECK). “Mark Delivered” = confirm payment received → <code>payment_status</code> SETTLED + <b>stock decremented now</b> (made-to-order items skip decrement).</td></tr>
+      <tr><th>Buyer identity</th><td>Buyer anonymised on hard-delete (SET NULL) — order history survives.</td></tr>
+      <tr><th>Next screens</th><td>MP-072 buyer's mirror of same order · MP-020 console.</td></tr>
+    </table>
+  </details>
+
+  <div class="row">
+    <div class="frame-block">
+      <div class="frame-label">Seller view · Ritesh Zaveri &amp; Sons · 3 orders</div>
+      <div class="phone">
+        <div class="notch"></div>
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg width="16" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.2" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+
+          <div class="appbar">
+            <a class="backbtn" href="mp-020-seller-console.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></a>
+            <div class="atitle">Seller Orders<div class="asub">1 new · 1 accepted · 1 out for delivery</div></div>
+          </div>
+
+          <div class="segrow">
+            <span class="seg on">New (1)</span>
+            <span class="seg">Accepted (1)</span>
+            <span class="seg">Dispatched (1)</span>
+            <span class="seg">History</span>
+          </div>
+
+          <!-- NEW -->
+          <div class="socard" style="border:1.5px solid var(--primary)">
+            <div class="sh">
+              <span class="stchip placed">NEW · #GP-1043</span>
+              <span style="font-size:8.5px;color:var(--text-3);font-weight:700;margin-left:auto">today 9:38 AM</span>
+            </div>
+            <div style="margin-top:9px"><span class="buyer">👤 Aarav P.</span> <span style="font-size:8.5px;color:var(--text-3);font-weight:600">· verified member · Gandhinagar</span></div>
+            <div class="soitem">
+              <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=200&q=80&auto=format&fit=crop" alt="">
+              <div class="st2">Sterling Silver Jhumka Earrings<div class="sq">₹448 each · qty 2 (snapshot)</div></div>
+              <span class="sp">₹896</span>
+            </div>
+            <div class="soitem">
+              <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=200&q=80&auto=format&fit=crop" alt="">
+              <div class="st2">24k Gold-plated Bangle Pair<div class="sq">₹910 · qty 1 (snapshot)</div></div>
+              <span class="sp">₹910</span>
+            </div>
+            <div class="stocknote">📦 Stock check on accept: Jhumka 4 ✓ · Bangle 5 ✓ — units held for this order</div>
+            <div class="declinesheet">💬 Buyer note: “Deliver after 5 PM please — gate code 4471. Diyas are a gift 🙏”</div>
+            <div class="so-btns">
+              <a class="btn primary sm" href="index.html" style="flex:1">Accept order</a>
+              <a class="btn danger sm" href="index.html">Decline…</a>
+            </div>
+            <div class="fhint err" style="font-size:8px;color:var(--danger);margin-top:6px;font-weight:600">Declining requires a short note to the buyer — orders never vanish silently.</div>
+          </div>
+
+          <!-- ACCEPTED -->
+          <div class="socard">
+            <div class="sh">
+              <span class="stchip live">ACCEPTED · #GP-1041</span>
+              <span style="font-size:8.5px;color:var(--text-3);font-weight:700;margin-left:auto">yesterday</span>
+            </div>
+            <div style="margin-top:9px"><span class="buyer">👤 Hetalben R.</span></div>
+            <div class="soitem">
+              <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=200&q=80&auto=format&fit=crop" alt="">
+              <div class="st2">Sterling Silver Jhumka Earrings<div class="sq">₹448 · qty 1</div></div>
+              <span class="sp">₹448</span>
+            </div>
+            <div class="tline" style="margin-top:6px">
+              <div class="tstep done"><div class="tdot"></div><div class="tl">Placed</div></div>
+              <div class="tstep done now"><div class="tdot"></div><div class="tl">Accepted</div></div>
+              <div class="tstep"><div class="tdot"></div><div class="tl">Dispatched</div></div>
+              <div class="tstep"><div class="tdot"></div><div class="tl">Delivered</div></div>
+            </div>
+            <div class="so-btns">
+              <a class="btn primary sm" href="index.html" style="flex:1">🛵 Mark Dispatched</a>
+            </div>
+          </div>
+
+          <!-- DISPATCHED -->
+          <div class="socard">
+            <div class="sh">
+              <span class="stchip dispatch">DISPATCHED · #GP-1038</span>
+              <span style="font-size:8.5px;color:var(--text-3);font-weight:700;margin-left:auto">20 Oct</span>
+            </div>
+            <div style="margin-top:9px"><span class="buyer">👤 Jignesh D.</span></div>
+            <div class="soitem">
+              <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=200&q=80&auto=format&fit=crop" alt="">
+              <div class="st2">Custom Name Ring<div class="sq">₹449 (10% off) · qty 1 · made-to-order</div></div>
+              <span class="sp">₹449</span>
+            </div>
+            <div class="settle">💰 On “Delivered”: confirm you received ₹449 → payment marked SETTLED · stock −0 (made-to-order)</div>
+            <div class="so-btns">
+              <a class="btn primary sm" href="index.html" style="flex:1">✅ Mark Delivered</a>
+              <a class="btn ghost sm" href="tel:">📞 Call buyer</a>
+            </div>
+          </div>
+
+          <div style="height:20px"></div>
+
+        </div><!-- /content -->
+
+        <div class="bnav">
+          <a class="nitem" href="mp-010-marketplace-home.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5L12 3l9 7.5"/><path d="M5 9.5V21h5v-6h4v6h5V9.5"/></svg><span class="nl">Home</span></a>
+          <a class="nitem" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5"/><circle cx="17" cy="9" r="2.4"/><path d="M15.8 14.6c2.3.2 4 1.7 4.7 4.4"/></svg><span class="nl">Community</span></a>
+          <div class="fab-wrap"><a class="fab" href="mp-021-product-editor.html"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></a><span class="nl">Post</span></div>
+          <a class="nitem" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 7.5l9 6 9-6"/></svg><span class="nl">Inbox</span></a>
+          <a class="nitem" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c.8-3.8 3.4-6 7-6s6.2 2.2 7 6"/></svg><span class="nl">Profile</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="navfoot">
+    <a href="mp-021-product-editor.html">← MP-021 Editor</a>
+    <a class="primary" href="mp-060-admin-dashboard.html">Next: MP-060 Admin Dashboard →</a>
+  </div>
+</div>
+<style>
+  body.render-mode { padding:0; background:#FDF6EC; }
+  body.render-mode .doc-header, body.render-mode .annot,
+  body.render-mode .navfoot, body.render-mode .frame-label { display:none; }
+  body.render-mode .row { gap:0; }
+  body.render-mode .doc { max-width:none; }
+</style>
+<script>if (location.hash === '#png') document.body.classList.add('render-mode');</script>
+</body>
+</html>

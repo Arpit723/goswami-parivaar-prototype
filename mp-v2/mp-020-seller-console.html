@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MP-020 · Seller Console — v2</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  .prow { display:flex; gap:11px; padding:12px 0; border-bottom:1px solid var(--border); }
+  .prow:last-child { border-bottom:none; }
+  .prow img { width:56px; height:56px; border-radius:13px; object-fit:cover; flex:none; }
+  .prow .pmain { flex:1; min-width:0; }
+  .prow .pt { font-size:11.5px; font-weight:700; color:var(--text-1); line-height:1.3; }
+  .prow .pm { display:flex; gap:6px; align-items:center; margin-top:4px; flex-wrap:wrap; }
+  .prow .pv { font-size:9px; color:var(--text-3); font-weight:600; }
+  .prow .pend { text-align:right; flex:none; }
+  .prow .pp { font-size:11.5px; font-weight:800; color:var(--text-1); }
+  .prow .pact { font-size:8.5px; font-weight:800; color:var(--primary); margin-top:5px; display:inline-block; }
+  .addbtn { display:flex; align-items:center; gap:10px; margin-top:12px; background:linear-gradient(135deg,#F0592A,#E8451A); color:#fff; border-radius:16px; padding:13px 16px; text-decoration:none; box-shadow:0 6px 16px rgba(232,69,26,.28); }
+  .addbtn span { font-size:13.5px; font-weight:700; flex:1; text-align:left; }
+  .addbtn small { font-size:9.5px; font-weight:500; opacity:.85; }
+  .gatenote { margin-top:9px; background:#fff; border:1px dashed var(--warning-text); border-radius:10px; padding:8px 10px; font-size:9px; color:var(--warning-text); font-weight:600; line-height:1.5; }
+</style>
+</head>
+<body>
+<div class="doc">
+  <div class="doc-header">
+    <div class="kicker">Marketplace v2 · Goswami Connect theme</div>
+    <h1>MP-020 · Seller Console</h1>
+    <div class="sub">The seller's product shelf — statuses, hide/show, the one-listing-at-a-time gate.</div>
+    <div class="fr-chips"><span>FR-MKT-20..25</span><span>FR-MKT-59</span><span>is_visible</span><span>admin_hold</span><span>review_note</span></div>
+    <div class="step-chip">Screen 8 of 15 · Seller flow · theme v2</div>
+  </div>
+
+  <details class="annot" open>
+    <summary>MP-020 — requirements map</summary>
+    <table>
+      <tr><th>Role / entry</th><td>Seller (any member — business or individual) · <b>Profile → My Products</b> · ＋ Add Product button (gate-checked; bottom-nav ＋ = Community Post, not selling).</td></tr>
+      <tr><th>Gate</th><td><b>One pending listing per seller</b> (new OR edit-in-review). 409 <code>MARKETPLACE_PENDING_EXISTS</code>. Releases on admin decision. Banner shows what's holding the slot.</td></tr>
+      <tr><th>Statuses</th><td><code>PENDING_APPROVAL → LIVE → SOLD · DELETED</code> — no REJECTED. Admin uses request-change (note shown here) or hold.</td></tr>
+      <tr><th>Hide/show</th><td><code>is_visible</code> toggle — instant, no re-approval. Admin hold overrides (admin wins, EC-P-27).</td></tr>
+      <tr><th>Shadow edits</th><td>Editing a LIVE product creates a pending copy; live keeps serving until approved.</td></tr>
+      <tr><th>Next screens</th><td>MP-021 editor · MP-073 seller orders · MP-061 (admin side of the queue).</td></tr>
+    </table>
+  </details>
+
+  <div class="row">
+    <div class="frame-block">
+      <div class="frame-label">Seller view · business · mixed statuses</div>
+      <div class="phone">
+        <div class="notch"></div>
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg width="16" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.2" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+
+          <div class="appbar">
+            <a class="backbtn" href="index.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></a>
+            <div class="atitle">My Products<div class="asub">Ritesh Zaveri &amp; Sons · BUSINESS</div></div>
+            
+          </div>
+
+          <div class="statgrid">
+            <div class="statcard"><div class="sic" style="background:var(--chip-mint)">🟢</div><div class="sv">3</div><div class="sl">LIVE listings</div></div>
+            <div class="statcard"><div class="sic" style="background:var(--warning-tint)">⏳</div><div class="sv">1</div><div class="sl">In review · gate slot used</div></div>
+            <div class="statcard"><div class="sic" style="background:var(--chip-teal)">👁</div><div class="sv">412</div><div class="sl">Views · top listing</div></div>
+            <div class="statcard"><div class="sic" style="background:var(--chip-lavender)">👁</div><div class="sv">1,206</div><div class="sl">Views this month</div></div>
+          </div>
+
+          <div class="banner warn"><svg width="42" height="42" viewBox="0 0 42 42" style="flex:none"><circle cx="21" cy="21" r="16.5" fill="none" stroke="rgba(180,83,9,.18)" stroke-width="5"/><circle cx="21" cy="21" r="16.5" fill="none" stroke="#F5A623" stroke-width="5" stroke-linecap="round" stroke-dasharray="78 26" transform="rotate(-90 21 21)"/><text x="21" y="25" text-anchor="middle" font-size="10.5" font-weight="800" fill="#B45309" font-family="Poppins,sans-serif">1/1</text></svg><span><b>One listing at a time.</b> Your next product unlocks when “Oxidised Silver Ring Set” is approved. Edits also wait in the same queue.</span></div>
+
+          <a class="addbtn" href="mp-021-product-editor.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg><span>+ Add Product</span><small>opens the editor · 1 gate slot needed</small></a>
+
+          <div class="card" style="padding:4px 14px">
+            <div class="prow">
+              <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=200&q=80&auto=format&fit=crop" alt="">
+              <div class="pmain">
+                <div class="pt">Oxidised Silver Ring Set (3)</div>
+                <div class="pm"><span class="stchip review">IN REVIEW · 32h</span><span class="pv">NEW listing</span></div>
+                <div class="gatenote">Submitted 19 Oct 9:12 PM · admins aim for &lt; 48h. You'll be notified either way — no action needed.</div>
+              </div>
+              <div class="pend"><div class="pp">₹592</div></div>
+            </div>
+
+            <div class="prow">
+              <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=200&q=80&auto=format&fit=crop" alt="">
+              <div class="pmain">
+                <div class="pt">Sterling Silver Jhumka Earrings</div>
+                <div class="pm"><span class="stchip live">LIVE</span><span class="stchip" style="background:var(--warning-tint);color:var(--warning-text)">4 LEFT</span><span class="pv">412 views · ★4.8 (23)</span></div>
+              </div>
+              <div class="pend">
+                <div class="pp">₹448</div>
+                <span class="pact">Hide · Edit</span>
+              </div>
+            </div>
+
+            <div class="prow">
+              <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=200&q=80&auto=format&fit=crop" alt="">
+              <div class="pmain">
+                <div class="pt">24k Gold-plated Bangle Pair</div>
+                <div class="pm"><span class="stchip live">LIVE</span><span class="pv">198 views · edit in review</span></div>
+                <div class="gatenote" style="border-color:var(--brand-purple);color:var(--brand-purple)">✎ Price edit ₹910→₹890 awaiting approval — live version still showing ₹910 (shadow edit).</div>
+              </div>
+              <div class="pend"><div class="pp">₹910</div></div>
+            </div>
+
+            <div class="prow">
+              <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=200&q=80&auto=format&fit=crop" alt="">
+              <div class="pmain">
+                <div class="pt">Silver Payal · ankle pair</div>
+                <div class="pm"><span class="stchip hidden">HIDDEN · by you</span><span class="pv">56 views</span></div>
+              </div>
+              <div class="pend">
+                <div class="pp">₹1,100</div>
+                <span class="pact">Show · Edit</span>
+              </div>
+            </div>
+
+            <div class="prow">
+              <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=200&q=80&auto=format&fit=crop" alt="">
+              <div class="pmain">
+                <div class="pt">Custom Name Ring · 7-day make</div>
+                <div class="pm"><span class="stchip sold">SOLD · 12 Oct</span><span class="pv">link live for 30 days</span></div>
+              </div>
+              <div class="pend"><div class="pp">₹449</div></div>
+            </div>
+
+            <div class="prow">
+              <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=200&q=80&auto=format&fit=crop" alt="">
+              <div class="pmain">
+                <div class="pt">Silver Wrist Watch · leather strap</div>
+                <div class="pm"><span class="stchip hidden">ON ADMIN HOLD</span><span class="pv">holds override your settings</span></div>
+                <div class="gatenote">Admin note: “Please add real product photos instead of catalogue image — resubmit when ready.”</div>
+              </div>
+              <div class="pend"><div class="pp">₹2,070</div></div>
+            </div>
+          </div>
+
+          <div style="height:20px"></div>
+
+        </div><!-- /content -->
+
+        <div class="bnav">
+          <a class="nitem" href="mp-010-marketplace-home.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5L12 3l9 7.5"/><path d="M5 9.5V21h5v-6h4v6h5V9.5"/></svg><span class="nl">Home</span></a>
+          <a class="nitem" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5"/><circle cx="17" cy="9" r="2.4"/><path d="M15.8 14.6c2.3.2 4 1.7 4.7 4.4"/></svg><span class="nl">Community</span></a>
+          <div class="fab-wrap"><a class="fab" href="mp-021-product-editor.html"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></a><span class="nl">Post</span></div>
+          <a class="nitem" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 7.5l9 6 9-6"/></svg><span class="nl">Inbox</span></a>
+          <a class="nitem" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c.8-3.8 3.4-6 7-6s6.2 2.2 7 6"/></svg><span class="nl">Profile</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="navfoot">
+    <a href="mp-030-product-reviews.html">← MP-030 Reviews</a>
+    <a class="primary" href="mp-021-product-editor.html">Next: MP-021 Editor →</a>
+  </div>
+</div>
+<style>
+  body.render-mode { padding:0; background:#FDF6EC; }
+  body.render-mode .doc-header, body.render-mode .annot,
+  body.render-mode .navfoot, body.render-mode .frame-label { display:none; }
+  body.render-mode .row { gap:0; }
+  body.render-mode .doc { max-width:none; }
+</style>
+<script>if (location.hash === '#png') document.body.classList.add('render-mode');</script>
+</body>
+</html>

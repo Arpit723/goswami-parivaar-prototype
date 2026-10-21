@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MP-021 · Product Editor — v2</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  .photogrid { display:grid; grid-template-columns:repeat(3,1fr); gap:9px; }
+  .photogrid .ph { aspect-ratio:1; border-radius:13px; overflow:hidden; position:relative; border:1px solid var(--border); }
+  .photogrid .ph img { width:100%; height:100%; object-fit:cover; display:block; }
+  .photogrid .ph .ord { position:absolute; bottom:5px; right:5px; background:rgba(30,27,75,.65); color:#fff; font-size:7.5px; font-weight:800; padding:2px 7px; border-radius:var(--radius-pill); }
+  .photogrid .ph .del { position:absolute; top:5px; right:5px; width:18px; height:18px; border-radius:50%; background:rgba(255,255,255,.92); color:var(--danger); font-size:10px; display:flex; align-items:center; justify-content:center; font-weight:800; }
+  .photogrid .addph { aspect-ratio:1; border-radius:13px; border:1.5px dashed var(--primary); background:var(--chip-peach); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px; color:var(--primary); font-size:8.5px; font-weight:800; }
+  .photogrid .addph b { font-size:17px; line-height:1; }
+  .disrow { display:flex; gap:9px; }
+  .disrow .fbox { flex:1; }
+  .computed { margin-top:8px; background:var(--chip-mint); border-radius:10px; padding:9px 11px; font-size:10px; color:#0F766E; font-weight:700; line-height:1.5; }
+  .stockseg { display:flex; gap:0; border:1px solid var(--border); border-radius:12px; overflow:hidden; background:#fff; }
+  .stockseg div { flex:1; text-align:center; padding:9px 4px; font-size:10px; font-weight:800; color:var(--text-3); }
+  .stockseg div.on { background:var(--grad-cta); color:#fff; }
+  .stockrow { display:flex; align-items:center; gap:9px; margin-top:8px; }
+  .stockrow .stepper { flex:none; }
+  .stockrow .slabel { font-size:9.5px; color:var(--text-2); font-weight:600; }
+  .hlrow { display:flex; align-items:center; gap:8px; padding:7px 0; border-bottom:1px dashed var(--border); }
+  .hlrow:last-of-type { border-bottom:none; }
+  .hlrow .hn { width:14px; height:14px; border-radius:5px; background:var(--chip-peach); color:var(--primary-2); font-size:8px; font-weight:800; display:flex; align-items:center; justify-content:center; flex:none; }
+  .hlrow .ht { flex:1; font-size:10.5px; color:var(--text-1); font-weight:600; }
+  .hlrow .hx { color:var(--text-3); font-size:11px; font-weight:800; }
+</style>
+</head>
+<body>
+<div class="doc">
+  <div class="doc-header">
+    <div class="kicker">Marketplace v2 · Goswami Connect theme</div>
+    <h1>MP-021 · Product Editor</h1>
+    <div class="sub">One form, every rule — validation mirrors the UI→API→DB matrix exactly.</div>
+    <div class="fr-chips"><span>FR-MKT-21</span><span>FR-MKT-22</span><span>title 3–140</span><span>discount 1–90</span><span>≤6 photos</span></div>
+    <div class="step-chip">Screen 9 of 15 · Seller flow · theme v2</div>
+  </div>
+
+  <details class="annot" open>
+    <summary>MP-021 — requirements map</summary>
+    <table>
+      <tr><th>Role / entry</th><td>Seller · <b>＋ Add Product</b> on MP-020 (new; gate-checked) or <b>Edit</b> on an MP-020 row (shadow copy for LIVE items).</td></tr>
+      <tr><th>Photos</th><td>0–6, sortable (drag = sort_order 0–5). First photo = cover. Rejected file types/size → inline error.</td></tr>
+      <tr><th>Fields</th><td>Title 3–140 (counter) · category (6 seeds only) · description ≤2000 · price ₹1+ · discount % 1–90 or blank · stock toggle.</td></tr>
+      <tr><th>Discount</th><td>Live computed payable — seller never types the sale price, so original &amp; payable can never disagree.</td></tr>
+      <tr><th>Stock</th><td>In-stock → <code>remaining_stock_count</code> stepper (0 shows OUT OF STOCK, derived) · Made-to-order → NULL, no decrement on delivery.</td></tr>
+      <tr><th>Highlights</th><td>≤5 bullets, ≤60 chars each — “facts you'd shout across the room”.</td></tr>
+      <tr><th>Submit</th><td>Gate: 409 if another listing/edit is pending. Goes to MP-061 admin queue; status PENDING_APPROVAL.</td></tr>
+    </table>
+  </details>
+
+  <div class="row">
+    <div class="frame-block">
+      <div class="frame-label">Seller view · new listing · partially filled</div>
+      <div class="phone">
+        <div class="notch"></div>
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg width="16" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.2" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+
+          <div class="appbar">
+            <a class="backbtn" href="mp-020-seller-console.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></a>
+            <div class="atitle">Add Product<div class="asub">goes to admin approval — nothing is public yet</div></div>
+          </div>
+
+          <div class="card">
+            <h3>Photos <span style="font-weight:600;color:var(--text-3);font-size:9.5px">(3 of 6 used)</span></h3>
+            <div class="photogrid">
+              <div class="ph"><img src="https://images.unsplash.com/photo-1606923829579-0cb981a83e2e?w=300&q=80&auto=format&fit=crop" alt=""><span class="ord">COVER</span><span class="del">✕</span></div>
+              <div class="ph"><img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=300&q=80&auto=format&fit=crop" alt=""><span class="ord">2</span><span class="del">✕</span></div>
+              <div class="ph"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=300&q=80&auto=format&fit=crop" alt=""><span class="ord">3</span><span class="del">✕</span></div>
+              <div class="addph"><b>＋</b>Add photo<br>(3 left)</div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="ffield">
+              <div class="fl">Product title</div>
+              <div class="fbox">Brass Diya Set of 6 · cotton wicks included</div>
+              <div class="counter">40 / 140</div>
+            </div>
+            <div class="ffield">
+              <div class="fl">Category</div>
+              <div class="fbox" style="justify-content:space-between">🪔 Home &amp; Puja <span style="color:var(--text-3)">▾</span></div>
+            </div>
+            <div class="ffield">
+              <div class="fl">Description <span class="opt">(optional · ≤2000)</span></div>
+              <div class="fbox placeholder">Tell buyers about materials, care, what's in the box…</div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Price, discount &amp; stock</h3>
+            <div class="disrow">
+              <div class="ffield" style="flex:1;padding:0;border:none">
+                <div class="fl">Original price (₹)</div>
+                <div class="fbox">₹ 450</div>
+              </div>
+              <div class="ffield" style="flex:1;padding:0;border:none">
+                <div class="fl">Discount % <span class="opt">(optional)</span></div>
+                <div class="fbox">20 %</div>
+              </div>
+            </div>
+            <div class="fhint">Whole numbers 1–90 · buyers see the computed price — you never type it twice.</div>
+            <div class="computed">✓ Buyers will see <b>₹360</b> (struck ₹450 · “20% OFF” chip). You save them ₹90.</div>
+            <div style="height:11px"></div>
+            <div class="stockseg">
+              <div class="on">📦 In stock</div>
+              <div>🧵 Made to order</div>
+            </div>
+            <div class="stockrow">
+              <span class="stepper"><span>−</span><span class="q">6</span><span>+</span></span>
+              <span class="slabel">units available — shows “6 left” to buyers; 0 = Out of stock</span>
+            </div>
+            <div class="fhint">Made-to-order skips stock counting; units drop only when orders are delivered.</div>
+          </div>
+
+          <div class="card">
+            <h3>Highlights <span style="font-weight:600;color:var(--text-3);font-size:9.5px">(2 of 5 · ≤60 chars each)</span></h3>
+            <div class="hlrow"><span class="hn">✦</span><span class="ht">Set of 6 hand-poured brass diyas</span><span class="hx">✎</span></div>
+            <div class="hlrow"><span class="hn">✦</span><span class="ht">Cotton wicks + ghee guide included</span><span class="hx">✎</span></div>
+            <div class="hlrow" style="border-top:1px dashed var(--border);margin-top:4px;padding-top:10px"><span class="hn" style="background:#fff;border:1.5px dashed var(--primary)">＋</span><span class="ht" style="color:var(--text-3);font-weight:600">Add a highlight (facts buyers scan first)</span></div>
+          </div>
+
+          <div class="banner warn" style="margin-bottom:88px"><span class="bic">🚦</span><span>You have <b>1 listing in review</b> — this submission will wait until “Oxidised Ring Set” is decided (one at a time).</span></div>
+
+        </div><!-- /content -->
+
+        <div class="actbar">
+          <a class="btn outline" href="mp-020-seller-console.html">Save draft</a>
+          <a class="btn primary" href="mp-020-seller-console.html" style="flex:1">Submit for Approval →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="navfoot">
+    <a href="mp-020-seller-console.html">← MP-020 Console</a>
+    <a class="primary" href="mp-073-seller-orders.html">Next: MP-073 Seller Orders →</a>
+  </div>
+</div>
+<style>
+  body.render-mode { padding:0; background:#FDF6EC; }
+  body.render-mode .doc-header, body.render-mode .annot,
+  body.render-mode .navfoot, body.render-mode .frame-label { display:none; }
+  body.render-mode .row { gap:0; }
+  body.render-mode .doc { max-width:none; }
+</style>
+<script>if (location.hash === '#png') document.body.classList.add('render-mode');</script>
+</body>
+</html>

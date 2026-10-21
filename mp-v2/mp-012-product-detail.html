@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MP-012 · Product Detail — v2</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  .hero { position:relative; margin:0 14px; border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-card); }
+  .hero img { width:100%; height:300px; object-fit:cover; display:block; }
+  .hero .hcount { position:absolute; right:10px; bottom:10px; background:rgba(30,27,75,.65); color:#fff; font-size:9px; font-weight:700; padding:3px 10px; border-radius:var(--radius-pill); backdrop-filter:blur(4px); }
+  .hero .hdots { position:absolute; left:0; right:0; bottom:10px; display:flex; gap:4px; justify-content:center; }
+  .hero .hdots i { width:5px; height:5px; border-radius:3px; background:rgba(255,255,255,.5); }
+  .hero .hdots i.on { background:#fff; width:14px; }
+  .floatbtn { position:absolute; top:10px; width:32px; height:32px; border-radius:50%; background:#fff; border:1px solid var(--border); box-shadow:var(--shadow-card); display:flex; align-items:center; justify-content:center; color:var(--primary-deep); z-index:2; }
+  .dtl { padding:14px 18px 0; }
+  .dtl .drow1 { display:flex; align-items:flex-start; gap:8px; }
+  .dtl h2 { font-size:16.5px; font-weight:800; color:var(--text-1); line-height:1.25; flex:1; letter-spacing:-.01em; }
+  .vchip { font-size:8px; font-weight:800; color:#0F766E; background:var(--chip-mint); padding:3px 8px; border-radius:var(--radius-pill); white-space:nowrap; margin-top:2px; }
+  .metarow { display:flex; align-items:center; gap:8px; margin-top:7px; }
+  .metarow .rating { font-size:11px; }
+  .metarow .dot { width:3px; height:3px; border-radius:2px; background:var(--text-3); }
+  .metarow .views { font-size:9.5px; color:var(--text-3); font-weight:600; }
+  .priceblock { margin-top:11px; background:#fff; border:1px solid var(--border); border-radius:var(--radius-card); box-shadow:var(--shadow-card); padding:13px 14px; display:flex; align-items:center; gap:10px; }
+  .priceblock .pnow { font-size:23px; font-weight:800; color:var(--text-1); letter-spacing:-.02em; }
+  .priceblock .pwas { font-size:12px; color:var(--text-3); text-decoration:line-through; }
+  .priceblock .poff { font-size:10px; font-weight:800; color:#B8420F; background:var(--accent-tint); padding:3px 9px; border-radius:var(--radius-pill); }
+  .priceblock .ptag { margin-left:auto; font-size:8px; font-weight:800; color:var(--brand-purple); background:var(--chip-lavender); padding:3px 9px; border-radius:var(--radius-pill); text-align:right; line-height:1.3; }
+  .hl ul { list-style:none; margin-top:2px; }
+  .hl li { font-size:11px; color:var(--text-2); font-weight:600; padding:4px 0 4px 20px; position:relative; line-height:1.45; }
+  .hl li::before { content:'✦'; position:absolute; left:2px; color:var(--gold); font-size:10px; }
+  .desc { font-size:11px; color:var(--text-2); line-height:1.65; font-weight:500; }
+  .selcard { display:flex; align-items:center; gap:11px; }
+  .selcard .avatar { width:44px; height:44px; border-radius:14px; font-size:14px; }
+  .revcard { padding:10px 0; border-bottom:1px solid var(--border); }
+  .revcard:last-child { border-bottom:none; }
+  .revcard .rh { display:flex; align-items:center; gap:7px; }
+  .revcard .rn { font-size:10.5px; font-weight:800; color:var(--text-1); }
+  .revcard .rd { margin-left:auto; font-size:8.5px; color:var(--text-3); }
+  .revcard .rt { font-size:10.5px; color:var(--text-2); line-height:1.55; margin-top:5px; font-weight:500; }
+  .resp { margin-top:7px; background:var(--bg-soft); border-radius:10px; padding:8px 10px; font-size:9.5px; color:var(--text-2); line-height:1.5; }
+  .resp b { color:var(--brand-purple); font-size:8.5px; }
+</style>
+</head>
+<body>
+<div class="doc">
+  <div class="doc-header">
+    <div class="kicker">Marketplace v2 · Goswami Connect theme</div>
+    <h1>MP-012 · Product Detail</h1>
+    <div class="sub">The decision screen — photos, computed price, stock, direct contact, WhatsApp enquiry.</div>
+    <div class="fr-chips"><span>FR-MKT-06</span><span>FR-MKT-12</span><span>FR-MKT-41..45</span><span>FR-MKT-54</span></div>
+    <div class="step-chip">Screen 3 of 15 · Buyer flow · theme v2</div>
+  </div>
+
+  <details class="annot" open>
+    <summary>MP-012 — requirements map</summary>
+    <table>
+      <tr><th>Role / entry</th><td>Member · from MP-010/011 cards.</td></tr>
+      <tr><th>Photos</th><td>Carousel ≤6 (<code>product_photos</code>, sort 0–5). Counter “1/4”.</td></tr>
+      <tr><th>Price</th><td>Payable computed from <code>discount_percent</code> (20% → ₹360; struck ₹450). “Diwali price” = seller’s own tag.</td></tr>
+      <tr><th>Stock</th><td><code>remaining_stock_count</code> → “Only 6 left” amber pill; 0 ⇒ derived OUT OF STOCK + disabled cart.</td></tr>
+      <tr><th>Contact</th><td>Direct model — Call opens dialer, Email opens mail app (FR-MKT-41..45). No in-app chat.</td></tr>
+      <tr><th>Reviews</th><td>★ reads <code>product_rating_stats</code> (VISIBLE only, instant publish). “View all” → MP-030. Seller response shown indented.</td></tr>
+      <tr><th>WhatsApp enquiry</th><td>Primary action opens <code>wa.me/&lt;seller-phone&gt;</code> with pre-filled text: product title + payable price. Same verified phone as the Contact card; no phone → Call/Email only (FR-MKT-61..63).</td></tr>
+      <tr><th>Next screens</th><td>MP-030 reviews · WhatsApp (off-platform) · seller store (Business module).</td></tr>
+    </table>
+  </details>
+
+  <div class="row">
+    <div class="frame-block">
+      <div class="frame-label">Member view · in stock · discounted</div>
+      <div class="phone">
+        <div class="notch"></div>
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg width="16" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.2" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+
+          <div class="hero">
+            <a class="floatbtn" style="left:10px" href="mp-011-product-list.html"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></a>
+            <a class="floatbtn" style="right:10px" href="index.html"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 5.6a5 5 0 0 0-7.1 0L12 7.3l-1.7-1.7a5 5 0 0 0-7.1 7.1l8.8 8.8 8.8-8.8a5 5 0 0 0 0-7.1z"/></svg></a>
+            <img src="https://images.unsplash.com/photo-1606923829579-0cb981a83e2e?w=800&q=80&auto=format&fit=crop" alt="Brass diya set">
+            <div class="hdots"><i class="on"></i><i></i><i></i><i></i></div>
+            <div class="hcount">1/4</div>
+          </div>
+
+          <div class="dtl">
+            <div class="drow1">
+              <h2>Brass Diya Set of 6 · cotton wicks included</h2>
+              <span class="vchip">✓ ADMIN-APPROVED</span>
+            </div>
+            <div class="metarow">
+              <span class="rating"><span class="st">★★★★★</span> <b style="color:var(--text-1)">4.9</b></span>
+              <span class="dot"></span>
+              <a class="views" href="mp-030-product-reviews.html" style="text-decoration:none">23 reviews · View all →</a>
+              <span class="dot"></span>
+              <span class="views">412 views</span>
+            </div>
+
+            <div class="priceblock">
+              <div>
+                <div class="pnow">₹360</div>
+                <div class="pwas">₹450</div>
+              </div>
+              <span class="poff">20% OFF</span>
+              <span class="ptag">Diwali price<br>by seller</span>
+            </div>
+
+            <div class="banner warn" style="margin:12px 0 0"><span class="bic">🔥</span><span>Only <b>6 left</b> — seller updates stock after each order is delivered.</span></div>
+
+            <div class="card hl">
+              <h3>About this product</h3>
+              <div style="font-size:8.5px;font-weight:800;letter-spacing:.08em;color:var(--text-3);margin:2px 0 4px">HIGHLIGHTS</div>
+              <ul>
+                <li>Set of 6 hand-poured brass diyas</li>
+                <li>Cotton wicks + ghee guide included</li>
+                <li>Polish-free pure brass — wipes clean</li>
+              </ul>
+              <p class="desc" style="margin-top:10px;border-top:1px dashed var(--border);padding-top:10px">Handmade by our family workshop in Ahmedabad. Each diya holds 20ml oil, burns ~2.5 hours, and is safe for daily puja or festive rangoli displays. Care: wipe with a dry cloth; avoid harsh chemicals. Delivered in a reusable shock-proof box.</p>
+            </div>
+
+            <div class="card selcard">
+              <span class="avatar" style="background:linear-gradient(135deg,#7C3AED,#4C1D95)">SG</span>
+              <div style="flex:1">
+                <div style="font-size:12px;font-weight:800;color:var(--text-1)">Shree Ganesh Bhandar <span class="sellerbadge biz" style="font-size:7.5px;font-weight:800;color:var(--brand-purple);background:var(--chip-lavender);padding:2px 7px;border-radius:var(--radius-pill)">BUSINESS</span></div>
+                <div style="font-size:9.5px;color:var(--text-2);margin-top:2px">Home &amp; Puja · ★4.9 (61) · member since 2024</div>
+              </div>
+              <a class="btn outline sm" href="index.html">Visit</a>
+            </div>
+
+            <div class="card">
+              <div style="display:flex;align-items:center;justify-content:space-between">
+                <h3 style="margin:0">Reviews (23)</h3>
+                <a class="viewall" href="mp-030-product-reviews.html">See all →</a>
+              </div>
+              <div class="revcard">
+                <div class="rh"><span class="avatar" style="background:linear-gradient(135deg,#10B981,#047857);width:20px;height:20px;font-size:8px">HR</span><span class="rn">Hetalben R.</span><span class="prv dotp">★★★★★</span><span class="rd">2 days ago</span></div>
+                <div class="rt">Beautiful finish, arrived before Diwali just as promised. The wicks were a thoughtful touch.</div>
+                <div class="resp"><b>RESPONSE FROM SELLER ·</b> Thank you Hetalben! Wishing your family a bright Diwali 🪔</div>
+              </div>
+              <div class="revcard">
+                <div class="rh"><span class="avatar" style="background:linear-gradient(135deg,#0D9488,#115E59);width:20px;height:20px;font-size:8px">JD</span><span class="rn">Jignesh D.</span><span class="prv dotp">★★★★★</span><span class="rd">1 week ago</span></div>
+                <div class="rt">Solid weight, not the hollow kind. Ordered a second set for my mother.</div>
+              </div>
+            </div>
+
+            <div class="banner info" style="margin:12px 18px 96px"><span class="bic">🤝</span><span><b>Contact the seller directly</b> — Call or Email below. Goswami Connect has no in-app chat; what you agree privately is between members.</span></div>
+          </div>
+
+        </div><!-- /content -->
+
+        <div class="actbar">
+          <a class="btn outline" href="tel:+919000000001" style="flex:none"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z"/></svg>Call</a>
+          <a class="btn outline" href="mailto:seller@example.com" style="flex:none"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 7l10 7L22 7"/></svg>Email</a>
+          <a class="btn primary" href="mp-070-cart.html" style="flex:1"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l-1.2 12.2a2 2 0 0 1-2 1.8H9.2a2 2 0 0 1-2-1.8L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>Add to Cart · ₹360</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="navfoot">
+    <a href="mp-011-product-list.html">← MP-011 List</a>
+    <a href="mp-030-product-reviews.html">MP-030 Reviews</a>
+    <span>Primary CTA = Enquire on WhatsApp (green) · Call/Email stay for no-WhatsApp sellers</span>
+  </div>
+</div>
+<style>
+  body.render-mode { padding:0; background:#FDF6EC; }
+  body.render-mode .doc-header, body.render-mode .annot,
+  body.render-mode .navfoot, body.render-mode .frame-label { display:none; }
+  body.render-mode .row { gap:0; }
+  body.render-mode .doc { max-width:none; }
+</style>
+<script>if (location.hash === '#png') document.body.classList.add('render-mode');</script>
+</body>
+</html>

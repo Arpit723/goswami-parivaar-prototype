@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marketplace v2 · Goswami Connect theme — build hub</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  .panel { background:#fff; border-radius:var(--radius-lg); border:1px solid var(--border); box-shadow:var(--shadow-card); padding:20px 22px; margin-bottom:18px; color:var(--text-2); }
+  .panel h2 { font-size:15px; font-weight:800; color:var(--primary-deep); margin-bottom:12px; display:flex; align-items:center; gap:8px; }
+  .panel h2::before { content:''; width:4px; height:16px; border-radius:2px; background:var(--grad-cta); }
+  .sw { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:10px; }
+  .swatch { border:1px solid var(--border); border-radius:var(--radius-md); overflow:hidden; background:var(--bg-soft); }
+  .swatch .col { height:44px; }
+  .swatch .lab { padding:7px 10px; font-size:10px; line-height:1.45; }
+  .swatch .lab b { display:block; color:var(--text-1); font-size:10.5px; }
+  .swatch .lab code { font-family:ui-monospace,monospace; font-size:9.5px; color:var(--primary); }
+  table.tk { width:100%; border-collapse:collapse; font-size:12px; }
+  table.tk th { text-align:left; font-size:10px; text-transform:uppercase; letter-spacing:.08em; color:var(--text-3); padding:6px 10px 6px 0; border-bottom:1px solid var(--border); }
+  table.tk td { padding:8px 10px 8px 0; border-bottom:1px solid var(--border); vertical-align:top; line-height:1.5; }
+  table.tk a { color:var(--primary); font-weight:700; text-decoration:none; }
+  .st-done { color:#0F766E; background:var(--chip-teal); font-size:9px; font-weight:800; padding:3px 9px; border-radius:var(--radius-pill); white-space:nowrap; }
+  .st-next { color:#B8420F; background:var(--accent-tint); font-size:9px; font-weight:800; padding:3px 9px; border-radius:var(--radius-pill); white-space:nowrap; }
+  .st-q { color:var(--text-2); background:#F3F4F6; font-size:9px; font-weight:700; padding:3px 9px; border-radius:var(--radius-pill); white-space:nowrap; }
+  .st-park { color:#9CA3AF; background:#F3F4F6; font-size:9px; font-weight:700; padding:3px 9px; border-radius:var(--radius-pill); white-space:nowrap; }
+  .persona { font-size:10px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; padding:14px 0 4px; color:var(--brand-purple); }
+  .persona:first-of-type { padding-top:0; }
+  .flow { font-size:11.5px; line-height:2; color:var(--text-2); }
+  .flow b { color:var(--text-1); }
+  .flow .arr { color:var(--accent); font-weight:800; }
+  .btnrow { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:6px; }
+  .btndefault { display:inline-flex; align-items:center; gap:8px; font-size:12px; font-weight:700; color:var(--text-2); border:1px solid var(--border); background:#fff; border-radius:var(--radius-pill); padding:9px 18px; }
+  .refnote { font-size:11px; line-height:1.7; color:var(--text-2); }
+  .refnote code { font-family:ui-monospace,monospace; font-size:10px; background:var(--bg-soft); padding:1px 6px; border-radius:6px; color:var(--primary); }
+</style>
+</head>
+<body>
+<div class="doc">
+  <div class="doc-header">
+    <div class="kicker">Marketplace v2 · design &amp; build hub</div>
+    <h1>Goswami Connect — Marketplace re-theme</h1>
+    <div class="sub">15 marketplace screens re-designed in the EXACT theme of the CEO reference screenshots (16 &amp; 21 Oct boards). Built one screen at a time — this page tracks progress, theme and flow.</div>
+    <div class="fr-chips"><span>theme: exact match</span><span>medium: PNG per screen</span><span>scope: marketplace only</span><span>15 of 15 built ✅</span></div>
+  </div>
+
+  <div class="panel">
+    <h2>Theme — extracted from the 6 reference screenshots</h2>
+    <div class="sw">
+      <div class="swatch"><div class="col" style="background:#FDF6EC"></div><div class="lab"><b>Cream canvas</b><code>#FDF6EC</code></div></div>
+      <div class="swatch"><div class="col" style="background:linear-gradient(135deg,#F0592A,#E8451A)"></div><div class="lab"><b>Primary CTA (orange)</b><code>#F0592A→#E8451A</code></div></div>
+      <div class="swatch"><div class="col" style="background:#1E1B4B"></div><div class="lab"><b>Headings (indigo)</b><code>#1E1B4B</code></div></div>
+      <div class="swatch"><div class="col" style="background:#6D28D9"></div><div class="lab"><b>Secondary purple</b><code>#6D28D9</code></div></div>
+      <div class="swatch"><div class="col" style="background:#F5A623"></div><div class="lab"><b>Gold (stars, ribbon)</b><code>#F5A623</code></div></div>
+      <div class="swatch"><div class="col" style="background:#10B981"></div><div class="lab"><b>Success green</b><code>#10B981</code></div></div>
+      <div class="swatch"><div class="col" style="background:#FFFFFF;border-bottom:1px solid #E5E0D5"></div><div class="lab"><b>Cards</b><code>#FFFFFF</code> + hairline <code>#E5E0D5</code></div></div>
+      <div class="swatch"><div class="col" style="background:linear-gradient(90deg,#FDE7CE 16%,#FCE0EA 16% 32%,#DDF3E7 32% 48%,#DDF2F2 48% 64%,#F3E8FA 64% 80%,#EDE7F8 80%)"></div><div class="lab"><b>Pastel chips</b><code>peach·rose·mint·teal·lav·purple</code></div></div>
+    </div>
+    <div class="btnrow" style="margin-top:14px">
+      <span class="btndefault" style="background:var(--grad-cta);color:#fff;border:none;box-shadow:var(--shadow-btn)">Primary button · pill · Poppins 700</span>
+      <span class="btndefault">Secondary · outline</span>
+      <span style="font-size:10px;color:var(--text-3)">radii 16–20px cards · pill buttons · soft warm shadows · Poppins 400–800</span>
+    </div>
+    <p class="refnote" style="margin-top:12px">Sources: home-screen sheet ×2 (sections, Quick Access, offer banner, bottom nav + FAB) · profile-completion pair (cream/purple/gold, checklist cards, celebration) · onboarding board ×2 (orange-gradient CTA as primary, indigo headings, pill inputs, language EN ▾). <b>One judgment call:</b> the profile batch shows purple primary buttons while the onboarding board shows orange — orange is used as primary (8+ screens, logo, splash); purple kept as secondary. Flip = one token in <code>tokens.css</code>.</p>
+  </div>
+
+  <div class="panel">
+    <h2>Screen tracker — one at a time (15)</h2>
+    <table class="tk">
+      <tr><th style="width:64px">ID</th><th>Screen</th><th style="width:170px">Status</th></tr>
+      <tr><td colspan="3" class="persona" style="padding-top:0">Buyer flow · 7</td></tr>
+      <tr><td>MP-010</td><td><a href="mp-010-marketplace-home.html">Marketplace Home</a> — categories, offers, feed, featured sellers</td><td><span class="st-done">✅ BUILT</span></td></tr>
+      <tr><td>MP-011</td><td><a href="mp-011-product-list.html">Product List + Filters</a> — search, 6 category chips, sort, cart icon</td><td><span class="st-done">✅ BUILT</span></td></tr>
+      <tr><td>MP-012</td><td><a href="mp-012-product-detail.html">Product Detail</a> — ≤6 photos, price + % chip, stock pill, Call/Email, Add to cart</td><td><span class="st-done">✅ BUILT</span></td></tr>
+      <tr><td>MP-070</td><td><a href="mp-070-cart.html">Cart</a> — seller-grouped, qty steppers 1–20, “splits into N orders”</td><td><span class="st-parked">🅿️ PARKED 21 Oct — cart/orders removed → WhatsApp enquiry</span></td></tr>
+      <tr><td>MP-071</td><td><a href="mp-071-place-order.html">Place Order</a> — per-seller review, buyer note ≤300, no-payment banner</td><td><span class="st-parked">🅿️ PARKED 21 Oct — cart/orders removed → WhatsApp enquiry</span></td></tr>
+      <tr><td>MP-072</td><td><a href="mp-072-my-orders.html">My Orders</a> — 4-step timeline, snapshot prices, cancel, call seller</td><td><span class="st-parked">🅿️ PARKED 21 Oct — cart/orders removed → WhatsApp enquiry</span></td></tr>
+      <tr><td>MP-030</td><td><a href="mp-030-product-reviews.html">Ratings &amp; Reviews</a> — histogram, instant publish, report</td><td><span class="st-done">✅ BUILT</span></td></tr>
+      <tr><td colspan="3" class="persona">Seller flow · 3</td></tr>
+      <tr><td>MP-020</td><td><a href="mp-020-seller-console.html">Seller Console</a> — one-pending gate banner, statuses, hide/show</td><td><span class="st-done">✅ BUILT</span></td></tr>
+      <tr><td>MP-021</td><td><a href="mp-021-product-editor.html">Product Editor</a> — title 3–140, discount 1–90 live payable, stock, ≤6 photos</td><td><span class="st-done">✅ BUILT</span></td></tr>
+      <tr><td>MP-073</td><td><a href="mp-073-seller-orders.html">Seller Orders</a> — Accept → Dispatch → Deliver, decline needs note</td><td><span class="st-parked">🅿️ PARKED 21 Oct — cart/orders removed → WhatsApp enquiry</span></td></tr>
+      <tr><td colspan="3" class="persona">Admin flow · 4 (in-app, role-gated + 2FA)</td></tr>
+      <tr><td>MP-060</td><td><a href="mp-060-admin-dashboard.html">Admin Dashboard</a> — counts, SLA &gt;48h aging, queue entries</td><td><span class="st-done">✅ BUILT</span></td></tr>
+      <tr><td>MP-061</td><td><a href="mp-061-approval-queue.html">Approval Queue</a> — cross-checks, approve / request-change / hold</td><td><span class="st-done">✅ BUILT</span></td></tr>
+      <tr><td>MP-031</td><td><a href="mp-031-review-moderation.html">Review Moderation</a> — reported → keep / hide(+reason)</td><td><span class="st-done">✅ BUILT</span></td></tr>
+      <tr><td>MP-062</td><td><a href="mp-062-categories-manager.html">Categories Manager</a> — switches, live counts, add sheet</td><td><span class="st-done">✅ BUILT</span></td></tr>
+      <tr><td colspan="3" class="persona">Support · 1</td></tr>
+      <tr><td>MP-090</td><td><a href="mp-090-edge-states.html">Edge-state patterns</a> — sold · admin-hidden · offline · empty</td><td><span class="st-done">✅ BUILT</span></td></tr>
+      <tr><td colspan="3" class="persona">Parked (not built)</td></tr>
+      <tr><td>MP-013</td><td>Compare — removed for now (CEO 19 Oct)</td><td><span class="st-park">🅿️ parked</span></td></tr>
+      <tr><td>MP-050..053</td><td>Services screens — services parked</td><td><span class="st-park">🅿️ parked</span></td></tr>
+    </table>
+  </div>
+
+  <div class="panel">
+    <h2>Flow &amp; navigation (why each screen exists)</h2>
+    <p class="flow">
+      <b>Buyer:</b> MP-010 home <span class="arr">→</span> MP-011 list <span class="arr">→</span> MP-012 detail <span class="arr">→</span> MP-070 cart <span class="arr">→</span> MP-071 place order <span class="arr">→</span> MP-072 my orders &nbsp;·&nbsp; MP-012 ★ <span class="arr">→</span> MP-030 reviews<br>
+      <b>Seller:</b> Profile → My Products <span class="arr">→</span> ＋ Add Product <span class="arr">→</span> MP-021 editor <span class="arr">→</span> admin approval <span class="arr">→</span> MP-020 console <span class="arr">→</span> MP-073 seller orders<br>
+      <b>Admin:</b> 2FA login <span class="arr">→</span> MP-060 dashboard <span class="arr">→</span> MP-061 approvals · MP-031 review reports · MP-062 categories<br>
+      <b>Support:</b> MP-090 patterns reused across every screen (one component per state).
+    </p>
+  </div>
+
+  <div class="panel">
+    <h2>Working rules for this set</h2>
+    <p class="refnote">
+      · Each screen = standalone HTML, phone frame + requirements annotation table (same convention as v1).<br>
+      · Requirements stay bound to every screen: discount <code>1–90</code> computed payable · stock pill semantics · seller XOR badges · statuses · gate rules.<br>
+      · Product imagery = verified stock photos (17 URLs checked HTTP 200 today) — swappable for real photos later, layout unaffected.<br>
+      · Old v1 set stays live at <a href="../marketplace.html" style="color:var(--primary);font-weight:700">marketplace.html</a> until v2 is complete.<br>
+      · Deployed to GitHub Pages with the rest of the prototype after each screen batch.
+    </p>
+  </div>
+
+  <div class="navfoot">
+    <a class="primary" href="mp-010-marketplace-home.html">Open MP-010 →</a>
+    <a href="../index.html">Prototype catalogue (v1)</a>
+  </div>
+</div>
+</body>
+</html>

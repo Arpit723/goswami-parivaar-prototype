@@ -121,16 +121,7 @@
 
     /* ---------- Services (MP-050..053): PARKED 19 Oct — screens unwired, files kept ---------- */
 
-    /* ---------- Marketplace · Cart & Orders (MP-070..073, 19 Oct — payment-agnostic) ---------- */
-    "mp-070-cart.html": { back: "mp-011-product-list.html",
-      btn: { "Place order · 2 sellers": "mp-071-place-order.html", "Browse products": "mp-010-marketplace-home.html" } },
-    "mp-071-place-order.html": { back: "mp-070-cart.html",
-      btn: { "Submit orders": "mp-072-my-orders.html", "Track my orders": "mp-072-my-orders.html" } },
-    "mp-072-my-orders.html": { back: "mp-010-marketplace-home.html",
-      btn: { "Cancel order": "mp-072-my-orders.html" } },
-    "mp-073-seller-orders.html": { back: "mp-020-catalog-manager.html",
-      btn: { "Accept order": "mp-073-seller-orders.html", "Decline…": "mp-073-seller-orders.html",
-             "Send decline": "mp-073-seller-orders.html", "Keep order": "mp-073-seller-orders.html" } },
+    /* ---------- Cart & Orders (MP-070..073): PARKED 21 Oct — WhatsApp enquiry instead; files kept, unwired ---------- */
 
     /* ---------- Marketplace · Admin console (MP-060..062, 19 Oct — in-app, role-gated) ---------- */
     "mp-060-admin-dashboard.html": { back: "gp-009-home.html",

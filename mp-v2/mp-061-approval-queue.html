@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MP-061 · Approval Queue — v2</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  .qcard { margin:12px 18px 0; background:#fff; border:1px solid var(--border); border-radius:var(--radius-card); box-shadow:var(--shadow-card); padding:13px 14px; }
+  .qhead { display:flex; gap:10px; align-items:flex-start; }
+  .qhead img { width:52px; height:52px; border-radius:13px; object-fit:cover; flex:none; }
+  .qtitle { font-size:12px; font-weight:800; color:var(--text-1); line-height:1.3; }
+  .qmeta { font-size:9px; color:var(--text-2); margin-top:3px; font-weight:600; }
+  .sla { font-size:7.5px; font-weight:800; padding:2px 7px; border-radius:var(--radius-pill); flex:none; }
+  .sla.ok { background:var(--chip-mint); color:#0F766E; }
+  .sla.hot { background:var(--chip-rose); color:#9D174D; }
+  .xcheck { margin:10px 0 0; border-top:1px dashed var(--border); padding-top:9px; }
+  .xcheck .xt { font-size:8.5px; font-weight:800; color:var(--text-3); letter-spacing:.06em; margin-bottom:6px; }
+  .xrow { display:flex; align-items:flex-start; gap:7px; padding:3px 0; font-size:9.5px; color:var(--text-2); font-weight:600; }
+  .xrow .xi { color:var(--success); font-weight:800; flex:none; }
+  .xrow .xw { color:var(--warning-text); font-weight:800; flex:none; }
+  .qbtns { display:flex; gap:8px; margin-top:11px; }
+  .edittag { font-size:7.5px; font-weight:800; color:var(--brand-purple); background:var(--chip-lavender); padding:2px 7px; border-radius:var(--radius-pill); }
+</style>
+</head>
+<body>
+<div class="doc">
+  <div class="doc-header">
+    <div class="kicker">Marketplace v2 · Goswami Connect theme</div>
+    <h1>MP-061 · Approval Queue (Admin)</h1>
+    <div class="sub">Every public word passes through here — new listings AND edits of live ones.</div>
+    <div class="fr-chips"><span>FR-MKT-26</span><span>FR-MKT-52</span><span>review_note</span><span>admin_hold</span><span>shadow edits</span></div>
+    <div class="step-chip">Screen 12 of 15 · Admin flow · theme v2</div>
+  </div>
+
+  <details class="annot" open>
+    <summary>MP-061 — requirements map</summary>
+    <table>
+      <tr><th>Role / entry</th><td>Admin · MP-060 queue card · push on new submissions.</td></tr>
+      <tr><th>Case types</th><td>① new listings (born PENDING_APPROVAL) ② <b>shadow edits</b> — live version keeps serving until you approve the copy ③ re-submissions after request-change.</td></tr>
+      <tr><th>Cross-checks</th><td>Evidence pack per case: photos vs title, price sanity, contact-scan of description, seller history (approvals/holds/report counts), prior notes.</td></tr>
+      <tr><th>Actions</th><td><b>Approve</b> → LIVE (shadow copy replaces live atomically) · <b>Request change</b> → <code>review_note</code> to seller, slot stays until re-decided · <b>Hold</b> → <code>admin_hold</code>, overrides seller visibility (admin wins). No REJECTED status exists.</td></tr>
+      <tr><th>Integrity</th><td>Row-locked status transition — first admin wins; second gets 409-style refresh (FR-MKT-52). All actions audited.</td></tr>
+      <tr><th>SLA</th><td>Ageing shown; &gt;48h flagged red on MP-060.</td></tr>
+    </table>
+  </details>
+
+  <div class="row">
+    <div class="frame-block">
+      <div class="frame-label">Admin view · 3 cases · one expanded</div>
+      <div class="phone">
+        <div class="notch"></div>
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg width="16" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.2" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+
+          <div class="appbar">
+            <a class="backbtn" href="mp-060-admin-dashboard.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></a>
+            <div class="atitle">Listing Approvals<div class="asub">3 open · oldest 51h</div></div>
+          </div>
+
+          <!-- expanded case: new listing, over SLA -->
+          <div class="qcard" style="border:1.5px solid var(--primary)">
+            <div class="qhead">
+              <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=300&q=80&auto=format&fit=crop" alt="">
+              <div style="flex:1">
+                <div class="qtitle">Oxidised Silver Ring Set (3)</div>
+                <div class="qmeta">Ritesh Zaveri &amp; Sons · BUSINESS · Jewellery · ₹740 → −20%</div>
+              </div>
+              <span class="sla hot">51h · OVER SLA</span>
+            </div>
+            <div class="xcheck">
+              <div class="xt">CROSS-CHECKS</div>
+              <div class="xrow"><span class="xi">✓</span> 3 photos match title &amp; category</div>
+              <div class="xrow"><span class="xi">✓</span> Price ₹740 sane for category (₹400–₹1,200 band)</div>
+              <div class="xrow"><span class="xi">✓</span> Description contact-scan clean (no phone/links)</div>
+              <div class="xrow"><span class="xi">✓</span> Seller history: 12 approved · 0 held · 0 reports</div>
+              <div class="xrow"><span class="xw">⏳</span> First listing from this seller using the 20% discount — spot-check photo quality</div>
+            </div>
+            <div class="qbtns">
+              <a class="btn primary sm" href="index.html" style="flex:1">✓ Approve</a>
+              <a class="btn outline sm" href="index.html">✎ Request change</a>
+              <a class="btn ghost sm" href="index.html">⏸ Hold</a>
+            </div>
+          </div>
+
+          <!-- collapsed: shadow edit -->
+          <div class="qcard">
+            <div class="qhead">
+              <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=300&q=80&auto=format&fit=crop" alt="">
+              <div style="flex:1">
+                <div class="qtitle">24k Gold-plated Bangle Pair <span class="edittag">EDIT OF LIVE</span></div>
+                <div class="qmeta">Price ₹910 → ₹890 · live version still serving ₹910 until you decide</div>
+              </div>
+              <span class="sla ok">14h</span>
+            </div>
+            <div class="qbtns"><a class="btn outline sm" href="index.html" style="flex:1">Open case →</a></div>
+          </div>
+
+          <!-- collapsed: resubmission -->
+          <div class="qcard">
+            <div class="qhead">
+              <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=300&q=80&auto=format&fit=crop" alt="">
+              <div style="flex:1">
+                <div class="qtitle">Silver Wrist Watch · leather strap <span class="edittag">RE-SUBMITTED</span></div>
+                <div class="qmeta">After your note: “add real photos” — 3 new photos attached (was catalogue image)</div>
+              </div>
+              <span class="sla ok">6h</span>
+            </div>
+            <div class="qbtns"><a class="btn outline sm" href="index.html" style="flex:1">Open case →</a></div>
+          </div>
+
+          <!-- request-change sheet preview -->
+          <div class="card">
+            <h3>✎ Request-change note <span style="font-weight:600;color:var(--text-3);font-size:9px">(sheet preview)</span></h3>
+            <div class="notebox" style="background:#fff;border:1px solid var(--border);border-radius:12px;padding:10px 12px;font-size:10px;color:var(--text-2);line-height:1.6;font-weight:500">Please photograph the watch on a plain background showing the clasp — catalogue images aren't allowed for used items. Everything else looks great! 🙏</div>
+            <div class="fhint" style="font-size:8.5px;color:var(--text-3);margin-top:6px;font-weight:600">Note reaches the seller's console (MP-020) · their next submission must address it · the pending slot stays used meanwhile.</div>
+          </div>
+
+          <div style="height:20px"></div>
+
+        </div><!-- /content -->
+
+        <div class="bnav">
+          <a class="nitem" href="mp-010-marketplace-home.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5L12 3l9 7.5"/><path d="M5 9.5V21h5v-6h4v6h5V9.5"/></svg><span class="nl">Home</span></a>
+          <a class="nitem" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5"/><circle cx="17" cy="9" r="2.4"/><path d="M15.8 14.6c2.3.2 4 1.7 4.7 4.4"/></svg><span class="nl">Community</span></a>
+          <div class="fab-wrap"><a class="fab" href="index.html"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></a><span class="nl">Post</span></div>
+          <a class="nitem" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 7.5l9 6 9-6"/></svg><span class="nl">Inbox</span></a>
+          <a class="nitem" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c.8-3.8 3.4-6 7-6s6.2 2.2 7 6"/></svg><span class="nl">Profile</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="navfoot">
+    <a href="mp-060-admin-dashboard.html">← MP-060 Dashboard</a>
+    <a class="primary" href="mp-031-review-moderation.html">Next: MP-031 Review Moderation →</a>
+  </div>
+</div>
+<style>
+  body.render-mode { padding:0; background:#FDF6EC; }
+  body.render-mode .doc-header, body.render-mode .annot,
+  body.render-mode .navfoot, body.render-mode .frame-label { display:none; }
+  body.render-mode .row { gap:0; }
+  body.render-mode .doc { max-width:none; }
+</style>
+<script>if (location.hash === '#png') document.body.classList.add('render-mode');</script>
+</body>
+</html>

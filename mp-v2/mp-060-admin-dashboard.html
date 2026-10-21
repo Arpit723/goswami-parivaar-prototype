@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MP-060 · Admin Dashboard — v2</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  .adminbadge { font-size:8px; font-weight:800; color:#fff; background:var(--brand-purple); padding:3px 9px; border-radius:var(--radius-pill); letter-spacing:.06em; }
+  .auditline { display:flex; align-items:center; gap:8px; padding:9px 0; border-bottom:1px dashed var(--border); font-size:9.5px; color:var(--text-2); font-weight:600; }
+  .auditline:last-child { border-bottom:none; }
+  .auditline .at { margin-left:auto; color:var(--text-3); font-size:8.5px; flex:none; }
+  .slachip { font-size:7.5px; font-weight:800; padding:2px 7px; border-radius:var(--radius-pill); }
+  .slachip.ok { background:var(--chip-mint); color:#0F766E; }
+  .slachip.hot { background:var(--chip-rose); color:#9D174D; }
+</style>
+</head>
+<body>
+<div class="doc">
+  <div class="doc-header">
+    <div class="kicker">Marketplace v2 · Goswami Connect theme</div>
+    <h1>MP-060 · Admin Dashboard (Marketplace)</h1>
+    <div class="sub">In-app, role-gated, behind 2FA — not a separate panel. Counts + SLA + queue doors.</div>
+    <div class="fr-chips"><span>FR-MKT-49</span><span>FR-MKT-50</span><span>FR-MKT-51</span><span>SLA &gt;48h</span></div>
+    <div class="step-chip">Screen 11 of 15 · Admin flow · theme v2</div>
+  </div>
+
+  <details class="annot" open>
+    <summary>MP-060 — requirements map</summary>
+    <table>
+      <tr><th>Role / entry</th><td>ADMIN / SUB_ADMIN · same app, same login + forced 2FA · role row unlocks this section (RBAC server-side; the UI is courtesy, not security).</td></tr>
+      <tr><th>Scope</th><td>Marketplace section of the admin console: listing approvals, review reports, categories. SUB_ADMIN = city-scoped rows.</td></tr>
+      <tr><th>Stats</th><td>Derived queries — pending count (new + edits), reported reviews, LIVE totals, SLA aging &gt;48h (red chip).</td></tr>
+      <tr><th>Audit</th><td>Every admin action lands in append-only <code>audit_logs</code> (V008) — shown as a live tail here (FR-MKT-51).</td></tr>
+      <tr><th>Next screens</th><td>MP-061 approvals · MP-031 review reports · MP-062 categories.</td></tr>
+    </table>
+  </details>
+
+  <div class="row">
+    <div class="frame-block">
+      <div class="frame-label">Admin view · marketplace section</div>
+      <div class="phone">
+        <div class="notch"></div>
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg width="16" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.2" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+
+          <div class="appbar">
+            <a class="backbtn" href="index.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></a>
+            <div class="atitle">Admin · Marketplace<span class="adminbadge" style="margin-left:7px;vertical-align:2px">🛡 2FA VERIFIED</span></div>
+          </div>
+
+          <div class="banner purple"><span class="bic">🧭</span><span>Signed in as <b>Admin (all cities)</b> · every action you take is recorded to the immutable audit log.</span></div>
+
+          <div class="sec">
+            <div class="sec-head"><h2>Needs attention</h2></div>
+            <div class="statgrid">
+              <a class="statcard" href="mp-061-approval-queue.html" style="text-decoration:none">
+                <div class="sic" style="background:var(--warning-tint)">⏳</div>
+                <div class="sv" style="color:var(--warning-text)">3</div>
+                <div class="sl">listings awaiting approval</div>
+              </a>
+              <a class="statcard" href="mp-031-review-moderation.html" style="text-decoration:none">
+                <div class="sic" style="background:var(--chip-rose)">🚩</div>
+                <div class="sv" style="color:#9D174D">2</div>
+                <div class="sl">reviews reported — hidden from public, awaiting your call</div>
+              </a>
+              <div class="statcard">
+                <div class="sic" style="background:var(--chip-mint)">🟢</div>
+                <div class="sv">128</div>
+                <div class="sl">LIVE listings across 6 categories</div>
+              </div>
+              <div class="statcard">
+                <div class="sic" style="background:var(--chip-teal)">⭐</div>
+                <div class="sv">412</div>
+                <div class="sl">published reviews · instant model</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sec">
+            <div class="sec-head"><h2>Queues</h2></div>
+            <div class="card" style="padding:6px 14px">
+              <a class="listrow" href="mp-061-approval-queue.html" style="text-decoration:none">
+                <span class="lic" style="background:var(--warning-tint)">📦</span>
+                <div class="lmain"><div class="lt">Listing approvals</div><div class="ls">2 new · 1 price-edit · oldest waiting <b style="color:#9D174D">51h</b> <span class="slachip hot">OVER 48h SLA</span></div></div>
+                <span class="lend" style="color:var(--text-3);font-weight:800">3 →</span>
+              </a>
+              <a class="listrow" href="mp-031-review-moderation.html" style="text-decoration:none">
+                <span class="lic" style="background:var(--chip-rose)">🚩</span>
+                <div class="lmain"><div class="lt">Review reports</div><div class="ls">reported reviews are already out of public view — keep or hide</div></div>
+                <span class="lend" style="color:var(--text-3);font-weight:800">2 →</span>
+              </a>
+              <a class="listrow" href="mp-062-categories-manager.html" style="text-decoration:none">
+                <span class="lic" style="background:var(--chip-lavender)">🗂</span>
+                <div class="lmain"><div class="lt">Categories</div><div class="ls">6 active · 1 hidden · rename/hide is instant</div></div>
+                <span class="lend" style="color:var(--text-3);font-weight:800">7 →</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="sec">
+            <div class="sec-head"><h2>Recent admin actions</h2><span style="font-size:8.5px;color:var(--text-3);font-weight:700">audit log · append-only</span></div>
+            <div class="card">
+              <div class="auditline">✅ <b>Approved</b> “Brass Diya Set” — Shree Ganesh Bhandar <span class="at">you · 09:12</span></div>
+              <div class="auditline">✎ <b>Requested change</b> on “Silver Wrist Watch” — note sent <span class="at">you · yesterday</span></div>
+              <div class="auditline">👁 <b>Kept visible</b> reported review on “Mango Chundo” <span class="at">Bhavik · 20 Oct</span></div>
+              <div class="auditline">🗂 <b>Added category</b> “Electronics” <span class="at">you · 19 Oct</span></div>
+            </div>
+          </div>
+
+          <div class="banner info" style="margin-bottom:20px"><span class="bic">ℹ️</span><span>Queue integrity: two admins opening the same case — first action wins (row-locked); the other gets a refresh prompt. No double-approvals.</span></div>
+
+        </div><!-- /content -->
+
+        <div class="bnav">
+          <a class="nitem" href="mp-010-marketplace-home.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5L12 3l9 7.5"/><path d="M5 9.5V21h5v-6h4v6h5V9.5"/></svg><span class="nl">Home</span></a>
+          <a class="nitem" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5"/><circle cx="17" cy="9" r="2.4"/><path d="M15.8 14.6c2.3.2 4 1.7 4.7 4.4"/></svg><span class="nl">Community</span></a>
+          <div class="fab-wrap"><a class="fab" href="index.html"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></a><span class="nl">Post</span></div>
+          <a class="nitem" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 7.5l9 6 9-6"/></svg><span class="nl">Inbox</span></a>
+          <a class="nitem" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c.8-3.8 3.4-6 7-6s6.2 2.2 7 6"/></svg><span class="nl">Profile</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="navfoot">
+    <a href="mp-073-seller-orders.html">← MP-073 Seller Orders</a>
+    <a class="primary" href="mp-061-approval-queue.html">Next: MP-061 Approval Queue →</a>
+  </div>
+</div>
+<style>
+  body.render-mode { padding:0; background:#FDF6EC; }
+  body.render-mode .doc-header, body.render-mode .annot,
+  body.render-mode .navfoot, body.render-mode .frame-label { display:none; }
+  body.render-mode .row { gap:0; }
+  body.render-mode .doc { max-width:none; }
+</style>
+<script>if (location.hash === '#png') document.body.classList.add('render-mode');</script>
+</body>
+</html>

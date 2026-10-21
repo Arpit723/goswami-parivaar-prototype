@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MP-010 · Marketplace Home — Goswami Connect theme v2</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* ---- screen-local styles ---- */
+  .mhead { position:relative; padding:6px 18px 14px; overflow:hidden; }
+  .mhead .mandala { position:absolute; top:-38px; right:-42px; width:190px; height:190px; opacity:.10; pointer-events:none; }
+  .mhead .skyline { position:absolute; left:0; right:0; bottom:-2px; width:100%; height:46px; opacity:.20; pointer-events:none; }
+  .scard { border-radius:18px; }
+  .mhead .hrow1 { display:flex; align-items:center; gap:10px; }
+  .backbtn { width:34px; height:34px; border-radius:50%; background:#fff; border:1px solid var(--border); box-shadow:var(--shadow-card); display:flex; align-items:center; justify-content:center; color:var(--primary-deep); text-decoration:none; flex:none; }
+  .mtitle { flex:1; }
+  .mtitle h1 { font-size:20px; font-weight:800; color:var(--text-1); letter-spacing:-.01em; line-height:1.1; }
+  .mtitle .msub { font-size:10px; color:var(--text-2); margin-top:2px; }
+  .bellbtn { width:34px; height:34px; border-radius:50%; background:#fff; border:1px solid var(--border); box-shadow:var(--shadow-card); display:flex; align-items:center; justify-content:center; color:var(--primary-deep); position:relative; flex:none; }
+  .bellbtn .dot { position:absolute; top:7px; right:8px; width:7px; height:7px; border-radius:50%; background:var(--primary); border:1.5px solid #fff; }
+  .searchrow { display:flex; gap:10px; margin-top:13px; }
+  .search { flex:1; display:flex; align-items:center; gap:9px; background:#fff; border:1px solid var(--border); border-radius:var(--radius-pill); padding:0 16px; height:46px; box-shadow:var(--shadow-card); }
+  .search svg { color:var(--text-3); flex:none; }
+  .search input { border:none; outline:none; font-family:inherit; font-size:12px; width:100%; color:var(--text-1); background:transparent; }
+  .search input::placeholder { color:var(--text-3); }
+  .filterbtn { width:46px; height:46px; border-radius:var(--radius-pill); background:var(--grad-cta); color:#fff; display:flex; align-items:center; justify-content:center; box-shadow:var(--shadow-btn); flex:none; }
+
+  .truststrip { margin:2px 18px 0; background:#fff; border:1px solid var(--border); border-radius:var(--radius-pill); box-shadow:var(--shadow-card); display:flex; align-items:center; gap:8px; padding:7px 13px; }
+  .truststrip .tico { width:22px; height:22px; border-radius:50%; background:var(--chip-mint); display:flex; align-items:center; justify-content:center; font-size:11px; flex:none; }
+  .truststrip .t1 { font-size:10px; font-weight:700; color:var(--text-1); }
+  .truststrip .t2 { margin-left:auto; font-size:8.5px; font-weight:700; color:var(--brand-purple); background:var(--chip-lavender); padding:3px 9px; border-radius:var(--radius-pill); white-space:nowrap; }
+
+  .offer { margin:14px 18px 0; border-radius:var(--radius-lg); background:var(--grad-cta); box-shadow:0 10px 24px rgba(240,89,42,.30); padding:15px 16px; display:flex; align-items:center; gap:12px; position:relative; overflow:hidden; }
+  .offer .deco { position:absolute; right:-30px; top:-30px; width:120px; height:120px; border-radius:50%; background:rgba(255,255,255,.12); }
+  .offer .odeco2 { position:absolute; right:14px; bottom:-46px; width:90px; height:90px; border-radius:50%; background:rgba(255,255,255,.08); }
+  .offer .otxt { flex:1; position:relative; }
+  .offer .otag { display:inline-block; font-size:8px; font-weight:800; letter-spacing:.1em; color:#B8420F; background:#FDEBD7; padding:3px 9px; border-radius:var(--radius-pill); }
+  .offer .oh { font-size:19px; font-weight:800; color:#fff; margin-top:5px; line-height:1.05; }
+  .offer .os { font-size:10px; color:rgba(255,255,255,.85); margin-top:3px; }
+  .offer .obtn { margin-top:9px; display:inline-block; font-size:10px; font-weight:800; color:var(--primary-2); background:#fff; padding:7px 16px; border-radius:var(--radius-pill); text-decoration:none; box-shadow:0 3px 10px rgba(0,0,0,.15); }
+  .offer .oimg { width:86px; height:86px; border-radius:50%; object-fit:cover; border:3px solid rgba(255,255,255,.7); flex:none; position:relative; }
+
+  .sellerbadge { font-size:7.5px; font-weight:800; padding:2px 7px; border-radius:var(--radius-pill); margin-left:5px; vertical-align:1px; }
+  .sellerbadge.biz { color:var(--brand-purple); background:var(--chip-lavender); }
+  .sellerbadge.ind { color:#0F766E; background:var(--chip-teal); }
+  .newchip { font-size:7.5px; font-weight:800; color:#B45309; background:var(--warning-tint); padding:2px 7px; border-radius:var(--radius-pill); }
+
+  .scard { flex:none; width:200px; background:#fff; border:1px solid var(--border); border-radius:var(--radius-card); box-shadow:var(--shadow-card); padding:11px 12px; }
+  .scard .srow { display:flex; align-items:center; gap:9px; }
+  .scard .avatar { width:40px; height:40px; border-radius:14px; font-size:13px; }
+  .scard .sname { font-size:12px; font-weight:700; color:var(--text-1); line-height:1.2; }
+  .scard .scat { font-size:9px; color:var(--text-2); margin-top:1px; }
+  .scard .sfoot { display:flex; align-items:center; justify-content:space-between; margin-top:9px; }
+  .scard .visit { font-size:9.5px; font-weight:800; color:var(--primary); text-decoration:none; }
+</style>
+</head>
+<body>
+<div class="doc">
+  <div class="doc-header">
+    <div class="kicker">Marketplace v2 · Goswami Connect theme (exact match)</div>
+    <h1>MP-010 · Marketplace Home</h1>
+    <div class="sub">Entry screen of the Marketplace module — opened from app Home → Quick Access tile. Buyer-facing discovery surface.</div>
+    <div class="fr-chips"><span>FR-MKT-01</span><span>FR-MKT-02</span><span>FR-MKT-05</span><span>discount_percent</span><span>remaining_stock_count</span></div>
+    <div class="step-chip">Screen 1 of 15 · Buyer flow · theme v2</div>
+  </div>
+
+  <details class="annot" open>
+    <summary>MP-010 · Marketplace home — requirements map</summary>
+    <table>
+      <tr><th>Role / entry</th><td>Member (no guest mode — FR-MKT-02). Arrives from app Home → Quick Access “Marketplace” tile.</td></tr>
+      <tr><th>Primary action</th><td>Browse feed → open product (MP-012) or list (MP-011); sellers enter via <b>Profile → My Products</b> (bottom-nav ＋ is the Community <b>Post</b> button — social, not selling).</td></tr>
+      <tr><th>Feed rules</th><td>Only <code>status = LIVE</code> · <code>is_visible = TRUE</code> · <code>NOT admin_hold</code> (partial index). Sellers = business XOR individual (badges shown). 6 seeded <code>product_categories</code>.</td></tr>
+      <tr><th>Price display</th><td>Payable computed from <code>discount_percent</code> (1–90): struck original + orange % chip. Never stored — can never disagree.</td></tr>
+      <tr><th>Stock pills</th><td><code>remaining_stock_count</code> → “6 left” (amber) · 0 ⇒ derived “Out of stock” (grey, card disabled) · <code>MADE_TO_ORDER</code> ⇒ teal pill.</td></tr>
+      <tr><th>Ratings</th><td>★ pill reads <code>product_rating_stats</code> (VISIBLE reviews only, instant-publish model).</td></tr>
+      <tr><th>Offer banner</th><td>Merchandising surface powered by discount data — links into MP-011 pre-filtered (Jewellery).</td></tr>
+      <tr><th>Next screens</th><td>MP-011 list + filters · MP-012 detail · MP-021 editor (sellers, via FAB) · MP-020 console (seller).</td></tr>
+      <tr><th>Key states</th><td>Loaded (shown) · loading skeleton · empty (no LIVE listings yet) · offline banner — per MP-090 patterns.</td></tr>
+      <tr><th>Theme</th><td>Exact Goswami Connect tokens (tokens.css): cream <code>#FDF6EC</code> · orange-gradient CTA <code>#F0592A→#E8451A</code> · indigo headings <code>#1E1B4B</code> · purple secondary · gold stars · pastel chips · Poppins.</td></tr>
+    </table>
+  </details>
+
+  <div class="row">
+    <div class="frame-block">
+      <div class="frame-label">Member view · loaded state</div>
+      <div class="phone">
+        <div class="notch"></div>
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg width="16" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.2" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+
+          <!-- header -->
+          <div class="mhead">
+            <svg class="mandala" viewBox="0 0 200 200" fill="none" stroke="#E8451A" stroke-width="2">
+              <circle cx="100" cy="100" r="88" stroke="#F5A623" stroke-dasharray="4 7"/><circle cx="100" cy="100" r="66"/><circle cx="100" cy="100" r="44" stroke="#F5A623" stroke-dasharray="3 5"/>
+              <g stroke-width="1.6"><path d="M100 12v50M100 138v50M12 100h50M138 100h50M38 38l35 35M127 127l35 35M162 38l-35 35M73 127l-35 35"/></g>
+            </svg>
+            <svg class="skyline" viewBox="0 0 414 46" preserveAspectRatio="none" fill="#E8451A">
+              <path d="M0 46 L0 34 Q14 12 28 34 L34 34 Q40 20 46 34 L58 34 Q66 8 74 34 L80 34 Q92 26 100 34 L112 34 Q124 4 136 34 L142 34 Q150 18 158 34 L170 34 Q182 10 194 34 L200 34 Q212 24 224 34 L236 34 Q250 6 264 34 L272 34 Q282 20 292 34 L306 34 Q320 8 334 34 L342 34 Q354 24 366 34 L380 34 Q394 12 408 34 L414 34 L414 46 Z"/>
+            </svg>
+            <div class="hrow1">
+              <a class="backbtn" href="index.html" title="Back to app Home (owned by Home module)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></a>
+              <div class="mtitle">
+                <h1>Marketplace</h1>
+                <div class="msub">products by businesses &amp; individual sellers</div>
+              </div>
+              
+            </div>
+            <div class="searchrow">
+              <div class="search">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+                <input placeholder="Search products, sellers, categories…">
+              </div>
+              <a class="filterbtn" href="index.html" title="Filters live on MP-011"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><path d="M4 7h16M7 12h10M10 17h4"/></svg></a>
+            </div>
+          </div>
+
+          <!-- trust strip -->
+          <div class="truststrip">
+            <div class="tico">🛡️</div>
+            <div class="t1">Every listing is admin-approved before going live</div>
+            <div class="t2">Members only</div>
+          </div>
+
+          <!-- categories -->
+          <div class="sec">
+            <div class="sec-head"><h2>Categories</h2><a class="viewall" href="index.html">View All <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></a></div>
+            <div class="chips">
+              <a class="chip active" href="mp-010-marketplace-home.html"><span class="cico">🛍️</span><span class="clab">All</span></a>
+              <a class="chip" href="index.html"><span class="cico" style="background:var(--chip-peach)">🪔</span><span class="clab">Home &amp; Puja</span></a>
+              <a class="chip" href="index.html"><span class="cico" style="background:var(--chip-rose)">👗</span><span class="clab">Clothing</span></a>
+              <a class="chip" href="index.html"><span class="cico" style="background:var(--chip-mint)">🥭</span><span class="clab">Food &amp; Pickles</span></a>
+              <a class="chip" href="index.html"><span class="cico" style="background:var(--chip-lavender)">💍</span><span class="clab">Jewellery</span></a>
+              <a class="chip" href="index.html"><span class="cico" style="background:var(--chip-teal)">🧺</span><span class="clab">Handicrafts</span></a>
+              <a class="chip" href="index.html"><span class="cico" style="background:var(--chip-purple)">🔌</span><span class="clab">Electronics</span></a>
+            </div>
+          </div>
+
+          <!-- offer banner -->
+          <div class="offer">
+            <div class="deco"></div><div class="odeco2"></div>
+            <div class="otxt">
+              <span class="otag">DIWALI SPECIAL</span>
+              <div class="oh">Upto 30% Off</div>
+              <div class="os">Silver &amp; Gold Jewellery · by Ritesh Zaveri &amp; Sons</div>
+              <a class="obtn" href="index.html">Shop Now</a>
+            </div>
+            <img class="oimg" src="https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=300&q=80&auto=format&fit=crop" alt="Gold bangles">
+          </div>
+
+          <!-- featured products -->
+          <div class="sec">
+            <div class="sec-head"><h2>Featured Products</h2><a class="viewall" href="index.html">View All <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></a></div>
+            <div class="hrow">
+              <a class="pcard" href="index.html">
+                <span class="stock low">6 left</span>
+                <img class="pimg" src="https://images.unsplash.com/photo-1606923829579-0cb981a83e2e?w=400&q=80&auto=format&fit=crop" alt="Brass diya set">
+                <div class="ptitle">Brass Diya Set of 6 · cotton wicks incl.</div>
+                <div class="pprice"><span class="now">₹360</span><span class="was">₹450</span><span class="off">20% off</span></div>
+                <div class="prow-seller"><span class="avatar" style="background:linear-gradient(135deg,#7C3AED,#4C1D95)">SG</span><span class="sname">Shree Ganesh Bhandar</span><span class="rating"><span class="st">★</span>4.9</span></div>
+              </a>
+              <a class="pcard" href="index.html">
+                <span class="stock low">4 left</span>
+                <img class="pimg" src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400&q=80&auto=format&fit=crop" alt="Silver earrings">
+                <div class="ptitle">Sterling Silver Jhumka Earrings</div>
+                <div class="pprice"><span class="now">₹448</span><span class="was">₹560</span><span class="off">20% off</span></div>
+                <div class="prow-seller"><span class="avatar" style="background:linear-gradient(135deg,#F0592A,#E8451A)">RZ</span><span class="sname">Ritesh Zaveri &amp; Sons</span><span class="rating"><span class="st">★</span>4.8</span></div>
+              </a>
+              <a class="pcard" href="index.html">
+                <img class="pimg" src="https://images.unsplash.com/photo-1553279768-865429fa0078?w=400&q=80&auto=format&fit=crop" alt="Mango chundo">
+                <div class="ptitle">Chunky Mango Chundo 500g · homemade</div>
+                <div class="pprice"><span class="now">₹220</span></div>
+                <div class="prow-seller"><span class="avatar" style="background:linear-gradient(135deg,#10B981,#047857)">MP</span><span class="sname">Meera Patel</span><span class="newchip">New</span></div>
+              </a>
+              <a class="pcard" href="index.html">
+                <span class="stock low">3 left</span>
+                <img class="pimg" src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80&auto=format&fit=crop" alt="Handcrafted mojdi">
+                <div class="ptitle">Bandhani Handcrafted Mojdi · size 5–10</div>
+                <div class="pprice"><span class="now">₹765</span><span class="was">₹850</span><span class="off">10% off</span></div>
+                <div class="prow-seller"><span class="avatar" style="background:linear-gradient(135deg,#0D9488,#115E59)">KK</span><span class="sname">Kutch Kala Kendra</span><span class="rating"><span class="st">★</span>4.6</span></div>
+              </a>
+              <a class="pcard" href="index.html">
+                <span class="stock low">8 left</span>
+                <img class="pimg" src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&q=80&auto=format&fit=crop" alt="Wireless earbuds">
+                <div class="ptitle">Wireless Earbuds with Case · 24h battery</div>
+                <div class="pprice"><span class="now">₹999</span><span class="was">₹1,299</span><span class="off">23% off</span></div>
+                <div class="prow-seller"><span class="avatar" style="background:linear-gradient(135deg,#6D28D9,#4C1D95)">JT</span><span class="sname">Jignesh Tech Corner</span><span class="rating"><span class="st">★</span>4.2</span></div>
+              </a>
+              <a class="pcard" href="index.html">
+                <span class="stock mto">Made to order</span>
+                <img class="pimg" src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&q=80&auto=format&fit=crop" alt="Cane armchair">
+                <div class="ptitle">Cane Armchair · handwoven, 2-week make</div>
+                <div class="pprice"><span class="now">₹4,200</span></div>
+                <div class="prow-seller"><span class="avatar" style="background:linear-gradient(135deg,#F59E0B,#B45309)">KK</span><span class="sname">Kutch Kala Kendra</span><span class="rating"><span class="st">★</span>4.6</span></div>
+              </a>
+            </div>
+          </div>
+
+          <!-- fresh arrivals -->
+          <div class="sec">
+            <div class="sec-head"><h2>Fresh Arrivals</h2><a class="viewall" href="index.html">View All <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></a></div>
+            <div class="grid2">
+              <a class="pcard" href="index.html">
+                <span class="stock low">2 left</span>
+                <img class="pimg" src="https://images.unsplash.com/photo-1560343090-f0409e92791a?w=400&q=80&auto=format&fit=crop" alt="Leather jhola">
+                <div class="ptitle">Hand-stitched Leather Jhola · 14″</div>
+                <div class="pprice"><span class="now">₹640</span></div>
+                <div class="prow-seller"><span class="avatar" style="background:linear-gradient(135deg,#0D9488,#115E59)">KK</span><span class="sname">Kutch Kala Kendra</span><span class="rating"><span class="st">★</span>4.6</span></div>
+              </a>
+              <a class="pcard" href="index.html">
+                <span class="stock low">5 left</span>
+                <img class="pimg" src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=400&q=80&auto=format&fit=crop" alt="Gold-plated bangles">
+                <div class="ptitle">24k Gold-plated Bangle Pair · gift box</div>
+                <div class="pprice"><span class="now">₹910</span></div>
+                <div class="prow-seller"><span class="avatar" style="background:linear-gradient(135deg,#F0592A,#E8451A)">RZ</span><span class="sname">Ritesh Zaveri &amp; Sons</span><span class="rating"><span class="st">★</span>4.8</span></div>
+              </a>
+              <a class="pcard" href="index.html" style="opacity:.62">
+                <span class="stock out">Out of stock</span>
+                <img class="pimg" src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=400&q=80&auto=format&fit=crop" alt="Khakhra thepla pack">
+                <div class="ptitle">Khakhra–Thepla Family Pack · 7-day fresh</div>
+                <div class="pprice"><span class="now">₹180</span></div>
+                <div class="prow-seller"><span class="avatar" style="background:linear-gradient(135deg,#10B981,#047857)">MP</span><span class="sname">Meera Patel</span><span class="newchip">New</span></div>
+              </a>
+              <a class="pcard" href="index.html">
+                <span class="stock low">9 left</span>
+                <img class="pimg" src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=400&q=80&auto=format&fit=crop" alt="Mango wood bowl">
+                <div class="ptitle">Mango-wood Carved Bowl · food-safe</div>
+                <div class="pprice"><span class="now">₹468</span><span class="was">₹520</span><span class="off">10% off</span></div>
+                <div class="prow-seller"><span class="avatar" style="background:linear-gradient(135deg,#0D9488,#115E59)">KK</span><span class="sname">Kutch Kala Kendra</span><span class="rating"><span class="st">★</span>4.6</span></div>
+              </a>
+            </div>
+          </div>
+
+          <!-- featured sellers -->
+          <div class="sec">
+            <div class="sec-head"><h2>Featured Sellers</h2><a class="viewall" href="index.html">View All <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></a></div>
+            <div class="hrow">
+              <div class="scard">
+                <div class="srow">
+                  <span class="avatar" style="background:linear-gradient(135deg,#F0592A,#E8451A)">RZ</span>
+                  <div><div class="sname">Ritesh Zaveri &amp; Sons<span class="sellerbadge biz">BUSINESS</span></div><div class="scat">Jewellery · since 1987 · ★4.8 (156)</div></div>
+                </div>
+                <div class="sfoot"><a class="visit" href="index.html">Visit store →</a></div>
+              </div>
+              <div class="scard">
+                <div class="srow">
+                  <span class="avatar" style="background:linear-gradient(135deg,#0D9488,#115E59)">KK</span>
+                  <div><div class="sname">Kutch Kala Kendra<span class="sellerbadge biz">BUSINESS</span></div><div class="scat">Handicrafts · ★4.6 (41)</div></div>
+                </div>
+                <div class="sfoot"><a class="visit" href="index.html">Visit store →</a></div>
+              </div>
+              <div class="scard">
+                <div class="srow">
+                  <span class="avatar" style="background:linear-gradient(135deg,#10B981,#047857)">MP</span>
+                  <div><div class="sname">Meera Patel<span class="sellerbadge ind">INDIVIDUAL</span></div><div class="scat">Food &amp; Pickles · new seller ✨</div></div>
+                </div>
+                <div class="sfoot"><a class="visit" href="index.html">Visit store →</a></div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /content -->
+
+        <!-- bottom nav (ref: Home · Community · [+] · Inbox · Profile) -->
+        <div class="bnav">
+          <a class="nitem" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5L12 3l9 7.5"/><path d="M5 9.5V21h5v-6h4v6h5V9.5"/></svg><span class="nl">Home</span></a>
+          <a class="nitem" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5"/><circle cx="17" cy="9" r="2.4"/><path d="M15.8 14.6c2.3.2 4 1.7 4.7 4.4"/></svg><span class="nl">Community</span></a>
+          <div class="fab-wrap"><a class="fab" href="index.html" title="Create a post (Community)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></a><span class="nl">Post</span></div>
+          <a class="nitem" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 7.5l9 6 9-6"/></svg><span class="nl">Inbox</span></a>
+          <a class="nitem" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c.8-3.8 3.4-6 7-6s6.2 2.2 7 6"/></svg><span class="nl">Profile</span></a>
+        </div>
+      </div><!-- /phone -->
+    </div>
+  </div>
+
+  <div class="navfoot">
+    <a class="primary" href="index.html">← v2 Hub (all screens &amp; flow)</a>
+    <a href="index.html">Next: MP-011 · Product List + Filters →</a>
+  </div>
+</div>
+<style>
+  /* render hook: open with #png to export a clean screen-only PNG */
+  body.render-mode { padding:0; background:#FDF6EC; }
+  body.render-mode .doc-header, body.render-mode .annot,
+  body.render-mode .navfoot, body.render-mode .frame-label { display:none; }
+  body.render-mode .row { gap:0; }
+  body.render-mode .doc { max-width:none; }
+</style>
+<script>if (location.hash === '#png') document.body.classList.add('render-mode');</script>
+</body>
+</html>

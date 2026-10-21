@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MP-031 · Review Moderation — v2</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  .mcase { margin:12px 18px 0; background:#fff; border:1px solid var(--border); border-radius:var(--radius-card); box-shadow:var(--shadow-card); padding:13px 14px; }
+  .mcase .mh { display:flex; align-items:center; gap:8px; margin-bottom:9px; }
+  .revblock { background:var(--bg-soft); border-radius:12px; padding:11px 12px; }
+  .revblock .rh { display:flex; align-items:center; gap:7px; }
+  .revblock .rn { font-size:10.5px; font-weight:800; color:var(--text-1); }
+  .revblock .rd { margin-left:auto; font-size:8.5px; color:var(--text-3); }
+  .revblock .rt { font-size:10.5px; color:var(--text-2); line-height:1.6; margin-top:5px; font-weight:500; }
+  .proof { margin-top:9px; border-top:1px dashed var(--border); padding-top:8px; }
+  .proof .pt2 { font-size:8.5px; font-weight:800; color:var(--text-3); letter-spacing:.06em; margin-bottom:5px; }
+  .prow2 { display:flex; gap:7px; font-size:9.5px; color:var(--text-2); font-weight:600; padding:2.5px 0; }
+  .prow2 .xi { color:var(--success); font-weight:800; flex:none; }
+  .prow2 .xw { color:var(--danger); font-weight:800; flex:none; }
+  .avgdelta { margin-top:9px; background:var(--warning-tint); border-radius:10px; padding:8px 11px; font-size:9.5px; color:var(--warning-text); font-weight:700; }
+  .hidebox { margin-top:9px; background:var(--chip-rose); border-radius:10px; padding:9px 11px; font-size:9px; color:#9D174D; font-weight:600; line-height:1.55; }
+  .mbtns { display:flex; gap:8px; margin-top:11px; }
+</style>
+</head>
+<body>
+<div class="doc">
+  <div class="doc-header">
+    <div class="kicker">Marketplace v2 · Goswami Connect theme</div>
+    <h1>MP-031 · Review Moderation (Admin)</h1>
+    <div class="sub">Reports only — reviews publish instantly; you judge the flagged ones with evidence.</div>
+    <div class="fr-chips"><span>FR-MKT-53</span><span>report→PENDING</span><span>Keep / Hide+reason</span><span>reporter never revealed</span></div>
+    <div class="step-chip">Screen 13 of 15 · Admin flow · theme v2</div>
+  </div>
+
+  <details class="annot" open>
+    <summary>MP-031 — requirements map</summary>
+    <table>
+      <tr><th>Role / entry</th><td>Admin · MP-060 “review reports” card.</td></tr>
+      <tr><th>Model</th><td>Instant publish (VISIBLE default). A REPORT flips the review to PENDING — it leaves public view and the average immediately (no pre-moderation of new reviews).</td></tr>
+      <tr><th>Decisions</th><td><b>Keep visible</b> → restores review + average · <b>Hide</b> → mandatory reason → author notified (never the reporter's identity), stays out of public, may edit-and-resubmit (returns to queue).</td></tr>
+      <tr><th>Evidence</th><td>Report reason, contact-scan, author history, purchase context — decisions stay defensible in the audit log.</td></tr>
+      <tr><th>Edits</th><td>Author editing a published review re-enters this queue (bait-and-switch guard).</td></tr>
+    </table>
+  </details>
+
+  <div class="row">
+    <div class="frame-block">
+      <div class="frame-label">Admin view · 2 reported reviews</div>
+      <div class="phone">
+        <div class="notch"></div>
+        <div class="statusbar"><span>9:41</span><span class="sright"><svg width="16" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.2" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
+        <div class="content">
+
+          <div class="appbar">
+            <a class="backbtn" href="mp-060-admin-dashboard.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></a>
+            <div class="atitle">Review Reports<div class="asub">2 pending · already hidden from public</div></div>
+          </div>
+
+          <!-- case 1 -->
+          <div class="mcase" style="border:1.5px solid var(--primary)">
+            <div class="mh">
+              <span class="stchip declined">PENDING · reported</span>
+              <span style="font-size:8.5px;color:var(--text-3);font-weight:700;margin-left:auto">reported 2h ago</span>
+            </div>
+            <div class="revblock">
+              <div class="rh"><span class="avatar" style="background:linear-gradient(135deg,#0D9488,#115E59);width:20px;height:20px;font-size:8px">VM</span><span class="rn">Vipul M.</span><span class="prv dotp" style="color:var(--text-3)">★<span style="color:#E5E7EB">★★★★</span></span><span class="rd">on “Chunky Mango Chundo” · 3 days ago</span></div>
+              <div class="rt">Worst pickle ever!! Call 98XXX to buy the REAL thing from my shop instead 🤮</div>
+            </div>
+            <div class="proof">
+              <div class="pt2">EVIDENCE</div>
+              <div class="prow2"><span class="xw">✕</span> Contact-scan: phone number detected in body</div>
+              <div class="prow2"><span class="xw">✕</span> Promotes a competing shop (report reason: “spam / promotion”)</div>
+              <div class="prow2"><span class="xi">✓</span> Author: 4 reviews, 0 prior reports</div>
+            </div>
+            <div class="avgdelta">Public average while pending: ★4.7 (22) — was ★4.8 (23). Your Keep/Hide finalises it.</div>
+            <div class="mbtns">
+              <a class="btn outline sm" href="index.html" style="flex:1">👁 Keep visible</a>
+              <a class="btn danger sm" href="index.html" style="flex:1">🙈 Hide…</a>
+            </div>
+            <div class="hidebox">Hide needs a reason for the AUTHOR: e.g. “Reviews can't include phone numbers or promote other shops — remove these and resubmit.” Reporter's identity is never disclosed.</div>
+          </div>
+
+          <!-- case 2 -->
+          <div class="mcase">
+            <div class="mh">
+              <span class="stchip declined">PENDING · reported</span>
+              <span style="font-size:8.5px;color:var(--text-3);font-weight:700;margin-left:auto">reported yesterday</span>
+            </div>
+            <div class="revblock">
+              <div class="rh"><span class="avatar" style="background:linear-gradient(135deg,#6D28D9,#4C1D95);width:20px;height:20px;font-size:8px">DK</span><span class="rn">Daxaben K.</span><span class="prv dotp">★★★★★</span><span class="rd">on “Bandhani Mojdi” · 1 week ago</span></div>
+              <div class="rt">Perfect fit and gorgeous colours. Courier was slow but seller kept me updated on call the whole time!</div>
+            </div>
+            <div class="proof">
+              <div class="pt2">EVIDENCE</div>
+              <div class="prow2"><span class="xi">✓</span> Contact-scan clean</div>
+              <div class="prow2"><span class="xi">✓</span> Verified order exists (delivered 12 Oct)</div>
+              <div class="prow2"><span class="xw">⚑</span> Report reason: “review mentions off-app call” — not a violation, only guidance</div>
+            </div>
+            <div class="mbtns">
+              <a class="btn outline sm" href="index.html" style="flex:1">👁 Keep visible</a>
+              <a class="btn danger sm" href="index.html" style="flex:1">🙈 Hide…</a>
+            </div>
+          </div>
+
+          <div class="banner info" style="margin-bottom:20px"><span class="bic">🔁</span><span>Edited published reviews also land here automatically — the queue is reports + re-edits, nothing else.</span></div>
+
+        </div><!-- /content -->
+
+        <div class="bnav">
+          <a class="nitem" href="mp-010-marketplace-home.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5L12 3l9 7.5"/><path d="M5 9.5V21h5v-6h4v6h5V9.5"/></svg><span class="nl">Home</span></a>
+          <a class="nitem" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5"/><circle cx="17" cy="9" r="2.4"/><path d="M15.8 14.6c2.3.2 4 1.7 4.7 4.4"/></svg><span class="nl">Community</span></a>
+          <div class="fab-wrap"><a class="fab" href="index.html"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></a><span class="nl">Post</span></div>
+          <a class="nitem" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 7.5l9 6 9-6"/></svg><span class="nl">Inbox</span></a>
+          <a class="nitem" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c.8-3.8 3.4-6 7-6s6.2 2.2 7 6"/></svg><span class="nl">Profile</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="navfoot">
+    <a href="mp-061-approval-queue.html">← MP-061 Approvals</a>
+    <a class="primary" href="mp-062-categories-manager.html">Next: MP-062 Categories →</a>
+  </div>
+</div>
+<style>
+  body.render-mode { padding:0; background:#FDF6EC; }
+  body.render-mode .doc-header, body.render-mode .annot,
+  body.render-mode .navfoot, body.render-mode .frame-label { display:none; }
+  body.render-mode .row { gap:0; }
+  body.render-mode .doc { max-width:none; }
+</style>
+<script>if (location.hash === '#png') document.body.classList.add('render-mode');</script>
+</body>
+</html>
