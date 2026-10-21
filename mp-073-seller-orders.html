@@ -15,15 +15,15 @@
   <div class="doc-header">
     <div class="kicker">Marketplace · cart &amp; orders (payment channel undecided — payment-agnostic)</div>
     <h1>MP-073 · Seller Orders</h1>
-    <div class="fr-chips"><span>FR-MKT-56</span><span>FR-MKT-58 stock at fulfilment</span><span>EC-O-03/06/07</span></div>
+    <div class="fr-chips"><span>FR-MKT-56</span><span>FR-MKT-58 stock at delivery</span><span>EC-O-03/06/07</span></div>
   </div>
 
   <details class="annot" open>
     <summary>MP-073 · seller order queue — queue + case with actions — 2 frames</summary>
     <table>
       <tr><th>Role / entry</th><td>Business staff or individual seller · seller console → Orders</td></tr>
-      <tr><th>Primary action</th><td>Accept · Decline (note mandatory) · Fulfil (confirms receipt = payment SETTLED + stock decremented)</td></tr>
-      <tr><th>Rules</th><td>Accept re-checks stock in a locked transaction (two sellers on one item: first wins). Decline always carries a note shown to the buyer. Fulfil requires payment settled — in the direct world, tapping "Fulfil" = "I received payment"; made-to-order items skip the stock decrement. Cancel possible before fulfilment.</td></tr>
+      <tr><th>Primary action</th><td>Accept · Decline (note mandatory) · Dispatch (on the way) · Deliver (payment SETTLED + stock decremented)</td></tr>
+      <tr><th>Rules</th><td>Accept re-checks stock in a locked transaction (two sellers on one item: first wins). Decline always carries a note shown to the buyer. Deliver requires prior dispatch + settled payment (DB-enforced); made-to-order items skip the stock decrement; cancel possible before delivery.</td></tr>
       <tr><th>Key states</th><td>Queue (shown) · order case with action bar · decline sheet</td></tr>
     </table>
   </details>
@@ -63,14 +63,14 @@
               <span class="avatar" style="background:var(--surface-2);color:var(--text-2);flex:none;">RP</span>
               <div class="lmain">
                 <div class="lt">#1039 · Ritesh Patel <span class="pill ok">Accepted</span></div>
-                <div class="ls">awaiting fulfilment · payment pending · ₹860</div>
+                <div class="ls">awaiting dispatch · payment pending · ₹860</div>
               </div>
             </div>
           </div>
           <div style="padding:0 16px 20px;">
             <div class="banner info">
               <svg class="ic sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-              <div>"Fulfil" means you received the payment in hand — it settles the order and updates your stock counts automatically.</div>
+              <div><b>Dispatch</b> tells the buyer it is on the way; <b>Deliver</b> = payment received — it settles the order and updates your stock counts automatically.</div>
             </div>
           </div>
         </div>
@@ -79,7 +79,7 @@
     </div>
 
     <div class="frame-block">
-      <div class="frame-label">Order case <small>· accept / decline / fulfil</small></div>
+      <div class="frame-label">Order case <small>· accept / decline / dispatch / deliver</small></div>
       <div class="phone">
         <div class="statusbar"><span>9:41</span><span class="sright"><svg class="ic xs" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 15.9a5 5 0 0 1 7 0"/><path d="M2 9.3a15 15 0 0 1 20 0"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg><span class="batt"></span></span></div>
         <div class="content" style="padding-bottom:8px;">
@@ -143,7 +143,7 @@
     </div>
   </div>
 
-  <div class="doc-footer">Goswami Parivaar · Marketplace · accepted orders show a "Fulfil — payment received" button; fulfilment settles payment + decrements in-stock counts (made-to-order skips) · decline needs a note (DB CHECK)</div>
+  <div class="doc-footer">Goswami Parivaar · Marketplace · accepted orders show Dispatch, then Deliver = payment received (settles + decrements stock; made-to-order skips) · decline needs a note (DB CHECK)</div>
 </div>
 <script src="proto.js"></script>
 </body>

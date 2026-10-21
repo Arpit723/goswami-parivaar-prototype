@@ -26,8 +26,8 @@
     <summary>MP-072 · buyer order tracking — list + detail timeline — 2 frames</summary>
     <table>
       <tr><th>Role / entry</th><td>Member · order success → Track orders · profile → My orders</td></tr>
-      <tr><th>Primary action</th><td>Track status · call the seller · cancel before fulfilment</td></tr>
-      <tr><th>Rules</th><td>Status: PLACED → ACCEPTED / DECLINED (seller note) → FULFILLED; CANCELLED (by buyer or seller, recorded). Payment line: PENDING until the seller confirms receipt (SETTLED) — in-app payment undecided, order shows the channel. Items show snapshotted prices. Declined orders show the seller's note prominently.</td></tr>
+      <tr><th>Primary action</th><td>Track status · call the seller · cancel before delivery</td></tr>
+      <tr><th>Rules</th><td>Status: PLACED → ACCEPTED / DECLINED (seller note) → DISPATCHED → DELIVERED; CANCELLED (by buyer or seller, recorded). Payment line: PENDING until the seller confirms receipt (SETTLED) — in-app payment undecided, order shows the channel. Items show snapshotted prices. Declined orders show the seller's note prominently.</td></tr>
       <tr><th>Key states</th><td>List (shown) · order detail with timeline</td></tr>
     </table>
   </details>
@@ -89,15 +89,16 @@
           <div class="appbar">
             <a class="iconbtn" href="mp-072-my-orders.html"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></a>
             <div class="title">Order #1042</div>
-            <span class="pill warn">Placed</span>
+            <span class="pill ok">Dispatched</span>
           </div>
 
           <div style="padding:14px 16px 0;">
             <div class="card" style="padding:12px 14px;">
               <div class="steps">
                 <div class="st on">Placed<br>10:24</div>
-                <div class="st">Accepted</div>
-                <div class="st">Fulfilled</div>
+                <div class="st on">Accepted<br>11:02</div>
+                <div class="st on">Dispatched<br>Sat</div>
+                <div class="st">Delivered</div>
               </div>
             </div>
           </div>
@@ -120,10 +121,10 @@
           <div style="padding:16px 16px 20px;">
             <div class="banner info">
               <svg class="ic sm" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-              <div>Pay ₹1,580 directly to the seller (call to arrange). When they confirm receipt, payment shows <b>SETTLED</b> and the order can be marked fulfilled.</div>
+              <div>Pay ₹1,580 directly to the seller (call to arrange). When they confirm receipt, payment shows <b>SETTLED</b> and the order can be marked delivered.</div>
             </div>
             <button class="btn btn-outline btn-block" style="margin-top:10px;">Cancel order</button>
-            <div class="subtle" style="font-size:11px;margin-top:6px;text-align:center;">Cancellable until fulfilled — seller is notified with the time and your name</div>
+            <div class="subtle" style="font-size:11px;margin-top:6px;text-align:center;">Cancellable until delivered — seller is notified with the time and your name</div>
           </div>
         </div>
         <div class="homebar"></div>
@@ -131,7 +132,7 @@
     </div>
   </div>
 
-  <div class="doc-footer">Goswami Parivaar · Marketplace · FULFILLED requires settled payment (DB-enforced) · buyer hard-deleted → order shows "Deleted member" (anonymised, record kept)</div>
+  <div class="doc-footer">Goswami Parivaar · Marketplace · DELIVERED requires prior dispatch + settled payment (DB-enforced) · buyer hard-deleted → order shows "Deleted member" (anonymised, record kept)</div>
 </div>
 <script src="proto.js"></script>
 </body>
